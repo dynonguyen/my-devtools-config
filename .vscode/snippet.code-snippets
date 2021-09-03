@@ -1,0 +1,6 @@
+{
+	"Create Alias": {
+		"prefix": "x",
+		"body": ["Function $1{ $2 }"]
+	}
+}
