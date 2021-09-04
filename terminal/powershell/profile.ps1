@@ -3,7 +3,7 @@ Clear-Host
 Import-Module posh-git
 Import-Module oh-my-posh
 
-Set-PoshPrompt -Theme jandedobbeleer
+Set-PoshPrompt -Theme mt
 
 Import-Module PSReadLine
 Set-PSReadLineOption -PredictionSource History

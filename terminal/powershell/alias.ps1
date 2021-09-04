@@ -8,6 +8,10 @@ Function reload{
   . $profile
   Copy-Item "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Destination "C:\terminal-config\terminal\powershell\profile.ps1"
 }
+# sync setting
+Function savesetting{
+  cp "C:\Users\Tuan\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" "C:\terminal-config\terminal\powershell\setting.json"
+}
 # back dir
 Function b{ cd .. }
 # new file
