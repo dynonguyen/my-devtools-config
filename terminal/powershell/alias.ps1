@@ -3,30 +3,34 @@
 # Date/Time : 03/09/2021
 
 # --------- Common ---------
-# reload profile
-Function reload{ 
-  . $profile
-  Copy-Item "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Destination "C:\terminal-config\terminal\powershell\profile.ps1"
-}
 # sync setting
 Function savesetting{
   cp "C:\Users\Tuan\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" "C:\terminal-config\terminal\powershell\setting.json"
+
+  cp "C:\Users\Tuan\AppData\Local\nvim\init.vim" "C:\terminal-config\vim"
+
+  Copy-Item -Path 'C:\Users\Tuan\AppData\Local\nvim\settings\*' -Destination 'C:\terminal-config\vim\settings' -Recurse
+  
+  Copy-Item "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Destination "C:\terminal-config\terminal\powershell\profile.ps1"
 }
+# go back windows home
+Function home{ cd "C:\" }
 # back dir
 Function b{ cd .. }
 # new file
 Function touch{ New-Item -Path . -Name $args[0] }
 # view choco list
 Function chocolist{ choco list --localonly }
-#open $profile with nodepad
+# open $profile with nodepad
 Function op{ notepad $PROFILE }
+# open file with notepad
+Function no{ notepad $args }
 
 # --------- Project Manager ---------
 Function pdemo{ cd "C:\code\demo" }
-Function palias{ cd "C:\terminal-config\terminal\powershell\alias.ps1"}
 Function pcode{ cd "C:\code" }
-Function pviconf{ cd "C:\Users\Tuan\AppData\Local\nvim" }
-Function pconf{ cd "C:\terminal-config" }
+Function vimconf{ cd "C:\Users\Tuan\AppData\Local\nvim" }
+Function config{ cd "C:\terminal-config" }
 
 # --------- npm ---------
 Function ni{ npm install $args }

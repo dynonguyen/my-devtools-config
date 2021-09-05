@@ -5,39 +5,95 @@
 			"command": {
 				"action": "copy"
 			},
-			"keys": "ctrl+shift+c"
+			"keys": "alt+shift+c"
 		},
 		{
 			"command": "find",
-			"keys": "ctrl+f"
-		},
-		{
-			"command": "paste",
-			"keys": "ctrl+v"
-		},
-		{
-			"command": { "action": "splitPane", "split": "vertical" },
-			"keys": "ctrl+right"
-		},
-		{
-			"command": { "action": "splitPane", "split": "horizontal" },
-			"keys": "ctrl+down"
-		},
-		{
-			"command": { "action": "splitPane", "split": "auto" },
-			"keys": "ctrl+`"
+			"keys": "f3"
 		},
 		{
 			"command": {
 				"action": "splitPane",
-				"split": "auto",
-				"splitMode": "duplicate"
+				"split": "vertical"
 			},
-			"keys": "alt+shift+d"
+			"keys": "alt+shift+l"
 		},
-		{ "command": "closePane", "keys": "ctrl+w" },
-		{ "command": "closeOtherTabs", "keys": "ctrl+shift+w" },
-		{ "command": "newTab", "keys": "ctrl+n" }
+		{
+			"command": "paste",
+			"keys": "alt+v"
+		},
+		{
+			"command": {
+				"action": "newTab"
+			},
+			"keys": "alt+n"
+		},
+		{
+			"command": {
+				"action": "splitPane",
+				"split": "horizontal"
+			},
+			"keys": "alt+shift+j"
+		},
+		{
+			"command": {
+				"action": "closeTab"
+			},
+			"keys": "alt+q"
+		},
+		{
+			"command": {
+				"action": "closeOtherTabs"
+			},
+			"keys": "alt+shift+q"
+		},
+		{
+			"command": {
+				"action": "splitPane",
+				"split": "auto"
+			},
+			"keys": "alt+`"
+		},
+		{
+			"command": "closePane",
+			"keys": "alt+w"
+		},
+		{
+			"command": {
+				"action": "moveFocus",
+				"direction": "left"
+			},
+			"keys": "alt+h"
+		},
+		{
+			"command": {
+				"action": "moveFocus",
+				"direction": "up"
+			},
+			"keys": "alt+k"
+		},
+		{
+			"command": {
+				"action": "moveFocus",
+				"direction": "down"
+			},
+			"keys": "alt+j"
+		},
+		{
+			"command": {
+				"action": "moveFocus",
+				"direction": "right"
+			},
+			"keys": "alt+l"
+		},
+		{
+			"command": { "action": "nextTab", "tabSwitcherMode": "disabled" },
+			"keys": "alt+right"
+		},
+		{
+			"command": { "action": "prevTab", "tabSwitcherMode": "disabled" },
+			"keys": "alt+left"
+		}
 	],
 	"alwaysOnTop": false,
 	"alwaysShowTabs": true,
@@ -45,28 +101,38 @@
 	"copyOnSelect": false,
 	"defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
 	"disableAnimations": false,
-	"launchMode": "maximized",
+	"experimental.rendering.forceFullRepaint": false,
+	"experimental.rendering.software": false,
+	"focusFollowMouse": true,
+	"initialRows": 30,
+	"launchMode": "default",
 	"profiles": {
 		"defaults": {},
 		"list": [
 			{
-				"backgroundImage": null,
+				"backgroundImage": "H:\\PICTURE_VIDEO\\OTHERS\\BACKGROUNDS\\Others\\reactjs.png",
+				"backgroundImageOpacity": 0.20000000000000001,
+				"backgroundImageStretchMode": "uniformToFill",
 				"bellStyle": ["audible", "window", "taskbar"],
 				"colorScheme": "Dracula",
 				"commandline": "powershell.exe",
+				"experimental.retroTerminalEffect": false,
 				"font": {
 					"face": "CaskaydiaCove NF",
-					"size": 14
+					"size": 14,
+					"weight": "normal"
 				},
 				"guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
 				"hidden": false,
 				"historySize": 9001,
 				"icon": "C:\\terminal-config\\terminal\\assets\\termius.png",
+				"intenseTextStyle": "bright",
 				"name": "Windows PowerShell",
-				"scrollbarState": "visible",
+				"padding": "0, 0, 0, 0",
+				"scrollbarState": "hidden",
 				"startingDirectory": "C:\\",
 				"suppressApplicationTitle": false,
-				"tabTitle": "PowerShell",
+				"tabTitle": "PS",
 				"useAcrylic": false
 			},
 			{
@@ -80,6 +146,8 @@
 				"hidden": false,
 				"icon": "C:\\terminal-config\\terminal\\assets\\terminix.png",
 				"name": "Command Prompt",
+				"padding": "0, 0, 0, 0",
+				"scrollbarState": "hidden",
 				"startingDirectory": "C:\\",
 				"tabTitle": "CMD"
 			},
@@ -89,6 +157,8 @@
 				"hidden": false,
 				"icon": "C:\\terminal-config\\terminal\\assets\\terminator.png",
 				"name": "Ubuntu-20.04",
+				"padding": "0, 0, 0, 0",
+				"scrollbarState": "hidden",
 				"source": "Windows.Terminal.Wsl",
 				"startingDirectory": "C:\\",
 				"tabTitle": "WSL"
@@ -327,6 +397,7 @@
 			"yellow": "#808000"
 		}
 	],
+	"showTabsInTitlebar": true,
 	"showTerminalTitleInTitlebar": true,
 	"tabWidthMode": "compact",
 	"theme": "dark"
