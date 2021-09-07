@@ -28,17 +28,17 @@ let s:ctermWhite = "231"
 let s:ctermBlack = "0"
 
 " Normal mode
-let s:N1 = [ s:guiWhite , s:gui08 , s:ctermBlack , s:cterm08 ]
+let s:N1 = [ s:guiWhite , s:gui08 , s:ctermWhite , s:cterm08 ]
 let s:N2 = [ s:guiWhite , s:gui02 , s:ctermWhite , s:ctermWhite ]
 let s:N3 = [ s:guiWhite , s:gui01 , s:ctermWhite , s:cterm01 ]
 
 " Insert mode
-let s:I1 = [ s:guiWhite , s:gui07 , s:ctermBlack , s:cterm07 ]
+let s:I1 = [ s:guiWhite , s:gui07 , s:ctermWhite , s:cterm07 ]
 let s:I2 = [ s:guiWhite , s:gui02 , s:ctermWhite , s:cterm02 ]
 let s:I3 = [ s:guiWhite , s:gui01 , s:ctermWhite , s:cterm01 ]
 
 " Visual mode
-let s:V1 = [ s:guiBlack , s:gui06 , s:ctermBlack , s:cterm06 ]
+let s:V1 = [ s:guiWhite , s:gui06 , s:ctermWhite , s:cterm06 ]
 let s:V2 = [ s:guiWhite , s:gui02 , s:ctermWhite , s:cterm02 ]
 let s:V3 = [ s:guiWhite , s:gui01 , s:ctermWhite, s:cterm01 ]
 

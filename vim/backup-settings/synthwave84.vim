@@ -18,46 +18,50 @@ let g:colors_name = 'synthwave84'
 
 let s:t_Co = exists('&t_Co') && !empty(&t_Co) && &t_Co > 1 ? &t_Co : 2
 
-" hi! link EndOfBuffer NonText
-" hi! link QuickFixLine Search
-" hi! link Character Constant
-" hi! link Conditional Statement
-" hi! link Define PreProc
-" hi! link Debug Special
-" hi! link Delimiter Special
-" hi! link Exception Statement
-" hi! link Float Number
-" hi! link Function Identifier
-" hi! link Keyword Statement
-" hi! link Label Statement
-" hi! link Macro PreProc
-" hi! link Number Constant
-" hi! link Operator Statement
-" hi! link PreCondit PreProc
-" hi! link Repeat Statement
-" hi! link SpecialChar Special
-" hi! link SpecialComment Special
-" hi! link StorageClass Type
-" hi! link Structure Type
-" hi! link Tag Special
-" hi! link Typedef Type
-" hi! link lCursor Cursor
-" hi! link markdownBold Special
-" hi! link markdownCode String
-" hi! link markdownCodeDelimiter String
-" hi! link markdownHeadingDelimiter Comment
-" hi! link markdownRule Comment
+" Default
+hi! link EndOfBuffer NonText
+hi! link QuickFixLine Search
+hi! link Character Constant
+hi! link Conditional Statement
+hi! link Define PreProc
+hi! link Debug Special
+hi! link Delimiter Special
+hi! link Exception Statement
+hi! link Float Number
+hi! link Function Identifier
+hi! link Keyword Statement
+hi! link Label Statement
+hi! link Macro PreProc
+hi! link Number Constant
+hi! link Operator Statement
+hi! link PreCondit PreProc
+hi! link Repeat Statement
+hi! link SpecialChar Special
+hi! link SpecialComment Special
+hi! link StorageClass Type
+hi! link Structure Type
+hi! link Tag Special
+hi! link Typedef Type
+hi! link lCursor Cursor
+hi! link markdownBold Special
+hi! link markdownCode String
+hi! link markdownCodeDelimiter String
+hi! link markdownHeadingDelimiter Comment
+hi! link markdownRule Comment
 
-" My custom for Javascript
+" Javascript
 hi! link Boolean DPurple
 hi! link jsNull DPurple
 hi! link jsUndefined DPurple
-hi! link jsThis DPurpleI
+hi! link jsThis DPurple
 hi! link jsFuncArgs DPurple
+hi! link jsRegexpString DPurple
 
 hi! link jsVariableDef DPurpleLg
 hi! link jsDestructuringPropertyValue DPurpleLg
 hi! link jsObjectValue DPurpleLg
+hi! link jsDestructuringBlock DPurpleLg
+hi! link jsRegexpQuantifier DPurpleLg
 
 hi! link jsImport DPink
 hi! link jsExport DPink
@@ -70,25 +74,43 @@ hi! link jsOperator DPink
 hi! link jsDestructuringBraces DPink
 hi! link jsTemplateBraces DPink
 hi! link jsModuleAs DPink
+hi! link jsRegexpBoundary DPink
 
 hi! link jsClassFuncName DGreen
 hi! link jsFuncName DGreen
 hi! link jsArrowFunction DGreen
 hi! link jsObjectFuncName DGreen
 hi! link jsFuncCall DGreen
+hi! link jsRegexpGroup DGreen
 
 hi! link jsModuleKeyword DOrange
+hi! link jsRegexpMod DOrange
 
 hi! link jsObjectKey DBlugLg
 hi! link jsObjectProp DBlugLg
 hi! link jsRegexpCharClass DBlugLg
 
 hi! link jsTemplateString DSkinLg
+hi! link jsTaggedTemplate DSkin
+
+" JSX
+hi! link jsxComponentName DOrange
+hi! link jsxTagName DPink
+hi! link jsxPunct DPinkLg
+hi! link jsxCloseString DPinkLg
+hi! link jsxDot DPink
 
 " HTML 
 hi! link htmlTagName DPink
 hi! link htmlArg DGreen
+hi! link htmlTag DPinkLg
+hi! link htmlEndTag DPinkLg
 
+" CSS
+hi! link cssBraces DPink
+hi! link cssProp DOrange
+hi! link cssNoise DOrange 
+hi! link cssFunctionName DGreen
 
 if (has('termguicolors') && &termguicolors) || has('gui_running')
   let g:terminal_ansi_colors = ['Black', 'DarkRed', 'DarkGreen', 'DarkYellow',
@@ -97,31 +119,28 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   " Basic color
   hi Comment guifg=#495495 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Constant guifg=#9a86fd guibg=NONE guisp=NONE gui=NONE cterm=NONE
-  hi Identifier guifg=#bd93f9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+  hi Identifier guifg=#40ffff guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Statement guifg=#E967D7 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi PreProc guifg=#E967D7 guibg=NONE guisp=NONE gui=NONE cterm=NONE
-  hi Type guifg=#3FC661 guibg=NONE guisp=NONE gui=italic cterm=NONE
+  hi Type guifg=#48D06D guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Special guifg=#EA9652 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Underlined guifg=#40ffff guibg=NONE guisp=NONE gui=underline cterm=underline
   hi Error guifg=#ECEBED guibg=#EC4437 guisp=NONE gui=NONE cterm=NONE
   hi Normal guifg=#ECEBED guibg=#262335 guisp=NONE gui=NONE cterm=NONE
 
   " My color group
-  " #E967D7 #EB7900 #D38A60 #F9C9C9 #3FC661 #9a86fd #d2b1ff #E9E640 #81B9EE 
-  hi Test guifg=#ff0000 guibg=NONE guisp=NONE gui=NONE cterm=NONE
-
+  " #E967D7 #F57E00 #D38A60 #F9C9C9 #48D06D #9a86fd #d2b1ff #81B9EE 
   hi DPink guifg=#E967D7 guibg=NONE guisp=NONE gui=NONE cterm=NONE
-  hi DOrange guifg=#EB7900 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+  hi DPinkLg guifg=#BD93F9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+  hi DOrange guifg=#F57E00 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi DSkin guifg=#D38A60 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi DSkinLg guifg=#F9C9C9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
-  hi DGreen guifg=#3FC661 guibg=NONE guisp=NONE gui=italic cterm=NONE
+  hi DGreen guifg=#48D06D guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi DPurple guifg=#9a86fd guibg=NONE guisp=NONE gui=NONE cterm=NONE
-  hi DPurpleI guifg=#9a86fd guibg=NONE guisp=NONE gui=italic cterm=NONE
   hi DPurpleLg guifg=#d2b1ff guibg=NONE guisp=NONE gui=NONE cterm=NONE
-  hi DYellow guifg=#E9E640 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+  hi DBlug guifg=#40ffff guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi DBlugLg guifg=#81B9EE guibg=NONE guisp=NONE gui=NONE cterm=NONE
   
-
   " Customized
   hi LineNr guifg=#E9E640 guibg=NONE guisp=NONE gui=bold cterm=NONE
   hi LineNrAbove guifg=#6272A0 guibg=NONE guisp=NONE gui=NONE cterm=NONE
@@ -130,7 +149,7 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   hi StatusLineNC guifg=#37334D guibg=#2C2540 guisp=NONE gui=reverse cterm=reverse
   hi String guifg=#D38A60 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Number ctermfg=141 ctermbg=NONE cterm=bold guifg=#E9E640 guibg=NONE gui=bold
-  hi Title guifg=#9a86fd guibg=NONE guisp=NONE gui=NONE cterm=NONE
+  hi Title guifg=#ECEBED guibg=NONE guisp=NONE gui=NONE cterm=NONE
 
   hi ColorColumn guifg=NONE guibg=#2C2540 guisp=NONE gui=NONE cterm=NONE
   hi Cursor guifg=Black guibg=fg guisp=NONE gui=NONE cterm=NONE
