@@ -1,12 +1,26 @@
+" ==== Create a file
+function! NewFile(fp)
+	let l:name = a:fp
+  silent! exec 'e ' . l:name
+	silent! exec 'w'
+	silent! exec 'NERDTreeRefreshRoot'
+	echo ''
+endfunction
+
+command! -nargs=* -complete=file -bang NewFile call NewFile(<q-args>)
+
 " ==== Delete file to my trash
 function! DeleteFile()
 		let olddir = expand('%:p')
     let name = expand('%:t')
 		let l:bfnr = bufnr('%')
+
 		silent! exec l:bfnr . 'bd!'
     silent! exec 'save! ' . ' C:/my-trash/' . name . ' | bd!'
     call delete(l:olddir)
 		silent! exec 'NERDTreeRefreshRoot'
+		silent! exec 'NERDTreeFocus'
+		silent! exec 'wincmd l'
 		exec 'echo "File Deleted"'
 endfunction
 
@@ -22,16 +36,11 @@ function! Rename(name, bang)
 	if bufexists(fnamemodify(l:name, ':p'))
 		if (a:bang ==# '!')
 			silent exe bufnr(fnamemodify(l:name, ':p')) . 'bwipe!'
-		else
-			echohl ErrorMsg
-			echomsg 'A buffer with that name already exists (use ! to override).'
-			echohl None
-			return 0
-		endif
+		else echohl ErrorMsg echomsg 'A buffer with that name already exists (use ! to override).' echohl None return 0 endif
 	endif
 
 	let l:status = 1
-
+	
 	let v:errmsg = ''
 	silent! exe 'saveas' . a:bang . ' ' . l:name
 

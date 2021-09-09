@@ -7,11 +7,13 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   " syntax highlight
   Plug 'sheerun/vim-polyglot'
 
+  " Autosuggestion
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
   " Support
   Plug 'alvan/vim-closetag'       " auto close tag
   Plug 'andrewradev/tagalong.vim' " auto rename tag
   Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }   " Color highlight
-  Plug 'voldikss/vim-floaterm'    " Quick open sub terminal
   Plug 'tpope/vim-commentary'     " Quick comment
   Plug 'yggdroot/indentline'      " Indent
 
