@@ -36,7 +36,12 @@ function! Rename(name, bang)
 	if bufexists(fnamemodify(l:name, ':p'))
 		if (a:bang ==# '!')
 			silent exe bufnr(fnamemodify(l:name, ':p')) . 'bwipe!'
-		else echohl ErrorMsg echomsg 'A buffer with that name already exists (use ! to override).' echohl None return 0 endif
+		else
+			echohl ErrorMsg
+			echomsg 'A buffer with that name already exists (use ! to override).'
+			echohl None
+			return 0
+		endif
 	endif
 
 	let l:status = 1
@@ -73,7 +78,8 @@ function! Rename(name, bang)
 		echoerr v:errmsg
 		let l:status = 0
 	endif
-
+	
+	silent! exec 'NERDTreeRefreshRoot'
 	return l:status
 endfunction
 
