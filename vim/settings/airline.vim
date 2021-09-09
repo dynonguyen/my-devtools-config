@@ -2,6 +2,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='synthwave84'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 " Enable Tab seperator 
 let g:airline#extensions#tabline#left_sep = ' '
 " Enable Tab seperator
