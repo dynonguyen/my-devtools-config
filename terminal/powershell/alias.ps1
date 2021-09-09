@@ -8,10 +8,13 @@ Function savesetting{
   cp "C:\Users\Tuan\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" "C:\terminal-config\terminal\powershell\setting.json"
 
   cp "C:\Users\Tuan\AppData\Local\nvim\init.vim" "C:\terminal-config\vim"
+  
+  cp "C:\Users\Tuan\AppData\Local\nvim\coc-settings.json" "C:\terminal-config\vim"
 
   Copy-Item -Path 'C:\Users\Tuan\AppData\Local\nvim\settings\*' -Destination 'C:\terminal-config\vim\settings' -Recurse
 
   Copy-Item -Path 'C:\Users\Tuan\AppData\Local\nvim\scripts\*' -Destination 'C:\terminal-config\vim\scripts' -Recurse
+  
 
   Copy-Item "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Destination "C:\terminal-config\terminal\powershell\profile.ps1"
 }
