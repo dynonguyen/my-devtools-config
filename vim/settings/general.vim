@@ -2,6 +2,7 @@
 let mapleader = "\<Space>"
 
 " ==== Use one space, not two, after punctuation.
+syntax on
 set nojoinspaces
 set encoding=UTF-8
 set mouse=a
@@ -14,9 +15,11 @@ else
 endif
 
 " ==== Theme
-colorscheme dracula
+if has('termguicolors')
+    set termguicolors
+endif
+colorscheme synthwave84
 set background=dark
-syntax on
 
 " ==== Indent
 set backspace=2   " Backspace deletes like most programs in insert mode
@@ -43,4 +46,3 @@ set textwidth=80
 set relativenumber
 set number
 set numberwidth=5
-
