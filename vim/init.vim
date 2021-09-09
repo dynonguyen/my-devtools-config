@@ -45,4 +45,3 @@ endfor
 for f in split(glob('~\AppData\Local\nvim\scripts\*.vim'), '\n')
     exe 'source' f
 endfor
-
