@@ -1,26 +1,46 @@
+set nocompatible
+
 call plug#begin('~/AppData/Local/nvim/plugged')
   " Theme
-	Plug 'dracula/vim'
+  Plug 'artanikin/vim-synthwave84'
+
+  " syntax highlight
+  Plug 'sheerun/vim-polyglot'
+
+  " Support
+  Plug 'alvan/vim-closetag'       " auto close tag
+  Plug 'andrewradev/tagalong.vim' " auto rename tag
+  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }   " Color highlight
+  Plug 'voldikss/vim-floaterm'    " Quick open sub terminal
+  Plug 'tpope/vim-commentary'     " Quick comment
+  Plug 'yggdroot/indentline'      " Indent
 
   " File browser
 	Plug 'preservim/nerdtree'
-	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   
   " Git
-  Plug 'tpope/vim-fugitive'
- 
+  Plug 'tpope/vim-fugitive'           " As Git Blame
+	Plug 'Xuyuanp/nerdtree-git-plugin'  " Show git status in nerdtree
+
   " Status bar
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+
+  " Fuzzy finder
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " ==========================
-" Load settings
+" Load settings and scripts
 " ==========================
-let nvim_settings_dir = '~\AppData\Local\nvim\settings\'
+for f in split(glob('~\AppData\Local\nvim\settings\*.vim'), '\n')
+    exe 'source' f
+endfor
 
-execute 'source '.nvim_settings_dir.'general.vim'
-execute 'source '.nvim_settings_dir.'plugin.vim'
-execute 'source '.nvim_settings_dir.'map.vim'
+for f in split(glob('~\AppData\Local\nvim\scripts\*.vim'), '\n')
+    exe 'source' f
+endfor
+
