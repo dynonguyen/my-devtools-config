@@ -1,9 +1,38 @@
 {
-	"coc.preferences.formatOnSaveFiletypes": ["*"],
-	"prettier.tabWidth": 4,
-	"prettier.semi": false,
-	"prettier.jsxSingleQuote": true,
-	"prettier.singleQuote": true,
-	"prettier.trailingComma": "all",
-	"prettier.useTabs": true
+  "coc.preferences.formatOnSaveFiletypes": ["*"],
+
+  "javascript.suggest.autoImports": true,
+  "javascript.autoClosingTags": true,
+
+  "typescript.suggest.autoImports": true,
+  "typescript.autoClosingTags": true,
+
+  "html.autoClosingTags": true,
+
+  "prettier.tabWidth": 2,
+  "prettier.semi": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html"
+  },
+
+  "eslint.format.enable": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue"
+  ],
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+
+  "snippets.userSnippetsDirectory": "C:/Users/Tuan/AppData/Local/nvim/snippets"
 }

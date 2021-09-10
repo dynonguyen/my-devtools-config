@@ -11,11 +11,12 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " Support
-  Plug 'alvan/vim-closetag'       " auto close tag
   Plug 'andrewradev/tagalong.vim' " auto rename tag
   Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }   " Color highlight
   Plug 'tpope/vim-commentary'     " Quick comment
   Plug 'yggdroot/indentline'      " Indent
+  Plug 'chun-yang/auto-pairs'     " Auto pair
+  Plug 'editorconfig/editorconfig-vim' " Editorconfig
 
   " File browser
 	Plug 'preservim/nerdtree'

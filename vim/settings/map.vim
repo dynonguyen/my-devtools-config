@@ -8,14 +8,6 @@ nnoremap <Down> :echoe "Use j"<CR>
 noremap <C-d> 10j
 noremap <C-u> 10k
 
-" ==== Auto pairs
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ` ``<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-
 " ==== Switch between buffers
 noremap <silent> <C-k> :wincmd k<CR>
 noremap <silent> <C-j> :wincmd j<CR>
@@ -32,7 +24,7 @@ map <silent> <C-q> :x<CR>
 " Close current buffer and delete buffer
 map <silent> <C-w> :w <bar> bd<CR>
 " Save
-nnoremap <silent> <C-s> :w<CR> 
+nnoremap <silent> <C-s> :w <bar> echo ""<CR> 
 inoremap <C-s> <Esc> :w <bar> echo ""<CR> 
 " Select all
 nnoremap <silent> <C-a> gg^vG$<CR>

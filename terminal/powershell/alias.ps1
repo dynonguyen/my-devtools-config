@@ -15,6 +15,7 @@ Function savesetting{
 
   Copy-Item -Path 'C:\Users\Tuan\AppData\Local\nvim\scripts\*' -Destination 'C:\terminal-config\vim\scripts' -Recurse
   
+  Copy-Item -Path 'C:\Users\Tuan\AppData\Local\nvim\snippets\*' -Destination 'C:\terminal-config\vim\snippets' -Recurse
 
   Copy-Item "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Destination "C:\terminal-config\terminal\powershell\profile.ps1"
 }

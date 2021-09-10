@@ -117,7 +117,7 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
         \ 'DarkBlue', 'DarkMagenta', 'DarkCyan', 'LightGrey', 'DarkGrey', 'Red',
         \ 'Green', '#E9E640', 'Blue', '#E967D7', 'Cyan', 'White']
   " Basic color
-  hi Comment guifg=#495495 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+  hi Comment guifg=#554FA3 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Constant guifg=#9a86fd guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Identifier guifg=#40ffff guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Statement guifg=#E967D7 guibg=NONE guisp=NONE gui=NONE cterm=NONE
@@ -125,7 +125,7 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   hi Type guifg=#48D06D guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Special guifg=#EA9652 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Underlined guifg=#40ffff guibg=NONE guisp=NONE gui=underline cterm=underline
-  hi Error guifg=#ECEBED guibg=#EC4437 guisp=NONE gui=NONE cterm=NONE
+  hi Error guifg=#ECEBED guibg=#EC4A3E guisp=NONE gui=NONE cterm=NONE
   hi Normal guifg=#ECEBED guibg=#262335 guisp=NONE gui=NONE cterm=NONE
 
   " My color group
@@ -140,42 +140,49 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   hi DPurpleLg guifg=#d2b1ff guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi DBlug guifg=#40ffff guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi DBlugLg guifg=#81B9EE guibg=NONE guisp=NONE gui=NONE cterm=NONE
-  
+ 
+  " Highlight
+  hi! CocErrorSign guifg=#EC4A3E
+  hi! CocWarningSign guifg=#B89B00 
+  hi! CocInfoSign guifg=#48D06D
+  hi! CocHintSign guifg=#4595DE
+  hi! CocFloating guibg=#44475A 
+
   " Customized
   hi LineNr guifg=#E9E640 guibg=NONE guisp=NONE gui=bold cterm=NONE
   hi LineNrAbove guifg=#6272A0 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi LineNrBelow guifg=#6272A0 guibg=NONE guisp=NONE gui=NONE cterm=NONE
-  hi StatusLine guifg=#37334D guibg=#2C2540 guisp=NONE gui=bold,reverse cterm=bold,reverse
-  hi StatusLineNC guifg=#37334D guibg=#2C2540 guisp=NONE gui=reverse cterm=reverse
+  hi StatusLine guifg=#37334D guibg=#44475A guisp=NONE gui=bold,reverse cterm=bold,reverse
+  hi StatusLineNC guifg=#37334D guibg=#44475A guisp=NONE gui=reverse cterm=reverse
   hi String guifg=#D38A60 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Number ctermfg=141 ctermbg=NONE cterm=bold guifg=#E9E640 guibg=NONE gui=bold
   hi Title guifg=#ECEBED guibg=NONE guisp=NONE gui=NONE cterm=NONE
 
-  hi ColorColumn guifg=NONE guibg=#2C2540 guisp=NONE gui=NONE cterm=NONE
+  hi ColorColumn guifg=NONE guibg=#44475A guisp=NONE gui=NONE cterm=NONE
   hi Cursor guifg=Black guibg=fg guisp=NONE gui=NONE cterm=NONE
-  hi CursorColumn guifg=NONE guibg=#2C2540 guisp=NONE gui=NONE cterm=NONE
-  hi CursorLine guifg=NONE guibg=#2C2540 guisp=NONE gui=NONE cterm=NONE
-  hi CursorLineNr guifg=#D4D3D7 guibg=#2C2540 guisp=NONE gui=bold cterm=bold
+  hi CursorColumn guifg=NONE guibg=#44475A guisp=NONE gui=NONE cterm=NONE
+  hi CursorLine guifg=NONE guibg=#44475A guisp=NONE gui=NONE cterm=NONE
+  hi CursorLineNr guifg=#D4D3D7 guibg=#44475A guisp=NONE gui=bold cterm=bold
   hi DiffAdd guifg=NONE guibg=#90DEB6 guisp=NONE gui=NONE cterm=NONE
   hi DiffChange guifg=NONE guibg=#E967D7 guisp=NONE gui=NONE cterm=NONE
   hi DiffDelete guifg=Black guibg=#EB8F82 guisp=NONE gui=bold cterm=bold
-  hi DiffText guifg=NONE guibg=Red guisp=NONE gui=bold cterm=bold
-  hi FoldColumn guifg=#495495 guibg=#2C2540 guisp=NONE gui=NONE cterm=NONE
-  hi Folded guifg=#495495 guibg=#2C2540 guisp=NONE gui=NONE cterm=NONE
-  hi NonText guifg=#495495 guibg=NONE guisp=NONE gui=bold cterm=bold
-  hi Pmenu guifg=#ECEBED guibg=#2C2540 guisp=NONE gui=NONE cterm=NONE
+  hi DiffText guifg=NONE guibg=#EC4A3E guisp=NONE gui=bold cterm=bold
+  hi FoldColumn guifg=#554FA3 guibg=#44475A guisp=NONE gui=NONE cterm=NONE
+  hi Folded guifg=#554FA3 guibg=#44475A guisp=NONE gui=NONE cterm=NONE
+  hi NonText guifg=#554FA3 guibg=NONE guisp=NONE gui=bold cterm=bold
+  hi Pmenu guifg=#ECEBED guibg=#44475A guisp=NONE gui=NONE cterm=NONE
   hi PmenuSbar guifg=NONE guibg=#3E3B4B guisp=NONE gui=NONE cterm=NONE
-  hi PmenuSel guifg=#ECEBED guibg=#495495 guisp=NONE gui=NONE cterm=NONE
+  hi PmenuSel guifg=#ECEBED guibg=#554FA3 guisp=NONE gui=NONE cterm=NONE
   hi PmenuThumb guifg=NONE guibg=#ECEBED guisp=NONE gui=NONE cterm=NONE
   hi Search guifg=Black guibg=#E9E640 guisp=NONE gui=NONE cterm=NONE
   hi SignColumn guifg=#888690 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi SignColumn guifg=#ECEBED guibg=NONE guisp=NONE gui=NONE cterm=NONE
-  hi SpecialKey guifg=#ECEBED guibg=#2C2540 guisp=NONE gui=NONE cterm=NONE
-  hi TabLine guifg=#495495 guibg=#2C2540 guisp=NONE gui=NONE cterm=NONE
-  hi TabLineFill guifg=NONE guibg=#2C2540 guisp=NONE gui=NONE cterm=NONE
-  hi TabLineSel guifg=#EB8F82 guibg=#2C2540 guisp=NONE gui=NONE cterm=NONE
+  hi SpecialKey guifg=#ECEBED guibg=#44475A guisp=NONE gui=NONE cterm=NONE
+  hi TabLine guifg=#554FA3 guibg=#44475A guisp=NONE gui=NONE cterm=NONE
+  hi TabLineFill guifg=NONE guibg=#44475A guisp=NONE gui=NONE cterm=NONE
+  hi TabLineSel guifg=#EB8F82 guibg=#44475A guisp=NONE gui=NONE cterm=NONE
   hi Todo guifg=Black guibg=#E9E640 guisp=NONE gui=NONE cterm=NONE
-  hi VertSplit guifg=#2C2540 guibg=#495495 guisp=NONE gui=reverse cterm=reverse
+  hi VertSplit guifg=#262335 guibg=#d2b1ff guisp=NONE gui=reverse cterm=reverse
   hi Visual guifg=NONE guibg=#3E3B4B guisp=NONE gui=NONE cterm=NONE
   hi VisualNOS guifg=NONE guibg=NONE guisp=NONE gui=bold,underline ctermfg=NONE ctermbg=NONE cterm=bold,underline
   hi WildMenu guifg=Black guibg=#E9E640 guisp=NONE gui=NONE cterm=NONE
@@ -278,7 +285,7 @@ if s:t_Co >= 8
   hi VisualNOS ctermfg=NONE ctermbg=NONE cterm=bold,underline
   hi WildMenu ctermfg=Black ctermbg=Yellow cterm=NONE
   hi Comment ctermfg=Cyan ctermbg=NONE cterm=NONE
-  hi Constant ctermfg=Red ctermbg=NONE cterm=NONE
+  hi Constant ctermfg=Pink ctermbg=NONE cterm=NONE
   hi Error ctermfg=LightGray ctermbg=Red cterm=NONE
   hi Identifier ctermfg=Cyan ctermbg=NONE cterm=NONE
   hi Ignore ctermfg=Black ctermbg=NONE cterm=NONE
@@ -287,7 +294,7 @@ if s:t_Co >= 8
   hi Special ctermfg=LightRed ctermbg=NONE cterm=NONE
   hi Statement ctermfg=Yellow ctermbg=NONE cterm=NONE
   hi String ctermfg=LightRed ctermbg=NONE cterm=NONE
-  hi Type ctermfg=Red ctermbg=NONE cterm=NONE
+  hi Type ctermfg=Pink ctermbg=NONE cterm=NONE
   hi Underlined ctermfg=Cyan ctermbg=NONE cterm=underline
   hi rubySymbol ctermfg=LightRed ctermbg=NONE cterm=NONE
   hi rubyBoolean ctermfg=LightRed ctermbg=NONE cterm=NONE
