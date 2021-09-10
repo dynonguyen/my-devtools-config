@@ -101,6 +101,14 @@
 			"keys": "alt+left"
 		},
 		{
+			"command": { "action": "resizePane", "direction": "right" },
+			"keys": "ctrl+shift+right"
+		},
+		{
+			"command": { "action": "resizePane", "direction": "left" },
+			"keys": "ctrl+shift+left"
+		},
+		{
 			"command": { "action": "resizePane", "direction": "down" },
 			"keys": "ctrl+shift+down"
 		},
