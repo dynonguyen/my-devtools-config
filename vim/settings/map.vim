@@ -68,6 +68,7 @@ nnoremap <leader>` :vsplit<CR>
 
 " ==== File ultils
 " Rename
+nmap <leader>n :call feedkeys(":NewFile " . expand('%:p:h') . '\')<CR>
+nmap <leader>f :call feedkeys(":NewFolder " . expand('%:p:h') . '\')<CR>
 nmap <leader><F2> :call feedkeys(":Rename " . expand('%@'))<CR>
 nmap <leader><del> :DelFile<CR>
-nmap <leader>n :call feedkeys(":NewFile " . expand('%:p:h') . '\')<CR>

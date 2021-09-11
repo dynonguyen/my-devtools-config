@@ -9,6 +9,16 @@ endfunction
 
 command! -nargs=* -complete=file -bang NewFile call NewFile(<q-args>)
 
+" ==== Create a folder
+function! NewFolder(fp)
+	let l:name = a:fp
+	silent! exec '! md ' . l:name
+	silent! exec 'NERDTreeRefreshRoot'
+	echo ''
+endfunction
+
+command! -nargs=* -complete=file -bang NewFolder call NewFolder(<q-args>)
+
 " ==== Delete file to my trash
 function! DeleteFile()
 		let olddir = expand('%:p')
