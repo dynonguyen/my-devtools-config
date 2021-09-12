@@ -63,6 +63,8 @@ map <silent> <leader>q :xa!<CR>
 map <silent> <leader>s :wa!<CR>
 " Close others buffer
 map <silent> <leader>w :wa <bar> %bd <bar> e# <bar> bd# <CR>
+" Delete in line not save buffers
+map <silent> <leader>d "_d
 " Split windows
 nnoremap <leader>` :vsplit<CR>
 
