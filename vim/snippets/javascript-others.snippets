@@ -1,0 +1,58 @@
+# ==== ExpressJS ====
+snippet exfn "Make express fully function" b
+	const ${1:fnName} = ${2:async} (req, res, next) => {
+		try{
+			$3
+		}catch(error){
+		}
+	}
+
+snippet eexfn "Make express fully function and export" b
+	exports.${1:fnName} = ${2:async} (${3:req, res, next}) => {
+		try{
+			$6
+		}catch(error){
+			console.error('$4 ERROR: ', error);
+			${5: return res.status(500).json({ message: 'Lỗi dịch vụ, thử lại sau' });}
+		}
+	}
+
+snippet mmodel "Create model with mongoose" b
+	const mongoose = require('mongoose');	
+	const Schema = mongoose.Schema;
+	
+	const ${1:name}Schema = new Schema({
+		$5
+	});
+
+	const $2${1:Name}Model = mongoose.model('$2${1:name}', ${1:name}Schema, '${1:name}s');
+
+	module.exports = $2${1:Name}Model;
+
+snippet api "Make an express APIs" b
+	const ${1:name}${2:Api} = require('express').Router();
+	const ${1:name}Controller = require('../controllers/${1:name}.controller');
+	$3
+	module.exports = ${1:name}${2:Api};
+
+snippet route "Make an express route" b
+	const ${1:name}${2:Route} = require('express').Router();
+	const ${1:name}Controller = require('../controllers/${1:name}.controller');
+	$3
+	module.exports = ${1:name}${2:Route};
+
+snippet r200 "Response success with status 200" b
+	return res.status(200).json(${1:data});
+
+snippet rtEx "Response with status code" b
+	return res.status($1).json({$2});
+
+# ==== JQuery ====
+snippet jq "Make a jquery seletor" b
+	$('${1:seletor}').$2
+
+snippet jqt "Make a jquery this seletor" b
+	$(this).$1
+
+snippet jquerytyping "Create JQuery intellisense typing" b
+	/// <reference path="D:\\tips\\typings\\jquery\\globals\\jquery\\index.d.ts" />
