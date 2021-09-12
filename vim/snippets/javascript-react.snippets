@@ -1,0 +1,77 @@
+# ==== Create component ====
+snippet rfce "Create a functional component with export default" b
+	import React from 'react';
+	
+	function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}(props){
+		return <${2:div}>$3</div>
+	}
+	
+	export default $1
+
+snippet drfce "Create a functional component with folder name" b
+	import React from 'react'
+	
+	function ${1:${TM_DIRECTORY/^.+\\\\(.*)$/${1:/capitalize}/}}(props) {
+		return <${2:div}>$3</div>;
+	}
+
+	export default $1;
+
+snippet rlazy "Make a react lazy component" b
+	const ${1:packageName} = React.lazy(() => import('$2/$1'));
+
+# ==== React Hook ====
+snippet useState "useState()" b
+	const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState(${3:value})
+
+snippet useEffect "useEffect()" b
+	useEffect(()=>{
+		$3
+		return () => { ${2:cleanup} };
+	}, [${1:dependencies}]);
+
+snippet useRef "useRef()" b
+	const ${1:ref} = useRef(${2:null});
+
+snippet useDispatch "useDispatch()" b
+	const dispatch = useDispatch(${1:function});
+
+snippet useSelector "useSelector()" b
+	const ${1:selector} = useSelector(state => state.$1);
+
+snippet useHistory "useHistory()" b
+	const history = useHistory();
+
+snippet useMemo "useMemo()" b
+	const ${1:memoizedCallback} = useMemo(() => ${2}(${3}), [$3]);
+
+snippet useCallback "useCallback()" b
+	const ${1:memoizedCallback} = useMemo(() => ${2}(${3}), [$3]);
+
+snippet useReducer "useReducer()" b
+	const [${1:state}, ${2:dispatch}] = useReducer(${3:reducer});
+
+snippet useContext "useContext()" b
+	const ${1:value} = useContext(${2:MyContext});
+
+# ==== Redux & Redux toolkit ====
+snippet slredux "Create a slice in redux toolkit" b
+	import { createSlice } from '@reduxjs/toolkit';
+
+	const $1 = createSlice({
+		name: '$2',
+		initialState: { $3 },
+		reducers: { $4 },
+	});
+
+	const { reducer, actions } = $1;
+	export const { $5 } = actions;
+	export default reducer;
+
+# ==== Material UI ====
+snippet stl "Make style component with MUI" b
+	import useStyle from './style';
+	const classes = useStyle();
+
+snippet mhov "Create a hover, active MUI" b
+	'&:hover, &:active':{$1}
