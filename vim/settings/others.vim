@@ -24,3 +24,8 @@ let g:indentLine_enabled = 1
 let g:indentLine_char = '.'
 let g:indentLine_concealcursor = 'inc'
 let g:indentLine_conceallevel = 1
+
+" ==== Easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1

@@ -36,6 +36,11 @@ set autowrite     " Automatically :write before running commands
 set autoindent
 set smartindent
 
+set foldmethod=syntax
+" set foldcolumn=1
+set foldlevelstart=99
+let javascript_fold=1
+
 " ==== Softtabs, 2 spaces
 set tabstop=2
 set shiftwidth=2

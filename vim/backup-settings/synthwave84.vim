@@ -157,6 +157,7 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   hi String guifg=#D38A60 guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Number ctermfg=141 ctermbg=NONE cterm=bold guifg=#E9E640 guibg=NONE gui=bold
   hi Title guifg=#ECEBED guibg=NONE guisp=NONE gui=NONE cterm=NONE
+  hi Folded guifg=#E6A0FA guibg=NONE guisp=NONE gui=NONE cterm=NONE
 
   hi ColorColumn guifg=NONE guibg=#44475A guisp=NONE gui=NONE cterm=NONE
   hi Cursor guifg=Black guibg=fg guisp=NONE gui=NONE cterm=NONE
@@ -168,7 +169,6 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   hi DiffDelete guifg=Black guibg=#EB8F82 guisp=NONE gui=bold cterm=bold
   hi DiffText guifg=NONE guibg=#EC4A3E guisp=NONE gui=bold cterm=bold
   hi FoldColumn guifg=#554FA3 guibg=#44475A guisp=NONE gui=NONE cterm=NONE
-  hi Folded guifg=#554FA3 guibg=#44475A guisp=NONE gui=NONE cterm=NONE
   hi NonText guifg=#554FA3 guibg=NONE guisp=NONE gui=bold cterm=bold
   hi Pmenu guifg=#ECEBED guibg=#44475A guisp=NONE gui=NONE cterm=NONE
   hi PmenuSbar guifg=NONE guibg=#3E3B4B guisp=NONE gui=NONE cterm=NONE

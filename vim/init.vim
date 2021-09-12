@@ -12,11 +12,14 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 
   " Support
   Plug 'andrewradev/tagalong.vim' " auto rename tag
-  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }   " Color highlight
   Plug 'tpope/vim-commentary'     " Quick comment
   Plug 'yggdroot/indentline'      " Indent
-  Plug 'chun-yang/auto-pairs'     " Auto pair
+  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }   " Color highlight (can use coc-highlight)
+  Plug 'chun-yang/auto-pairs'     " Auto pair (can use coc-pairs)
   Plug 'editorconfig/editorconfig-vim' " Editorconfig
+  Plug 'tpope/vim-surround'       " Wrapper tag, brackets
+  Plug 'easymotion/vim-easymotion' " Quick move
+  Plug 'terryma/vim-multiple-cursors'
 
   " File browser
 	Plug 'preservim/nerdtree'

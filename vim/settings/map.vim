@@ -22,7 +22,7 @@ nnoremap <silent> <S-tab> :bprevious<CR>
 " Quit buffer
 map <silent> <C-q> :x<CR>
 " Close current buffer and delete buffer
-map <silent> <C-w> :w <bar> bd<CR>
+map <silent> <C-w> :w <bar> bd!<CR>
 " Save
 nnoremap <silent> <C-s> :w <bar> echo ""<CR> 
 inoremap <C-s> <Esc> :w <bar> echo ""<CR> 
@@ -72,3 +72,21 @@ nmap <leader>n :call feedkeys(":NewFile " . expand('%:p:h') . '\')<CR>
 nmap <leader>f :call feedkeys(":NewFolder " . expand('%:p:h') . '\')<CR>
 nmap <leader><F2> :call feedkeys(":Rename " . expand('%@'))<CR>
 nmap <leader><del> :DelFile<CR>
+
+" ==== Easymotion
+nmap ff <Plug>(easymotion-overwin-f2)
+nmap fl <Plug>(easymotion-overwin-line)
+
+" ==== Multi cursors
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
+" ==== Coc
+nmap <silent> <A-S-o> :CocCommand editor.action.organizeImport<CR>

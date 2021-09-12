@@ -10,7 +10,7 @@ let g:NERDTreeIgnore = ['node_modules[[dir]]', '.git[[dir]]']
 
 " Git status icon
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✗',
+                \ 'Modified'  :'#',
                 \ 'Staged'    :'✚',
                 \ 'Untracked' :'✭',
                 \ 'Renamed'   :'➜',

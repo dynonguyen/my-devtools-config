@@ -1,4 +1,4 @@
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5, 'highlight': 'Type' } }
+let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.6, 'highlight': 'Type' } }
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
