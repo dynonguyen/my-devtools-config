@@ -20,7 +20,8 @@
 ## Visual Mode (Chế độ bôi đen)
 
 - Chuyển về visual mode => `v`
-- Chuyển về visual block mode (bôi đen dòng) => `V`
+- Chuyển về visual line mode (bôi đen dòng) => `V`
+- Chuyển về visual block mode (bôi đen dòng) => `C-v`
 
 ## Command Mode (Chế độ gõ lệnh)
 
@@ -33,6 +34,8 @@
 - Xuống cuối file => `G`
 - Tới dòng bất kỳ => `:<number-line>` hoặc `<number-line>gg`
 - Tới từ phía trước => `w`
+- Tới từ phía trước (chỉ phân cách bằng khoảng trắng) => `W`
+- Tới từ phía trước nhưng ở cuối từ => `e`
 - Lùi lại từ trước => `b`
 - về đầu dòng => `0` hoặc `^`
 - Về cuối dòng => `$`
@@ -40,6 +43,9 @@
 - Đến cuối màn hình hiện tại => `L`
 - Scroll lên nhanh => `<C-u>`
 - Scroll xuống nhanh => `<C-d>`
+- Đi đến 1 từ trong hàng hiện tại bằng chữ cái đầu của nó => `f<chữ cái đầu>`,
+  dùng `;` để tìm từ tiếp theo.
+- Di chuyển lên xuống giữa các đoạn văn => `{` và `}`
 
 ## Copy and Paste
 
@@ -53,6 +59,8 @@
 
 ## Thay thế từ, câu
 
+- Thay đổi 1 ký tự tại vị trí con trỏ => `r`
+- Bật chế độ Replace liên tục => `R`
 - Cut các ký tự từ vị trí con trỏ đến cuối từ và chuyển insert mode => `cw`
 - Cut 1 từ và chuyển sang insert để gõ (change từ) => `ciw`
 - Xoá đến cuối dòng vào chuyển insert mode => `C`
