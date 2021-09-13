@@ -1,17 +1,87 @@
-# My Neo vim configuration
+<div align="center">
 
-- NERD Font Icon cheat sheet: https://www.nerdfonts.com/cheat-sheet
-- Vim Cheat Sheet 1: https://vim.rtorr.com/
-- Vim Cheat Sheet 2: https://devhints.io/vim
+# Vim Cheat Sheet
 
-## My Vim Cheat Sheet
+</div>
 
-### Thao tác với file
-- Lưu và thoát một buffer => :wq hoặc :x => <C-w>
-- Lưu file => :w => <C-s>
-- Lưu tất cả và thoát => :wqa hoặc :xa => <leader>q
-- Tìm file dùng fzf:
-  + Tìm trong các buffer(tab) đang bật => :Buffer => <leader>b
-  + Tìm các file trong thư mục gốc => :Files => <C-A-p>
-  + Tìm các file và loại bỏ các thư mục có trong .gitignore => :GFiles => <C-p>
-  + Tìm file khớp với một từ nào đó => :Rg => <leader>h
+## Normal Mode (Chế độ trung gian trước gõ lệnh)
+
+- Chuyển về normal mode => `<Esc>` hoặc `<C-c>`
+
+## Insert Mode (Chế độ gõ chữ)
+
+- Đặt con trỏ trước cursor => `i`
+- Đặt con trỏ sau cursor => `a`
+- Đặt con trỏ ở đầu dòng => `I`
+- Đặt con trỏ ở cuối dòng => `A`
+- Tạo dòng mới bên dưới => `o`
+- Tạo dòng mới bên trên => `O`
+
+## Visual Mode (Chế độ bôi đen)
+
+- Chuyển về visual mode => `v`
+- Chuyển về visual block mode (bôi đen dòng) => `V`
+
+## Command Mode (Chế độ gõ lệnh)
+
+- Chuyển về normal mode trước và dùng `:` để gõ lệnh
+
+## Di chuyển
+
+- `h` trái `j` xuống `k` lên `l` phải
+- Lên đầu file => `gg`
+- Xuống cuối file => `G`
+- Tới dòng bất kỳ => `:<number-line>` hoặc `<number-line>gg`
+- Tới từ phía trước => `w`
+- Lùi lại từ trước => `b`
+- về đầu dòng => `0` hoặc `^`
+- Về cuối dòng => `$`
+- Đến đầu màn hình hiện tại => `H`
+- Đến cuối màn hình hiện tại => `L`
+- Scroll lên nhanh => `<C-u>`
+- Scroll xuống nhanh => `<C-d>`
+
+## Copy and Paste
+
+- Copy 1 dòng ở normal mode => `yy` hoặc `Y`
+- Copy ở visual mode => `y`
+- Cut 1 dòng ở normal mode => `dd`
+- Cut ở visual mode => `d`
+- Cut 1 từ dưới con trỏ => `x`
+- Put (Paste) ở dòng dưới => `p`
+- Put (Paste) ở dòng trên => `P`
+
+## Thay thế từ, câu
+
+- Cut các ký tự từ vị trí con trỏ đến cuối từ và chuyển insert mode => `cw`
+- Cut 1 từ và chuyển sang insert để gõ (change từ) => `ciw`
+- Xoá đến cuối dòng vào chuyển insert mode => `C`
+- xoá toàn bộ nội dung trong cặp dấu [] (tương tự với {} "") => `ci[` hoặc `ci]`
+- xoá toàn bộ nội dung trong cặp tag html => `cit`
+
+## Tìm kiếm và thay thế
+
+- Tìm kiếm dùng phím => `/<từ cần tìm>`
+- Tìm kiếm tất cả từ tại trùng với từ tại vị trí con trỏ => `*`
+- Khi tìm kiếm -> nhấn `n` để tới từ tiếp theo và `N` đề quay lại từ trước.
+- Dùng `:noh` để xoá highlight search
+- Thay thế => `/%s/<từ cũ>/<từ mới>`
+- Tìm dấu đóng ngoặc còn lại (matching parentheses) => `%`
+
+## Thao tác với file
+
+- Mở file => `:e <tên file>`
+- Thoát file => `:q`
+- Lưu và thoát một buffer => `:wq` hoặc `:x`
+- Lưu file => `:w`
+- Lưu tất cả và thoát => `:wqa` hoặc `:xa`
+- Undo => `u`
+- Undo the undo (redo) => `<C-r>`
+
+## Vim tips
+
+- Hãy kết hợp các thao tác của bạn với các con số và điều hướng (using a count
+  for motion). Suy nghĩ sao thì gõ vậy 😎
+  - VD: di chuyển xuống dưới 3 dòng => `3j`
+  - Xoá đến cuối dòng => `d$`
+- Dùng `!` để ép lệnh được thực thi.
