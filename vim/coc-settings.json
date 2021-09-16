@@ -7,17 +7,23 @@
   "typescript.suggest.autoImports": true,
   "typescript.autoClosingTags": true,
 
-  "html.autoClosingTags": true,
+  "html.filetypes": ["html", "handlebars", "hbs"],
+  "html.format.indentHandlebars": true,
+  "html.format.enable": true,
+  "html.format.extraLiners": "head, body, /html",
+  "html.format.maxPreserveNewLines": 0,
 
   "prettier.tabWidth": 2,
   "prettier.semi": true,
   "prettier.jsxSingleQuote": false,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
+  "prettier.ignorePath": ".prettierignore",
 
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
-    "vue-html": "html"
+    "vue-html": "html",
+    "html.handlebars": "html"
   },
 
   "eslint.format.enable": true,

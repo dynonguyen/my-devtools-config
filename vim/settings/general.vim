@@ -50,3 +50,6 @@ set textwidth=80
 set relativenumber
 set number
 set numberwidth=5
+set synmaxcol=180
+
+autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif

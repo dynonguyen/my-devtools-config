@@ -22,6 +22,18 @@
 - Chuyển về visual mode => `v`
 - Chuyển về visual line mode (bôi đen dòng) => `V`
 - Chuyển về visual block mode (bôi đen dòng) => `C-v`
+- Chọn một theo tag html => `gv`
+
+## Folding & Unfolding
+
+- `set foldmethod=syntax`
+- Đóng tất cả => `zm`
+- Mở tất cả => `zO`
+- Đóng tại dòng hiện tại => `zc`
+- Mở tại dòng hiện tại => `zo`
+- Tới dòng đóng tiếp theo => `zj`
+- Lùi dòng đóng trước đó => `zk`
+- Toggle folding => `zi`
 
 ## Command Mode (Chế độ gõ lệnh)
 

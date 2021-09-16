@@ -22,6 +22,9 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jpg'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jpge'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['png'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['handlebars'] = ' '
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['hbs'] = ' '
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['pug'] = ''
 
 " pattern file
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {}
@@ -46,3 +49,4 @@ let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['favicon.ico'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['settings'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.vscode'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.editorconfig'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.env'] = ''

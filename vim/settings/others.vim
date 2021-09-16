@@ -4,7 +4,7 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names'
 
 " ==== Close tag
-let g:closetag_filenames = '*.html,*.js,*.jsx,*.vue'
+let g:closetag_filenames = '*.html,*.js,*.jsx,*.vue,*.hbs,*.handlebars'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:jsx_ext_required = 0
 
@@ -29,3 +29,13 @@ let g:indentLine_conceallevel = 1
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Turn on case-insensitive feature
 let g:EasyMotion_smartcase = 1
+
+" ==== MatchTagAlways
+let g:mta_set_default_matchtag_color = 1
+let g:mta_use_matchparen_group = 0
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'javascript' : 1,
+    \ 'javascriptreact': 1,
+    \ '2html': 1
+    \}

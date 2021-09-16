@@ -20,10 +20,12 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'tpope/vim-surround'       " Wrapper tag, brackets
   Plug 'easymotion/vim-easymotion' " Quick move
   Plug 'terryma/vim-multiple-cursors'
+  Plug 'valloric/matchtagalways'   " Matching html tag
+  Plug 'alvan/vim-closetag'
 
   " File browser
-	Plug 'preservim/nerdtree'
-	Plug 'ryanoasis/vim-devicons'
+	Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+  Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   
   " Git

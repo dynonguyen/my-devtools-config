@@ -92,3 +92,8 @@ let g:multi_cursor_quit_key            = '<Esc>'
 
 " ==== Coc
 nmap <silent> <A-S-o> :CocCommand editor.action.organizeImport<CR>
+
+" inspect color highlight name
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
