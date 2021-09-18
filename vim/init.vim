@@ -18,15 +18,15 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'chun-yang/auto-pairs'     " Auto pair (can use coc-pairs)
   Plug 'editorconfig/editorconfig-vim' " Editorconfig
   Plug 'tpope/vim-surround'       " Wrapper tag, brackets
-  Plug 'easymotion/vim-easymotion' " Quick move
-  Plug 'terryma/vim-multiple-cursors'
+  Plug 'easymotion/vim-easymotion' " Quick move  Plug 'terryma/vim-multiple-cursors'
   Plug 'valloric/matchtagalways'   " Matching html tag
   Plug 'alvan/vim-closetag'
+  Plug 'luochen1990/rainbow'
 
   " File browser
 	Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
   Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
-	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
   
   " Git
   Plug 'tpope/vim-fugitive'           " As Git Blame
@@ -51,3 +51,5 @@ endfor
 for f in split(glob('~\AppData\Local\nvim\scripts\*.vim'), '\n')
     exe 'source' f
 endfor
+
+let g:rainbow_active = 1

@@ -18,9 +18,9 @@ snippet afn "Arrow function" b
 	}
 
 snippet iife "Immediately Incoked function expression" b
-	(() => {
-		$1
- 	}());
+	;( ${1:async} () => {
+		$2
+ 	})();
 
 # ==== Console ====
 snippet clg "console.log()" b
@@ -155,4 +155,9 @@ snippet interval "setInterval" b
 	const ${1:intervalId} = setInterval(()=>{
 		$3
 	}, ${2:time});
-	
+
+snippet promise "return promise" b
+	return new Promise((resolve, reject) => {
+		$1
+	})
+

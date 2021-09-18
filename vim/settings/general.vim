@@ -21,7 +21,6 @@ endif
 colorscheme synthwave84
 set background=dark
 
-" ==== Indent
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup

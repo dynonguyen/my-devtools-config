@@ -1,7 +1,12 @@
+let g:NERDTreeLimitedSyntax = 1
+
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:DevIconsEnableFolderExtensionPatternMatching = 1
 let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeHighlightFoldersFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
 
 let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol=''
 let g:DevIconsDefaultFolderOpenSymbol=''
@@ -22,8 +27,8 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jpg'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jpge'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['png'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['handlebars'] = ' '
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['hbs'] = ' '
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['handlebars'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['hbs'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['pug'] = ''
 
 " pattern file
@@ -32,8 +37,9 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.test.'] = 'ﭧ'
 
 " exact filename / folder
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
-let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['frontend'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['public'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['client'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['frontend'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['backend'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['server'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['scss'] = ''
@@ -50,3 +56,16 @@ let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['settings'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.vscode'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.editorconfig'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.env'] = ''
+
+" folder color
+let s:yellow='FBC02D'
+let s:orange='EB4C2B'
+let s:hbs='EA752D'
+
+let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExtensionHighlightColor['hbs'] = s:hbs " sets the color of css files to blue
+let g:NERDTreeExtensionHighlightColor['js'] = s:yellow " sets the color of css files to blue
+
+let g:NERDTreeExactMatchHighlightColor = {}
+let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:orange
+let g:NERDTreeExactMatchHighlightColor['.env'] = s:yellow

@@ -20,7 +20,7 @@ nnoremap <silent> <S-tab> :bprevious<CR>
 
 " ==== AS Visual Code
 " Quit buffer
-map <silent> <C-q> :x<CR>
+nnoremap <silent> <C-q> :bd!<CR>
 " Close current buffer and delete buffer
 map <silent> <C-w> :w <bar> bd!<CR>
 " Save
@@ -30,7 +30,8 @@ inoremap <C-s> <Esc> :w <bar> echo ""<CR>
 nnoremap <silent> <C-a> gg^vG$<CR>
 inoremap <silent> <C-a> <Esc> gg^vG$<CR>
 " Undo
-map <silent> <C-z> u<CR> 
+nmap <silent> <C-z> u<CR>
+inoremap <silent> <C-z> <Esc> :u <bar> echo ""<CR>
 " Remove highlight 
 nnoremap <silent> rh :nohl<CR>
 " Move line
@@ -69,11 +70,11 @@ map <silent> <leader>d "_d
 nnoremap <leader>` :vsplit<CR>
 
 " ==== File ultils
-" Rename
 nmap <leader>n :call feedkeys(":NewFile " . expand('%:p:h') . '\')<CR>
 nmap <leader>f :call feedkeys(":NewFolder " . expand('%:p:h') . '\')<CR>
 nmap <leader><F2> :call feedkeys(":Rename " . expand('%@'))<CR>
 nmap <leader><del> :DelFile<CR>
+nmap <silent> <leader>e :!start %:p:h<CR><CR>
 
 " ==== Easymotion
 nmap ff <Plug>(easymotion-overwin-f2)

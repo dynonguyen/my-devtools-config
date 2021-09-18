@@ -92,4 +92,3 @@ function! Rename(name, bang)
 	silent! exec 'NERDTreeRefreshRoot'
 	return l:status
 endfunction
-

@@ -40,5 +40,9 @@
     "enable": true
   },
 
-  "snippets.userSnippetsDirectory": "C:/Users/Tuan/AppData/Local/nvim/snippets"
+  "snippets.userSnippetsDirectory": "C:/Users/Tuan/AppData/Local/nvim/snippets",
+  "snippets.priority": 120,
+  "snippets.extends": {
+    "html.handlebars": ["handlebars"]
+  }
 }
