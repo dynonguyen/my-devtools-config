@@ -21,7 +21,7 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'easymotion/vim-easymotion' " Quick move  Plug 'terryma/vim-multiple-cursors'
   Plug 'valloric/matchtagalways'   " Matching html tag
   Plug 'alvan/vim-closetag'
-  Plug 'luochen1990/rainbow'
+  Plug 'rodrigore/coc-tailwind-intellisense', {'do': 'npm install'},
 
   " File browser
 	Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -51,5 +51,3 @@ endfor
 for f in split(glob('~\AppData\Local\nvim\scripts\*.vim'), '\n')
     exe 'source' f
 endfor
-
-let g:rainbow_active = 1

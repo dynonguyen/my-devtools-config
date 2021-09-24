@@ -1,5 +1,6 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["*"],
+  "suggest.maxCompleteItemCount": 25,
 
   "javascript.suggest.autoImports": true,
   "javascript.autoClosingTags": true,
@@ -25,6 +26,7 @@
     "vue-html": "html",
     "html.handlebars": "html"
   },
+  "emmet.priority": 100,
 
   "eslint.format.enable": true,
   "eslint.alwaysShowStatus": true,
@@ -41,8 +43,14 @@
   },
 
   "snippets.userSnippetsDirectory": "C:/Users/Tuan/AppData/Local/nvim/snippets",
-  "snippets.priority": 120,
+  "snippets.priority": 150,
   "snippets.extends": {
     "html.handlebars": ["handlebars"]
+  },
+
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.lint.cssConflict": "warning",
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascriptreact"
   }
 }

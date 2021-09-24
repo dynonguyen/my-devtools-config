@@ -43,11 +43,6 @@ hi! link Structure Type
 hi! link Tag Special
 hi! link Typedef Type
 hi! link lCursor Cursor
-hi! link markdownBold Special
-hi! link markdownCode String
-hi! link markdownCodeDelimiter String
-hi! link markdownHeadingDelimiter Comment
-hi! link markdownRule Comment
 
 " Javascript
 hi! link Boolean DPurple
@@ -101,10 +96,12 @@ hi! link jsxCloseString DPinkLg
 hi! link jsxDot DPink
 
 " HTML 
-hi! link htmlTagName DPink
+" hi! link htmlTagName DPink
 hi! link htmlArg DGreen
 hi! link htmlTag DPinkLg
 hi! link htmlEndTag DPinkLg
+hi! link htmlHead Title 
+hi! htmlLink guifg=#ECEBED gui=underline 
 
 " CSS
 hi! link cssBraces DPink
@@ -158,6 +155,9 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   hi Number ctermfg=141 ctermbg=NONE cterm=bold guifg=#E9E640 guibg=NONE gui=bold
   hi Title guifg=#ECEBED guibg=NONE guisp=NONE gui=NONE cterm=NONE
   hi Folded guifg=#E6A0FA guibg=NONE guisp=NONE gui=NONE cterm=NONE
+  hi NERDTreeOpenable guifg=#82E9DC guibg=NONE
+  hi NERDTreeDir guifg=#82E9DC guibg=NONE
+  hi NERDTreeDirSlash guifg=#82E9DC guibg=NONE
 
   hi ColorColumn guifg=NONE guibg=#44475A guisp=NONE gui=NONE cterm=NONE
   hi Cursor guifg=Black guibg=fg guisp=NONE gui=NONE cterm=NONE
@@ -165,7 +165,7 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   hi CursorLine guifg=NONE guibg=#44475A guisp=NONE gui=NONE cterm=NONE
   hi CursorLineNr guifg=#D4D3D7 guibg=#44475A guisp=NONE gui=bold cterm=bold
   hi DiffAdd guifg=NONE guibg=#90DEB6 guisp=NONE gui=NONE cterm=NONE
-  hi DiffChange guifg=NONE guibg=#E967D7 guisp=NONE gui=NONE cterm=NONE
+  " hi DiffChange guifg=NONE guibg=#E967D7 guisp=NONE gui=NONE cterm=NONE
   hi DiffDelete guifg=Black guibg=#EB8F82 guisp=NONE gui=bold cterm=bold
   hi DiffText guifg=NONE guibg=#EC4A3E guisp=NONE gui=bold cterm=bold
   hi FoldColumn guifg=#554FA3 guibg=#44475A guisp=NONE gui=NONE cterm=NONE

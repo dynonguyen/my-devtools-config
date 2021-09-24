@@ -30,7 +30,7 @@ inoremap <C-s> <Esc> :w <bar> echo ""<CR>
 nnoremap <silent> <C-a> gg^vG$<CR>
 inoremap <silent> <C-a> <Esc> gg^vG$<CR>
 " Undo
-nmap <silent> <C-z> u<CR>
+nmap <silent> <C-z> u
 inoremap <silent> <C-z> <Esc> :u <bar> echo ""<CR>
 " Remove highlight 
 nnoremap <silent> rh :nohl<CR>
@@ -44,11 +44,15 @@ vnoremap <A-k> :m '<-2<CR>
 " Copy & move line
 nnoremap <A-S-k> yy <bar> P <bar> j <CR>
 nnoremap <A-S-j> yy <bar> p <bar> k <CR>
+" Paste from clipboard history
+inoremap <C-v> <Esc>p
 
 " ==== NERDTree
 " Redraw & refresh NERDtree
 nnoremap <silent> <leader>l :redraw <bar> NERDTreeRefreshRoot<CR>
-map <silent> <C-b> :NERDTreeToggle<CR>
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+inoremap <silent> <C-b> <Esc>:NERDTreeToggle<CR>
+nnoremap <silent> <C-f> :NERDTreeFind<CR>
 
 " ==== Fzf
 map <silent> <C-A-p> :Files<CR>
@@ -66,6 +70,8 @@ map <silent> <leader>s :wa!<CR>
 map <silent> <leader>w :wa <bar> %bd <bar> e# <bar> bd# <CR>
 " Delete in line not save buffers
 map <silent> <leader>d "_d
+" Delete not cut
+nnoremap x "_x
 " Split windows
 nnoremap <leader>` :vsplit<CR>
 
@@ -98,3 +104,7 @@ nmap <silent> <A-S-o> :CocCommand editor.action.organizeImport<CR>
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" ==== Macros
+" Move to between html tag
+nnoremap ta f>a

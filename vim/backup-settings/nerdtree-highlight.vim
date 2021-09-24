@@ -1,5 +1,3 @@
-let s:conf = '26598B'
-
 let s:file_extension_colors = {
   \ 'sass'     : s:pink,
   \ 'scss'     : s:pink,
@@ -7,22 +5,12 @@ let s:file_extension_colors = {
   \ 'html'     : s:darkOrange,
   \ 'ejs'      : s:yellow,
   \ 'css'      : s:blue,
-  \ 'less'     : s:darkBlue,
   \ 'md'       : s:yellow,
-  \ 'mdx'      : s:yellow,
-  \ 'markdown' : s:yellow,
   \ 'json'     : s:beige,
   \ 'js'       : s:beige,
   \ 'jsx'      : s:blue,
   \ 'php'      : s:purple,
   \ 'py'       : s:yellow,
-  \ 'hbs'      : s:orange,
-  \ 'conf'     : s:conf,
-  \ 'ini'      : s:conf,
-  \ 'yml'      : s:conf,
-  \ 'yaml'     : s:conf,
-  \ 'toml'     : s:conf,
-  \ 'bat'      : s:conf,
   \ 'jpg'      : s:aqua,
   \ 'jpeg'     : s:aqua,
   \ 'bmp'      : s:aqua,
@@ -31,49 +19,24 @@ let s:file_extension_colors = {
   \ 'gif'      : s:aqua,
   \ 'ico'      : s:aqua,
   \ 'cpp'      : s:blue,
-  \ 'c++'      : s:blue,
   \ 'c'        : s:blue,
   \ 'h'        : s:blue,
   \ 'java'     : s:purple,
-  \ 'sh'       : s:lightPurple,
-  \ 'fish'     : s:green,
-  \ 'bash'     : s:lightPurple,
-  \ 'zsh'      : s:white,
   \ 'ps1'      : s:blue,
   \ 'db'       : s:blue,
   \ 'sql'      : s:darkBlue,
   \ 'go'       : s:beige,
-  \ 'dart'     : s:blue,
-  \ 'sln'      : s:purple,
   \ 'vim'      : s:green,
   \ 'ts'       : s:blue,
   \ 'tsx'      : s:blue,
-  \ 'vue'      : s:vuejs,
 \}
 
 let s:file_node_exact_matches = {
-  \ 'gruntfile.js'                     : s:yellow,
-  \ 'gulpfile.js'                      : s:pink,
-  \ '.gitlab-ci.yml'                   : s:orange,
-  \ '.bashrc'                          : s:white,
-  \ '.zshrc'                           : s:white,
-  \ '.vimrc'                           : s:green,
-  \ '.gvimrc'                          : s:green,
-  \ '_vimrc'                           : s:green,
-  \ '_gvimrc'                          : s:green,
-  \ '.bashprofile'                     : s:white,
-  \ 'favicon.ico'                      : s:yellow,
-  \ 'license'                          : s:white,
-  \ 'node_modules'                     : s:green,
-  \ 'react.jsx'                        : s:blue,
-  \ 'typescript.jsx'                   : s:blue,
-  \ 'typescript.tsx'                   : s:blue,
-  \ 'procfile'                         : s:purple,
-  \ 'dockerfile'                       : s:blue,
-  \ 'docker-compose.yml'               : s:blue,
-  \ 'makefile'                         : s:white,
-  \ 'cmakelists.txt'                   : s:white
-  \ 'frontend'                         : s:blue
+  \ 'node_modules'                     : s:green
+\}
+
+let s:file_node_pattern_matches = {
+  \ '.*jquery.*\.js$'       : s:blue
 \}
 
 let s:enabled_extensions = [
@@ -88,16 +51,12 @@ let s:enabled_extensions = [
   \ 'js',
   \ 'json',
   \ 'jsx',
-  \ 'less',
-  \ 'lua',
   \ 'markdown',
   \ 'md',
   \ 'php',
   \ 'png',
   \ 'py',
   \ 'scss',
-  \ 'sh',
   \ 'sql',
   \ 'vim',
 \]
-

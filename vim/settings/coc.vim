@@ -10,6 +10,13 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ ]
 
+" Auto disable coc.vim
+augroup DisMinFile
+  autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | execute "syntax off" | endif
+  autocmd BufNew,BufEnter *.min.* execute "silent! CocDisable"
+  autocmd BufLeave *.min.* execute "silent! CocEnable"
+augroup end
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.

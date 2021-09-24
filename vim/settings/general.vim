@@ -32,6 +32,7 @@ set hlsearch
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
+set autoread
 set autoindent
 set smartindent
 
@@ -49,6 +50,3 @@ set textwidth=80
 set relativenumber
 set number
 set numberwidth=5
-set synmaxcol=180
-
-autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif

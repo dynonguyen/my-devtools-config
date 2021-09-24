@@ -23,6 +23,7 @@
 - Chuyển về visual line mode (bôi đen dòng) => `V`
 - Chuyển về visual block mode (bôi đen dòng) => `C-v`
 - Chọn một theo tag html => `gv`
+- Chọn 1 khối tag => `vat`
 
 ## Folding & Unfolding
 
@@ -58,6 +59,7 @@
 - Đi đến 1 từ trong hàng hiện tại bằng chữ cái đầu của nó => `f<chữ cái đầu>`,
   dùng `;` để tìm từ tiếp theo.
 - Di chuyển lên xuống giữa các đoạn văn => `{` và `}`
+- Di chuyển vào giữa 1 tag html => `vit`
 
 ## Copy and Paste
 
@@ -68,6 +70,8 @@
 - Cut 1 từ dưới con trỏ => `x`
 - Put (Paste) ở dòng dưới => `p`
 - Put (Paste) ở dòng trên => `P`
+- Xoá đến cuối dòng nhanh => `D`
+- Xoá không phải cut => `"_x`
 
 ## Thay thế từ, câu
 

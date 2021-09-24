@@ -45,7 +45,7 @@ snippet cw "console.warn()" b
 	console.warn($1);
 
 # ==== Condition ====
-snippet in "if" b
+snippet if "if" b
 	if(${1:condition}){
 		$2
 	}
@@ -148,7 +148,7 @@ snippet expd "export default a package" b
 # ==== Methods ====
 snippet timeout "setTimeout" b
 	setTimeout(()=>{
-		$1
+		$2
 	}, ${1:time});
 
 snippet interval "setInterval" b
