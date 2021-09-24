@@ -6,4 +6,13 @@ function! FormatHandlebars()
 	silent! exec 'setlocal filetype=html.handlebars'
 endfunction
 
-command! -nargs=* -bang FormatHandlebars call FormatHandlebars()
+command! FormatHandlebars call FormatHandlebars()
+
+" AutoPrefixer CSS
+function! AutoPrefixer()
+  call inputrestore()
+  	silent exec "%! postcss --use autoprefixer --no-map " . escape(expand('%'), '%')
+	silent exec "w!"
+endfunction
+
+command! AutoPrefixer call AutoPrefixer()
