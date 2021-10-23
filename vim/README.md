@@ -60,6 +60,9 @@
   dùng `;` để tìm từ tiếp theo.
 - Di chuyển lên xuống giữa các đoạn văn => `{` và `}`
 - Di chuyển vào giữa 1 tag html => `vit`
+- Đưa dòng hiện tại lên đầu màn hình => `zt`
+- Đưa dòng hiện tại xuống cuối màn hình => `zb`
+- Đưa dòng hiện tại đến giữa màn hình => `zz`
 
 ## Copy and Paste
 
@@ -71,7 +74,7 @@
 - Put (Paste) ở dòng dưới => `p`
 - Put (Paste) ở dòng trên => `P`
 - Xoá đến cuối dòng nhanh => `D`
-- Xoá không phải cut => `"_x`
+- Xoá không phải cut => `"_d`
 
 ## Thay thế từ, câu
 

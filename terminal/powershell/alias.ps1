@@ -19,6 +19,17 @@ Function savesetting{
 
   Copy-Item "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Destination "C:\terminal-config\terminal\powershell\profile.ps1"
 }
+# quick open file
+Function ovimtutor{
+  vi "C:\terminal-config\vim\README.md"
+}
+Function ovimmap{
+  vi "C:\terminal-config\vim\settings\map.vim"
+}
+Function oalias{
+  vi "C:\terminal-config\terminal\powershell\alias.ps1"
+}
+
 # go back windows home
 Function home{ cd "C:\" }
 # back dir
@@ -33,6 +44,24 @@ Function op{ notepad $PROFILE }
 Function no{ notepad $args[0] }
 # show all file
 Function lsa{ ls -Force }
+# touch folder and go to this folder
+Function mdg{
+  md $args[0]
+  cd $args[0]
+}
+# new multiple folder
+Function mmd{
+  for ( $i = 0; $i -lt $args.count; $i++ ) {
+    md $args[$i]
+  } 
+}
+# new multiple files
+Function new{
+  for ( $i = 0; $i -lt $args.count; $i++ ) {
+    touch $args[$i]
+  } 
+}
+
 # --------- Project Manager ---------
 Function pcode{ cd "C:\code" }
 Function vimconf{ cd "C:\Users\Tuan\AppData\Local\nvim" }
