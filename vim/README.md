@@ -85,6 +85,8 @@
 - Xoá đến cuối dòng vào chuyển insert mode => `C`
 - xoá toàn bộ nội dung trong cặp dấu [] (tương tự với {} "") => `ci[` hoặc `ci]`
 - xoá toàn bộ nội dung trong cặp tag html => `cit`
+- xoá cả 1 từ tại vị trí con trỏ và cả space => `daw`
+- xoá cả 1 từ tại vị trí con trỏ nhưng chừa lại space => `diw`
 
 ## Tìm kiếm và thay thế
 

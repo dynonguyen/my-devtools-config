@@ -45,3 +45,10 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
 " List of colors that you do not want. ANSI code or #RRGGBB
 let g:rainbow#blacklist = [233, 234]
+
+" Highlight current line
+let g:conoline_auto_enable = 1
+let g:conoline_color_normal_dark = 'guibg=#37334D'
+let g:conoline_color_insert_dark = 'guibg=#37334D'
+let g:conoline_color_insert_nr_dark = 'guibg=#37334D guifg=#E9E640'
+let g:conoline_color_normal_nr_dark = 'guibg=#37334D guifg=#E9E640'

@@ -146,9 +146,9 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   hi! CocFloating guibg=#44475A 
 
   " Customized
-  hi LineNr guifg=#E9E640 guibg=NONE guisp=NONE gui=bold cterm=NONE
-  hi LineNrAbove guifg=#6272A0 guibg=NONE guisp=NONE gui=NONE cterm=NONE
-  hi LineNrBelow guifg=#6272A0 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+  hi LineNr guifg=#E9E640 guibg=#37334D guisp=NONE gui=bold cterm=NONE
+  hi LineNrAbove guifg=#6272A0 guibg=#37334D guisp=NONE gui=NONE cterm=NONE
+  hi LineNrBelow guifg=#6272A0 guibg=#37334D guisp=NONE gui=NONE cterm=NONE
   hi StatusLine guifg=#37334D guibg=#44475A guisp=NONE gui=bold,reverse cterm=bold,reverse
   hi StatusLineNC guifg=#37334D guibg=#44475A guisp=NONE gui=reverse cterm=reverse
   hi String guifg=#D38A60 guibg=NONE guisp=NONE gui=NONE cterm=NONE

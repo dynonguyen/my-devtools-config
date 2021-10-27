@@ -22,7 +22,8 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'valloric/matchtagalways'   " Matching html tag
   Plug 'alvan/vim-closetag'
   Plug 'rodrigore/coc-tailwind-intellisense', {'do': 'npm install'},
-
+  Plug 'miyakogi/conoline.vim' " Highlight current line
+  
   " File browser
 	Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
   Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }

@@ -171,3 +171,4 @@ Function vi{ nvim $args }
 
 # --------- NodeJS Script ---------
 Function nod{ node index.js }
+Function ts{ ts-node -T $args }
