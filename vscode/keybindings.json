@@ -1,0 +1,126 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+	// Matching vim mapping
+	{
+		"key": "alt+j",
+		"command": "editor.action.moveLinesDownAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "alt+k",
+		"command": "editor.action.moveLinesUpAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "shift+alt+j",
+		"command": "editor.action.copyLinesDownAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "shift+alt+k",
+		"command": "editor.action.copyLinesUpAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	// VSCode mapping
+	{
+		"key": "ctrl+k ctrl+backspace",
+		"command": "editor.foldAll",
+		"when": "editorTextFocus && foldingEnabled"
+	},
+	{
+		"key": "ctrl+k ctrl+0",
+		"command": "-editor.foldAll",
+		"when": "editorTextFocus && foldingEnabled"
+	},
+	{
+		"key": "ctrl+u ctrl+s",
+		"command": "workbench.action.openSnippets"
+	},
+
+	{
+		"key": "shift+alt+left",
+		"command": "-editor.action.smartSelect.shrink",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "shift+win+z",
+		"command": "workbench.action.toggleZenMode"
+	},
+	{
+		"key": "ctrl+k z",
+		"command": "-workbench.action.toggleZenMode"
+	},
+	{
+		"key": "ctrl+left",
+		"command": "workbench.action.splitEditorLeft"
+	},
+	{
+		"key": "ctrl+right",
+		"command": "workbench.action.splitEditorRight"
+	},
+	{
+		"key": "ctrl+down",
+		"command": "workbench.action.splitEditorDown"
+	},
+	{
+		"key": "ctrl+up",
+		"command": "workbench.action.splitEditorUp"
+	},
+	{
+		"key": "ctrl+shift+w",
+		"command": "workbench.action.closeOtherEditors"
+	},
+	{
+		"key": "alt+n",
+		"command": "extension.advancedNewFile"
+	},
+	{
+		"key": "alt+f2",
+		"command": "fileutils.renameFile"
+	},
+	{
+		"key": "alt+delete",
+		"command": "fileutils.removeFile"
+	},
+	{
+		"key": "alt+w",
+		"command": "editor.emmet.action.wrapWithAbbreviation"
+	},
+	{
+		"key": "ctrl+shift+/",
+		"command": "editor.action.blockComment",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "shift+alt+a",
+		"command": "-editor.action.blockComment",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+k s",
+		"command": "-saveAll"
+	},
+	{
+		"key": "ctrl+shift+s",
+		"command": "-workbench.action.files.saveAs"
+	},
+	{
+		"key": "ctrl+shift+s",
+		"command": "-workbench.action.files.saveLocalFile",
+		"when": "remoteFileDialogVisible"
+	},
+	{
+		"key": "ctrl+shift+s",
+		"command": "workbench.action.files.saveFiles"
+	},
+	{
+		"key": "ctrl+k",
+		"command": "-extension.vim_ctrl+k",
+		"when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
+	},
+	{
+		"key": "ctrl+shift+u",
+		"command": "-workbench.action.output.toggleOutput",
+		"when": "workbench.panel.output.active"
+	}
+]

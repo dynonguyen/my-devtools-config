@@ -26,7 +26,6 @@
     "vue-html": "html",
     "html.handlebars": "html"
   },
-  "emmet.priority": 100,
 
   "eslint.format.enable": true,
   "eslint.alwaysShowStatus": true,
@@ -45,7 +44,8 @@
   "snippets.userSnippetsDirectory": "C:/Users/Tuan/AppData/Local/nvim/snippets",
   "snippets.priority": 150,
   "snippets.extends": {
-    "html.handlebars": ["handlebars"]
+    "html.handlebars": ["handlebars"],
+    "typescript": ["javascript"]
   },
 
   "tailwindCSS.emmetCompletions": true,

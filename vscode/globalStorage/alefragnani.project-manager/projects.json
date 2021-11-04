@@ -1,0 +1,37 @@
+[
+	{
+		"name": "demo",
+		"rootPath": "c:\\code\\demo",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	},
+	{
+		"name": "NeoVim",
+		"rootPath": "c:\\Users\\Tuan\\AppData\\Local\\nvim",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	},
+	{
+		"name": "chrome-extension",
+		"rootPath": "c:\\code\\chrome-extension",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	},
+	{
+		"name": "dynonary-english",
+		"rootPath": "d:\\projects\\pet-project\\dynonary-english",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	},
+	{
+		"name": "terminal-config",
+		"rootPath": "c:\\terminal-config",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	}
+]

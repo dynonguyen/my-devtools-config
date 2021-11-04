@@ -1,0 +1,167 @@
+{
+	// @Note: ----------  ReactJS ----------
+	// rfce
+	"Create a functional component with file name": {
+		"prefix": "rfce",
+		"body": [
+			"import React from 'react';",
+			"",
+			"function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}(props) {",
+			"  return <${2:div}>$3</div>;",
+			"}",
+			"",
+			"export default $1;"
+		],
+		"description": "Create a functional component"
+	},
+
+	// drfce
+	"Create a functional component with folder name": {
+		"prefix": "drfce",
+		"body": [
+			"import React from 'react';",
+			"",
+			"function ${1:${TM_DIRECTORY/^.+\\\\(.*)$/${1:/capitalize}/}}(props) {",
+			"  return <${2:div}>$3</div>;",
+			"}",
+			"",
+			"export default $1;",
+			""
+		],
+		"description": "Create a functional component with folder name"
+	},
+
+	// rlazy
+	"Make a react lazy component": {
+		"prefix": "rlazy",
+		"body": ["const $1 = React.lazy(() => import('${2:pages}/$1'));"],
+		"description": "Make a react lazy"
+	},
+
+	// dprop
+	"Create default props": {
+		"prefix": "dprop",
+		"body": ["$1.defaultProps = {", "  $2", "}"],
+		"description": "Create default props"
+	},
+
+	// ddprop
+	"Create default props with folder name": {
+		"prefix": "ddprop",
+		"body": [
+			"${1:${TM_DIRECTORY/^.+\\\\(.*)$/${1:/capitalize}/}}.defaultProps = {",
+			"  $2",
+			"}"
+		],
+		"description": "Create default props with folder name"
+	},
+
+	// @Note: ----------  Hook ----------
+
+	// useRef
+	"Create useRef()": {
+		"prefix": "useRef",
+		"body": ["const ${1:ref} = useRef(${2:null});"],
+		"description": "Create useRef()"
+	},
+
+	// useState
+	"Create useState()": {
+		"prefix": "useState",
+		"body": [
+			"const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState(${3:value})"
+		],
+		"description": "Create useState()"
+	},
+
+	// useEffect
+	"Create useEffect()": {
+		"prefix": "useEffect",
+		"body": [
+			"useEffect(() => {",
+			"  $3",
+			"  return () => { ${2:cleanup} };",
+			"}, [${1:dependencies}]);"
+		],
+		"description": "Create useEffect()"
+	},
+
+	// useDispatch
+	"Create useDispatch()": {
+		"prefix": "useDispatch",
+		"body": ["const dispatch = useDispatch(${1:function});"],
+		"description": "Create useDispatch()"
+	},
+
+	// useSelector
+	"Create useSelector()": {
+		"prefix": "useSelector",
+		"body": ["const ${1:selector} = useSelector(state => state.$1);"],
+		"description": "Create useSelector()"
+	},
+
+	// useHistory
+	"Create useHistory()": {
+		"prefix": "useHistory",
+		"body": ["const history = useHistory();"],
+		"description": "Create useHistory()"
+	},
+
+	// @Note: ----------  Redux, Redux toolkit ----------
+
+	// slredux
+	"Create a slice in redux toolkit": {
+		"prefix": "slredux",
+		"body": [
+			"import { createSlice } from '@reduxjs/toolkit';",
+			"",
+			"const $1 = createSlice({",
+			"  name: '$2',",
+			"  initialState: { $3 },",
+			"  reducers: { $4 },",
+			"});",
+			"",
+			"const { reducer, actions } = $1;",
+			"export const {$5} = actions;",
+			"export default reducer;",
+			""
+		],
+		"description": "Create a slice in redux toolkit"
+	},
+
+	// @Note: ----------  Material UI ----------
+
+	// stl
+	"Make style component with MUI": {
+		"prefix": "stl",
+		"body": [
+			"import { makeStyles } from '@material-ui/core/styles';",
+			"",
+			"export default makeStyles((${1:theme}) => ({",
+			"  $2",
+			"}));"
+		],
+		"description": "Make style component with MUI"
+	},
+
+	// ustl
+	"Import use style component with MUI": {
+		"prefix": "ustl",
+		"body": ["import useStyle from './style';", "const classes = useStyle();"],
+		"description": "Import use style component with MUI"
+	},
+
+	// ctstl
+	"Make a class name & template string with style component MUI": {
+		"prefix": "ctstl",
+		"body": ["className={`${classes.$1} $2`}"],
+		"description": "Make a class name with style component MUI"
+	},
+
+	// shov
+	"Create a hover, active": {
+		"prefix": "mhov",
+		"body": ["'&:hover, &:active':{$1}"],
+		"description": "Create a hover, active"
+	}
+}

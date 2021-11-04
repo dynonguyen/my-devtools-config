@@ -1,0 +1,7 @@
+{
+	"Random an image": {
+		"prefix": "rimg",
+		"body": ["https://picsum.photos/${1:200}/${2:200}"],
+		"description": "Random an image"
+	}
+}

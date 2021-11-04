@@ -114,3 +114,5 @@
   - VD: di chuyển xuống dưới 3 dòng => `3j`
   - Xoá đến cuối dòng => `d$`
 - Dùng `!` để ép lệnh được thực thi.
+
+- Auto import coc-vim => `C-g u`

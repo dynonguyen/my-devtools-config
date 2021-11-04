@@ -1,0 +1,19 @@
+{
+	// hov
+	"create hover active": {
+		"prefix": "hov",
+		"body": ["&:hover, &:active {$1}"]
+	},
+
+	// med
+	"create media screen": {
+		"prefix": "med",
+		"body": ["@media only screen and (${1:max}-width: $2px){ $3 }"]
+	},
+
+	// csscmt
+	"create a css block comment": {
+		"prefix": "csscmt",
+		"body": ["// ----------- ${1:comment} -------------"]
+	}
+}

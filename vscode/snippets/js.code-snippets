@@ -1,0 +1,154 @@
+{
+	// @Note: Function JS
+	// fn
+	"Create a normal function": {
+		"prefix": "fn",
+		"body": [
+			"${1:async} function ${2:fnName} (${3:params}){",
+			"   try{",
+			"    $4",
+			"   }catch(error){",
+			"   }",
+			"}"
+		],
+		"description": "Create a function"
+	},
+
+	// afn
+	"Create an arrow function": {
+		"prefix": "afn",
+		"body": [
+			"const ${1:fnName} = (${2:params}) => {",
+			"  try {",
+			"    $3",
+			"  } catch (error) {",
+			"  }",
+			"};",
+			""
+		],
+		"description": "Create a arrow function"
+	},
+
+	// @Note: Jquery
+	// jq
+	"Make a selector": {
+		"prefix": "jq",
+		"body": ["$('$1').$2"],
+		"description": "Make a selector"
+	},
+
+	// jqt
+	"Make a this selector": {
+		"prefix": "jqt",
+		"body": ["$(this).$1"],
+		"description": "Make a selector"
+	},
+
+	// snjq
+	"Create snippet jquery": {
+		"prefix": "snjq",
+		"body": [
+			"/// <reference path=\"D:\\tips\\typings\\jquery\\globals\\jquery\\index.d.ts\" />"
+		],
+		"description": "Create snippet jquery"
+	},
+
+	// @Note: ExpressJS Snippets
+	// exfn
+	"Make Express Fully Function": {
+		"prefix": "exfn",
+		"body": [
+			"const ${1:fnName} = (req, res, next) => {",
+			"  try {",
+			"    $2",
+			"  } catch (${3:error}) {",
+			"    ",
+			"  }",
+			"}"
+		],
+		"description": "Make Express Fully Function"
+	},
+
+	// eexfn
+	"Make Express Fully Function And Export": {
+		"prefix": "eexfn",
+		"body": [
+			"exports.${1:fnName} = ${2:async} (${3:req, res, next}) => {",
+			"  try {",
+			"    $5",
+			"  } catch (error) {",
+			"    console.error('$4 ERROR: ', error);",
+			"    return res.status(500).json({ message: 'Lỗi dịch vụ, thử lại sau' });",
+			"  }",
+			"}"
+		],
+		"description": "Make Express Fully Function And Export"
+	},
+
+	// mmodel
+	"Create model with mongoose": {
+		"prefix": "mmodel",
+		"body": [
+			"const mongoose = require('mongoose');",
+			"const Schema = mongoose.Schema;",
+			"",
+			"const ${1:name}Schema = new Schema({",
+			"  $5",
+			"});",
+			"",
+			"const $2${1:Name}Model = mongoose.model('$2${1:name}', ${1:name}Schema, '${1:name}s');",
+			"",
+			"module.exports = $2${1:Name}Model;",
+			""
+		],
+		"description": "Create model with mongoose"
+	},
+
+	// api
+	"Make Import api express": {
+		"prefix": "api",
+		"body": [
+			"const ${1:name}${2:Api} = require('express').Router();",
+			"const ${1:name}Controller = require('../controllers/${1:name}.controller');",
+			"$3",
+			"module.exports = ${1:name}${2:Api};"
+		],
+		"description": "Make route/api express"
+	},
+
+	// route
+	"Make Import route express": {
+		"prefix": "rout",
+		"body": [
+			"const ${1:name}${2:Route} = require('express').Router();",
+			"const ${1:name}Controller = require('../controllers/${1:name}.controller');",
+			"$3",
+			"module.exports = ${1:name}${2:Route};"
+		],
+		"description": "Make route express"
+	},
+
+	// r200
+	"Response Success with status 200": {
+		"prefix": "r200",
+		"body": ["return res.status(200).json(${1:data});"],
+		"description": "Response Success with status 200"
+	},
+
+	// rtEx
+	"Response with status code": {
+		"prefix": "rtEx",
+		"body": ["return res.status($1).json({$2});"],
+		"description": "Response with status code"
+	},
+
+	// rer
+	"Return Error Express": {
+		"prefix": "rer",
+		"body": [
+			"console.error('$1 ERROR: ', error);",
+			"return res.status(500).json({ message: 'Lỗi dịch vụ, thử lại sau' });"
+		],
+		"description": "Return Error Express"
+	}
+}

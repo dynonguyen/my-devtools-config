@@ -77,6 +77,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['favicon.ico'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.vscode'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.editorconfig'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.env'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['package.json'] = ''
 
 " file color
 let s:yellow='F5D032'
@@ -84,6 +85,7 @@ let s:orange='EB4C2B'
 let s:hbs='EA752D'
 let s:react='61DAFB'
 let s:ts='0fa5db'
+let s:node='90C53F'
 
 let g:NERDTreeExtensionHighlightColor = {}
 let g:NERDTreeExtensionHighlightColor['hbs'] = s:hbs
@@ -96,3 +98,4 @@ let g:NERDTreeExtensionHighlightColor['java'] = s:orange
 let g:NERDTreeExactMatchHighlightColor = {}
 let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:orange
 let g:NERDTreeExactMatchHighlightColor['.env'] = s:yellow
+let g:NERDTreeExactMatchHighlightColor['package.json'] = s:node

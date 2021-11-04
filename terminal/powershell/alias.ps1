@@ -18,6 +18,8 @@ Function savesetting{
   Copy-Item -Path 'C:\Users\Tuan\AppData\Local\nvim\snippets\*' -Destination 'C:\terminal-config\vim\snippets' -Recurse
 
   Copy-Item "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Destination "C:\terminal-config\terminal\powershell\profile.ps1"
+
+  Copy-Item "C:\Users\Tuan\AppData\Roaming\Code\User\*" -Destination "C:\terminal-config\vscode" -Recurse
 }
 # quick open file
 Function ovimtutor{
@@ -28,6 +30,10 @@ Function ovimmap{
 }
 Function oalias{
   vi "C:\terminal-config\terminal\powershell\alias.ps1"
+}
+Function osnippet{
+  cd "C:\Users\Tuan\AppData\Local\nvim\snippets"
+  vi
 }
 
 # go back windows home

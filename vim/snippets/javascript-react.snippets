@@ -1,17 +1,13 @@
 # ==== Create component ====
 snippet rfce "Create a functional component with export default" b
-	import React from 'react';
-	
-	function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}(props){
+	function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}(){
 		return <${2:div}>$3</div>
 	}
 	
 	export default $1
 
 snippet drfce "Create a functional component with folder name" b
-	import React from 'react'
-	
-	function ${1:${TM_DIRECTORY/^.+\\\\(.*)$/${1:/capitalize}/}}(props) {
+	function ${1:${TM_DIRECTORY/^.+\\\\(.*)$/${1:/capitalize}/}}() {
 		return <${2:div}>$3</div>;
 	}
 
@@ -69,9 +65,3 @@ snippet slredux "Create a slice in redux toolkit" b
 	export default reducer;
 
 # ==== Material UI ====
-snippet stl "Make style component with MUI" b
-	import useStyle from './style';
-	const classes = useStyle();
-
-snippet mhov "Create a hover, active MUI" b
-	'&:hover, &:active':{$1}
