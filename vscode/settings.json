@@ -1,4 +1,5 @@
 {
+	// Quick setup
 	// Vim
 	"vim.leader": "<space>",
 	"vim.enableNeovim": true,
@@ -9,8 +10,11 @@
 	"vim.useSystemClipboard": true,
 	"vim.useCtrlKeys": true,
 	"vim.hlsearch": true,
-
 	"vim.easymotionMarkerForegroundColorOneChar": "#ff6bcb",
+	"vim.searchHighlightColor": "#FDE18",
+	"vim.highlightedyank.enable": false,
+	"vim.joinspaces": false,
+	"vim.mouseSelectionGoesIntoVisualMode": false,
 
 	"vim.insertModeKeyBindingsNonRecursive": [
 		{
@@ -20,6 +24,13 @@
 		{
 			"before": ["<C-o>"],
 			"commands": ["workbench.action.files.openFile"]
+		}
+	],
+
+	"vim.visualModeKeyBindingsNonRecursive": [
+		{
+			"before": ["<leader>", "d"],
+			"after": ["\"", "_", "d"]
 		}
 	],
 
@@ -117,9 +128,21 @@
 	"editor.accessibilitySupport": "off",
 	"editor.inlineSuggest.enabled": true,
 	"editor.wordWrap": "on",
-	"editor.renderWhitespace": "boundary",
+	"editor.renderWhitespace": "none",
 	"editor.lineNumbers": "relative",
+	"editor.occurrencesHighlight": false,
+	"editor.cursorWidth": 2,
+	"editor.cursorBlinking": "expand",
+	"editor.suggest.preview": true,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": true
+	},
+	"editor.minimap.enabled": false,
+	"editor.renderLineHighlight": "all",
+	"editor.acceptSuggestionOnCommitCharacter": false,
+	"editor.smoothScrolling": true,
 
+	"editor.bracketPairColorization.enabled": true,
 	"editor.tokenColorCustomizations": {
 		"[Dracula]": {
 			"textMateRules": [
@@ -255,7 +278,7 @@
 						"entity.other.inherited-class"
 					],
 					"settings": {
-						"foreground": "#eb7900"
+						"foreground": "#33ccc4"
 					}
 				},
 				{
@@ -287,43 +310,6 @@
 		}
 	},
 
-	// formater
-	"[jsonc]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[javascriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[html]": {
-		"editor.defaultFormatter": "vscode.html-language-features"
-	},
-	"[css]": {
-		"editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
-	},
-	"[typescriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[scss]": {
-		"editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
-	},
-	"scssFormatter.singleQuote": true,
-
-	// prettier
-	"prettier.singleQuote": true,
-	"prettier.jsxSingleQuote": true,
-	"autoprefixer.formatOnSave": true,
-	"prettier.trailingComma": "all",
-	"prettier.useTabs": true,
-
 	// workbench
 	"workbench.colorCustomizations": {
 		"sideBar.background": "#191932",
@@ -344,7 +330,7 @@
 		"terminal.ansiGreen": "#20e3b2",
 		"terminal.ansiYellow": "#FDE181",
 		"terminal.ansiMagenta": "#ff6bcb",
-		"editorCursor.foreground": "#5ee96a",
+		"editorCursor.foreground": "#4ece58",
 		"editor.selectionBackground": "#135564",
 		"editor.selectionHighlightBackground": "#135564",
 		"statusBar.background": "#282851",
@@ -355,9 +341,57 @@
 	"workbench.activityBar.visible": true,
 	"workbench.colorTheme": "Dracula",
 	"workbench.iconTheme": "material-icon-theme",
-
-	// window
 	"window.menuBarVisibility": "toggle",
+
+	// formater
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features",
+		"editor.matchBrackets": "never"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter",
+		"editor.matchBrackets": "never"
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+	},
+	"scssFormatter.singleQuote": true,
+
+	// prettier
+	"prettier.singleQuote": true,
+	"prettier.jsxSingleQuote": true,
+	"autoprefixer.formatOnSave": true,
+	"prettier.trailingComma": "all",
+	"prettier.useTabs": true,
+
+	// Indent
+	"indentRainbow.colors": [
+		"rgba(40, 54, 24,0.3)",
+		"rgba(38, 70, 83,0.25)",
+		"rgba(42, 157, 143,0.1)",
+		"rgba(233, 196, 106,0.1)",
+		"rgba(244, 162, 97,0.1)",
+		"rgba(231, 111, 81,0.1)",
+		"rgba(252, 163, 17,0.1)"
+	],
 
 	// emmet
 	"emmet.includeLanguages": {
@@ -366,8 +400,91 @@
 	},
 	"emmet.triggerExpansionOnTab": true,
 
+	// cSpell
+	"cSpell.enabledLanguageIds": [
+		"go",
+		"graphql",
+		"html",
+		"java",
+		"javascript",
+		"javascriptreact",
+		"less",
+		"php",
+		"python",
+		"pug",
+		"scss",
+		"typescript",
+		"typescriptreact"
+	],
+	"cSpell.diagnosticLevel": "Hint",
+	"cSpell.userWords": ["highscore", "leaderboard"],
+
+	// highlight matching
+	"highlight-matching-tag.styles": {
+		"opening": {
+			"name": {
+				"surround": "#e5f560"
+			}
+		}
+	},
+
+	// git
+	"git.enableSmartCommit": true,
+	"git.decorations.enabled": true,
+	"git.autofetch": true,
+	"gitblame.statusBarMessageFormat": "GitHub ${author.name} ( ${time.ago} )",
+
+	// advanced-new-file
+	"advancedNewFile.exclude": {
+		"node_modules": true,
+		"dev": true,
+		"dist": true,
+		"build": true
+	},
+	"advancedNewFile.showInformationMessages": true,
+
+	// code snap
+	"codesnap.showLineNumbers": false,
+	"codesnap.backgroundColor": "#fafafa",
+
+	// file browser
+	"explorer.confirmDelete": false,
+	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+	"files.exclude": {
+		"**/.git": true,
+		"**/.next": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/node_modules/": true
+	},
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/build": true,
+		"**/dist": true,
+		"**/.git": true,
+		"**/.vercel": true,
+		"**/.vscode": true,
+		"**/*.min.*": true
+	},
+
+	// Terminal
+	"terminal.integrated.cwd": "${fileDirname}",
+	"terminal.integrated.defaultProfile.windows": "PowerShell",
+	"terminal.external.windowsExec": "C:\\Users\\Tuan\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe",
+	"terminal.integrated.fontFamily": "CaskaydiaCove NF",
+	"terminal.integrated.fontSize": 16,
+	"terminal.integrated.cursorStyle": "line",
+	"terminal.integrated.letterSpacing": 0.25,
+
+	// setting sync
+	"sync.gist": "97c07480ef1b852bbede0000047b2255",
+	"sync.syncExtensions": true,
+	"sync.forceUpload": true,
+
 	// better comment
-	"better-comments.multilineComments": true,
+	/* 	"better-comments.multilineComments": true,
 	"better-comments.tags": [
 		{
 			// @render
@@ -509,98 +626,15 @@
 			"italic": true
 		}
 	],
-	"better-comments.highlightPlainText": false,
+	"better-comments.highlightPlainText": false, */
 
-	// setting sync
-	"sync.gist": "97c07480ef1b852bbede0000047b2255",
-	"sync.syncExtensions": true,
-	"sync.forceUpload": true,
-
-	// cSpell
-	"cSpell.enabledLanguageIds": [
-		"go",
-		"graphql",
-		"html",
-		"java",
-		"javascript",
-		"javascriptreact",
-		"less",
-		"php",
-		"python",
-		"pug",
-		"scss",
-		"typescript",
-		"typescriptreact"
-	],
-	"cSpell.diagnosticLevel": "Hint",
-
-	// highlight matching
-	"highlight-matching-tag.styles": {
-		"opening": {
-			"name": {
-				"highlight": "#ffb86c"
-			}
-		}
-	},
-
-	// git
-	"git.enableSmartCommit": true,
-	"git.decorations.enabled": true,
-	"git.autofetch": true,
-	"gitblame.statusBarMessageFormat": "GitHub ${author.name} ( ${time.ago} )",
-
-	// advanced-new-file
-	"advancedNewFile.exclude": {
-		"node_modules": true,
-		"dev": true,
-		"dist": true,
-		"build": true
-	},
-	"advancedNewFile.showInformationMessages": true,
-
-	// code snap
-	"codesnap.showLineNumbers": false,
-	"codesnap.backgroundColor": "#fafafa",
-
-	// others
-	"explorer.confirmDelete": false,
-	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-	"files.exclude": {
-		"**/.git": true,
-		"**/.next": true,
-		"**/.svn": true,
-		"**/.hg": true,
-		"**/CVS": true,
-		"**/.DS_Store": true,
-		"**/node_modules/": false
-	},
-	"search.exclude": {
-		"**/node_modules": true,
-		"**/build": true,
-		"**/dist": true,
-		"**/.git": true,
-		"**/.vercel": true,
-		"**/.vscode": true,
-		"**/*.min.*": true
-	},
-
-	// other extensions setting
-	"terminal.integrated.cwd": "${fileDirname}",
-	"terminal.integrated.defaultProfile.windows": "PowerShell",
-	"terminal.external.windowsExec": "C:\\Users\\Tuan\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe",
-	"liveServer.settings.donotShowInfoMsg": true,
-	"editor.cursorWidth": 3,
-	"cSpell.userWords": ["highscore", "leaderboard"],
-	"editor.acceptSuggestionOnCommitCharacter": false,
-	"editor.smoothScrolling": true,
-	"terminal.integrated.fontFamily": "CaskaydiaCove NF",
-	"typescript.updateImportsOnFileMove.enabled": "always",
-	"editor.cursorBlinking": "expand",
+	// other extensions settin
 	"polacode.target": "snippet",
 	"turboConsoleLog.addSemicolonInTheEnd": true,
 	"turboConsoleLog.logMessagePrefix": "DEBUG",
 	"turboConsoleLog.quote": "'",
 	"powermode.enabled": true,
 	"powermode.shakeIntensity": 0,
-	"tabnine.experimentalAutoImports": true
+	"tabnine.experimentalAutoImports": true,
+	"terminal.integrated.tabs.enabled": false
 }

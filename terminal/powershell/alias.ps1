@@ -17,9 +17,10 @@ Function savesetting{
   
   Copy-Item -Path 'C:\Users\Tuan\AppData\Local\nvim\snippets\*' -Destination 'C:\terminal-config\vim\snippets' -Recurse
 
-  Copy-Item "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Destination "C:\terminal-config\terminal\powershell\profile.ps1"
+  Copy-Item -Path 'C:\Users\Tuan\AppData\Roaming\Code\User\*' -Destination 'C:\terminal-config\vscode' -Recurse -ErrorAction SilentlyContinue
 
-  Copy-Item "C:\Users\Tuan\AppData\Roaming\Code\User\*" -Destination "C:\terminal-config\vscode" -Recurse
+  Cp "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"  "C:\terminal-config\terminal\powershell\profile.ps1"
+
 }
 # quick open file
 Function ovimtutor{
