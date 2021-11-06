@@ -75,7 +75,6 @@
 			"before": ["<S-Tab>"],
 			"after": ["g", "T"]
 		},
-
 		// Command mapping
 		{
 			"before": ["<leader>", "l"],
@@ -104,6 +103,14 @@
 		{
 			"before": ["<C-space>"],
 			"commands": ["editor.action.triggerSuggest"]
+		},
+		{
+			"before": ["g", "v"],
+			"commands": ["editor.emmet.action.balanceOut"]
+		},
+		{
+			"before": ["%"],
+			"commands": ["editor.emmet.action.matchTag"]
 		}
 	],
 
@@ -164,7 +171,7 @@
 					}
 				},
 				{
-					"scope": "meta.jsx.children.tsx",
+					"scope": "meta.jsx.children",
 					"settings": {
 						"foreground": "#e5e5e5"
 					}
@@ -201,6 +208,7 @@
 	"workbench.editor.enablePreview": false,
 	"workbench.iconTheme": "material-icon-theme",
 	"window.menuBarVisibility": "toggle",
+	"workbench.colorTheme": "Dyno Nguyen",
 
 	// formater
 	"[jsonc]": {
@@ -310,6 +318,5 @@
 	"terminal.integrated.fontSize": 16,
 	"terminal.integrated.cursorStyle": "line",
 	"terminal.integrated.letterSpacing": 0.25,
-	"terminal.integrated.tabs.enabled": false,
-	"workbench.colorTheme": "Dyno Nguyen"
+	"terminal.integrated.tabs.enabled": false
 }

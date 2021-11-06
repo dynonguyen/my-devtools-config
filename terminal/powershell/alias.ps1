@@ -11,15 +11,19 @@ Function savesetting{
   
   cp "C:\Users\Tuan\AppData\Local\nvim\coc-settings.json" "C:\terminal-config\vim"
 
-  Copy-Item -Path 'C:\Users\Tuan\AppData\Local\nvim\settings\*' -Destination 'C:\terminal-config\vim\settings' -Recurse
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\settings\*" -Destination "C:\terminal-config\vim\settings" -Recurse
 
-  Copy-Item -Path 'C:\Users\Tuan\AppData\Local\nvim\scripts\*' -Destination 'C:\terminal-config\vim\scripts' -Recurse
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\scripts\*" -Destination "C:\terminal-config\vim\scripts" -Recurse
   
-  Copy-Item -Path 'C:\Users\Tuan\AppData\Local\nvim\snippets\*' -Destination 'C:\terminal-config\vim\snippets' -Recurse
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\snippets\*" -Destination "C:\terminal-config\vim\snippets" -Recurse
 
-  Copy-Item -Path 'C:\Users\Tuan\AppData\Roaming\Code\User\*' -Destination 'C:\terminal-config\vscode' -Recurse -ErrorAction SilentlyContinue
+  Copy-Item -Path "C:\Users\Tuan\AppData\Roaming\Code\User\snippets\*" -Destination "C:\terminal-config\vscode\snippets" -Recurse -ErrorAction SilentlyContinue
 
-  Cp "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"  "C:\terminal-config\terminal\powershell\profile.ps1"
+  cp "C:\Users\Tuan\AppData\Roaming\Code\User\keybindings.json" "C:\terminal-config\vscode"
+
+  cp "C:\Users\Tuan\AppData\Roaming\Code\User\settings.json" "C:\terminal-config\vscode"
+
+  cp "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"  "C:\terminal-config\terminal\powershell\profile.ps1"
 
 }
 # quick open file
@@ -115,6 +119,7 @@ Function ya{
   } 
   Invoke-Expression $cmd
 }
+Function yc{ yarn create $args }
 Function yag{ 
   $cmd = "yarn add -g"
   for ( $i = 0; $i -lt $args.count; $i++ ) {
