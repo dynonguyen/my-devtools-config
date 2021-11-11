@@ -1,4 +1,25 @@
 {
+	// csscmt
+	"create a css block comment": {
+		"scope": "css,scss",
+		"prefix": "csscmt",
+		"body": ["// ----------- ${1:comment} -------------"]
+	},
+
+	// reset css
+	"Create reset css": {
+		"scope": "css,scss",
+		"prefix": "reset-css",
+		"body": [
+			"* {",
+			"  padding: 0;",
+			"  margin: 0;",
+			"  box-sizing: border-box;",
+			"}"
+		],
+		"description": "Create reset css"
+	},
+
 	// hov
 	"create hover active": {
 		"scope": "css,scss",
@@ -8,13 +29,55 @@
 
 	// med
 	"create media screen": {
+		"scope": "css,scss",
 		"prefix": "med",
 		"body": ["@media only screen and (${1:max}-width: $2px){ $3 }"]
 	},
 
-	// csscmt
-	"create a css block comment": {
-		"prefix": "csscmt",
-		"body": ["// ----------- ${1:comment} -------------"]
+	// =================== Flex box
+	"flex-center": {
+		"scope": "css,scss",
+		"prefix": "flex-center",
+		"body": [
+			"  display: flex;",
+			"  align-items: center;",
+			"  justify-content: center;"
+		],
+		"description": "flex-center"
+	},
+
+	"flex-layout": {
+		"prefix": "flex-layout",
+		"body": [
+			"${1:selector} {",
+			"  --spacing: $2;",
+			"  --columns: ${3:columns};",
+			"  display: flex;",
+			"  flex-wrap: wrap;",
+			"  margin-left: calc(-1 * var(--spacing));",
+			"  margin-right: calc(-1 * var(--spacing));",
+			"}",
+			"",
+			"${1:class} > * {",
+			"  margin-left: var(--spacing);",
+			"  margin-bottom: var(--spacing);",
+			"  width: calc((100% / var(--columns)) - var(--spacing));",
+			"}"
+		],
+		"description": "flex-layout"
+	},
+
+	// =================== Text
+	"text-ellipsis": {
+		"prefix": "text-ellipsis",
+		"body": [
+			" overflow: hidden;",
+			" text-overflow: ellipsis;",
+			" display: -webkit-box;",
+			" -webkit-line-clamp: ${1:lines};",
+			" line-clamp: ${1:lines};",
+			" -webkit-box-orient: vertical;"
+		],
+		"description": "text-ellipsis"
 	}
 }

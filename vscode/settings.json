@@ -11,10 +11,11 @@
 	"vim.useCtrlKeys": true,
 	"vim.hlsearch": true,
 	"vim.easymotionMarkerForegroundColorOneChar": "#ff6bcb",
-	"vim.searchHighlightColor": "#FDE18",
 	"vim.highlightedyank.enable": false,
 	"vim.joinspaces": false,
 	"vim.mouseSelectionGoesIntoVisualMode": false,
+	"vim.foldfix": true,
+	"vim.cursorStylePerMode.replace": "underline-thin",
 
 	"vim.insertModeKeyBindingsNonRecursive": [
 		{
@@ -64,6 +65,10 @@
 			"after": ["f", ">", "i"]
 		},
 		{
+			"before": ["t", "c"],
+			"after": ["f", ">", "l", "c", "i", "t"]
+		},
+		{
 			"before": ["f", "f"],
 			"after": ["<leader>", "<leader>", "2", "s"]
 		},
@@ -74,6 +79,10 @@
 		{
 			"before": ["<S-Tab>"],
 			"after": ["g", "T"]
+		},
+		{
+			"before": ["<leader>", "a"],
+			"after": ["g", "g", "^", "v", "G", "$"]
 		},
 		// Command mapping
 		{
@@ -111,6 +120,14 @@
 		{
 			"before": ["%"],
 			"commands": ["editor.emmet.action.matchTag"]
+		},
+		{
+			"before": ["u"],
+			"commands": ["undo"]
+		},
+		{
+			"before": ["<C-r>"],
+			"commands": ["redo"]
 		}
 	],
 
@@ -199,6 +216,12 @@
 					"settings": {
 						"foreground": "#39DAEB"
 					}
+				},
+				{
+					"scope": "keyword.operator.new",
+					"settings": {
+						"fontStyle": "italic bold"
+					}
 				}
 			]
 		}
@@ -209,6 +232,7 @@
 	"workbench.iconTheme": "material-icon-theme",
 	"window.menuBarVisibility": "toggle",
 	"workbench.colorTheme": "Dyno Nguyen",
+	"workbench.startupEditor": "none",
 
 	// formater
 	"[jsonc]": {
@@ -240,6 +264,9 @@
 	"[scss]": {
 		"editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
 	},
+	"files.associations": {
+		"*.min.css": "plaintext"
+	},
 	"scssFormatter.singleQuote": true,
 
 	// prettier
@@ -262,10 +289,12 @@
 
 	// emmet
 	"emmet.includeLanguages": {
+		"markdown": "html",
 		"javascript": "javascriptreact",
-		"markdown": "html"
+		"typescript": "html"
 	},
 	"emmet.triggerExpansionOnTab": true,
+	"emmet.showSuggestionsAsSnippets": true,
 
 	// highlight matching
 	"highlight-matching-tag.styles": {

@@ -5,40 +5,59 @@
 # --------- Common ---------
 # sync setting
 Function savesetting{
-  cp "C:\Users\Tuan\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" "C:\terminal-config\terminal\powershell\setting.json"
+  cp "C:\Users\Tuan\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" "C:\tool-config\terminal\powershell\setting.json"
 
-  cp "C:\Users\Tuan\AppData\Local\nvim\init.vim" "C:\terminal-config\vim"
+  cp "C:\Program Files\WindowsPowerShell\Modules\oh-my-posh\6.2.2\themes\mt.omp.json" "C:\tool-config\terminal\powershell\themes\mt.json"
+
+  cp "C:\Users\Tuan\AppData\Local\nvim\init.vim" "C:\tool-config\vim"
   
-  cp "C:\Users\Tuan\AppData\Local\nvim\coc-settings.json" "C:\terminal-config\vim"
+  cp "C:\Users\Tuan\AppData\Local\nvim\coc-settings.json" "C:\tool-config\vim"
 
-  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\settings\*" -Destination "C:\terminal-config\vim\settings" -Recurse
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\settings\*" -Destination "C:\tool-config\vim\settings" -Recurse
 
-  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\scripts\*" -Destination "C:\terminal-config\vim\scripts" -Recurse
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\scripts\*" -Destination "C:\tool-config\vim\scripts" -Recurse
   
-  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\snippets\*" -Destination "C:\terminal-config\vim\snippets" -Recurse
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\snippets\*" -Destination "C:\tool-config\vim\snippets" -Recurse
 
-  Copy-Item -Path "C:\Users\Tuan\AppData\Roaming\Code\User\snippets\*" -Destination "C:\terminal-config\vscode\snippets" -Recurse -ErrorAction SilentlyContinue
+  Copy-Item -Path "C:\Users\Tuan\AppData\Roaming\Code\User\snippets\*" -Destination "C:\tool-config\vscode\snippets" -Recurse -ErrorAction SilentlyContinue
 
-  cp "C:\Users\Tuan\AppData\Roaming\Code\User\keybindings.json" "C:\terminal-config\vscode"
+  cp "C:\Users\Tuan\AppData\Roaming\Code\User\keybindings.json" "C:\tool-config\vscode"
 
-  cp "C:\Users\Tuan\AppData\Roaming\Code\User\settings.json" "C:\terminal-config\vscode"
+  cp "C:\Users\Tuan\AppData\Roaming\Code\User\settings.json" "C:\tool-config\vscode"
 
-  cp "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"  "C:\terminal-config\terminal\powershell\profile.ps1"
+  cp "C:\Users\Tuan\.vscode\extensions\dyno dark theme\themes\Dyno Nguyen-color-theme.json" "C:\tool-config\vscode\own-theme\dyno dark theme\themes\Dyno Nguyen-color-theme.json"
+
+  cp "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"  "C:\tool-config\terminal\powershell\profile.ps1"
 
 }
 # quick open file
 Function ovimtutor{
-  vi "C:\terminal-config\vim\README.md"
+  vi "C:\tool-config\vim\README.md"
 }
 Function ovimmap{
-  vi "C:\terminal-config\vim\settings\map.vim"
+  vi "C:\tool-config\vim\settings\map.vim"
 }
 Function oalias{
-  vi "C:\terminal-config\terminal\powershell\alias.ps1"
+  vi "C:\tool-config\terminal\powershell\alias.ps1"
 }
 Function osnippet{
   cd "C:\Users\Tuan\AppData\Local\nvim\snippets"
   vi
+}
+Function oatomic{
+  cd "D:\typings\templates\atomic"
+  vi
+}
+
+# quick create template
+Function ct-static-web{
+  cp "D:\typings\templates\static-web\*" "."
+}
+Function ct-atomic-css{
+  cp "D:\typings\templates\atomic\css\*" "."
+}
+Function ct-atomic-scss{
+  cp "D:\typings\templates\atomic\scss\*" "."
 }
 
 # go back windows home
@@ -53,6 +72,8 @@ Function chocolist{ choco list --localonly }
 Function op{ notepad $PROFILE }
 # open file with notepad
 Function no{ notepad $args[0] }
+# open vscode
+Function vsc{ code . }
 # show all file
 Function lsa{ ls -Force }
 # touch folder and go to this folder
@@ -74,9 +95,8 @@ Function new{
 }
 
 # --------- Project Manager ---------
-Function pcode{ cd "C:\code" }
 Function vimconf{ cd "C:\Users\Tuan\AppData\Local\nvim" }
-Function config{ cd "C:\terminal-config" }
+Function config{ cd "C:\tool-config" }
 
 # --------- npm ---------
 Function ni{ 
