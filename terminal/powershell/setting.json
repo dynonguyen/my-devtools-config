@@ -10,16 +10,16 @@
             "keys": "alt+shift+c"
         },
         {
-            "command": "paste",
-            "keys": "alt+v"
-        },
-        {
             "command": 
             {
-                "action": "splitPane",
-                "split": "horizontal"
+                "action": "moveFocus",
+                "direction": "up"
             },
-            "keys": "alt+shift+down"
+            "keys": "alt+k"
+        },
+        {
+            "command": "paste",
+            "keys": "alt+v"
         },
         {
             "command": 
@@ -31,10 +31,10 @@
         {
             "command": 
             {
-                "action": "moveFocus",
-                "direction": "up"
+                "action": "splitPane",
+                "split": "horizontal"
             },
-            "keys": "alt+k"
+            "keys": "alt+shift+down"
         },
         {
             "command": "find",
@@ -50,16 +50,16 @@
             "keys": "alt+shift+right"
         },
         {
-            "command": "closePane",
-            "keys": "alt+w"
-        },
-        {
             "command": 
             {
                 "action": "nextTab",
                 "tabSwitcherMode": "disabled"
             },
             "keys": "alt+right"
+        },
+        {
+            "command": "closePane",
+            "keys": "alt+w"
         },
         {
             "command": 
@@ -192,7 +192,6 @@
                 "intenseTextStyle": "none",
                 "name": "Windows PowerShell",
                 "padding": "0, 0, 0, 0",
-                "scrollbarState": "hidden",
                 "startingDirectory": "C:/",
                 "suppressApplicationTitle": false,
                 "tabTitle": "PS",

@@ -93,6 +93,10 @@ Function new{
     touch $args[$i]
   } 
 }
+# remove node_modules
+Function rm-node{ 
+  Remove-Item .\node_modules\ -Recurse -Force
+}
 
 # --------- Project Manager ---------
 Function vimconf{ cd "C:\Users\Tuan\AppData\Local\nvim" }

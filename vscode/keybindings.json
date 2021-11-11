@@ -141,5 +141,15 @@
 	{
 		"key": "ctrl+r",
 		"command": "-workbench.action.openRecent"
+	},
+	{
+		"key": "ctrl+f",
+		"command": "actions.find",
+		"when": "editorFocus || editorIsOpen"
+	},
+	{
+		"key": "ctrl+f",
+		"command": "-actions.find",
+		"when": "editorFocus || editorIsOpen"
 	}
 ]

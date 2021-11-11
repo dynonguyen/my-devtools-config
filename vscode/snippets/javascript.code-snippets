@@ -1,5 +1,114 @@
 {
-	// @Note: Function JS
+	/* ============== Utils =============== */
+	// break-cmt
+	"Create a break comment": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "break-cmt",
+		"body": "/* ============== ${1:commnet} =============== */"
+	},
+
+	// jsdoc-cmt
+	"Create a JSDoc comment": {
+		"scope": "javascript,javascriptreact",
+		"prefix": "jsdoc-cmt",
+		"body": [
+			"/**",
+			" * ${1:description}.",
+			" *",
+			" * @param {${2:param-type}} ${3:param-name} - ${4:param-desc}.",
+			" * @return {${5:return-type}} ${6:return-name} - ${7:return-desc}.",
+			" */"
+		],
+		"description": "Create a JSDoc comment"
+	},
+
+	/* ============== ${1:console} =============== */
+	"Console.log()": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "clg",
+		"body": "console.log($1)"
+	},
+
+	"Console.warn()": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "cwa",
+		"body": "console.warn($1)"
+	},
+
+	"Console.info()": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "cin",
+		"body": "console.info($1)"
+	},
+
+	"Console.error()": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "cer",
+		"body": "console.error($1)"
+	},
+
+	"Console.table()": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "clt",
+		"body": "console.table($1)"
+	},
+
+	"Console.time()": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "cti",
+		"body": "console.time($1)"
+	},
+
+	"Console.timeEnd()": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "cte",
+		"body": "console.timeEnd($1)"
+	},
+
+	/* ============== Import, Export, Requies =============== */
+	// imp
+	"import package from package'": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "imp",
+		"body": "import $1 from '${1:package}'"
+	},
+
+	// impd
+	"import {} from package'": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "impd",
+		"body": "import { $2 } from '${1:package}'"
+	},
+
+	// impas
+	"import * as from package'": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "impas",
+		"body": "import * as $2 from '${1:package}'"
+	},
+
+	// expd
+	"export default": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "expd",
+		"body": "export default ${1:variable}"
+	},
+
+	// req
+	"const module = require('package')": {
+		"scope": "javascript",
+		"prefix": "req",
+		"body": "const $1 = require('${1:package}')"
+	},
+
+	// mde
+	"module export": {
+		"scope": "javascript",
+		"prefix": "mde",
+		"body": "module.exports = { $1 }"
+	},
+
+	/* ============== Functions =============== */
 	// fn
 	"Create a normal function": {
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
@@ -31,7 +140,7 @@
 		"description": "Create a arrow function"
 	},
 
-	// @Note: Jquery
+	/* ============== Jquery =============== */
 	// jq
 	"Make a selector": {
 		"scope": "javascript,typescript",
@@ -58,7 +167,7 @@
 		"description": "Create snippet jquery"
 	},
 
-	// @Note: ExpressJS Snippets
+	/* ============== ExpressJS =============== */
 	// exfn
 	"Make Express Fully Function": {
 		"scope": "javascript,typescript",

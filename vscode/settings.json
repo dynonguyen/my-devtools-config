@@ -12,6 +12,7 @@
 	"vim.hlsearch": true,
 	"vim.easymotionMarkerForegroundColorOneChar": "#ff6bcb",
 	"vim.highlightedyank.enable": false,
+
 	"vim.joinspaces": false,
 	"vim.mouseSelectionGoesIntoVisualMode": false,
 	"vim.foldfix": true,
@@ -233,6 +234,9 @@
 	"window.menuBarVisibility": "toggle",
 	"workbench.colorTheme": "Dyno Nguyen",
 	"workbench.startupEditor": "none",
+	"workbench.colorCustomizations": {
+		// "statusBar.background": "#ff0000"
+	},
 
 	// formater
 	"[jsonc]": {

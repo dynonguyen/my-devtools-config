@@ -15,17 +15,17 @@
 		"dropdown.background": "#151522",
 
 		"editor.background": "#1e1e2e",
+		"editor.foreground": "#e5e5e5",
 		"editorCursor.foreground": "#4ece58",
 		"editor.selectionBackground": "#2f3646",
 		"editor.selectionHighlightBackground": "#2f3646",
+		"editor.snippetTabstopHighlightBackground": "#243444",
 		"editorGroupHeader.tabsBackground": "#1e2031",
 		"editorLineNumber.foreground": "#4a4a5c",
 		"editorLineNumber.activeForeground": "#faa72a",
 		"editorWidget.background": "#151522",
 		"editorWidget.border": "#151522",
-		"editor.lineHighlightBorder": "#1e1e2e",
-		"editor.lineHighlightBackground": "#3b3d4d",
-		"editor.foreground": "#e5e5e5",
+		"editor.lineHighlightBorder": "#1a1a29",
 
 		"errorForeground": "#fe4e6e",
 
@@ -45,6 +45,8 @@
 		"panelTitle.activeBorder": "#7367f0",
 
 		"statusBar.background": "#27293d",
+		"statusBar.noFolderBackground": "#27293d",
+		"statusBar.debuggingBackground": "#27293d",
 
 		"sideBar.background": "#1e1e2e",
 		"sideBar.border": "#7367f0",
@@ -83,6 +85,13 @@
 			}
 		},
 		{
+			"name": "Block Comment",
+			"scope": ["comment.block"],
+			"settings": {
+				"fontStyle": "italic bold"
+			}
+		},
+		{
 			"name": "Variables",
 			"scope": ["variable", "string constant.other.placeholder"],
 			"settings": {
@@ -100,7 +109,7 @@
 			"name": "Invalid",
 			"scope": ["invalid", "invalid.illegal"],
 			"settings": {
-				"foreground": "#FF5370"
+				"foreground": "#f13636"
 			}
 		},
 		{
