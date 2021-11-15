@@ -47,6 +47,7 @@
 	},
 
 	"flex-layout": {
+		"scope": "css,scss",
 		"prefix": "flex-layout",
 		"body": [
 			"${1:selector} {",
@@ -69,6 +70,7 @@
 
 	// =================== Text
 	"text-ellipsis": {
+		"scope": "css,scss",
 		"prefix": "text-ellipsis",
 		"body": [
 			" overflow: hidden;",
@@ -79,5 +81,18 @@
 			" -webkit-box-orient: vertical;"
 		],
 		"description": "text-ellipsis"
+	},
+
+	// ================== Align
+	"transform-center": {
+		"scope": "css,scss",
+		"prefix": "transform-center",
+		"body": [
+			"  position: absolute;",
+			"  top: 50%;",
+			"  left: 50%;",
+			"  transform: translate(-50%, -50%);"
+		],
+		"description": "transform-center"
 	}
 }

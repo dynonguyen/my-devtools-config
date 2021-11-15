@@ -17,6 +17,7 @@
 	"vim.mouseSelectionGoesIntoVisualMode": false,
 	"vim.foldfix": true,
 	"vim.cursorStylePerMode.replace": "underline-thin",
+	"vim.autoSwitchInputMethod.defaultIM": "normal",
 
 	"vim.insertModeKeyBindingsNonRecursive": [
 		{

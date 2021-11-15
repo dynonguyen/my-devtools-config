@@ -1,4 +1,3 @@
-# Alias File
 # Exported by : Dyno Nguyen
 # Date/Time : 03/09/2021
 
@@ -13,14 +12,6 @@ Function savesetting{
   
   cp "C:\Users\Tuan\AppData\Local\nvim\coc-settings.json" "C:\tool-config\vim"
 
-  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\settings\*" -Destination "C:\tool-config\vim\settings" -Recurse
-
-  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\scripts\*" -Destination "C:\tool-config\vim\scripts" -Recurse
-  
-  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\snippets\*" -Destination "C:\tool-config\vim\snippets" -Recurse
-
-  Copy-Item -Path "C:\Users\Tuan\AppData\Roaming\Code\User\snippets\*" -Destination "C:\tool-config\vscode\snippets" -Recurse -ErrorAction SilentlyContinue
-
   cp "C:\Users\Tuan\AppData\Roaming\Code\User\keybindings.json" "C:\tool-config\vscode"
 
   cp "C:\Users\Tuan\AppData\Roaming\Code\User\settings.json" "C:\tool-config\vscode"
@@ -29,7 +20,17 @@ Function savesetting{
 
   cp "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"  "C:\tool-config\terminal\powershell\profile.ps1"
 
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\settings\*" -Destination "C:\tool-config\vim\settings" -Recurse
+
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\scripts\*" -Destination "C:\tool-config\vim\scripts" -Recurse
+  
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\snippets\*" -Destination "C:\tool-config\vim\snippets" -Recurse
+
+  Copy-Item -Path "C:\Users\Tuan\AppData\Roaming\Code\User\snippets\*" -Destination "C:\tool-config\vscode\snippets" -Recurse -ErrorAction SilentlyContinue
+
+  Copy-Item -Path "D:\typings\*" -Destination "C:\tool-config\typings" -Recurse -ErrorAction SilentlyContinue
 }
+
 # quick open file
 Function ovimtutor{
   vi "C:\tool-config\vim\README.md"
@@ -51,13 +52,17 @@ Function oatomic{
 
 # quick create template
 Function ct-static-web{
-  cp "D:\typings\templates\static-web\*" "."
+  cpa "D:\typings\templates\static-web\*" "."
 }
 Function ct-atomic-css{
-  cp "D:\typings\templates\atomic\css\*" "."
+  cpa "D:\typings\templates\atomic\css\*" "."
 }
 Function ct-atomic-scss{
-  cp "D:\typings\templates\atomic\scss\*" "."
+  cpa "D:\typings\templates\atomic\scss\*" "."
+}
+
+Function ct-express-basic-mvc{
+  cpa "D:\typings\templates\expressjs\basic-mvc\*" "."
 }
 
 # go back windows home
@@ -74,8 +79,7 @@ Function op{ notepad $PROFILE }
 Function no{ notepad $args[0] }
 # open vscode
 Function vsc{ code . }
-# show all file
-Function lsa{ ls -Force }
+
 # touch folder and go to this folder
 Function mdg{
   md $args[0]
@@ -96,6 +100,10 @@ Function new{
 # remove node_modules
 Function rm-node{ 
   Remove-Item .\node_modules\ -Recurse -Force
+}
+# copy all
+Function cpa{  
+  Copy-Item -Path $args[0] -Destination $args[1] -Recurse
 }
 
 # --------- Project Manager ---------
