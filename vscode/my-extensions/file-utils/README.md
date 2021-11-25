@@ -1,4 +1,4 @@
-<img src="./icon.png" alt="Logo" width="128" />
+<img src="https://res.cloudinary.com/dynonary/image/upload/v1637850850/vscode-extension/dyno-file-utils/logo.png" alt="Logo" width="128" />
 
 # Dyno File Utils - VSCode Extension
 

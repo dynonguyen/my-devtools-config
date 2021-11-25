@@ -215,13 +215,44 @@ function newItemsWithPattern(pattern, root, separator, openFile) {
 	});
 }
 
+function deleteViaVscode(filePath) {
+	vscode.workspace.fs.delete(vscode.Uri.file(filePath), {
+		useTrash: true,
+		recursive: true,
+	});
+}
+
+function deleteWarningDialog(filePath, isFile = true) {
+	const { confirmDelete } = getConfiguration();
+
+	if (confirmDelete) {
+		vscode.window
+			.showWarningMessage(
+				`Are you sure to delete this ${isFile ? 'file' : 'folder'} ?`,
+				...['No', 'Yes', "Yes & Don't show again"],
+			)
+			.then((answer) => {
+				if (answer === 'Yes') {
+					deleteViaVscode(filePath);
+				} else if (answer === `Yes & Don't show again`) {
+					deleteViaVscode(filePath);
+					vscode.workspace
+						.getConfiguration()
+						.update('dynoFileUtils.confirmDelete', false, true);
+				}
+			});
+	} else {
+		deleteViaVscode(filePath);
+	}
+}
+
 /* ============== Quick pick =============== */
-async function chooseFolderQuickPick(root, callback) {
+async function chooseFolderQuickPick(root, callback, isAddRoot = true) {
 	const { folderExclude } = getConfiguration();
 	let folders = await getAllFolders(root, folderExclude);
 
 	const folderList = [];
-	folderList.push({ label: '/', description: 'root' });
+	isAddRoot && folderList.push({ label: '/', description: 'root' });
 	folders.forEach((folder) => {
 		const label = '/' + folder.replace(root, '');
 		folderList.push({ label });
@@ -351,36 +382,11 @@ function renameFile() {
 }
 
 // dynoFileUtils.deleteFile
-function deleteFileViaVscode(filePath) {
-	vscode.workspace.fs.delete(vscode.Uri.file(filePath), {
-		useTrash: true,
-	});
-}
-
 function deleteFile() {
 	const filePath = getActiveTextEditorPath();
-	const { confirmDelete } = getConfiguration();
 
 	if (filePath) {
-		if (confirmDelete) {
-			vscode.window
-				.showWarningMessage(
-					'Are you sure to delete this file ?',
-					...['No', 'Yes', "Yes & Don't show again"],
-				)
-				.then((answer) => {
-					if (answer === 'Yes') {
-						deleteFileViaVscode(filePath);
-					} else if (answer === `Yes & Don't show again`) {
-						deleteFileViaVscode(filePath);
-						vscode.workspace
-							.getConfiguration()
-							.update('dynoFileUtils.confirmDelete', false, true);
-					}
-				});
-		} else {
-			deleteFileViaVscode(filePath);
-		}
+		deleteWarningDialog(filePath, true);
 	}
 }
 
@@ -464,6 +470,19 @@ function useTemplate() {
 	});
 }
 
+// dynoFileUtils.deleteFolder
+function deleteFolder() {
+	const root = getRootFolder();
+
+	chooseFolderQuickPick(
+		root,
+		(folderPath) => {
+			deleteWarningDialog(folderPath, false);
+		},
+		false,
+	);
+}
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -508,6 +527,11 @@ function activate(context) {
 		useTemplate,
 	);
 
+	let deleteFolderCmd = vscode.commands.registerCommand(
+		'dynoFileUtils.deleteFolder',
+		deleteFolder,
+	);
+
 	context.subscriptions.push(newItemsCmd);
 	context.subscriptions.push(newItemsAtRootCmd);
 	context.subscriptions.push(newItemsAtCurrentPathCmd);
@@ -516,6 +540,7 @@ function activate(context) {
 	context.subscriptions.push(duplicateFileCmd);
 	context.subscriptions.push(moveFileCmd);
 	context.subscriptions.push(useTemplateCmd);
+	context.subscriptions.push(deleteFolderCmd);
 }
 
 // this method is called when your extension is deactivated
