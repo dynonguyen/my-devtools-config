@@ -1,5 +1,4 @@
 {
-	// Quick setup
 	// Vim
 	"vim.leader": "<space>",
 	"vim.enableNeovim": true,
@@ -33,14 +32,22 @@
 	"vim.visualModeKeyBindingsNonRecursive": [
 		{
 			"before": ["<leader>", "d"],
-			"after": ["\"", "_", "d"]
+			"commands": ["editor.action.clipboardCutAction"]
+		},
+		{
+			"before": ["d", "d"],
+			"commands": ["editor.action.deleteLines"]
 		}
 	],
 
 	"vim.normalModeKeyBindingsNonRecursive": [
 		{
 			"before": ["<leader>", "d"],
-			"after": ["\"", "_", "d"]
+			"commands": ["editor.action.clipboardCutAction"]
+		},
+		{
+			"before": ["d", "d"],
+			"commands": ["editor.action.deleteLines"]
 		},
 		{
 			"before": ["D"],
@@ -172,6 +179,8 @@
 	"editor.smoothScrolling": true,
 	"editor.renderControlCharacters": false,
 	"editor.bracketPairColorization.enabled": true,
+	"editor.largeFileOptimizations": true,
+	"explorer.confirmDelete": false,
 
 	"editor.tokenColorCustomizations": {
 		"[Dyno Nguyen]": {
@@ -235,9 +244,7 @@
 	"window.menuBarVisibility": "toggle",
 	"workbench.colorTheme": "Dyno Nguyen",
 	"workbench.startupEditor": "none",
-	"workbench.colorCustomizations": {
-		// "statusBar.background": "#ff0000"
-	},
+	"workbench.panel.defaultLocation": "right",
 
 	// formater
 	"[jsonc]": {
@@ -270,7 +277,7 @@
 		"editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
 	},
 	"files.associations": {
-		"*.min.css": "plaintext"
+		"*.min.*": "plaintext"
 	},
 	"scssFormatter.singleQuote": true,
 
@@ -296,7 +303,8 @@
 	"emmet.includeLanguages": {
 		"markdown": "html",
 		"javascript": "javascriptreact",
-		"typescript": "html"
+		"typescript": "html",
+		"handlebar": "html"
 	},
 	"emmet.triggerExpansionOnTab": true,
 	"emmet.showSuggestionsAsSnippets": true,
@@ -316,15 +324,12 @@
 	"git.autofetch": true,
 	"gitblame.statusBarMessageFormat": "GitHub ${author.name} ( ${time.ago} )",
 
-	// Others
-
 	// code snap
 	"codesnap.showLineNumbers": false,
 	"codesnap.backgroundColor": "#fafafa",
 
 	// file browser
 	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-	"explorer.confirmDelete": false,
 	"files.exclude": {
 		"**/.git": true,
 		"**/.next": true,
@@ -332,7 +337,11 @@
 		"**/.hg": true,
 		"**/CVS": true,
 		"**/.DS_Store": true,
-		"**/node_modules/": true
+		"**/node_modules/": true,
+		"**/.classpath": true,
+		"**/.project": true,
+		"**/.settings": true,
+		"**/.factorypath": true
 	},
 	"search.exclude": {
 		"**/node_modules": true,
@@ -352,5 +361,8 @@
 	"terminal.integrated.fontSize": 16,
 	"terminal.integrated.cursorStyle": "line",
 	"terminal.integrated.letterSpacing": 0.25,
-	"terminal.integrated.tabs.enabled": false
+	"terminal.integrated.tabs.enabled": false,
+
+	// Others
+	"mdb.confirmRunAll": false
 }

@@ -16,7 +16,8 @@ Function savesetting{
 
   cp "C:\Users\Tuan\AppData\Roaming\Code\User\settings.json" "C:\tool-config\vscode"
 
-  cp "C:\Users\Tuan\.vscode\extensions\dyno dark theme\themes\Dyno Nguyen-color-theme.json" "C:\tool-config\vscode\own-theme\dyno dark theme\themes\Dyno Nguyen-color-theme.json"
+  cp "C:\Users\Tuan\.vscode\extensions\dyno dark theme\themes\Dyno Nguyen-color-theme.json" "C:\tool-config\vscode\my-extensions\dyno dark theme\themes\Dyno Nguyen-color-theme.json"
+
 
   cp "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"  "C:\tool-config\terminal\powershell\profile.ps1"
 
@@ -50,6 +51,10 @@ Function oatomic{
   vi
 }
 
+# --------- Project Manager ---------
+Function vimconf{ cd "C:\Users\Tuan\AppData\Local\nvim" }
+Function config{ cd "C:\tool-config" }
+
 # quick create template
 Function ct-static-web{
   cpa "D:\typings\templates\static-web\*" "."
@@ -79,36 +84,6 @@ Function op{ notepad $PROFILE }
 Function no{ notepad $args[0] }
 # open vscode
 Function vsc{ code . }
-
-# touch folder and go to this folder
-Function mdg{
-  md $args[0]
-  cd $args[0]
-}
-# new multiple folder
-Function mmd{
-  for ( $i = 0; $i -lt $args.count; $i++ ) {
-    md $args[$i]
-  } 
-}
-# new multiple files
-Function new{
-  for ( $i = 0; $i -lt $args.count; $i++ ) {
-    touch $args[$i]
-  } 
-}
-# remove node_modules
-Function rm-node{ 
-  Remove-Item .\node_modules\ -Recurse -Force
-}
-# copy all
-Function cpa{  
-  Copy-Item -Path $args[0] -Destination $args[1] -Recurse
-}
-
-# --------- Project Manager ---------
-Function vimconf{ cd "C:\Users\Tuan\AppData\Local\nvim" }
-Function config{ cd "C:\tool-config" }
 
 # --------- npm ---------
 Function ni{ 
@@ -216,3 +191,51 @@ Function vi{ nvim $args }
 # --------- NodeJS Script ---------
 Function nod{ node index.js }
 Function ts{ ts-node -T $args }
+
+# --------- Util functions ---------
+# touch folder and go to this folder
+Function mdg{
+  md $args[0]
+  cd $args[0]
+}
+
+# new multiple folder
+Function mmd{
+  for ( $i = 0; $i -lt $args.count; $i++ ) {
+    md $args[$i]
+  } 
+}
+
+# new multiple files
+Function new{
+  for ( $i = 0; $i -lt $args.count; $i++ ) {
+    touch $args[$i]
+  } 
+}
+
+# remove node_modules
+Function rm-node{ 
+  Remove-Item .\node_modules\ -Recurse -Force
+}
+
+# copy all
+Function cpa{  
+  Copy-Item -Path $args[0] -Destination $args[1] -Recurse
+}
+
+# REST APIs
+Function rest-api-get{
+  $url = $args[0]
+  $params = ''
+
+  for ( $i = 1; $i -lt $args.count; $i++ ) {
+    if($i -eq 1){
+      $params += '?' + $args[$i]
+    }else{
+      $params += '&' + $args[$i]
+    }
+  } 
+
+  $cmd = '(Invoke-WebRequest -Uri ' + $url + $params + ').Content | ConvertFrom-Json | ConvertTo-Json';
+  Invoke-Expression $cmd
+}

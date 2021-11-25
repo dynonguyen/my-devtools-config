@@ -26,28 +26,6 @@
 		"command": "workbench.files.action.showActiveFileInExplorer"
 	},
 
-	// File Utils
-	{
-		"key": "alt+n",
-		"command": "fileutils.newFileAtRoot"
-	},
-	{
-		"key": "alt+f",
-		"command": "fileutils.newFolderAtRoot"
-	},
-	{
-		"key": "alt+f2",
-		"command": "fileutils.renameFile"
-	},
-	{
-		"key": "alt+delete",
-		"command": "fileutils.removeFile"
-	},
-	{
-		"key": "alt+m",
-		"command": "fileutils.moveFile"
-	},
-
 	// Split pane and navigate
 	{
 		"key": "ctrl+left",
@@ -151,5 +129,26 @@
 		"key": "ctrl+f",
 		"command": "-actions.find",
 		"when": "editorFocus || editorIsOpen"
+	},
+	{
+		"key": "ctrl+shift+right",
+		"command": "-cursorWordEndRightSelect",
+		"when": "textInputFocus && !accessibilityModeEnabled"
+	},
+	{
+		"key": "ctrl+shift+left",
+		"command": "workbench.action.terminal.resizePaneLeft"
+	},
+	{
+		"key": "ctrl+shift+right",
+		"command": "workbench.action.terminal.resizePaneRight"
+	},
+	{
+		"key": "ctrl+0",
+		"command": "workbench.action.focusSideBar"
+	},
+	{
+		"key": "ctrl+0",
+		"command": "-workbench.action.focusSideBar"
 	}
 ]
