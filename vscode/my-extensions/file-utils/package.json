@@ -1,8 +1,8 @@
 {
 	"name": "vscode-dynofileutils",
 	"displayName": "Dyno File Utils",
-	"description": "Best way to create, copy, move, rename and delete files and folders (multiple files).",
-	"version": "1.0.0",
+	"description": "The best way to create, copy, move, rename and delete files and folders (multiple files) & create templates",
+	"version": "1.1.0",
 	"author": {
 		"name": "Dyno Nguyen",
 		"email": "tuannguyentn2504@gmail.com",
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/TuanNguyen2504/coding-tool-config/tree/windows/vscode/my-extensions"
+		"url": "https://github.com/TuanNguyen2504/coding-tool-config/tree/windows/vscode/my-extensions/file-utils"
 	},
 	"keywords": [
 		"utils",
@@ -20,7 +20,7 @@
 		"duplicate",
 		"rename"
 	],
-	"publisher": "dynonguyen",
+	"publisher": "dyno-nguyen",
 	"engines": {
 		"vscode": "^1.62.0"
 	},
@@ -37,7 +37,7 @@
 		"onCommand:dynoFileUtils.moveFile",
 		"onCommand:dynoFileUtils.useTemplate"
 	],
-	"main": "./extension.js",
+	"main": "./extension.min.js",
 	"contributes": {
 		"commands": [
 			{
@@ -148,19 +148,12 @@
 							},
 							"folderPath": {
 								"type": "string",
-								"description": "Path to folder to copy template. Use when isPattern= false",
+								"description": "Path to folder to copy template. Use when isPattern=false",
 								"default": ""
 							}
 						}
 					},
 					"default": [
-						{
-							"label": "Static Website",
-							"desc": "Create a static website template",
-							"isPattern": true,
-							"pattern": "index.html,style.css,script.js",
-							"folderPath": "./templates/static-web"
-						},
 						{
 							"label": "ExpressJS MVC",
 							"desc": "Create a MVC pattern with ExpressJS",
@@ -216,5 +209,6 @@
 		"glob": "^7.1.7",
 		"mocha": "^9.1.3",
 		"typescript": "^4.4.4"
-	}
+	},
+	"license": "MIT"
 }

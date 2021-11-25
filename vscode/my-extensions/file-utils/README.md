@@ -1,65 +1,122 @@
-# dyno-file-utils README
+<img src="./icon.png" alt="Logo" width="128" />
 
-This is the README for your extension "dyno-file-utils". After writing up a brief description, we recommend including the following sections.
+# Dyno File Utils - VSCode Extension
 
-## Features
+> The best way to create, copy, move, rename and delete files and folders (multiple files) & create templates.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-- `myExtension.enable`: enable/disable this extension
-- `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Inspired by [File Utils VSCode Extension](https://github.com/sleistner/vscode-fileutils)
 
 ---
 
-## Working with Markdown
+## Features
 
-**Note:** You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+- Create a file / folder.
+- Create multiple files / folders.
+- Create nested files/folders.
+- Create files/folders at root (at current path).
+- Delete a file.
+- Rename a file.
+- Duplicate / Move file.
+- Create a project with a template.
 
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-- Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-- Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
+## Configuration
 
-### For more information
+![Configuration](https://res.cloudinary.com/dynonary/image/upload/v1637844256/vscode-extension/dyno-file-utils/nl6uumzrnqpul3yhin5t.png)
 
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+- `dynoFileUtils.confirmDelete - boolean`: Controls whether file utils should ask for confirmation when deleting a file.
 
-**Enjoy!**
+![Confirm Delete](https://res.cloudinary.com/dynonary/image/upload/v1637835344/vscode-extension/dyno-file-utils/zww9hhuvk8zbrdnhb1sd.png)
+
+- `dynoFileUtils.folderExclude - [String]`: Configure glob for excluding folders when searching.
+
+- `dynoFileUtils.separator - string`: Separator when you create multiple files/folders.
+
+- `dynoFileUtils.openFile - boolean`: Should be open file when done.
+
+- `dynoFileUtils.showPopupTitle - boolean`: should be Show popup title.
+
+![Popup Title](https://res.cloudinary.com/dynonary/image/upload/v1637839649/vscode-extension/dyno-file-utils/pimhajo45mpxqdrgk7mk.png)
+
+- `dynoFileUtils.templates [Object]`: Create folder templates quickly in 2 ways
+  - folderPath (isPattern: false): Copy your template folder path here.
+  - pattern (isPattern: true): Pattern to create template.
+
+## How To Use
+
+### 1. Using the command palette:
+
+- Bring up the command palette, and select `File Utils`.
+- Select one of the commands mentioned below.
+- Press `Enter` to confirm, or `Escape` to cancel.
+
+![Use Command Palette](https://res.cloudinary.com/dynonary/image/upload/v1637840706/vscode-extension/dyno-file-utils/qbe6prmgyynwbyidclsz.png)
+
+### 2. Use Keyboard shortcuts
+
+- Open Keyboard shortcuts `Ctrl+k Ctrl+s`
+- Search `File Utils`.
+- Add your key binding then use it.
+
+![Use Keyboard Shortcut](https://res.cloudinary.com/dynonary/image/upload/v1637840705/vscode-extension/dyno-file-utils/looufamdyx3xmg4nu6oc.png)
+
+## Demo
+
+### Create a file / folder
+
+![Demo](https://res.cloudinary.com/dynonary/image/upload/v1637841906/vscode-extension/dyno-file-utils/p8hjkjjgqoxsvauocdxf.gif)
+
+### Create multiple files / folder
+
+Example input
+
+```
+input.html, style.css, script.js, public/styles/scss/index.scss, public/lib/js/, public/lib/css/
+```
+
+Will generate the following files
+
+```bash
+/demo
+├── public
+│   ├── lib
+│   ├── styles
+|   |---|-- scss
+|   |-------|-- index.scss
+│   └── js
+│   └── css
+├── index.cpp
+├── index.scss
+└── index.ts
+```
+
+![Demo](https://res.cloudinary.com/dynonary/image/upload/v1637842397/vscode-extension/dyno-file-utils/e8njqzysrnqkaydxek9t.gif)
+
+### Rename & delete a file
+
+![Demo](https://res.cloudinary.com/dynonary/image/upload/v1637843324/vscode-extension/dyno-file-utils/qsoid8gbahpixodnepcd.gif)
+
+### Duplicate / Move a file
+
+![Demo](https://res.cloudinary.com/dynonary/image/upload/v1637843814/vscode-extension/dyno-file-utils/bwrirlr41niyvut6vq7l.gif)
+
+### Create a template
+
+![Demo](https://res.cloudinary.com/dynonary/image/upload/v1637848103/vscode-extension/dyno-file-utils/ynqfagzya8p9k1bsheru.gif)
+
+## Changelog
+
+- https://github.com/TuanNguyen2504/coding-tool-config/blob/windows/vscode/my-extensions/file-utils/CHANGELOG.md
+
+## Disclaimer
+
+> **Important**: This extension due to the nature of it's purpose will create files on your hard drive and if necessary create the respective folder structure. While it should not override any files during this process, I'm not giving any guarantees or take any responsibility in case of lost data.
+
+## License
+
+MIT @Dyno Nguyen
+
+## Acknowledgements
+
+- Logo [Folder App Icon by Avian Rizky](https://dribbble.com/shots/16139947-Folder-App-Icon)
+
+- Inspired by [File Utils VSCode Extension](https://github.com/sleistner/vscode-fileutils)

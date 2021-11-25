@@ -1,9 +1,19 @@
-# Change Log
+# Dyno File Utils - Change Log
 
-All notable changes to the "dyno-file-utils" extension will be documented in this file.
+# 1.0.0 (25-11-2021)
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+- Features:
+  - Create a file / folder.
+  - Create multiple files / folders.
+  - Create nested files/folders.
+  - Create files/folders at root (at current path).
+  - Delete a file.
+  - Rename a file.
+  - Duplicate / Move file.
+  - Create a project with a template.
 
-## [Unreleased]
+# 1.1.0 (25-11-2021)
 
-- Initial release
+- Update README.md
+- Bug Fixes
+  - Create template with folderPath.

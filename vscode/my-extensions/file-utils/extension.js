@@ -87,11 +87,12 @@ function copyFileSync(source, target) {
 	fs.writeFileSync(targetFile, fs.readFileSync(source));
 }
 
-function copyFolderRecursiveSync(source, target) {
+function copyFolderRecursiveSync(source, target, isRoot = true) {
 	var files = [];
 
 	// Check if folder needs to be created or integrated
-	var targetFolder = path.join(target, path.basename(source));
+	var targetFolder = isRoot ? target : path.join(target, path.basename(source));
+
 	if (!fs.existsSync(targetFolder)) {
 		fs.mkdirSync(targetFolder);
 	}
@@ -102,7 +103,7 @@ function copyFolderRecursiveSync(source, target) {
 		files.forEach(function (file) {
 			var curSource = path.join(source, file);
 			if (fs.lstatSync(curSource).isDirectory()) {
-				copyFolderRecursiveSync(curSource, targetFolder);
+				copyFolderRecursiveSync(curSource, targetFolder, false);
 			} else {
 				copyFileSync(curSource, targetFolder);
 			}
