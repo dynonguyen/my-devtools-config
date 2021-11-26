@@ -1,8 +1,16 @@
 # Dyno File Utils - Change Log
 
+# 1.3.5 (26-11-2021)
+
+- New Features:
+  - Change `quickPick` by `inputBox`
+  - Remove `showPopupTitle` configuration
+  - Add delete mutiple items.
+  - Add file name selection.
+
 # 1.3.1 (25-11-2021)
 
-- New Feature:
+- New Features:
   - Delete a folder.
 
 # 1.1.0 (25-11-2021)

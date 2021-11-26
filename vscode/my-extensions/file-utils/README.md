@@ -14,14 +14,15 @@ Inspired by [File Utils VSCode Extension](https://github.com/sleistner/vscode-fi
 - Create multiple files / folders.
 - Create nested files/folders.
 - Create files/folders at root (at current path).
-- Delete a file.
+- Delete a file / folder.
+- Delete mutiple files / folders.
 - Rename a file.
 - Duplicate / Move file.
 - Create a project with a template.
 
 ## Configuration
 
-![Configuration](https://res.cloudinary.com/dynonary/image/upload/v1637844256/vscode-extension/dyno-file-utils/nl6uumzrnqpul3yhin5t.png)
+![Configuration](https://res.cloudinary.com/dynonary/image/upload/v1637938688/vscode-extension/dyno-file-utils/i8knmye3tzbh9ulnomfr.jpg)
 
 - `dynoFileUtils.confirmDelete - boolean`: Controls whether file utils should ask for confirmation when deleting a file.
 
@@ -32,8 +33,6 @@ Inspired by [File Utils VSCode Extension](https://github.com/sleistner/vscode-fi
 - `dynoFileUtils.separator - string`: Separator when you create multiple files/folders.
 
 - `dynoFileUtils.openFile - boolean`: Should be open file when done.
-
-- `dynoFileUtils.showPopupTitle - boolean`: should be Show popup title.
 
 ![Popup Title](https://res.cloudinary.com/dynonary/image/upload/v1637839649/vscode-extension/dyno-file-utils/pimhajo45mpxqdrgk7mk.png)
 
