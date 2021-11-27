@@ -22,7 +22,7 @@ Inspired by [File Utils VSCode Extension](https://github.com/sleistner/vscode-fi
 
 ## Configuration
 
-![Configuration](https://res.cloudinary.com/dynonary/image/upload/v1637938688/vscode-extension/dyno-file-utils/i8knmye3tzbh9ulnomfr.jpg)
+> Open file settings.json:
 
 - `dynoFileUtils.confirmDelete - boolean`: Controls whether file utils should ask for confirmation when deleting a file.
 
@@ -32,6 +32,8 @@ Inspired by [File Utils VSCode Extension](https://github.com/sleistner/vscode-fi
 
 - `dynoFileUtils.separator - string`: Separator when you create multiple files/folders.
 
+- `dynoFileUtils.expandSeparator - string`: Separator when you create multiple files/folders with Brace Expansion. `Note` that it must be different from the `separator`.
+
 - `dynoFileUtils.openFile - boolean`: Should be open file when done.
 
 ![Popup Title](https://res.cloudinary.com/dynonary/image/upload/v1637839649/vscode-extension/dyno-file-utils/pimhajo45mpxqdrgk7mk.png)
@@ -39,6 +41,8 @@ Inspired by [File Utils VSCode Extension](https://github.com/sleistner/vscode-fi
 - `dynoFileUtils.templates [Object]`: Create folder templates quickly in 2 ways
   - folderPath (isPattern: false): Copy your template folder path here.
   - pattern (isPattern: true): Pattern to create template.
+
+![Configuration](https://res.cloudinary.com/dynonary/image/upload/v1637938688/vscode-extension/dyno-file-utils/i8knmye3tzbh9ulnomfr.jpg)
 
 ## How To Use
 
@@ -89,6 +93,25 @@ Will generate the following files
 ```
 
 ![Demo](https://res.cloudinary.com/dynonary/image/upload/v1637842397/vscode-extension/dyno-file-utils/e8njqzysrnqkaydxek9t.gif)
+
+### Brace Expansion
+
+> Brace expansion is a mechanism by which arbitrary strings may be generated.
+
+Example file name input (separator = "," & expandSeparator = "|")
+
+```
+tmp/a/{index|script|style-1|style-2}{js|css}
+```
+
+```
+/tmp
+├── a
+│   ├── index.js
+│   ├── script.js
+│   └── style-1.css
+│   └── style-2.css
+```
 
 ### Rename & delete a file
 

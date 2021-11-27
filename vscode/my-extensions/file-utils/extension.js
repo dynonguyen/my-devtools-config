@@ -6,6 +6,7 @@ const path = require('path');
 
 /* ============== Contanst =============== */
 const DEFAULT_SEPARATOR = ',';
+const DEFAULT_EXPAND_SEPARATOR = '|';
 const PLACEHOLDERS = {
 	CHOOSE_FOLDER: 'Choose a parent folder',
 	CHOOSE_TEMPLATE: 'Choose a template',
@@ -155,6 +156,7 @@ function getConfiguration() {
 	const {
 		openFile = true,
 		separator = DEFAULT_SEPARATOR,
+		expandSeparator = DEFAULT_EXPAND_SEPARATOR,
 		folderExclude = [],
 		confirmDelete,
 		templates,
@@ -163,6 +165,7 @@ function getConfiguration() {
 	return {
 		openFile,
 		separator,
+		expandSeparator,
 		folderExclude,
 		confirmDelete,
 		templates,
@@ -193,8 +196,64 @@ function splitFileName(path) {
 	return null;
 }
 
+/*
+	input: path = abc/xyz/[file,file2,file3][js,cpp]
+	output: { folder: 'abc/xyz/', fileNames: ["file","file2","file3"], extNames: ["js","cpp"] }
+	wrong structure input: output = input
+*/
+function splitBraceBrackets(path) {
+	const regex = /.+(\/|\\)\{.+\}\{.+\}/;
+	if (!regex.test(path)) return path;
+
+	const pathSplited = path.split(/\/|\\/);
+	const lastItemIndex = pathSplited.length - 1;
+	const folder = pathSplited.slice(0, lastItemIndex).join('/') + '/';
+	const firstCloseSquareIndex = pathSplited[lastItemIndex].indexOf('}');
+
+	const { expandSeparator } = getConfiguration();
+
+	const fileNames = pathSplited[lastItemIndex]
+		.substr(0, firstCloseSquareIndex + 1)
+		.replace(/\{|\}/g, '')
+		.trim()
+		.split(expandSeparator);
+
+	const extNames = pathSplited[lastItemIndex]
+		.substr(firstCloseSquareIndex + 1)
+		.replace(/\{|\}/g, '')
+		.trim()
+		.split(expandSeparator);
+
+	return { folder, fileNames, extNames };
+}
+
+function squareBraceExpand(pathList = []) {
+	const result = [];
+
+	pathList.forEach((path) => {
+		const splited = splitBraceBrackets(path);
+		if (typeof splited === 'string') result.push(splited);
+		else {
+			const { folder, fileNames, extNames } = splited;
+			const extLen = extNames.length;
+
+			fileNames.forEach((fileName, index) => {
+				result.push(
+					`${folder}${fileName}.${
+						extNames[index < extLen ? index : extLen - 1]
+					}`,
+				);
+			});
+		}
+	});
+
+	return result;
+}
+
 function newItemsWithPattern(pattern, root, separator, openFile) {
-	const { files, folders } = splitFilePath(pattern, separator);
+	let { files, folders } = splitFilePath(pattern, separator);
+
+	files = squareBraceExpand(files);
 
 	// create all folders before creating files (nested file)
 	folders.forEach((folderPath) => {

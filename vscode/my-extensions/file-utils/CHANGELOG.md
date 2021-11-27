@@ -1,5 +1,10 @@
 # Dyno File Utils - Change Log
 
+# 1.4.0 (26-11-2021)
+
+- New Features:
+  - Brace Expansion
+
 # 1.3.5 (26-11-2021)
 
 - New Features:
