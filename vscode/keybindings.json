@@ -47,6 +47,19 @@
 		"key": "ctrl+shift+w",
 		"command": "workbench.action.closeOtherEditors"
 	},
+	{
+		"key": "ctrl+shift+left",
+		"command": "workbench.action.terminal.resizePaneLeft"
+	},
+	{
+		"key": "shift+alt+right",
+		"command": "workbench.action.terminal.split",
+		"when": "terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "ctrl+shift+right",
+		"command": "workbench.action.terminal.resizePaneRight"
+	},
 
 	// HTML wrap tag
 	{
@@ -69,11 +82,6 @@
 		"command": "workbench.action.openSnippets"
 	},
 	{
-		"key": "shift+alt+left",
-		"command": "-editor.action.smartSelect.shrink",
-		"when": "editorTextFocus"
-	},
-	{
 		"key": "shift+win+z",
 		"command": "workbench.action.toggleZenMode"
 	},
@@ -83,9 +91,19 @@
 		"when": "editorTextFocus && !editorReadonly"
 	},
 	{
-		"key": "shift+alt+a",
-		"command": "-editor.action.blockComment",
-		"when": "editorTextFocus && !editorReadonly"
+		"key": "ctrl+shift+s",
+		"command": "workbench.action.files.saveFiles"
+	},
+	{
+		"key": "ctrl+,",
+		"command": "workbench.action.openSettingsJson"
+	},
+
+	// Removed
+	{
+		"key": "shift+alt+left",
+		"command": "-editor.action.smartSelect.shrink",
+		"when": "editorTextFocus"
 	},
 	{
 		"key": "ctrl+shift+s",
@@ -93,18 +111,9 @@
 		"when": "remoteFileDialogVisible"
 	},
 	{
-		"key": "ctrl+shift+s",
-		"command": "workbench.action.files.saveFiles"
-	},
-	{
 		"key": "ctrl+shift+u",
 		"command": "-workbench.action.output.toggleOutput",
 		"when": "workbench.panel.output.active"
-	},
-	{
-		"key": "shift+alt+right",
-		"command": "workbench.action.terminal.split",
-		"when": "terminalFocus && terminalProcessSupported"
 	},
 	{
 		"key": "ctrl+shift+5",
@@ -121,34 +130,12 @@
 		"command": "-workbench.action.openRecent"
 	},
 	{
-		"key": "ctrl+f",
-		"command": "actions.find",
-		"when": "editorFocus || editorIsOpen"
-	},
-	{
-		"key": "ctrl+f",
-		"command": "-actions.find",
-		"when": "editorFocus || editorIsOpen"
-	},
-	{
 		"key": "ctrl+shift+right",
 		"command": "-cursorWordEndRightSelect",
 		"when": "textInputFocus && !accessibilityModeEnabled"
 	},
 	{
-		"key": "ctrl+shift+left",
-		"command": "workbench.action.terminal.resizePaneLeft"
-	},
-	{
-		"key": "ctrl+shift+right",
-		"command": "workbench.action.terminal.resizePaneRight"
-	},
-	{
-		"key": "ctrl+0",
-		"command": "workbench.action.focusSideBar"
-	},
-	{
-		"key": "ctrl+0",
-		"command": "-workbench.action.focusSideBar"
+		"key": "ctrl+,",
+		"command": "-workbench.action.openSettings"
 	}
 ]

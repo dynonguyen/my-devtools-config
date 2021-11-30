@@ -194,7 +194,6 @@
 			"    $5",
 			"  } catch (error) {",
 			"    console.error('$4 ERROR: ', error);",
-			"    return res.status(500).json({ message: 'Lỗi dịch vụ, thử lại sau' });",
 			"  }",
 			"}"
 		],

@@ -37,6 +37,14 @@
 		{
 			"before": ["d", "d"],
 			"commands": ["editor.action.deleteLines"]
+		},
+		{
+			"before": ["<Tab>"],
+			"commands": ["tab"]
+		},
+		{
+			"before": ["<S-Tab>"],
+			"commands": ["outdent"]
 		}
 	],
 
@@ -93,6 +101,14 @@
 			"before": ["<leader>", "a"],
 			"after": ["g", "g", "^", "v", "G", "$"]
 		},
+		{
+			"before": ["Z", "Z"],
+			"after": ["z", "M", "z", "o"]
+		},
+		{
+			"before": ["c"],
+			"after": ["\"", "_", "c"]
+		},
 		// Command mapping
 		{
 			"before": ["<leader>", "l"],
@@ -137,6 +153,10 @@
 		{
 			"before": ["<C-r>"],
 			"commands": ["redo"]
+		},
+		{
+			"before": ["Y"],
+			"commands": ["editor.action.clipboardCopyAction"]
 		}
 	],
 
@@ -154,33 +174,34 @@
 	},
 
 	// editor
-	"editor.suggestSelection": "first",
 	"editor.fontFamily": "Cascadia Code",
 	"editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
+	"editor.suggestSelection": "first",
 
-	"editor.fontWeight": 400,
 	"editor.fontSize": 18,
+	"editor.fontWeight": 400,
 	"editor.tabSize": 2,
 
-	"editor.mouseWheelZoom": true,
-	"editor.formatOnSave": true,
-	"editor.accessibilitySupport": "off",
-	"editor.inlineSuggest.enabled": true,
-	"editor.wordWrap": "on",
-	"editor.renderWhitespace": "none",
-	"editor.lineNumbers": "relative",
-	"editor.occurrencesHighlight": false,
-	"editor.cursorWidth": 2,
-	"editor.cursorBlinking": "expand",
-	"editor.suggest.preview": true,
-	"editor.minimap.enabled": false,
-	"editor.renderLineHighlight": "all",
 	"editor.acceptSuggestionOnCommitCharacter": false,
-	"editor.smoothScrolling": true,
-	"editor.renderControlCharacters": false,
+	"editor.accessibilitySupport": "off",
 	"editor.bracketPairColorization.enabled": true,
+	"editor.colorDecorators": true,
+	"editor.cursorBlinking": "expand",
+	"editor.cursorWidth": 2,
+	"editor.formatOnSave": true,
+	"editor.inlineSuggest.enabled": true,
 	"editor.largeFileOptimizations": true,
-	"explorer.confirmDelete": false,
+	"editor.lineNumbers": "relative",
+	"editor.minimap.enabled": false,
+	"editor.mouseWheelZoom": true,
+	"editor.occurrencesHighlight": false,
+	"editor.renderControlCharacters": false,
+	"editor.renderLineHighlight": "all",
+	"editor.renderWhitespace": "none",
+	"editor.smoothScrolling": true,
+	"editor.suggest.insertMode": "replace",
+	"editor.suggest.preview": true,
+	"editor.wordWrap": "on",
 
 	"editor.tokenColorCustomizations": {
 		"[Dyno Nguyen]": {
@@ -242,7 +263,6 @@
 	"workbench.editor.enablePreview": false,
 	"workbench.iconTheme": "material-icon-theme",
 	"window.menuBarVisibility": "toggle",
-	"workbench.colorTheme": "Dyno Nguyen",
 	"workbench.startupEditor": "none",
 	"workbench.panel.defaultLocation": "right",
 
@@ -270,16 +290,15 @@
 		"editor.matchBrackets": "never"
 	},
 	"[css]": {
-		"editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.matchBrackets": "never"
 	},
 	"[scss]": {
-		"editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"files.associations": {
 		"*.min.*": "plaintext"
 	},
-	"scssFormatter.singleQuote": true,
 
 	// prettier
 	"prettier.singleQuote": true,
@@ -324,10 +343,6 @@
 	"git.autofetch": true,
 	"gitblame.statusBarMessageFormat": "GitHub ${author.name} ( ${time.ago} )",
 
-	// code snap
-	"codesnap.showLineNumbers": false,
-	"codesnap.backgroundColor": "#fafafa",
-
 	// file browser
 	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 	"files.exclude": {
@@ -352,6 +367,8 @@
 		"**/.vscode": true,
 		"**/*.min.*": true
 	},
+	"explorer.compactFolders": false,
+	"explorer.confirmDelete": false,
 
 	// Terminal
 	"terminal.integrated.cwd": "${fileDirname}",
@@ -363,6 +380,47 @@
 	"terminal.integrated.letterSpacing": 0.25,
 	"terminal.integrated.tabs.enabled": false,
 
+	// Dyno File Utils
+	"dynoFileUtils.confirmDelete": false,
+	"dynoFileUtils.separator": " ",
+	"dynoFileUtils.expandSeparator": ",",
+	"dynoFileUtils.folderExclude": ["node_modules", ".git", "build", "dist"],
+	"dynoFileUtils.openFile": true,
+	"dynoFileUtils.templates": [
+		{
+			"label": "ExpressJS MVC",
+			"desc": "Create a MVC pattern with ExpressJS",
+			"isPattern": false,
+			"pattern": "",
+			"folderPath": "D:\\typings\\templates\\expressjs\\basic-mvc"
+		},
+		{
+			"label": "Static Web",
+			"desc": "Create a static web",
+			"isPattern": false,
+			"pattern": "",
+			"folderPath": "D:\\typings\\templates\\static-web"
+		},
+		{
+			"label": "Index Server Config - Express",
+			"desc": "file index.js server configuration",
+			"isPattern": false,
+			"folderPath": "D:\\typings\\templates\\expressjs\\server-config"
+		}
+	],
+
+	// code snap
+	"codesnap.showLineNumbers": false,
+	"codesnap.backgroundColor": "#fafafa",
+
 	// Others
-	"mdb.confirmRunAll": false
+	"mdb.confirmRunAll": false,
+	"auto-rename-tag.activationOnLanguage": [
+		"html",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact"
+	],
+	"workbench.colorTheme": "Dyno Nguyen"
 }

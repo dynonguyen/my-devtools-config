@@ -1,0 +1,17 @@
+extends ./templates/general.template.pug
+
+block append style 
+  link(rel="stylesheet", href="/css/home.css")
+
+block content 
+  include ./mixins/header.mixin.pug
+  +header
+
+  h1 Hello world!
+
+  include ./mixins/footer.mixin.pug
+  +footer
+
+block append script 
+  script(src="/js/home.js") 
+  

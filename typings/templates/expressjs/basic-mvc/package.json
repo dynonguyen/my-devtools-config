@@ -1,11 +1,21 @@
 {
+	"name": "MVC Project",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"repository": "",
+	"author": "Dyno Nguyen",
+	"license": "MIT",
 	"scripts": {
-		"start": "node index.js",
-		"dev": "nodemon index.js"
+		"start": "node ./src/index.js",
+		"dev": "nodemon ./src/index.js"
 	},
 	"dependencies": {
+		"cookie-parser": "^1.4.6",
+		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
-		"path": "^0.12.7"
+		"morgan": "^1.10.0",
+		"pug": "^3.0.2"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.15"
