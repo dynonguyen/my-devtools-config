@@ -10,16 +10,16 @@
             "keys": "alt+shift+c"
         },
         {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "up"
-            },
-            "keys": "alt+k"
-        },
-        {
             "command": "paste",
             "keys": "alt+v"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "horizontal"
+            },
+            "keys": "alt+shift+down"
         },
         {
             "command": 
@@ -31,10 +31,10 @@
         {
             "command": 
             {
-                "action": "splitPane",
-                "split": "horizontal"
+                "action": "moveFocus",
+                "direction": "up"
             },
-            "keys": "alt+shift+down"
+            "keys": "alt+k"
         },
         {
             "command": "find",
@@ -50,16 +50,16 @@
             "keys": "alt+shift+right"
         },
         {
+            "command": "closePane",
+            "keys": "alt+w"
+        },
+        {
             "command": 
             {
                 "action": "nextTab",
                 "tabSwitcherMode": "disabled"
             },
             "keys": "alt+right"
-        },
-        {
-            "command": "closePane",
-            "keys": "alt+w"
         },
         {
             "command": 
@@ -166,6 +166,7 @@
         "list": 
         [
             {
+                "antialiasingMode": "grayscale",
                 "backgroundImage": null,
                 "backgroundImageOpacity": 0.20000000000000001,
                 "backgroundImageStretchMode": "uniformToFill",
@@ -187,9 +188,9 @@
                 },
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
-                "historySize": 9001,
+                "historySize": 5000,
                 "icon": "H:\\PICTURE_VIDEO\\OTHERS\\Icon\\candy-icons\\PNGS\\Apps\\terminal.png",
-                "intenseTextStyle": "none",
+                "intenseTextStyle": "all",
                 "name": "Windows PowerShell",
                 "padding": "0, 0, 0, 0",
                 "startingDirectory": "C:/",

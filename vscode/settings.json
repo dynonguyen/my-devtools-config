@@ -1,22 +1,21 @@
 {
 	// Vim
-	"vim.leader": "<space>",
+	"vim.autoSwitchInputMethod.defaultIM": "normal",
+	"vim.cursorStylePerMode.replace": "underline-thin",
+	"vim.easymotion": true,
+	"vim.easymotionMarkerForegroundColorOneChar": "#ff6bcb",
 	"vim.enableNeovim": true,
+	"vim.foldfix": true,
+	"vim.highlightedyank.enable": false,
+	"vim.hlsearch": true,
+	"vim.incsearch": true,
+	"vim.joinspaces": false,
+	"vim.leader": "<space>",
+	"vim.mouseSelectionGoesIntoVisualMode": false,
 	"vim.neovimPath": "C:\\Neovim\\bin\\nvim.exe",
 	"vim.surround": false,
-	"vim.easymotion": true,
-	"vim.incsearch": true,
-	"vim.useSystemClipboard": true,
 	"vim.useCtrlKeys": true,
-	"vim.hlsearch": true,
-	"vim.easymotionMarkerForegroundColorOneChar": "#ff6bcb",
-	"vim.highlightedyank.enable": false,
-
-	"vim.joinspaces": false,
-	"vim.mouseSelectionGoesIntoVisualMode": false,
-	"vim.foldfix": true,
-	"vim.cursorStylePerMode.replace": "underline-thin",
-	"vim.autoSwitchInputMethod.defaultIM": "normal",
+	"vim.useSystemClipboard": true,
 
 	"vim.insertModeKeyBindingsNonRecursive": [
 		{
@@ -31,12 +30,12 @@
 
 	"vim.visualModeKeyBindingsNonRecursive": [
 		{
-			"before": ["<leader>", "d"],
-			"commands": ["editor.action.clipboardCutAction"]
+			"before": ["d"],
+			"after": ["\"", "_", "d"]
 		},
 		{
-			"before": ["d", "d"],
-			"commands": ["editor.action.deleteLines"]
+			"before": ["<leader>", "d"],
+			"after": ["x"]
 		},
 		{
 			"before": ["<Tab>"],
@@ -45,17 +44,29 @@
 		{
 			"before": ["<S-Tab>"],
 			"commands": ["outdent"]
+		},
+		{
+			"before": ["<leader>", "s"],
+			"commands": ["editor.action.sortLinesAscending"]
 		}
 	],
 
 	"vim.normalModeKeyBindingsNonRecursive": [
 		{
-			"before": ["<leader>", "d"],
-			"commands": ["editor.action.clipboardCutAction"]
+			"before": ["d"],
+			"after": ["\"", "_", "d"]
 		},
 		{
-			"before": ["d", "d"],
-			"commands": ["editor.action.deleteLines"]
+			"before": ["<leader>", "d"],
+			"after": ["d"]
+		},
+		{
+			"before": ["c"],
+			"after": ["\"", "_", "c"]
+		},
+		{
+			"before": ["<leader>", "c"],
+			"after": ["c"]
 		},
 		{
 			"before": ["D"],
@@ -105,10 +116,7 @@
 			"before": ["Z", "Z"],
 			"after": ["z", "M", "z", "o"]
 		},
-		{
-			"before": ["c"],
-			"after": ["\"", "_", "c"]
-		},
+
 		// Command mapping
 		{
 			"before": ["<leader>", "l"],
@@ -127,10 +135,6 @@
 			"commands": ["workbench.action.navigateUp"]
 		},
 		{
-			"before": ["<leader>", "w"],
-			"commands": ["workbench.action.closeOtherEditors"]
-		},
-		{
 			"before": ["r", "h"],
 			"commands": [":nohl"]
 		},
@@ -140,7 +144,7 @@
 		},
 		{
 			"before": ["g", "v"],
-			"commands": ["editor.emmet.action.balanceOut"]
+			"commands": ["editor.action.smartSelect.expand"]
 		},
 		{
 			"before": ["%"],
@@ -157,6 +161,19 @@
 		{
 			"before": ["Y"],
 			"commands": ["editor.action.clipboardCopyAction"]
+		},
+		{
+			"before": ["<leader>", "s"],
+			"after": ["v", "i", "{"],
+			"commands": ["editor.action.sortLinesAscending", "extension.vim_escape"]
+		},
+		{
+			"before": ["g", "b"],
+			"commands": ["workbench.action.navigateBack"]
+		},
+		{
+			"before": ["g", "f"],
+			"commands": ["workbench.action.navigateForward"]
 		}
 	],
 
@@ -259,12 +276,16 @@
 		}
 	},
 
-	"workbench.activityBar.visible": true,
-	"workbench.editor.enablePreview": false,
-	"workbench.iconTheme": "material-icon-theme",
 	"window.menuBarVisibility": "toggle",
-	"workbench.startupEditor": "none",
+	"window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}",
+
+	"workbench.activityBar.visible": true,
+	"workbench.colorTheme": "Dyno Nguyen",
+	"workbench.editor.enablePreview": false,
+	"workbench.editor.pinnedTabSizing": "compact",
+	"workbench.iconTheme": "material-icon-theme",
 	"workbench.panel.defaultLocation": "right",
+	"workbench.startupEditor": "none",
 
 	// formater
 	"[jsonc]": {
@@ -321,7 +342,7 @@
 	// emmet
 	"emmet.includeLanguages": {
 		"markdown": "html",
-		"javascript": "javascriptreact",
+		// "javascript": "javascriptreact",
 		"typescript": "html",
 		"handlebar": "html"
 	},
@@ -341,7 +362,15 @@
 	"git.enableSmartCommit": true,
 	"git.decorations.enabled": true,
 	"git.autofetch": true,
-	"gitblame.statusBarMessageFormat": "GitHub ${author.name} ( ${time.ago} )",
+
+	// Git lens
+	"gitlens.hovers.currentLine.over": "line",
+	"gitlens.currentLine.enabled": false,
+	"gitlens.codeLens.enabled": false,
+	"gitlens.defaultDateFormat": null,
+	"gitlens.defaultTimeFormat": null,
+	"gitlens.defaultDateShortFormat": null,
+	"gitlens.defaultDateStyle": "relative",
 
 	// file browser
 	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -380,6 +409,9 @@
 	"terminal.integrated.letterSpacing": 0.25,
 	"terminal.integrated.tabs.enabled": false,
 
+	// Others Native settings
+	"breadcrumbs.icons": false,
+
 	// Dyno File Utils
 	"dynoFileUtils.confirmDelete": false,
 	"dynoFileUtils.separator": " ",
@@ -411,9 +443,9 @@
 
 	// code snap
 	"codesnap.showLineNumbers": false,
-	"codesnap.backgroundColor": "#fafafa",
+	"codesnap.backgroundColor": "transparent",
 
-	// Others
+	// Others Extension
 	"mdb.confirmRunAll": false,
 	"auto-rename-tag.activationOnLanguage": [
 		"html",
@@ -421,6 +453,5 @@
 		"javascriptreact",
 		"typescript",
 		"typescriptreact"
-	],
-	"workbench.colorTheme": "Dyno Nguyen"
+	]
 }

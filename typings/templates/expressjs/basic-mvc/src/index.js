@@ -25,7 +25,7 @@ app.use(morgan('tiny'));
 /* ============== Routes =============== */
 
 app.use('/', homeRoute);
-app.use((req, res) => res.redirect('/'));
+app.use((req, res) => res.render('404'));
 
 /* ============== Listening =============== */
 const normalizePort = (port) => parseInt(port, 10);

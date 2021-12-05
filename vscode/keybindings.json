@@ -98,6 +98,16 @@
 		"key": "ctrl+,",
 		"command": "workbench.action.openSettingsJson"
 	},
+	{
+		"key": "ctrl+k ctrl+p",
+		"command": "workbench.action.pinEditor",
+		"when": "!activeEditorIsPinned"
+	},
+	{
+		"key": "ctrl+k ctrl+p",
+		"command": "workbench.action.unpinEditor",
+		"when": "activeEditorIsPinned"
+	},
 
 	// Removed
 	{
@@ -137,5 +147,23 @@
 	{
 		"key": "ctrl+,",
 		"command": "-workbench.action.openSettings"
+	},
+	{
+		"key": "alt+p",
+		"command": "extension.convert-to-pug"
+	},
+	{
+		"key": "ctrl+k ctrl+p",
+		"command": "-workbench.action.showAllEditors"
+	},
+	{
+		"key": "ctrl+k shift+enter",
+		"command": "-workbench.action.pinEditor",
+		"when": "!activeEditorIsPinned"
+	},
+	{
+		"key": "ctrl+k shift+enter",
+		"command": "-workbench.action.unpinEditor",
+		"when": "activeEditorIsPinned"
 	}
 ]

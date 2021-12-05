@@ -94,6 +94,13 @@
 		"body": "export default ${1:variable}"
 	},
 
+	// dreq
+	"destructuring require": {
+		"scope": "javascript",
+		"prefix": "dreq",
+		"body": "const { $2 } = require('${1:package}');"
+	},
+
 	// req
 	"const module = require('package')": {
 		"scope": "javascript",
@@ -173,7 +180,7 @@
 		"scope": "javascript,typescript",
 		"prefix": "exfn",
 		"body": [
-			"const ${1:fnName} = (req, res, next) => {",
+			"const ${1:fnName} = (req, res) => {",
 			"  try {",
 			"    $2",
 			"  } catch (${3:error}) {",
@@ -189,11 +196,11 @@
 		"scope": "javascript,typescript",
 		"prefix": "eexfn",
 		"body": [
-			"exports.${1:fnName} = ${2:async} (${3:req, res, next}) => {",
+			"exports.${1:fnName} = ${2:async} (req, res) => {",
 			"  try {",
-			"    $5",
+			"    $4",
 			"  } catch (error) {",
-			"    console.error('$4 ERROR: ', error);",
+			"    console.error('$3 ERROR: ', error);",
 			"  }",
 			"}"
 		],
@@ -244,32 +251,5 @@
 			"module.exports = ${1:name}${2:Route};"
 		],
 		"description": "Make route express"
-	},
-
-	// r200
-	"Response Success with status 200": {
-		"scope": "javascript,typescript",
-		"prefix": "r200",
-		"body": ["return res.status(200).json(${1:data});"],
-		"description": "Response Success with status 200"
-	},
-
-	// rtEx
-	"Response with status code": {
-		"scope": "javascript,typescript",
-		"prefix": "rtEx",
-		"body": ["return res.status($1).json({$2});"],
-		"description": "Response with status code"
-	},
-
-	// rer
-	"Return Error Express": {
-		"scope": "javascript,typescript",
-		"prefix": "rer",
-		"body": [
-			"console.error('$1 ERROR: ', error);",
-			"return res.status(500).json({ message: 'Lỗi dịch vụ, thử lại sau' });"
-		],
-		"description": "Return Error Express"
 	}
 }
