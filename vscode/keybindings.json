@@ -78,7 +78,7 @@
 		"when": "editorTextFocus && foldingEnabled"
 	},
 	{
-		"key": "ctrl+u ctrl+s",
+		"key": "ctrl+k ctrl+u",
 		"command": "workbench.action.openSnippets"
 	},
 	{
@@ -165,5 +165,54 @@
 		"key": "ctrl+k shift+enter",
 		"command": "-workbench.action.unpinEditor",
 		"when": "activeEditorIsPinned"
+	},
+	{
+		"key": "alt+`",
+		"command": "workbench.action.closePanel"
+	},
+	{
+		"key": "shift+right",
+		"command": "cursorRightSelect",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "shift+right",
+		"command": "-cursorRightSelect",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "shift+right",
+		"command": "cursorColumnSelectRight",
+		"when": "editorColumnSelection && textInputFocus"
+	},
+	{
+		"key": "shift+right",
+		"command": "-cursorColumnSelectRight",
+		"when": "editorColumnSelection && textInputFocus"
+	},
+	{
+		"key": "shift+alt+right",
+		"command": "editor.action.smartSelect.expand",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "shift+alt+right",
+		"command": "-editor.action.smartSelect.expand",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+k ctrl+u",
+		"command": "-editor.action.removeCommentLine",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "alt+r",
+		"command": "cursorUndo",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+u",
+		"command": "-cursorUndo",
+		"when": "textInputFocus"
 	}
 ]

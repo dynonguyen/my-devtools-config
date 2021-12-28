@@ -3,7 +3,7 @@
 	"create a css block comment": {
 		"scope": "css,scss",
 		"prefix": "csscmt",
-		"body": ["// ----------- ${1:comment} -------------"]
+		"body": ["/* ----------- ${1:comment} ------------- */"]
 	},
 
 	// reset css

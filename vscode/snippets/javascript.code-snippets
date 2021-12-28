@@ -101,13 +101,6 @@
 		"body": "const { $2 } = require('${1:package}');"
 	},
 
-	// req
-	"const module = require('package')": {
-		"scope": "javascript",
-		"prefix": "req",
-		"body": "const $1 = require('${1:package}')"
-	},
-
 	// mde
 	"module export": {
 		"scope": "javascript",
@@ -200,7 +193,8 @@
 			"  try {",
 			"    $4",
 			"  } catch (error) {",
-			"    console.error('$3 ERROR: ', error);",
+			"    console.error('Function $1 Error: ', error);",
+			"    return res.render('404');",
 			"  }",
 			"}"
 		],
@@ -225,6 +219,23 @@
 			""
 		],
 		"description": "Create model with mongoose"
+	},
+
+	"Create a model sequelize": {
+		"prefix": "pgmodel",
+		"body": [
+			"const { DataTypes, db } = require('../configs/db.config');",
+			"",
+			"const ${1:ModelName} = db.define(",
+			"  '${1:ModelName}',",
+			"  $2",
+			"  { tableName: '${1:ModelName}', timestamps: false },",
+			");",
+			"",
+			"module.exports = ${1:ModelName};",
+			""
+		],
+		"description": "Create a model sequelize"
 	},
 
 	// api

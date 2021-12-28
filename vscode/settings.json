@@ -12,7 +12,6 @@
 	"vim.joinspaces": false,
 	"vim.leader": "<space>",
 	"vim.mouseSelectionGoesIntoVisualMode": false,
-	"vim.neovimPath": "C:\\Neovim\\bin\\nvim.exe",
 	"vim.surround": false,
 	"vim.useCtrlKeys": true,
 	"vim.useSystemClipboard": true,
@@ -174,6 +173,14 @@
 		{
 			"before": ["g", "f"],
 			"commands": ["workbench.action.navigateForward"]
+		},
+		{
+			"before": ["<S-l>"],
+			"commands": ["editor.action.smartSelect.expand"]
+		},
+		{
+			"before": ["z", "O"],
+			"commands": ["editor.unfoldAll"]
 		}
 	],
 
@@ -194,6 +201,7 @@
 	"editor.fontFamily": "Cascadia Code",
 	"editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
 	"editor.suggestSelection": "first",
+	"editor.columnSelection": false,
 
 	"editor.fontSize": 18,
 	"editor.fontWeight": 400,
@@ -219,6 +227,12 @@
 	"editor.suggest.insertMode": "replace",
 	"editor.suggest.preview": true,
 	"editor.wordWrap": "on",
+	"editor.unicodeHighlight.invisibleCharacters": false,
+	"editor.unicodeHighlight.ambiguousCharacters": false,
+	"editor.unicodeHighlight.includeComments": false,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": true
+	},
 
 	"editor.tokenColorCustomizations": {
 		"[Dyno Nguyen]": {
@@ -280,12 +294,14 @@
 	"window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}",
 
 	"workbench.activityBar.visible": true,
-	"workbench.colorTheme": "Dyno Nguyen",
 	"workbench.editor.enablePreview": false,
 	"workbench.editor.pinnedTabSizing": "compact",
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.panel.defaultLocation": "right",
 	"workbench.startupEditor": "none",
+
+	// Languages
+	"javascript.updateImportsOnFileMove.enabled": "always",
 
 	// formater
 	"[jsonc]": {
@@ -367,13 +383,14 @@
 	"gitlens.hovers.currentLine.over": "line",
 	"gitlens.currentLine.enabled": false,
 	"gitlens.codeLens.enabled": false,
+	"gitlens.mode.statusBar.enabled": true,
 	"gitlens.defaultDateFormat": null,
 	"gitlens.defaultTimeFormat": null,
 	"gitlens.defaultDateShortFormat": null,
 	"gitlens.defaultDateStyle": "relative",
+	"gitlens.hovers.currentLine.enabled": false,
 
 	// file browser
-	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 	"files.exclude": {
 		"**/.git": true,
 		"**/.next": true,
@@ -404,7 +421,7 @@
 	"terminal.integrated.defaultProfile.windows": "PowerShell",
 	"terminal.external.windowsExec": "C:\\Users\\Tuan\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe",
 	"terminal.integrated.fontFamily": "CaskaydiaCove NF",
-	"terminal.integrated.fontSize": 16,
+	"terminal.integrated.fontSize": 15,
 	"terminal.integrated.cursorStyle": "line",
 	"terminal.integrated.letterSpacing": 0.25,
 	"terminal.integrated.tabs.enabled": false,
@@ -416,7 +433,16 @@
 	"dynoFileUtils.confirmDelete": false,
 	"dynoFileUtils.separator": " ",
 	"dynoFileUtils.expandSeparator": ",",
-	"dynoFileUtils.folderExclude": ["node_modules", ".git", "build", "dist"],
+	"dynoFileUtils.folderExclude": [
+		"node_modules",
+		".git",
+		"build",
+		"dist",
+		"bin",
+		"obj",
+		".",
+		"target"
+	],
 	"dynoFileUtils.openFile": true,
 	"dynoFileUtils.templates": [
 		{
@@ -453,5 +479,18 @@
 		"javascriptreact",
 		"typescript",
 		"typescriptreact"
-	]
+	],
+	"color-highlight.markerType": "underline",
+	"color-highlight.markRuler": false,
+	"color-highlight.matchWords": true,
+
+	// Temp
+	"[csharp]": {
+		"editor.defaultFormatter": "ms-dotnettools.csharp"
+	},
+	"[java]": {
+		"editor.tabSize": 4,
+		"editor.defaultFormatter": "redhat.java"
+	},
+	"workbench.colorTheme": "Dyno Nguyen"
 }
