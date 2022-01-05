@@ -155,6 +155,7 @@ Function gi{ git init }
 Function gcf{ git clean -f $args }
 Function gsh{ git show $args }
 Function gl{ git log }  
+Function glo{ git log --oneline }  
 Function gd{ git diff $args }
 Function ga{ git add $args }
 Function grsta{ git restore --staged $args }
@@ -168,7 +169,7 @@ Function gaex{
 }
 Function gcm{ git commit -m $args }
 Function gca{ git commit --amend }
-Function gb{ git branch }
+Function gb{ git branch $args }
 Function gbd{ git branch -D $args }
 Function gch{ git checkout $args }
 Function gchb{ git checkout -b $args }
@@ -223,19 +224,3 @@ Function cpa{
   Copy-Item -Path $args[0] -Destination $args[1] -Recurse
 }
 
-# REST APIs
-Function rest-api-get{
-  $url = $args[0]
-  $params = ''
-
-  for ( $i = 1; $i -lt $args.count; $i++ ) {
-    if($i -eq 1){
-      $params += '?' + $args[$i]
-    }else{
-      $params += '&' + $args[$i]
-    }
-  } 
-
-  $cmd = '(Invoke-WebRequest -Uri ' + $url + $params + ').Content | ConvertFrom-Json | ConvertTo-Json';
-  Invoke-Expression $cmd
-}

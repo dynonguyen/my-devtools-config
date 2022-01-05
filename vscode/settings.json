@@ -4,17 +4,16 @@
 	"vim.cursorStylePerMode.replace": "underline-thin",
 	"vim.easymotion": true,
 	"vim.easymotionMarkerForegroundColorOneChar": "#ff6bcb",
-	"vim.enableNeovim": true,
 	"vim.foldfix": true,
 	"vim.highlightedyank.enable": false,
-	"vim.hlsearch": true,
-	"vim.incsearch": true,
+	"vim.incsearch": false,
 	"vim.joinspaces": false,
 	"vim.leader": "<space>",
 	"vim.mouseSelectionGoesIntoVisualMode": false,
 	"vim.surround": false,
 	"vim.useCtrlKeys": true,
 	"vim.useSystemClipboard": true,
+	"vim.ignorecase": false,
 
 	"vim.insertModeKeyBindingsNonRecursive": [
 		{
@@ -98,14 +97,6 @@
 		{
 			"before": ["f", "f"],
 			"after": ["<leader>", "<leader>", "2", "s"]
-		},
-		{
-			"before": ["<Tab>"],
-			"after": ["g", "t"]
-		},
-		{
-			"before": ["<S-Tab>"],
-			"after": ["g", "T"]
 		},
 		{
 			"before": ["<leader>", "a"],
@@ -202,6 +193,7 @@
 	"editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
 	"editor.suggestSelection": "first",
 	"editor.columnSelection": false,
+	"editor.minimap.enabled": false,
 
 	"editor.fontSize": 18,
 	"editor.fontWeight": 400,
@@ -217,7 +209,6 @@
 	"editor.inlineSuggest.enabled": true,
 	"editor.largeFileOptimizations": true,
 	"editor.lineNumbers": "relative",
-	"editor.minimap.enabled": false,
 	"editor.mouseWheelZoom": true,
 	"editor.occurrencesHighlight": false,
 	"editor.renderControlCharacters": false,
@@ -297,6 +288,7 @@
 	"workbench.editor.enablePreview": false,
 	"workbench.editor.pinnedTabSizing": "compact",
 	"workbench.iconTheme": "material-icon-theme",
+	"workbench.colorTheme": "Dyno Nguyen",
 	"workbench.panel.defaultLocation": "right",
 	"workbench.startupEditor": "none",
 
@@ -428,6 +420,7 @@
 
 	// Others Native settings
 	"breadcrumbs.icons": false,
+	"extensions.autoUpdate": "onlyEnabledExtensions",
 
 	// Dyno File Utils
 	"dynoFileUtils.confirmDelete": false,
@@ -473,6 +466,7 @@
 
 	// Others Extension
 	"mdb.confirmRunAll": false,
+
 	"auto-rename-tag.activationOnLanguage": [
 		"html",
 		"javascript",
@@ -480,17 +474,25 @@
 		"typescript",
 		"typescriptreact"
 	],
+
 	"color-highlight.markerType": "underline",
 	"color-highlight.markRuler": false,
 	"color-highlight.matchWords": true,
 
-	// Temp
+	// CSharp
+	"csharp.format.enable": true,
+	"omnisharp.enableImportCompletion": true,
+	"omnisharp.organizeImportsOnFormat": true,
+	"omnisharp.useEditorFormattingSettings": true,
+
 	"[csharp]": {
-		"editor.defaultFormatter": "ms-dotnettools.csharp"
+		"editor.defaultFormatter": "ms-dotnettools.csharp",
+		"editor.tabSize": 4
 	},
+
+	// Java
 	"[java]": {
 		"editor.tabSize": 4,
 		"editor.defaultFormatter": "redhat.java"
-	},
-	"workbench.colorTheme": "Dyno Nguyen"
+	}
 }
