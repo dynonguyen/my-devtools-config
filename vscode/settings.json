@@ -106,6 +106,14 @@
 			"before": ["Z", "Z"],
 			"after": ["z", "M", "z", "o"]
 		},
+		{
+			"before": ["q"],
+			"after": ["c", "t"]
+		},
+		{
+			"before": ["Q"],
+			"after": ["c", "i"]
+		},
 
 		// Command mapping
 		{

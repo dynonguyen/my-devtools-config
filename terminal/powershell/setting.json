@@ -1,6 +1,7 @@
 {
 	"$schema": "https://aka.ms/terminal-profiles-schema",
 	"actions": [
+		// basic action
 		{
 			"command": {
 				"action": "copy"
@@ -8,40 +9,27 @@
 			"keys": "alt+shift+c"
 		},
 		{
-			"command": {
-				"action": "moveFocus",
-				"direction": "up"
-			},
-			"keys": "alt+k"
+			"command": "find",
+			"keys": "ctrl+f"
 		},
-		{
-			"command": "paste",
-			"keys": "alt+v"
-		},
+		// Tab
 		{
 			"command": {
 				"action": "newTab"
 			},
-			"keys": "alt+n"
+			"keys": "ctrl+n"
 		},
 		{
 			"command": {
-				"action": "splitPane",
-				"split": "horizontal"
+				"action": "closeTab"
 			},
-			"keys": "alt+shift+down"
-		},
-		{
-			"command": "find",
-			"keys": "f3"
+			"keys": "ctrl+w"
 		},
 		{
 			"command": {
-				"action": "splitPane",
-				"split": "vertical",
-				"splitMode": "duplicate"
+				"action": "closeOtherTabs"
 			},
-			"keys": "alt+shift+right"
+			"keys": "ctrl+shift+w"
 		},
 		{
 			"command": {
@@ -51,8 +39,67 @@
 			"keys": "alt+h"
 		},
 		{
+			"command": {
+				"action": "prevTab",
+				"tabSwitcherMode": "disabled"
+			},
+			"keys": "alt+l"
+		},
+		// Split pane
+		{
+			"command": {
+				"action": "splitPane",
+				"split": "auto"
+			},
+			"keys": "ctrl+\\"
+		},
+		{
 			"command": "closePane",
 			"keys": "alt+w"
+		},
+		// Move pane
+		{
+			"command": {
+				"action": "moveFocus",
+				"direction": "up"
+			},
+			"keys": "alt+up"
+		},
+		{
+			"command": {
+				"action": "moveFocus",
+				"direction": "down"
+			},
+			"keys": "alt+down"
+		},
+		{
+			"command": {
+				"action": "moveFocus",
+				"direction": "left"
+			},
+			"keys": "alt+left"
+		},
+		{
+			"command": {
+				"action": "moveFocus",
+				"direction": "right"
+			},
+			"keys": "alt+right"
+		},
+		// Resize pane
+		{
+			"command": {
+				"action": "resizePane",
+				"direction": "up"
+			},
+			"keys": "ctrl+shift+up"
+		},
+		{
+			"command": {
+				"action": "resizePane",
+				"direction": "down"
+			},
+			"keys": "ctrl+shift+down"
 		},
 		{
 			"command": {
@@ -64,70 +111,26 @@
 		{
 			"command": {
 				"action": "resizePane",
-				"direction": "down"
-			},
-			"keys": "ctrl+shift+down"
-		},
-		{
-			"command": {
-				"action": "closeTab"
-			},
-			"keys": "ctrl+alt+q"
-		},
-		{
-			"command": {
-				"action": "closeOtherTabs"
-			},
-			"keys": "alt+shift+q"
-		},
-		{
-			"command": {
-				"action": "splitPane",
-				"split": "auto"
-			},
-			"keys": "alt+`"
-		},
-		{
-			"command": {
-				"action": "moveFocus",
-				"direction": "left"
-			},
-			"keys": "alt+right"
-		},
-		{
-			"command": {
-				"action": "moveFocus",
-				"direction": "right"
-			},
-			"keys": "alt+left"
-		},
-		{
-			"command": {
-				"action": "moveFocus",
-				"direction": "down"
-			},
-			"keys": "alt+j"
-		},
-		{
-			"command": {
-				"action": "prevTab",
-				"tabSwitcherMode": "disabled"
-			},
-			"keys": "alt+l"
-		},
-		{
-			"command": {
-				"action": "resizePane",
 				"direction": "right"
 			},
 			"keys": "ctrl+shift+right"
+		}
+	],
+	// Custom actions
+	"keybindings": [
+		{
+			"command": {
+				"action": "sendInput",
+				"input": "wt -w 0 split-pane --vertical -p \"Windows Powershell\" -d .\u000d;cls\u000d"
+			},
+			"keys": "ctrl+right"
 		},
 		{
 			"command": {
-				"action": "resizePane",
-				"direction": "up"
+				"action": "sendInput",
+				"input": "wt -w 0 split-pane --horizontal -p \"Windows Powershell\" -d .\u000d;cls\u000d"
 			},
-			"keys": "ctrl+shift+up"
+			"keys": "ctrl+down"
 		}
 	],
 	"alwaysOnTop": false,
