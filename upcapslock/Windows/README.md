@@ -17,3 +17,5 @@ Upcap.exe là phần mềm hỗ trợ mapping phím CapsLock với các phím kh
 6. Auto run khi khởi động.
    Tạo file bat chứa các options trên.
    Win + R -> shell:startup, copy file bat trên vào đây
+
+> Hiện tại có thể dùng tính năng Swap Key của PowerToys Windows

@@ -33,22 +33,8 @@ Function savesetting{
 }
 
 # quick open file
-Function ovimtutor{
-  vi "C:\tool-config\vim\README.md"
-}
-Function ovimmap{
-  vi "C:\tool-config\vim\settings\map.vim"
-}
 Function oalias{
-  vi "C:\tool-config\terminal\powershell\alias.ps1"
-}
-Function osnippet{
-  cd "C:\Users\Tuan\AppData\Local\nvim\snippets"
-  vi
-}
-Function oatomic{
-  cd "D:\typings\templates\atomic"
-  vi
+  code "C:\tool-config\terminal\powershell\alias.ps1"
 }
 
 # --------- Project Manager ---------
@@ -126,7 +112,6 @@ Function ya{
   } 
   Invoke-Expression $cmd
 }
-Function yc{ yarn create $args }
 Function yag{ 
   $cmd = "yarn add -g"
   for ( $i = 0; $i -lt $args.count; $i++ ) {
@@ -181,10 +166,10 @@ Function gpl{ git pull }
 Function gcl{ git clone $args }
 Function gra{ git remote add $args }
 Function grv{ git remote -v }
-Function grs{ git reset --soft $args }
-Function grh{ git reset --hard $args }
-Function grm{ git reset --mixed $args }
-Function grb{ git rebase $args }
+Function gh{
+  $branch = git config remote.origin.url;
+  start $branch;
+}
 
 # --------- Neovim ---------
 Function vi{ nvim $args }
@@ -224,3 +209,40 @@ Function cpa{
   Copy-Item -Path $args[0] -Destination $args[1] -Recurse
 }
 
+# --------- Temp ---------
+Function run-smarket {
+  cd "C:\code\PTUDHD\Smarket";
+  $Host.UI.RawUI.WindowTitle = "Smarket";
+
+  wt -w 0 -d C:\code\PTUDHD\Smarket\Views_NodeJS -p "Windows PowerShell" --title "View_NodeJS" powershell -noExit "yarn dev"; 
+  wt -w 0 -d C:\code\PTUDHD\Smarket\API_DOTNETCore\API_.NET -p "Windows PowerShell" --title "C# API" powershell -noExit "dotnet watch run"; 
+  wt -w 0 -d C:\code\PTUDHD\Smarket\API_JAVASpringBoot\API_JAVA -p "Windows PowerShell" --title "Java API" powershell -noExit "mvn spring-boot:run";
+  wt -w 0 focus-tab -t 0;
+
+  if( $args[0] -eq 'j' ){
+    code "C:\code\PTUDHD\Smarket\API_JAVASpringBoot\API_JAVA"
+  } elseif ( $args[0] -eq 'c' ){
+    code "C:\code\PTUDHD\Smarket\API_DOTNETCore\API_.NET";
+  } elseif ( $args[0] -eq 'jc' ){
+    code "C:\code\PTUDHD\Smarket\API_JAVASpringBoot\API_JAVA"
+    code "C:\code\PTUDHD\Smarket\API_DOTNETCore\API_.NET";
+  }
+  code "C:\code\PTUDHD\Smarket\Views_NodeJS";
+
+  Start-Sleep -Milliseconds 200;
+  start "http://localhost:3000";
+}
+
+Function run-covid-project {
+  cd "C:\code\ptud-web\covid-project";
+  $Host.UI.RawUI.WindowTitle = "Covid Project";
+  wt -w 0 split-pane -V -p "Windows PowerShell" -d "C:\code\ptud-web\covid-project-payment-system" powershell -noExit "yarn dev"; 
+
+  code "C:\code\ptud-web\covid-project"
+  if ( $args[0] -eq 'p'){
+    code "C:\code\ptud-web\covid-project-payment-system";
+  }
+
+  start "http://localhost:3000";
+  yarn dev;
+}
