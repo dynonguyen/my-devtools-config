@@ -212,6 +212,7 @@
 	"editor.bracketPairColorization.enabled": true,
 	"editor.colorDecorators": true,
 	"editor.cursorBlinking": "expand",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.cursorWidth": 2,
 	"editor.formatOnSave": true,
 	"editor.inlineSuggest.enabled": true,
@@ -296,7 +297,6 @@
 	"workbench.editor.enablePreview": false,
 	"workbench.editor.pinnedTabSizing": "compact",
 	"workbench.iconTheme": "material-icon-theme",
-	"workbench.colorTheme": "Dyno Nguyen",
 	"workbench.panel.defaultLocation": "right",
 	"workbench.startupEditor": "none",
 
@@ -428,7 +428,7 @@
 
 	// Others Native settings
 	"breadcrumbs.icons": false,
-	"extensions.autoUpdate": "onlyEnabledExtensions",
+	"extensions.autoUpdate": false,
 
 	// Dyno File Utils
 	"dynoFileUtils.confirmDelete": false,
@@ -490,8 +490,8 @@
 	// CSharp
 	"csharp.format.enable": true,
 	"omnisharp.enableImportCompletion": true,
-	"omnisharp.organizeImportsOnFormat": true,
 	"omnisharp.useEditorFormattingSettings": true,
+	"omnisharp.organizeImportsOnFormat": true,
 
 	"[csharp]": {
 		"editor.defaultFormatter": "ms-dotnettools.csharp",
@@ -502,5 +502,6 @@
 	"[java]": {
 		"editor.tabSize": 4,
 		"editor.defaultFormatter": "redhat.java"
-	}
+	},
+	"workbench.colorTheme": "Dyno Nguyen"
 }

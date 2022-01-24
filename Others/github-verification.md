@@ -55,4 +55,10 @@
   git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
 ```
 
+- B10: Để không cần nhập lại mật khẩu mỗi lần commit chạy lệnh sau (cần xác nhận 2 lần việc bỏ trống password)
+
+```
+  gpg --passwd { yourId or email }
+```
+
 > Bật chế độ `Vigilant Mode` trong GPG key github để tránh giả mạo commit, nó sẽ hiện lên `Unverified` nếu người khác commit với tên của mình.

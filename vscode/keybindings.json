@@ -235,5 +235,9 @@
 	{
 		"key": "ctrl+pagedown",
 		"command": "-workbench.action.nextEditor"
+	},
+	{
+		"key": "ctrl+k ctrl+c",
+		"command": "workbench.files.action.collapseExplorerFolders"
 	}
 ]

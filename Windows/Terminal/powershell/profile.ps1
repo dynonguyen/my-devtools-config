@@ -11,7 +11,7 @@ Set-PoshPrompt -Theme mt
 # Import-Module PSReadLine
 Set-PSReadLineOption -PredictionSource History
 
-Import-Module "C:\tool-config\terminal\powershell\remove-built-in-alias.ps1"
-Import-Module "C:\tool-config\terminal\powershell\alias.ps1"
+Import-Module "C:\tool-config\Windows\Terminal\powershell\remove-built-in-alias.ps1"
+Import-Module "C:\tool-config\Windows\Terminal\powershell\alias.ps1"
 
 # Import-Module z

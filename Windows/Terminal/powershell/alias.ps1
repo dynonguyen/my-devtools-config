@@ -4,57 +4,43 @@
 # --------- Common ---------
 # sync setting
 Function savesetting{
-  cp "C:\Users\Tuan\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" "C:\tool-config\terminal\powershell\setting.json"
+  cp "C:\Users\Tuan\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" "C:\tool-config\Windows\Terminal\powershell\setting.json"
 
-  cp "C:\Program Files\WindowsPowerShell\Modules\oh-my-posh\6.2.2\themes\mt.omp.json" "C:\tool-config\terminal\powershell\themes\mt.json"
+  cp "C:\Program Files\WindowsPowerShell\Modules\oh-my-posh\6.2.2\themes\mt.omp.json" "C:\tool-config\Windows\Terminal\powershell\themes\mt.json"
 
-  cp "C:\Users\Tuan\AppData\Local\nvim\init.vim" "C:\tool-config\vim"
+  cp "C:\Users\Tuan\AppData\Local\nvim\init.vim" "C:\tool-config\Windows\Vim"
   
-  cp "C:\Users\Tuan\AppData\Local\nvim\coc-settings.json" "C:\tool-config\vim"
+  cp "C:\Users\Tuan\AppData\Local\nvim\coc-settings.json" "C:\tool-config\Windows\Vim"
 
-  cp "C:\Users\Tuan\AppData\Roaming\Code\User\keybindings.json" "C:\tool-config\vscode"
+  cp "C:\Users\Tuan\AppData\Roaming\Code\User\keybindings.json" "C:\tool-config\Vscode"
 
-  cp "C:\Users\Tuan\AppData\Roaming\Code\User\settings.json" "C:\tool-config\vscode"
+  cp "C:\Users\Tuan\AppData\Roaming\Code\User\settings.json" "C:\tool-config\Vscode"
 
-  cp "C:\Users\Tuan\.vscode\extensions\dyno dark theme\themes\Dyno Nguyen-color-theme.json" "C:\tool-config\vscode\my-extensions\dyno dark theme\themes\Dyno Nguyen-color-theme.json"
+  cp "C:\Users\Tuan\.vscode\extensions\dyno dark theme\themes\Dyno Nguyen-color-theme.json" "C:\tool-config\Vscode\my-extensions\dyno dark theme\themes\Dyno Nguyen-color-theme.json"
 
 
-  cp "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"  "C:\tool-config\terminal\powershell\profile.ps1"
+  cp "C:\Users\Tuan\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"  "C:\tool-config\Windows\Terminal\powershell\profile.ps1"
 
-  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\settings\*" -Destination "C:\tool-config\vim\settings" -Recurse
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\settings\*" -Destination "C:\tool-config\Windows\Vim\settings" -Recurse
 
-  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\scripts\*" -Destination "C:\tool-config\vim\scripts" -Recurse
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\scripts\*" -Destination "C:\tool-config\Windows\Vim\scripts" -Recurse
   
-  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\snippets\*" -Destination "C:\tool-config\vim\snippets" -Recurse
+  Copy-Item -Path "C:\Users\Tuan\AppData\Local\nvim\snippets\*" -Destination "C:\tool-config\Windows\Vim\snippets" -Recurse
 
-  Copy-Item -Path "C:\Users\Tuan\AppData\Roaming\Code\User\snippets\*" -Destination "C:\tool-config\vscode\snippets" -Recurse -ErrorAction SilentlyContinue
-
-  Copy-Item -Path "D:\typings\*" -Destination "C:\tool-config\typings" -Recurse -ErrorAction SilentlyContinue
+  Copy-Item -Path "C:\Users\Tuan\AppData\Roaming\Code\User\snippets\*" -Destination "C:\tool-config\Vscode\snippets" -Recurse -ErrorAction SilentlyContinue
 }
 
 # quick open file
 Function oalias{
-  code "C:\tool-config\terminal\powershell\alias.ps1"
+  code "C:\tool-config\Windows\Terminal\powershell\alias.ps1"
+}
+Function open-vsc-ws {
+  code "C:\Users\Tuan\AppData\Roaming\Code\storage.json"
 }
 
 # --------- Project Manager ---------
 Function vimconf{ cd "C:\Users\Tuan\AppData\Local\nvim" }
 Function config{ cd "C:\tool-config" }
-
-# quick create template
-Function ct-static-web{
-  cpa "D:\typings\templates\static-web\*" "."
-}
-Function ct-atomic-css{
-  cpa "D:\typings\templates\atomic\css\*" "."
-}
-Function ct-atomic-scss{
-  cpa "D:\typings\templates\atomic\scss\*" "."
-}
-
-Function ct-express-basic-mvc{
-  cpa "D:\typings\templates\expressjs\basic-mvc\*" "."
-}
 
 # go back windows home
 Function home{ cd "C:\" }
@@ -99,21 +85,12 @@ Function nb{ npm run build }
 Function nd{ npm run dev }
 
 # --------- yarn ---------
-Function yi{ yarn install }
 Function ys{ yarn start }
 Function yt{ yarn test }
 Function yb{ yarn build }
 Function yd{ yarn dev }
-Function ydp{ yarn deploy }
 Function ya{ 
   $cmd = "yarn add"
-  for ( $i = 0; $i -lt $args.count; $i++ ) {
-    $cmd += ' ' + $args[$i]
-  } 
-  Invoke-Expression $cmd
-}
-Function yag{ 
-  $cmd = "yarn add -g"
   for ( $i = 0; $i -lt $args.count; $i++ ) {
     $cmd += ' ' + $args[$i]
   } 
@@ -133,6 +110,8 @@ Function yr{
   } 
   Invoke-Expression $cmd
 }
+Function yi{ yarn info $args }
+Function yiv{ yarn info $args version }
 
 # --------- Git, Github ---------
 Function gs{ git status }
@@ -154,6 +133,7 @@ Function gaex{
 }
 Function gcm{ git commit -m $args }
 Function gca{ git commit --amend }
+Function gcane{ git commit --amend --no-edit }
 Function gb{ git branch $args }
 Function gbd{ git branch -D $args }
 Function gch{ git checkout $args }
@@ -215,7 +195,7 @@ Function run-smarket {
   $Host.UI.RawUI.WindowTitle = "Smarket";
 
   wt -w 0 -d C:\code\PTUDHD\Smarket\Views_NodeJS -p "Windows PowerShell" --title "View_NodeJS" powershell -noExit "yarn dev"; 
-  wt -w 0 -d C:\code\PTUDHD\Smarket\API_DOTNETCore\API_.NET -p "Windows PowerShell" --title "C# API" powershell -noExit "dotnet watch run"; 
+  wt -w 0 -d C:\code\PTUDHD\Smarket\API_DOTNETCore\API_.NET -p "Windows PowerShell" --title "C# API" powershell -noExit "dotnet run watch"; 
   wt -w 0 -d C:\code\PTUDHD\Smarket\API_JAVASpringBoot\API_JAVA -p "Windows PowerShell" --title "Java API" powershell -noExit "mvn spring-boot:run";
   wt -w 0 focus-tab -t 0;
 
@@ -233,7 +213,7 @@ Function run-smarket {
   start "http://localhost:3000";
 }
 
-Function run-covid-project {
+<# Function run-covid-project {
   cd "C:\code\ptud-web\covid-project";
   $Host.UI.RawUI.WindowTitle = "Covid Project";
   wt -w 0 split-pane -V -p "Windows PowerShell" -d "C:\code\ptud-web\covid-project-payment-system" powershell -noExit "yarn dev"; 
@@ -243,6 +223,7 @@ Function run-covid-project {
     code "C:\code\ptud-web\covid-project-payment-system";
   }
 
-  start "http://localhost:3000";
+  start "https://localhost:3000";
   yarn dev;
 }
+ #>
