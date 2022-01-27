@@ -53,6 +53,7 @@
 
 ```
   git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
+  Hoặc "gpg" với linux
 ```
 
 - B10: Để không cần nhập lại mật khẩu mỗi lần commit chạy lệnh sau (cần xác nhận 2 lần việc bỏ trống password)
