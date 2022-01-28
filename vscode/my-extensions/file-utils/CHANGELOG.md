@@ -1,5 +1,10 @@
 # Dyno File Utils - Change Log
 
+# 1.5.0 (28-01-2022)
+
+- Bug Fixes:
+  - Error when use Linux, MacOS
+
 # 1.4.0 (26-11-2021)
 
 - New Features:

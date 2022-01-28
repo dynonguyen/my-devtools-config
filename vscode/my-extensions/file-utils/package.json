@@ -2,7 +2,7 @@
 	"name": "vscode-dynofileutils",
 	"displayName": "Dyno File Utils",
 	"description": "The best way to create, copy, move, rename and delete files and folders (multiple files) & create templates",
-	"version": "1.4.0",
+	"version": "1.5.0",
 	"author": {
 		"name": "Dyno Nguyen",
 		"email": "tuannguyentn2504@gmail.com",
@@ -40,7 +40,7 @@
 		"onCommand:dynoFileUtils.deleteFolder",
 		"onCommand:dynoFileUtils.deleteMutipleItems"
 	],
-	"main": "./extension.js",
+	"main": "extension.js",
 	"contributes": {
 		"commands": [
 			{

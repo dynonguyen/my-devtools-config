@@ -27,14 +27,14 @@ const DELETE_ANSWERS = { NO: 0, YES: 1, YES_DONT_SHOW: 2 };
 /* ============== Helper function =============== */
 function isContainSpecialChars(pathName, specialChars = SPECIAL_CHARS) {
 	for (const c of specialChars) {
-		if (pathName.indexOf(c) !== -1) return true;
+		if (pathName?.indexOf(c) !== -1) return true;
 	}
 	return false;
 }
 
 function isExistExcludeFolder(folderExclude = [], folderName) {
 	for (let ef of folderExclude) {
-		if (folderName.indexOf(ef) !== -1) return true;
+		if (folderName?.indexOf(ef) !== -1) return true;
 	}
 
 	return false;
@@ -122,12 +122,12 @@ function splitFilePath(input = '', separator = DEFAULT_SEPARATOR) {
 		folders = [];
 
 	const nameList = input
-		.trim()
+		?.trim()
 		.split(separator)
-		.map((item) => item.trim());
+		.map((item) => item?.trim());
 
 	nameList.forEach((path) => {
-		if (path.trim().length !== 0) {
+		if (path?.trim().length !== 0) {
 			const endPath = path[path.length - 1];
 			if (endPath === '\\' || endPath === '/') {
 				folders.push(path);
@@ -173,7 +173,7 @@ function getConfiguration() {
 }
 
 function getRootFolder() {
-	return workspace.workspaceFolders[0].uri.path.slice(1) + '/';
+	return workspace.workspaceFolders[0].uri.fsPath + '/';
 }
 
 function getActiveTextEditorPath() {
@@ -208,20 +208,20 @@ function splitBraceBrackets(path) {
 	const pathSplited = path.split(/\/|\\/);
 	const lastItemIndex = pathSplited.length - 1;
 	const folder = pathSplited.slice(0, lastItemIndex).join('/') + '/';
-	const firstCloseSquareIndex = pathSplited[lastItemIndex].indexOf('}');
+	const firstCloseSquareIndex = pathSplited[lastItemIndex]?.indexOf('}');
 
 	const { expandSeparator } = getConfiguration();
 
 	const fileNames = pathSplited[lastItemIndex]
 		.substr(0, firstCloseSquareIndex + 1)
 		.replace(/\{|\}/g, '')
-		.trim()
+		?.trim()
 		.split(expandSeparator);
 
 	const extNames = pathSplited[lastItemIndex]
 		.substr(firstCloseSquareIndex + 1)
 		.replace(/\{|\}/g, '')
-		.trim()
+		?.trim()
 		.split(expandSeparator);
 
 	return { folder, fileNames, extNames };
@@ -447,8 +447,10 @@ async function renameFile() {
 			placeHolder: PLACEHOLDERS.RENAME_FILE(oldName),
 		});
 
-		const newFileName = newName.trim();
-		const specialChars = [...SPECIAL_CHARS, '/', '\\'];
+		if (!newName) return;
+
+		const newFileName = newName?.trim();
+		const specialChars = [...SPECIAL_CHARS];
 		const isInvalidName = isContainSpecialChars(newFileName, specialChars);
 
 		if (isInvalidName) {
