@@ -29,5 +29,11 @@ cd ~ && sudo rm -rfv visual-studio-code-bin/
 sudo pacman -S ibus --noconfirm
 yay -S ibus-bamboo --noconfirm
 
+# Gwenview for view photo
+sudo pacman -S gwenview --noconfirm
+
+# Screenshot with spectacle
+sudo pacman -S spectacle
+
 # Update all
 sudo yay -Suy
