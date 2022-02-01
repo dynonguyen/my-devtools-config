@@ -152,7 +152,7 @@
 > Xoá các dependency không cần thiết **(Warning: kiểm tra trước khi xoá)**
 
 ```
-   sudo pacman -Rnsc $(pacman -Qdtq)
+  sudo pacman -Rnsc $(pacman -Qdtq)
 ```
 
 ---
