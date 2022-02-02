@@ -102,6 +102,35 @@
   X-KDE-AutostartScript=true
 ```
 
+## Screenshot with spectacle
+
+```
+  sudo pacman -S spectacle
+```
+
+## Công cụ nén và giải nén bằng command line
+
+```
+  sudo pacman -S p7zip
+```
+
+## Cài bộ Apache OpenOffice trên linux
+
+```
+  yay -S openoffice-bin
+```
+
+## NodeJs, npm, nvm, yarn
+
+```
+  source ~/.zshrc
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh
+  nvm install --lts
+  sudo npm install --global yarn
+```
+
+---
+
 ## Settings
 
 ### System key shortcut
@@ -113,3 +142,30 @@
 ### Input Device
 
 > Chuyển Delay keyboard về 300ms
+
+### ULauncher Extensions
+
+- [Vscode Workspace](https://github.com/plibither8/ulauncher-vscode-recent) `@`
+
+  - Install Python >= 3
+
+  ```
+    sudo pacman -S python python-pip
+  ```
+
+  - Install fuzzywuzzy
+
+  ```
+    pip install fuzzywuzzy
+  ```
+
+  - Open ULauncher > Extensions > Add > `https://github.com/plibither8/ulauncher-vscode-recent`
+
+- [Google translator](https://github.com/manahter/ulauncher-translate) `tr` hoặc `tr en:vi <query>`
+
+- [Fuzzy Finder](https://github.com/hillaryychan/ulauncher-fzf) `?`
+- Install Required
+
+```
+  sudo pacman -S fd fzf
+```

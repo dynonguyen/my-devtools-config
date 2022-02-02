@@ -33,7 +33,29 @@ yay -S ibus-bamboo --noconfirm
 sudo pacman -S gwenview --noconfirm
 
 # Screenshot with spectacle
-sudo pacman -S spectacle
+sudo pacman -S spectacle --noconfirm
+
+# Office on Linux
+sudo pacman -S libreoffice-still --noconfirm
+
+# Emoji
+sudo pacman -S noto-fonts-emoji --noconfirm
+
+# Apache OpenOffice
+yay -S openoffice-bin --noconfirm
+
+# P7Zip
+sudo pacman -S p7zip --noconfirm
+
+# zsh & oh-my-zsh
+sudo pacman -S zsh --noconfirm
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Nodejs, npm, yarn, nvm
+source ~/.zshrc
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh
+nvm install --lts
+sudo npm install --global yarn
 
 # Update all
 sudo yay -Suy
