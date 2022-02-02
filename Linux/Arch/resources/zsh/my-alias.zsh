@@ -57,6 +57,7 @@ alias gh='xdg-open $(git config remote.origin.url)'
 # utils
 function save_setting(){
   cp $ZSH_CUSTOM/my-alias.zsh $HOME/dev/my-devtools-config/Linux/Arch/resources/zsh/my-alias.zsh
+  cp $HOME/.config/Code/User/settings.json $HOME/dev/my-devtools-config/Vscode/settings.json
 
   echo 'Save settings successfully'
 }

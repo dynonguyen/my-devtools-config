@@ -209,6 +209,7 @@
 
 	"editor.acceptSuggestionOnCommitCharacter": false,
 	"editor.accessibilitySupport": "off",
+	"editor.fastScrollSensitivity": 10,
 	"editor.bracketPairColorization.enabled": true,
 	"editor.colorDecorators": true,
 	"editor.cursorBlinking": "expand",
@@ -289,8 +290,6 @@
 			]
 		}
 	},
-
-	"window.menuBarVisibility": "toggle",
 	"window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}",
 
 	"workbench.activityBar.visible": true,
@@ -299,6 +298,7 @@
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.panel.defaultLocation": "right",
 	"workbench.startupEditor": "none",
+	"workbench.colorTheme": "Dyno Nguyen",
 
 	// Languages
 	"javascript.updateImportsOnFileMove.enabled": "always",
@@ -417,18 +417,24 @@
 	"explorer.confirmDelete": false,
 
 	// Terminal
-	"terminal.integrated.cwd": "${fileDirname}",
-	"terminal.integrated.defaultProfile.windows": "PowerShell",
-	"terminal.external.windowsExec": "C:\\Users\\Tuan\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe",
-	"terminal.integrated.fontFamily": "CaskaydiaCove NF",
+	/*
+		"terminal.integrated.cwd": "${fileDirname}",
+		"terminal.integrated.defaultProfile.windows": "PowerShell",
+		"terminal.external.windowsExec": "C:\\Users\\Tuan\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe", 
+	*/
+	"terminal.integrated.fontFamily": "MesloLGS NF",
 	"terminal.integrated.fontSize": 15,
 	"terminal.integrated.cursorStyle": "line",
 	"terminal.integrated.letterSpacing": 0.25,
 	"terminal.integrated.tabs.enabled": false,
+	"terminal.integrated.defaultProfile.linux": "zsh",
 
 	// Others Native settings
 	"breadcrumbs.icons": false,
 	"extensions.autoUpdate": false,
+	"explorer.confirmDragAndDrop": false,
+	"keyboard.dispatch": "keyCode",
+	"window.menuBarVisibility": "toggle",
 
 	// Dyno File Utils
 	"dynoFileUtils.confirmDelete": false,
@@ -503,5 +509,5 @@
 		"editor.tabSize": 4,
 		"editor.defaultFormatter": "redhat.java"
 	},
-	"workbench.colorTheme": "Dyno Nguyen"
+	"sync.gist": "6baab12a175727e3b24358d2d077d4c4"
 }
