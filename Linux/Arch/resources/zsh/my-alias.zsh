@@ -9,6 +9,7 @@ alias lsa='ls -a'
 alias z='zshz 2>&1'
 alias vi='nvim $@'
 alias vsc='code .'
+alias ii='dolphin .'
 
 # npm
 alias ni='npm install $@'
@@ -52,12 +53,18 @@ alias gpf='git push --force'
 alias gpuo='git push -u origin $@'
 alias grv='git remote -v'
 alias gpl='git pull'
-alias gh='xdg-open $(git config remote.origin.url)'
+function gh(){
+	nohup xdg-open $(git config remote.origin.url) &
+	rm nohup.out
+}
 
 # utils
 function save_setting(){
   cp $ZSH_CUSTOM/my-alias.zsh $HOME/dev/my-devtools-config/Linux/Arch/resources/zsh/my-alias.zsh
   cp $HOME/.config/Code/User/settings.json $HOME/dev/my-devtools-config/Vscode/settings.json
-
+  cp $HOME/.zshrc $HOME/dev/my-devtools-config/Linux/Arch/resources/zsh/.zshrc
   echo 'Save settings successfully'
 }
+
+# quick open
+alias oalias='nvim $ZSH_CUSTOM/my-alias.zsh'
