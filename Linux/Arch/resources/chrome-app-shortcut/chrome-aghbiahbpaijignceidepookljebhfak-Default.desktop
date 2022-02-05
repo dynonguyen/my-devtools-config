@@ -1,0 +1,22 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/opt/google/chrome/google-chrome --profile-directory=Default --app-id=aghbiahbpaijignceidepookljebhfak
+GenericName[en_US]=
+GenericName=
+Icon=Youtube-youtube.com
+MimeType=
+Name[en_US]=Google Drive
+Name=Google Drive
+Path=
+StartupNotify=true
+StartupWMClass=crx_aghbiahbpaijignceidepookljebhfak
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-RunOnDiscreteGpu=false
+X-KDE-SubstituteUID=false
+X-KDE-Username=
