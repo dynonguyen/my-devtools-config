@@ -6,6 +6,10 @@
 
 ```
   sudo chown your_username directory
+  hoặc (All sub-folders)
+  sudo chown -R your_username directory
+  hoặc
+  sudo mount -o remount,rw directory
 ```
 
 ## Git
@@ -127,6 +131,18 @@
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh
   nvm install --lts
   sudo npm install --global yarn
+```
+
+## Color picker with Picket (X11)
+
+```
+  yay -S picket
+```
+
+## Mongodb
+
+```
+  yay -S mongodb-bin mongodb-tools-bin robo3t-bin mongodb-compass
 ```
 
 ---

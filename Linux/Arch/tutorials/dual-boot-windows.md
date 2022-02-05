@@ -106,7 +106,7 @@ reflector -c Vietnam -c Singapore -c Japan -c India -a 12 --sort rate --save /et
 9. Tải các base package
 
 ```
-  pacstrap /mnt base base-devel linux linux-firmware linux-headers vim
+  pacstrap /mnt base base-devel linux linux-firmware linux-headers neovim
 
 ```
 

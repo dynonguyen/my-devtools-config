@@ -1,5 +1,5 @@
 # Update local repository
-sudo pacman -Sy
+sudo pacman -Syy
 
 # Git
 sudo pacman -S git --noconfirm
@@ -56,6 +56,19 @@ source ~/.zshrc
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh
 nvm install --lts
 sudo npm install --global yarn
+# Fix not found node after closing the terminal
+# nvm alias default node_version
+# nvm use node_version
+
+# Color picker
+yay -S picket --noconfirm
+
+# Mongodb
+yay -S mongodb-bin mongodb-tools-bin robo3t-bin mongodb-compass
+
+# Utils
+sudo pacman -S xclip --noconfirm
 
 # Update all
-sudo yay -Suy
+yay -Su
+yay -Sc
