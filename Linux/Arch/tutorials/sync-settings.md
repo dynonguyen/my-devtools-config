@@ -159,6 +159,18 @@
 
 > Chuyển Delay keyboard về 300ms
 
+### Connect Ethernet
+
+```
+  => Install dhcp, netctl
+  sudo pacman -S netctl dhcpcd
+  => Get Interface:
+  ip address
+  => Check dhcp enable
+  systemctl list-units | grep dhcp
+  systemctl start dhcpdc@interface
+```
+
 ### ULauncher Extensions
 
 - [Vscode Workspace](https://github.com/plibither8/ulauncher-vscode-recent) `@`

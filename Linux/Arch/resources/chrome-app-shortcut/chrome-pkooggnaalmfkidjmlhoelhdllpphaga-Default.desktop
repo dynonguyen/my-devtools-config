@@ -1,0 +1,22 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Outlook
+Exec=/opt/google/chrome/google-chrome --profile-directory=Default --app-id=pkooggnaalmfkidjmlhoelhdllpphaga
+Icon=chrome-pkooggnaalmfkidjmlhoelhdllpphaga-Default
+StartupWMClass=crx_pkooggnaalmfkidjmlhoelhdllpphaga
+Actions=New-event;New-message;Open-calendar
+
+[Desktop Action New-event]
+Name=New event
+Exec=/opt/google/chrome/google-chrome --profile-directory=Default --app-id=pkooggnaalmfkidjmlhoelhdllpphaga --app-launch-url-for-shortcuts-menu-item=https://outlook.office365.com/calendar/deeplink/compose
+
+[Desktop Action New-message]
+Name=New message
+Exec=/opt/google/chrome/google-chrome --profile-directory=Default --app-id=pkooggnaalmfkidjmlhoelhdllpphaga --app-launch-url-for-shortcuts-menu-item=https://outlook.office365.com/mail/deeplink/compose
+
+[Desktop Action Open-calendar]
+Name=Open calendar
+Exec=/opt/google/chrome/google-chrome --profile-directory=Default --app-id=pkooggnaalmfkidjmlhoelhdllpphaga --app-launch-url-for-shortcuts-menu-item=https://outlook.office365.com/calendar
