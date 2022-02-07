@@ -66,6 +66,9 @@ yay -S picket --noconfirm
 # Mongodb
 yay -S mongodb-bin mongodb-tools-bin robo3t-bin mongodb-compass
 
+# Video recorder & editor
+sudo pacman -S kdenlive
+
 # Utils
 sudo pacman -S xclip --noconfirm
 
