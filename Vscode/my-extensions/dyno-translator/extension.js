@@ -7,7 +7,6 @@ const DEFAULT_LANGUAGE_FROM = 'vi';
 const BASE_URL = 'https://microsoft-translator-text.p.rapidapi.com/translate';
 const RAPID_HOST = 'microsoft-translator-text.p.rapidapi.com';
 const API_KEY = workspace.getConfiguration('dynoTranslator').apiKeys;
-let timeout = null;
 let isTranslating = false;
 
 // helper functions
@@ -52,11 +51,17 @@ function getConfiguration() {
 	return { apiKeys, languageFrom, languageTo };
 }
 
-function debounce(callback, time = 250) {
-	timeout && clearTimeout(timeout);
-	timeout = setTimeout(() => {
-		callback();
-	}, time);
+// input: str = "vi:en Xin chào"
+// output: { languages: "vi:en", text: "Xin chào" }
+function splitLanguage(str = '') {
+	const strSplit = str.match(/[a-zA-Z]+:[a-zA-Z]+/gi);
+	if (strSplit && strSplit.length) {
+		const languages = strSplit[0].trim().toLowerCase();
+		const text = str.slice(languages.length + 1).trim();
+		return { languages, text };
+	}
+
+	return { languages: null, text: str };
 }
 
 // core functions
@@ -64,21 +69,27 @@ async function translatorBox() {
 	const { languageFrom, languageTo } = getConfiguration();
 
 	const inputBox = window.createInputBox();
-	inputBox.placeholder = `Enter a word or a sentence ${languageFrom}->${languageTo}`;
+	inputBox.placeholder = `Enter a word or a sentence. Default: ${languageFrom}->${languageTo}`;
 	inputBox.show();
 
 	inputBox.onDidAccept(async () => {
 		if (!isTranslating) {
-			const text = inputBox.value;
-			if (text && text.trim().length) {
+			const { value } = inputBox;
+			if (value && value.trim().length) {
 				isTranslating = true;
 				inputBox.prompt = 'Translating ...';
+
+				const { languages, text } = splitLanguage(value);
+				let langFrom = languageFrom,
+					langTo = languageTo;
+				if (languages) {
+					const langSplit = languages.split(':');
+					langFrom = langSplit[0];
+					langTo = langSplit[1];
+				}
+
 				try {
-					const translatedText = await translator(
-						languageFrom,
-						languageTo,
-						text,
-					);
+					const translatedText = await translator(langFrom, langTo, text);
 
 					window.showInformationMessage(translatedText);
 				} catch (error) {

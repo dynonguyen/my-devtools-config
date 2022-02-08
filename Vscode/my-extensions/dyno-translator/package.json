@@ -428,7 +428,7 @@
 				},
 				"dynoTranslator.apiKeys": {
 					"type": "string",
-					"description": "Your Microsoft translator API Key"
+					"description": "Your Microsoft translator API Key. Reload required"
 				}
 			}
 		},
