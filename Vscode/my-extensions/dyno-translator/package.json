@@ -1,7 +1,7 @@
 {
 	"name": "dyno-translator",
 	"displayName": "Dyno Translator",
-	"description": "Visual Studio Code Translation Plugin For Quick Translation",
+	"description": "VSCode Translation Extension For Quick Translation",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.64.0"
@@ -23,12 +23,16 @@
 		"translate",
 		"translator",
 		"translation",
-		"convert language"
+		"convert language",
+		"vietnamese to english",
+		"english to vietnamese"
 	],
 	"activationEvents": [
 		"onCommand:dyno-translator.translator-box",
 		"onCommand:dyno-translator.translate",
-		"onCommand:dyno-translator.translate-replace"
+		"onCommand:dyno-translator.translate-replace",
+		"onCommand:dyno-translator.translate-reverse",
+		"onCommand:dyno-translator.translate-reverse-replace"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -44,6 +48,14 @@
 			{
 				"command": "dyno-translator.translate-replace",
 				"title": "Translate & Replace"
+			},
+			{
+				"command": "dyno-translator.translate-reverse",
+				"title": "Reverse Language & Translate"
+			},
+			{
+				"command": "dyno-translator.translate-reverse-replace",
+				"title": "Reverse Language, Translate & Replace"
 			}
 		],
 		"configuration": {

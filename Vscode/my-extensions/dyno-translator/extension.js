@@ -107,7 +107,10 @@ async function translatorBox() {
 	});
 }
 
-async function translateWithSelection(type = TRANSLATION_TYPES.SHOW_MSG) {
+async function translateWithSelection(
+	type = TRANSLATION_TYPES.SHOW_MSG,
+	isReverse = false,
+) {
 	if (isTranslating) return;
 
 	const editor = window.activeTextEditor;
@@ -116,7 +119,9 @@ async function translateWithSelection(type = TRANSLATION_TYPES.SHOW_MSG) {
 
 	try {
 		if (text.length) {
-			const { languageFrom, languageTo } = getConfiguration();
+			let { languageFrom, languageTo } = getConfiguration();
+			if (isReverse) [languageFrom, languageTo] = [languageTo, languageFrom];
+
 			isTranslating = true;
 			const translatedText = await translator(languageFrom, languageTo, text);
 
@@ -158,9 +163,21 @@ function activate(context) {
 		() => translateWithSelection(TRANSLATION_TYPES.REPLACE),
 	);
 
+	let translateReverseCmd = vscode.commands.registerCommand(
+		'dyno-translator.translate-reverse',
+		() => translateWithSelection(TRANSLATION_TYPES.SHOW_MSG, true),
+	);
+
+	let translateReverseAndReplaceCmd = vscode.commands.registerCommand(
+		'dyno-translator.translate-reverse-replace',
+		() => translateWithSelection(TRANSLATION_TYPES.REPLACE, true),
+	);
+
 	context.subscriptions.push(translatorBoxCmd);
 	context.subscriptions.push(translateCmd);
 	context.subscriptions.push(translateAndReplaceCmd);
+	context.subscriptions.push(translateReverseCmd);
+	context.subscriptions.push(translateReverseAndReplaceCmd);
 }
 
 function deactivate() {}
