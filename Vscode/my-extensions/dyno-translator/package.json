@@ -27,7 +27,8 @@
 	],
 	"activationEvents": [
 		"onCommand:dyno-translator.translator-box",
-		"onCommand:dyno-translator.translate-selection"
+		"onCommand:dyno-translator.translate",
+		"onCommand:dyno-translator.translate-replace"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -37,8 +38,12 @@
 				"title": "Translator Box"
 			},
 			{
-				"command": "dyno-translator.translate-selection",
-				"title": "Translate With Selection"
+				"command": "dyno-translator.translate",
+				"title": "Translate"
+			},
+			{
+				"command": "dyno-translator.translate-replace",
+				"title": "Translate & Replace"
 			}
 		],
 		"configuration": {
@@ -431,17 +436,7 @@
 					"description": "Your Microsoft translator API Key. Reload required"
 				}
 			}
-		},
-		"keybindings": [
-			{
-				"key": "alt+shift+t",
-				"command": "dyno-translator.translator-box"
-			},
-			{
-				"key": "alt+t",
-				"command": "dyno-translator.translate-selection"
-			}
-		]
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",

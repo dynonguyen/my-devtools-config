@@ -7,6 +7,10 @@ const DEFAULT_LANGUAGE_FROM = 'vi';
 const BASE_URL = 'https://microsoft-translator-text.p.rapidapi.com/translate';
 const RAPID_HOST = 'microsoft-translator-text.p.rapidapi.com';
 const API_KEY = workspace.getConfiguration('dynoTranslator').apiKeys;
+const TRANSLATION_TYPES = {
+	SHOW_MSG: 0,
+	REPLACE: 1,
+};
 let isTranslating = false;
 
 // helper functions
@@ -103,18 +107,33 @@ async function translatorBox() {
 	});
 }
 
-async function translateWithSelection() {
+async function translateWithSelection(type = TRANSLATION_TYPES.SHOW_MSG) {
 	if (isTranslating) return;
 
 	const editor = window.activeTextEditor;
 	const { selection } = editor;
 	const text = editor.document.getText(selection).trim();
+
 	try {
 		if (text.length) {
 			const { languageFrom, languageTo } = getConfiguration();
 			isTranslating = true;
 			const translatedText = await translator(languageFrom, languageTo, text);
-			window.showInformationMessage(translatedText);
+
+			switch (type) {
+				case TRANSLATION_TYPES.SHOW_MSG:
+					window.showInformationMessage(translatedText);
+					break;
+				case TRANSLATION_TYPES.REPLACE:
+					editor.edit((builder) => {
+						builder.replace(selection, translatedText);
+					});
+					break;
+				default:
+					window.showInformationMessage(translatedText);
+					break;
+			}
+
 			isTranslating = false;
 		}
 	} catch (error) {
@@ -129,13 +148,19 @@ function activate(context) {
 		translatorBox,
 	);
 
-	let translateWithSelectionCmd = vscode.commands.registerCommand(
-		'dyno-translator.translate-selection',
-		translateWithSelection,
+	let translateCmd = vscode.commands.registerCommand(
+		'dyno-translator.translate',
+		() => translateWithSelection(TRANSLATION_TYPES.SHOW_MSG),
+	);
+
+	let translateAndReplaceCmd = vscode.commands.registerCommand(
+		'dyno-translator.translate-replace',
+		() => translateWithSelection(TRANSLATION_TYPES.REPLACE),
 	);
 
 	context.subscriptions.push(translatorBoxCmd);
-	context.subscriptions.push(translateWithSelectionCmd);
+	context.subscriptions.push(translateCmd);
+	context.subscriptions.push(translateAndReplaceCmd);
 }
 
 function deactivate() {}
