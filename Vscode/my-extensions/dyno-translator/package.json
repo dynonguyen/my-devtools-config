@@ -2,7 +2,7 @@
 	"name": "dyno-translator",
 	"displayName": "Dyno Translator",
 	"description": "VSCode Translation Extension For Quick Translation",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.64.0"
 	},
@@ -12,6 +12,7 @@
 		"email": "tuannguyentn2504@gmail.com",
 		"url": "https://dynonguyen.com"
 	},
+	"publisher": "dyno-nguyen",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/TuanNguyen2504/coding-tool-config/tree/windows/vscode/my-extensions/dyno-translator"

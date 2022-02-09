@@ -1,65 +1,40 @@
-# dyno-translator README
+![Logo](https://raw.githubusercontent.com/TuanNguyen2504/my-devtools-config/master/Vscode/my-extensions/dyno-translator/icon.png)
 
-This is the README for your extension "dyno-translator". After writing up a brief description, we recommend including the following sections.
+# Dyno Translator - VSCode Extension
+
+> VSCode Translation Extension For Quick Translation
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Translate with translator box
+- Translate with text selection
+- Translate & replace
+- Convert language & translate
+- Convert language, translate & replace
 
-For example if there is an image subfolder under your extension project workspace:
+## Configurations
 
-\!\[feature X\]\(images/feature-x.png\)
+- `dyno-translator.apiKeys`
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+  > Microsoft Translator Text API | [Live demo API](https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/microsoft-translator-text) | [Pricing & Subscribe](https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/microsoft-translator-text/pricing)
 
-## Requirements
+- `dynoTranslator.languageTo`
+  > Your native language.
+- `dynoTranslator.languageFrom`
+  > Other language
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Usage
 
-## Extension Settings
+- Translate with Translator Box
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+<div align="center">
 
-For example:
+![Translator Box](https://res.cloudinary.com/tuan-cloudinary/image/upload/v1644389732/others/screenshot-github/dyno%20translator/translator-box-1.gif)
 
-This extension contributes the following settings:
+![Optional Language](https://res.cloudinary.com/tuan-cloudinary/image/upload/v1644389732/others/screenshot-github/dyno%20translator/translator-box-2.gif)
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+![Translate with selection](https://res.cloudinary.com/tuan-cloudinary/image/upload/v1644399424/others/screenshot-github/dyno%20translator/translate-1.gif)
 
-## Known Issues
+![Translate with selection](https://res.cloudinary.com/tuan-cloudinary/image/upload/v1644400017/others/screenshot-github/dyno%20translator/translate-2.gif)
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+</div>
