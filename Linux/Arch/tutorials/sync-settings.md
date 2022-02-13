@@ -145,6 +145,25 @@
   yay -S mongodb-bin mongodb-tools-bin robo3t-bin mongodb-compass
 ```
 
+## SQL server
+
+```
+  yay -S mssql-server mssql-tools msodbcsql --noconfirm
+```
+
+> Setup SQL Server
+
+```
+  sudo /opt/mssql/bin/mssql-conf setup
+```
+
+> Start service
+
+```
+  sudo systemctl enable mssql-server
+  sudo systemctl start mssql-server
+```
+
 ---
 
 ## Settings

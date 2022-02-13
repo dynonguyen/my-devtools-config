@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Search Console
+Exec=/opt/google/chrome/google-chrome --profile-directory=Default --app-id=gogeloecmlhfmifbfchpldmjclnfoiho
+Icon=chrome-gogeloecmlhfmifbfchpldmjclnfoiho-Default
+StartupWMClass=crx_gogeloecmlhfmifbfchpldmjclnfoiho

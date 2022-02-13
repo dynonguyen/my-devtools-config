@@ -64,14 +64,23 @@ sudo npm install --global yarn
 yay -S picket --noconfirm
 
 # Mongodb
-yay -S mongodb-bin mongodb-tools-bin robo3t-bin mongodb-compass
+yay -S mongodb-bin mongodb-tools-bin robo3t-bin mongodb-compass --noconfirm
 
 # Video recorder & editor
-sudo pacman -S kdenlive
+sudo pacman -S kdenlive --noconfirm
+
+# PDF Reader
+sudo pacman -S okular --noconfirm
+
+# Photo Editor
+sudo pacman -S krita --noconfirm
+
+# SQL server
+yay -S mssql-server mssql-tools msodbcsql --noconfirm
 
 # Utils
 sudo pacman -S xclip --noconfirm
 
 # Update all
-yay -Su
-yay -Sc
+yay -Su --noconfirm
+yay -Sc --noconfirm
