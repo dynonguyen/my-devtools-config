@@ -44,8 +44,8 @@ sudo pacman -S noto-fonts-emoji --noconfirm
 # Apache OpenOffice
 yay -S openoffice-bin --noconfirm
 
-# P7Zip
-sudo pacman -S p7zip --noconfirm
+# Peazip
+yay -S peazip-gtk2-bin --noconfirm
 
 # zsh & oh-my-zsh
 sudo pacman -S zsh --noconfirm
@@ -77,6 +77,9 @@ sudo pacman -S krita --noconfirm
 
 # SQL server
 yay -S mssql-server mssql-tools msodbcsql --noconfirm
+
+# Teamviewer
+yay -S teamviewer --noconfirm
 
 # Utils
 sudo pacman -S xclip --noconfirm

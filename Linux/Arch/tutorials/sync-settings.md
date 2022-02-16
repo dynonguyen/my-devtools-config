@@ -164,6 +164,20 @@
   sudo systemctl start mssql-server
 ```
 
+## Teamviewer
+
+```
+  yay -S teamviewer
+```
+
+```
+  sudo systemctl enable teamviewered.service
+```
+
+> Fix lỗi: Not ready
+
+TeamViewer > Extra > Options > Start teamviewer with system
+
 ---
 
 ## Settings
