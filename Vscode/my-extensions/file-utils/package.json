@@ -1,0 +1,241 @@
+{
+	"name": "vscode-dynofileutils",
+	"displayName": "Dyno File Utils",
+	"description": "The best way to create, copy, move, rename and delete files and folders (multiple files) & create templates",
+	"version": "1.5.0",
+	"author": {
+		"name": "Dyno Nguyen",
+		"email": "tuannguyentn2504@gmail.com",
+		"url": "https://dynonguyen.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TuanNguyen2504/coding-tool-config/tree/windows/vscode/my-extensions/file-utils"
+	},
+	"keywords": [
+		"utils",
+		"files",
+		"create folder",
+		"move",
+		"duplicate",
+		"rename"
+	],
+	"publisher": "dyno-nguyen",
+	"engines": {
+		"vscode": "^1.62.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onStartupFinished",
+		"onCommand:dynoFileUtils.newItems",
+		"onCommand:dynoFileUtils.newItemsAtRoot",
+		"onCommand:dynoFileUtils.newItemsAtCurrentPath",
+		"onCommand:dynoFileUtils.renameFile",
+		"onCommand:dynoFileUtils.deleteFile",
+		"onCommand:dynoFileUtils.duplicateFile",
+		"onCommand:dynoFileUtils.moveFile",
+		"onCommand:dynoFileUtils.useTemplate",
+		"onCommand:dynoFileUtils.deleteFolder",
+		"onCommand:dynoFileUtils.deleteMutipleItems"
+	],
+	"main": "extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "dynoFileUtils.newItems",
+				"title": "New Items",
+				"category": "File Utils"
+			},
+			{
+				"command": "dynoFileUtils.newItemsAtRoot",
+				"title": "New Items At Root",
+				"category": "File Utils"
+			},
+			{
+				"command": "dynoFileUtils.newItemsAtCurrentPath",
+				"title": "New Items At Current Path",
+				"category": "File Utils"
+			},
+			{
+				"command": "dynoFileUtils.renameFile",
+				"title": "Rename File",
+				"category": "File Utils"
+			},
+			{
+				"command": "dynoFileUtils.deleteFile",
+				"title": "Delete File",
+				"category": "File Utils"
+			},
+			{
+				"command": "dynoFileUtils.duplicateFile",
+				"title": "Duplicate File",
+				"category": "File Utils"
+			},
+			{
+				"command": "dynoFileUtils.moveFile",
+				"title": "Move File",
+				"category": "File Utils"
+			},
+			{
+				"command": "dynoFileUtils.useTemplate",
+				"title": "Use Template",
+				"category": "File Utils"
+			},
+			{
+				"command": "dynoFileUtils.deleteFolder",
+				"title": "Delete Folder",
+				"category": "File Utils"
+			},
+			{
+				"command": "dynoFileUtils.deleteMutipleItems",
+				"title": "Delete Mutiple Items",
+				"category": "File Utils"
+			}
+		],
+		"configuration": {
+			"title": "Dyno File Utils",
+			"properties": {
+				"dynoFileUtils.folderExclude": {
+					"type": "array",
+					"default": [
+						"node_modules",
+						".git",
+						"build",
+						"dist"
+					],
+					"description": "Skip the folders you don't want to search"
+				},
+				"dynoFileUtils.separator": {
+					"type": "string",
+					"default": ",",
+					"enum": [
+						" ",
+						",",
+						"|",
+						"&",
+						"#",
+						"@",
+						"^",
+						"*"
+					],
+					"description": "The separator when you create multiple files/folders"
+				},
+				"dynoFileUtils.expandSeparator": {
+					"type": "string",
+					"default": "|",
+					"enum": [
+						",",
+						"|",
+						"&",
+						"#",
+						"@",
+						"^",
+						"*"
+					],
+					"description": "The separator when you create multiple files/folders with Brace Expansion"
+				},
+				"dynoFileUtils.openFile": {
+					"type": "boolean",
+					"default": true,
+					"description": "Should be open file when done"
+				},
+				"dynoFileUtils.confirmDelete": {
+					"type": "boolean",
+					"default": true,
+					"description": "Controls whether file utils should ask for confirmation when deleting a file."
+				},
+				"dynoFileUtils.templates": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"label": {
+								"type": "string",
+								"description": "Name of template"
+							},
+							"desc": {
+								"type": "string",
+								"description": "Description of template"
+							},
+							"isPattern": {
+								"type": "boolean",
+								"description": "If true then create template by pattern, otherwise copy template by folder path",
+								"default": true
+							},
+							"pattern": {
+								"type": "string",
+								"description": "Pattern used to create templates, as creating multiple files/dir. Use when isPattern=true",
+								"default": ""
+							},
+							"folderPath": {
+								"type": "string",
+								"description": "Path to folder to copy template. Use when isPattern=false",
+								"default": ""
+							}
+						}
+					},
+					"default": [
+						{
+							"label": "ExpressJS MVC",
+							"desc": "Create a MVC pattern with ExpressJS",
+							"isPattern": true,
+							"pattern": "controllers/,models/,views/,index.js,constants/index.js,middlewares/,helpers/,routes/,services/",
+							"folderPath": ""
+						}
+					],
+					"description": "Create folder templates quickly in 2 ways"
+				}
+			}
+		},
+		"keybindings": [
+			{
+				"command": "dynoFileUtils.newItems",
+				"key": "alt+n"
+			},
+			{
+				"command": "dynoFileUtils.renameFile",
+				"key": "alt+f2"
+			},
+			{
+				"command": "dynoFileUtils.deleteFile",
+				"key": "alt+delete"
+			},
+			{
+				"command": "dynoFileUtils.deleteFolder",
+				"key": "alt+shift+delete"
+			},
+			{
+				"command": "dynoFileUtils.moveFile",
+				"key": "alt+m"
+			},
+			{
+				"command": "dynoFileUtils.duplicateFile",
+				"key": "alt+d"
+			},
+			{
+				"command": "dynoFileUtils.useTemplate",
+				"key": "alt+t"
+			}
+		]
+	},
+	"icon": "icon.png",
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.4",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@types/vscode": "^1.62.0",
+		"@vscode/test-electron": "^1.6.2",
+		"eslint": "^8.1.0",
+		"glob": "^7.1.7",
+		"mocha": "^9.1.3",
+		"typescript": "^4.4.4"
+	},
+	"license": "MIT"
+}

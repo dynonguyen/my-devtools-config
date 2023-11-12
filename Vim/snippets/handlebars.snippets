@@ -1,0 +1,15 @@
+snippet hb "Block" b
+	{{$1}}
+
+snippet hbe "Each" b
+	{{#each ${1:array}}}
+	$2
+	{{/each}}
+
+snippet hbif "If" b
+	{{#if ${1:value}}}
+	$2
+	{{/if}}
+
+snippet hbcmt "Comment" b
+	{{! ${1:comment}}}

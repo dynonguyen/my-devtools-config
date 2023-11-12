@@ -1,0 +1,44 @@
+{
+	"$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+	"final_space": true,
+
+	"blocks": [
+		{
+			"type": "prompt",
+			"alignment": "left",
+			"newline": true,
+			"segments": [
+				{
+					"type": "os",
+					"style": "diamond",
+					"leading_diamond": "\ue0c7\u2593",
+					"foreground": "#26C6DA",
+					"background": "#313233"
+				},
+				{
+					"type": "path",
+					"style": "powerline",
+					"powerline_symbol": "\uE0B0",
+					"foreground": "#ffffff",
+					"background": "#53a132",
+					"properties": {
+						"style": "agnoster_short"
+					}
+				},
+				{
+					"type": "git",
+					"style": "powerline",
+					"powerline_symbol": "\uE0B0",
+					"foreground": "#28283b",
+					"background": "#bb91ee",
+					"properties": {
+						"fetch_stash_count": true,
+						"fetch_status": true,
+						"fetch_upstream_icon": true,
+						"template": "{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }}"
+					}
+				}
+			]
+		}
+	]
+}
