@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Set DNS for CADS VPN
+# @raycast.title Set default DNS
 # @raycast.mode compact
 
 # Optional parameters:

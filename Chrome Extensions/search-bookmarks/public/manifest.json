@@ -1,0 +1,26 @@
+{
+	"manifest_version": 3,
+	"name": "Search Bookmarks",
+	"version": "1.0.0",
+	"description": "Search bookmarks extremely quickly ⚡",
+	"icons": {
+		"16": "logo.png",
+		"32": "logo.png",
+		"64": "logo.png",
+		"128": "logo.png"
+	},
+	"action": {
+		"default_popup": "index.html",
+		"default_icon": "logo.png"
+	},
+	"permissions": ["bookmarks", "favicon"],
+	"commands": {
+		"_execute_action": {
+			"suggested_key": {
+				"default": "Ctrl+B",
+				"mac": "Command+B"
+			},
+			"description": "Open bookmark searching"
+		}
+	}
+}
