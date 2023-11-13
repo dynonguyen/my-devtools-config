@@ -29,6 +29,15 @@ alias pnr='pnpm remove $@'
 alias pns='pnpm start'
 alias pnd='pnpm dev'
 
+# bun
+alias bi='bun install'
+alias ba='bun add $@'
+alias bad='bun add -d $@'
+alias br='bun remove $@'
+alias bb='bun run build'
+alias bd='bun dev'
+alias bs='bun start'
+
 # git
 alias gs='git status'
 alias gcl='git clone $1'
