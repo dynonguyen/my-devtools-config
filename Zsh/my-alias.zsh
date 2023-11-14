@@ -5,7 +5,6 @@ unalias -m '*'
 alias b='cd ..'
 alias cls='clear'
 alias ls='ls --color=tty'
-alias ll='ls -l'
 alias z='zshz 2>&1'
 alias vi='nvim $@'
 alias svi='sudo nvim $@'
@@ -41,12 +40,9 @@ alias bs='bun start'
 # git
 alias gs='git status'
 alias gcl='git clone $1'
-alias gcf='git clean -f $@'
-alias gsh='git show $@'
 alias gl='git log'
 alias glo='git log --oneline'
 alias ga='git add $@'
-alias grsta='git restore --staged $@'
 function gaex(){
   git add .
   git reset -- $@
@@ -84,7 +80,6 @@ function deb(){
   docker exec -it $1 bash
 }
 
-
 # quick open
 alias oalias='nvim $ZSH_CUSTOM/my-alias.zsh'
 alias nvim-config='nvim ~/.config/nvim/init.vim'
@@ -99,3 +94,10 @@ function sync_settings() {
 	cp ~/Developer/personal/my-devtools-config/Zsh/my-alias.zsh $ZSH_CUSTOM
   cp ~/Developer/personal/my-devtools-config/Neovim/* ~/.config/nvim
 }
+
+# Other
+eval $(thefuck --alias)
+
+# Only linux
+alias clean_cache='su -c "echo Before; free -h | head -n 2; sync; echo 3 > /proc/sys/vm/drop_caches; echo After; free -h | head -n 2"'
+alias swap_key='setxkbmap -option caps:swapescape'

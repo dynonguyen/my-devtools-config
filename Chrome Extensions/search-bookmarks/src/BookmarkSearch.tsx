@@ -96,6 +96,12 @@ const BookmarkSearch = () => {
 		}
 	});
 
+	React.useEffect(() => {
+		if (bookmarks[selected]) {
+			document.getElementById(`bookmark-${selected}`)?.scrollIntoView();
+		}
+	}, [selected]);
+
 	return (
 		<React.Fragment>
 			<Input
@@ -134,7 +140,7 @@ const BookmarkSearch = () => {
 							sx={{ '& .MuiListItemButton-root': { p: 2, borderRadius: 8 } }}
 						>
 							{bookmarks.map((bookmark, index) => (
-								<ListItem key={bookmark.id}>
+								<ListItem key={bookmark.id} id={`bookmark-${index}`}>
 									<Tooltip
 										title={bookmark.url}
 										arrow
