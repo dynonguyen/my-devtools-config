@@ -1,26 +1,79 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+import fs from 'fs';
+import path from 'path';
 import * as vscode from 'vscode';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+// -----------------------------
+const configuration = vscode.workspace.getConfiguration(
+	'dynoI18n',
+) as vscode.WorkspaceConfiguration & {
+	enPath: string;
+	viPath: string;
+};
+const rootPath = vscode.workspace.workspaceFolders?.[0].uri.fsPath || '';
+const enPath = path.join(rootPath, configuration.enPath);
+const viPath = path.join(rootPath, configuration.viPath);
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "dyno-i18n" is now active!');
+async function getTranslation(filePath: string) {
+	try {
+		const document = await vscode.workspace.openTextDocument(filePath);
+		const text = document.getText();
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('dyno-i18n.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Dyno i18n!');
-	});
+		const start = text.indexOf('export default') + 14;
+		const end = text.lastIndexOf('}') + 1;
 
-	context.subscriptions.push(disposable);
+		const value = text
+			.slice(start, end)
+			.replace(/\$(\w+):/g, '$1:')
+			.replace(/\`(.*)\`/g, "''")
+			.replace(/\{\{(\$.)\}\}/g, '$$1')
+			.replace(/(\w+):/g, '"$1":')
+			.replace(/'([^']+)'/g, '"$1"');
+
+		fs.writeFileSync(path.join(__dirname, 'log.txt'), value, {
+			encoding: 'utf-8',
+		});
+
+		console.log(JSON.parse(value));
+
+		return '';
+	} catch (err) {
+		console.log(err);
+		return '';
+	}
 }
 
-// This method is called when your extension is deactivated
+getTranslation(viPath).then(data => console.log(data));
+
+// -----------------------------
+function extractI18nKey(text: string) {
+	const regex = /t\('([^']+)/;
+	const match = text.match(regex);
+
+	if (match && match[1]) {
+		return match[1];
+	}
+
+	return null;
+}
+
+// -----------------------------
+export function activate(context: vscode.ExtensionContext) {
+	if (fs.existsSync(viPath) || fs.existsSync(enPath)) {
+		vscode.languages.registerHoverProvider(
+			{ pattern: '**/*.{ts,tsx}' },
+			{
+				provideHover(document, position) {
+					const key = extractI18nKey(document.lineAt(position.line).text);
+
+					if (!key) {
+						return;
+					}
+
+					return new vscode.Hover(key);
+				},
+			},
+		);
+	}
+}
+
 export function deactivate() {}

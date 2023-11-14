@@ -1,3 +1,6 @@
 .vscode
 nohup.out
 **/node_modules
+**/out
+**/dist
+**/build

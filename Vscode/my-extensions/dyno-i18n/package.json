@@ -1,42 +1,57 @@
 {
-  "name": "dyno-i18n",
-  "displayName": "Dyno i18n",
-  "description": "Show i18n translation quickly",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.84.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [],
-  "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "dyno-i18n.helloWorld",
-        "title": "Hello World"
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "yarn run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile && yarn run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.84.0",
-    "@types/mocha": "^10.0.3",
-    "@types/node": "18.x",
-    "@typescript-eslint/eslint-plugin": "^6.9.0",
-    "@typescript-eslint/parser": "^6.9.0",
-    "eslint": "^8.52.0",
-    "glob": "^10.3.10",
-    "mocha": "^10.2.0",
-    "typescript": "^5.2.2",
-    "@vscode/test-electron": "^2.3.6"
-  }
+	"name": "dyno-i18n",
+	"displayName": "Dyno i18n",
+	"description": "Show i18n translation quickly",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.84.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onStartupFinished",
+		"onLanguage:typescript",
+		"onLanguage:typescriptreact"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "Dyno i18n",
+			"properties": {
+				"dynoI18n.enPath": {
+					"type": "string",
+					"default": "src/locales/en.ts",
+					"description": "Location of En file"
+				},
+				"dynoI18n.viPath": {
+					"type": "string",
+					"default": "src/locales/vi.ts",
+					"description": "Location of Vi file"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"dev": "yarn run esbuild-base -- --sourcemap --watch",
+		"pretest": "yarn run compile && yarn run lint",
+		"lint": "eslint src --ext ts"
+	},
+	"devDependencies": {
+		"@types/mocha": "^10.0.3",
+		"@types/node": "18.x",
+		"@types/vscode": "^1.84.0",
+		"@typescript-eslint/eslint-plugin": "^6.9.0",
+		"@typescript-eslint/parser": "^6.9.0",
+		"@vscode/test-electron": "^2.3.6",
+		"esbuild": "^0.19.5",
+		"eslint": "^8.52.0",
+		"glob": "^10.3.10",
+		"mocha": "^10.2.0",
+		"typescript": "^5.2.2"
+	},
+	"dependencies": {}
 }
