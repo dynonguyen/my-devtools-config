@@ -41,7 +41,7 @@ alias bs='bun start'
 alias gs='git status'
 alias gcl='git clone $1'
 alias gl='git log'
-alias glo='git log --oneline'
+alias glo='git log --oneline -15'
 alias ga='git add $@'
 function gaex(){
   git add .
@@ -56,7 +56,13 @@ alias gch='git checkout $@'
 alias gchb='git checkout -b $@'
 alias gp='git push'
 function gh(){
-	open $(git config remote.origin.url)
+  kernel=$(uname -s)
+
+  if [ "$kernel" = "Linux" ]; then
+   xdg-open $(git config remote.origin.url) &> /dev/null &
+  else
+   open $(git config remote.origin.url)
+  fi
 }
 
 function git_cads_config(){
@@ -101,3 +107,10 @@ eval $(thefuck --alias)
 # Only linux
 alias clean_cache='su -c "echo Before; free -h | head -n 2; sync; echo 3 > /proc/sys/vm/drop_caches; echo After; free -h | head -n 2"'
 alias swap_key='setxkbmap -option caps:swapescape'
+
+alias svc_start='sudo systemctl start $@'
+alias svc_stop='sudo systemctl stop $@'
+alias svc_restart='sudo systemctl restart $@'
+alias svc_status='systemctl status $@'
+
+alias kde_keymapping='svi /usr/share/X11/xkb/symbols/pc'
