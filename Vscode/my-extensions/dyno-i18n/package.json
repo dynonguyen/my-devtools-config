@@ -2,7 +2,18 @@
 	"name": "dyno-i18n",
 	"displayName": "Dyno i18n",
 	"description": "Show i18n translation quickly",
+	"icon": "icon.png",
 	"version": "0.0.1",
+	"author": {
+		"name": "Dyno Nguyen",
+		"email": "tuannguyentn2504@gmail.com"
+	},
+	"publisher": "dyno-nguyen",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TuanNguyen2504/my-devtools-config/tree/main/Vscode/my-extensions/dyno-i18n"
+	},
+	"main": "./out/extension.js",
 	"engines": {
 		"vscode": "^1.84.0"
 	},
@@ -14,7 +25,6 @@
 		"onLanguage:typescript",
 		"onLanguage:typescriptreact"
 	],
-	"main": "./out/extension.js",
 	"contributes": {
 		"configuration": {
 			"title": "Dyno i18n",
@@ -30,7 +40,13 @@
 					"description": "Location of Vi file"
 				}
 			}
-		}
+		},
+		"commands": [
+			{
+				"command": "dyno-i18n.load-script",
+				"title": "Load Dyno i18n translation"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
@@ -38,7 +54,8 @@
 		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
 		"dev": "yarn run esbuild-base -- --sourcemap --watch",
 		"pretest": "yarn run compile && yarn run lint",
-		"lint": "eslint src --ext ts"
+		"lint": "eslint src --ext ts",
+		"build": "vsce package"
 	},
 	"devDependencies": {
 		"@types/mocha": "^10.0.3",
@@ -53,5 +70,8 @@
 		"mocha": "^10.2.0",
 		"typescript": "^5.2.2"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"i18next": "^23.7.6"
+	},
+	"license": "MIT"
 }

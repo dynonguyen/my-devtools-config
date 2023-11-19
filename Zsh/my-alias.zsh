@@ -55,6 +55,7 @@ alias gb='git branch'
 alias gch='git checkout $@'
 alias gchb='git checkout -b $@'
 alias gp='git push'
+alias gpl='git pull'
 function gh(){
   kernel=$(uname -s)
 
