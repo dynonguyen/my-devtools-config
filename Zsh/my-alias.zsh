@@ -98,8 +98,8 @@ function save_settings(){
 }
 
 function sync_settings() {
-	cp ~/Developer/personal/my-devtools-config/Zsh/my-alias.zsh $ZSH_CUSTOM
-  cp ~/Developer/personal/my-devtools-config/Neovim/* ~/.config/nvim
+	cp -rp ~/Developer/personal/my-devtools-config/Zsh/my-alias.zsh $ZSH_CUSTOM
+  cp -rp ~/Developer/personal/my-devtools-config/Neovim/* ~/.config/nvim
 }
 
 # Other
