@@ -94,6 +94,7 @@ alias nvim-config='nvim ~/.config/nvim/init.vim'
 # Save/Sync settings
 function save_settings(){
   cp $ZSH_CUSTOM/my-alias.zsh ~/Developer/personal/my-devtools-config/Zsh
+  cp ~/.zshrc ~/Developer/personal/my-devtools-config/Zsh
   cp -rp ~/.config/nvim/* ~/Developer/personal/my-devtools-config/Neovim
 }
 
