@@ -96,10 +96,12 @@ function save_settings(){
   cp $ZSH_CUSTOM/my-alias.zsh ~/Developer/personal/my-devtools-config/Zsh
   cp ~/.zshrc ~/Developer/personal/my-devtools-config/Zsh
   cp -rp ~/.config/nvim/* ~/Developer/personal/my-devtools-config/Neovim
+  cp ~/.p10k.zsh ~/Developer/personal/my-devtools-config/Zsh
 }
 
 function sync_settings() {
 	cp -rp ~/Developer/personal/my-devtools-config/Zsh/my-alias.zsh $ZSH_CUSTOM
+	cp -rp ~/Developer/personal/my-devtools-config/Zsh/.p10k.zsh ~/
   cp -rp ~/Developer/personal/my-devtools-config/Neovim/* ~/.config/nvim
 }
 
