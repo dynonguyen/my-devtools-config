@@ -20,14 +20,6 @@ alias yad='yarn add --dev $@'
 alias yr='yarn remove $@'
 alias ycm='yarn commit'
 
-# pnpm
-alias pni='pnpm install'
-alias pna='pnpm add $@'
-alias pnad='pnpm add -D $@'
-alias pnr='pnpm remove $@'
-alias pns='pnpm start'
-alias pnd='pnpm dev'
-
 # bun
 alias bi='bun install'
 alias ba='bun add $@'
@@ -56,7 +48,7 @@ alias gch='git checkout $@'
 alias gchb='git checkout -b $@'
 alias gp='git push'
 alias gpl='git pull'
-function gh(){
+function gopen(){
   kernel=$(uname -s)
 
   if [ "$kernel" = "Linux" ]; then
@@ -104,9 +96,6 @@ function sync_settings() {
 	cp -rp ~/Developer/personal/my-devtools-config/Zsh/.p10k.zsh ~/
   cp -rp ~/Developer/personal/my-devtools-config/Neovim/* ~/.config/nvim
 }
-
-# Other
-eval $(thefuck --alias)
 
 # Only linux
 alias clean_cache='su -c "echo Before; free -h | head -n 2; sync; echo 3 > /proc/sys/vm/drop_caches; echo After; free -h | head -n 2"'
