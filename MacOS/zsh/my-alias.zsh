@@ -7,14 +7,13 @@ function save_settings(){
   cp -rp $HOME/.warp/* $CONFIG_PATH/macos/warp
   defaults export dev.warp.Warp-Stable $CONFIG_PATH/macos/warp/warp.config
 
-  currentPath="$pwd"
+  currentPath=$(pwd)
 
   cd $CONFIG_PATH
   git add .
   git commit -m "Update"
   git push
 
-  echo $currentPath
   cd $currentPath
 }
 
