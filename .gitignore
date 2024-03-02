@@ -4,3 +4,4 @@ nohup.out
 **/out
 **/dist
 **/build
+.DS_Store
