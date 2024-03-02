@@ -1,2 +1,0 @@
-- Mở file .HEIC của Iphone với **viewnior**
-- Share file từ Iphone -> Linux với **sharik**
