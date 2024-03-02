@@ -15,6 +15,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export CONFIG_PATH=$HOME/Developer/personal/my-devtools-config
 
+
 # ===== Oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 
