@@ -2,15 +2,14 @@
 	"name": "dyno-dark-mode",
 	"displayName": "Dyno Dark Theme",
 	"description": "Dyno Dracula Dark Mode Theme",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"icon": "icon.png",
 	"engines": {
 		"vscode": "^1.62.0"
 	},
 	"author": {
 		"name": "Dyno Nguyen",
-		"email": "tuannguyentn2504@gmail.com",
-		"url": "https://dynonguyen.com"
+		"email": "tuannguyentn2504@gmail.com"
 	},
 	"repository": {
 		"type": "git",
