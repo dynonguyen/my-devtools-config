@@ -13,6 +13,8 @@ function save_settings(){
   git add .
   git commit -m "Update"
   git push
+
+  echo $currentPath
   cd $currentPath
 }
 
