@@ -1029,33 +1029,27 @@
 				"constant.angle.units.css",
 				"storage.modifier.ts"
 			],
-			"settings": {
-				"foreground": "#ee4ecc"
-			}
+			"settings": { "foreground": "#ee4ecc" }
+		},
+		{
+			"scope": ["meta.jsx.children.tsx"],
+			"settings": { "foreground": "#f8f8f2" }
 		},
 		{
 			"scope": [
 				"support.class.component.tsx",
 				"entity.name.tag.tsx",
 				"meta.tag.tsx",
-				"meta.jsx.children.tsx",
-				"meta.tag.tsx",
-				"meta.jsx.children.tsx",
-				"meta.tag.tsx",
 				"meta.block.tsx",
 				"meta.arrow.tsx",
 				"meta.var.expr.tsx",
 				"source.tsx"
 			],
-			"settings": {
-				"foreground": "#EE8D3E"
-			}
+			"settings": { "foreground": "#EE8D3E" }
 		},
 		{
 			"scope": ["entity.name.tag.tsx", "entity.name.tag"],
-			"settings": {
-				"foreground": "#fc8ecc"
-			}
+			"settings": { "foreground": "#fc8ecc" }
 		},
 		{
 			"scope": [
@@ -1069,16 +1063,11 @@
 				"meta.property-values.css",
 				"support.constant"
 			],
-			"settings": {
-				"foreground": "#9A86FD",
-				"fontStyle": ""
-			}
+			"settings": { "foreground": "#9A86FD", "fontStyle": "" }
 		},
 		{
 			"scope": ["support.class.component"],
-			"settings": {
-				"fontStyle": ""
-			}
+			"settings": { "fontStyle": "" }
 		},
 		{
 			"scope": [
@@ -1088,15 +1077,11 @@
 				"variable.other.object.tsx",
 				"variable.other.readwrite.shorthandpropertyname.js"
 			],
-			"settings": {
-				"foreground": "#BD93F9"
-			}
+			"settings": { "foreground": "#BD93F9" }
 		},
 		{
 			"scope": ["entity.name.type.parameter"],
-			"settings": {
-				"foreground": "#FFB86C"
-			}
+			"settings": { "foreground": "#FFB86C" }
 		},
 		{
 			"scope": [
