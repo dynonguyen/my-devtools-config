@@ -1026,7 +1026,6 @@
 				"source.inside-js.css.styled",
 				"constant.numeric.css",
 				"punctuation.definition.keyword",
-				"entity.name.tag",
 				"keyword.other.unit.percentage.css",
 				"keyword.other.unit.px.css",
 				"keyword.other.unit.rem.css",
@@ -1038,6 +1037,30 @@
 			],
 			"settings": {
 				"foreground": "#ee4ecc"
+			}
+		},
+		{
+			"scope": [
+				"support.class.component.tsx",
+				"entity.name.tag.tsx",
+				"meta.tag.tsx",
+				"meta.jsx.children.tsx",
+				"meta.tag.tsx",
+				"meta.jsx.children.tsx",
+				"meta.tag.tsx",
+				"meta.block.tsx",
+				"meta.arrow.tsx",
+				"meta.var.expr.tsx",
+				"source.tsx"
+			],
+			"settings": {
+				"foreground": "#EE8D3E"
+			}
+		},
+		{
+			"scope": ["entity.name.tag.tsx", "entity.name.tag"],
+			"settings": {
+				"foreground": "#fc8ecc"
 			}
 		},
 		{
