@@ -722,12 +722,6 @@
 			}
 		},
 		{
-			"scope": ["storage.modifier"],
-			"settings": {
-				"foreground": "#FF79C6"
-			}
-		},
-		{
 			"scope": [
 				"string.regexp",
 				"constant.other.character-class.set.regexp",

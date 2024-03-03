@@ -2,7 +2,7 @@
 	"name": "dyno-dark-mode",
 	"displayName": "Dyno Dark Theme",
 	"description": "Dyno Dracula Dark Mode Theme",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"icon": "icon.png",
 	"engines": {
 		"vscode": "^1.62.0"
