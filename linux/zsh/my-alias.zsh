@@ -10,13 +10,19 @@ alias kde_keymapping='svi /usr/share/X11/xkb/symbols/pc'
 alias ii='nohup dolphin $@ &'
 
 function save_settings(){
-  cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
+  # Neovim
   cp -rp $HOME/.config/nvim/* $CONFIG_PATH/common/nvim
 
+  # Zsh
+  cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
   cp $HOME/.zshrc $CONFIG_PATH/linux/zsh
 
-  cp -rp $HOME/.config/warp-terminal/* $CONFIG_PATH/linux/warp
+  # Warp terminal
+  cp -rp $HOME/.config/warp-terminal/keybindings.yaml $CONFIG_PATH/linux/warp
+  cp -rp $HOME/.config/warp-terminal/user_preferences.json $CONFIG_PATH/linux/warp
+  cp -rp $HOME/.local/share/warp-terminal/themes/* $CONFIG_PATH/linux/warp/themes
 
+  # Auto commit & push
   currentPath=$(pwd)
 
   cd $CONFIG_PATH
@@ -28,12 +34,17 @@ function save_settings(){
 }
 
 function sync_settings() {
-  cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
+  # Neovim
   cp -rp $CONFIG_PATH/common/nvim/* $HOME/.config/nvim
 
-  cp $CONFIG_PATH/linux/zsh/.zshrc $HOME/.zshrc
+  # Warp terminal
+  cp -rp $CONFIG_PATH/linux/warp/keybindings.yaml $HOME/.config/warp-terminal
+  cp -rp $CONFIG_PATH/linux/warp/user_preferences.json $HOME/.config/warp-terminal
+  cp -rp $CONFIG_PATH/linux/warp/themes/* $HOME/.local/share/warp-terminal/themes
 
-  cp -rp $CONFIG_PATH/linux/warp/* $HOME/.config/warp-terminal
+  # Zsh
+  cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
+  cp $CONFIG_PATH/linux/zsh/.zshrc $HOME/.zshrc
 
   source $HOME/.zshrc
 }
