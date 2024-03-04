@@ -952,7 +952,9 @@
 				"variable.other.readwrite.js",
 				"punctuation.semi-colon",
 				"punctuation.colon",
-				"punctuation.definition.tag"
+				"punctuation.definition.tag",
+				"meta.tag.metadata.script.end.html",
+				"source.js-ignored-vscode"
 			],
 			"settings": {
 				"foreground": "#00b4e4"
@@ -993,7 +995,8 @@
 				"meta.block.jsx",
 				"meta.arrow.jsx",
 				"meta.var.expr.jsx",
-				"source.jsx"
+				"source.jsx",
+				"source.css"
 			],
 			"settings": {
 				"foreground": "#d59976"
@@ -1042,8 +1045,7 @@
 				"meta.tag.tsx",
 				"meta.block.tsx",
 				"meta.arrow.tsx",
-				"meta.var.expr.tsx",
-				"source.tsx"
+				"meta.var.expr.tsx"
 			],
 			"settings": { "foreground": "#EE8D3E" }
 		},
