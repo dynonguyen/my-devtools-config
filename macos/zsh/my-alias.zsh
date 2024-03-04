@@ -1,12 +1,17 @@
 function save_settings(){
-  cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
+  # Neovim
   cp -rp $HOME/.config/nvim/* $CONFIG_PATH/common/nvim
 
-  cp $HOME/.zshrc $CONFIG_PATH/macos/zsh
-
-  cp -rp $HOME/.warp/* $CONFIG_PATH/macos/warp
+  # Warp
+  cp $HOME/.warp/keybindings.yaml $CONFIG_PATH/macos/warp
+  cp -rp $HOME/.warp/themes/* $CONFIG_PATH/macos/warp/themes
   defaults export dev.warp.Warp-Stable $CONFIG_PATH/macos/warp/warp.config
 
+  # Zsh
+  cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
+  cp $HOME/.zshrc $CONFIG_PATH/macos/zsh
+
+  # Auto commit & push
   currentPath=$(pwd)
 
   cd $CONFIG_PATH
@@ -18,13 +23,17 @@ function save_settings(){
 }
 
 function sync_settings() {
-  cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
+  # Neovim
   cp -rp $CONFIG_PATH/common/nvim/* $HOME/.config/nvim
 
-  cp $CONFIG_PATH/macos/zsh/.zshrc $HOME/.zshrc
-
-  cp -rp $CONFIG_PATH/macos/warp/* $HOME/.warp
+  # Warp
+  cp -rp $CONFIG_PATH/macos/warp/themes/* $HOME/.warp/themes
+  cp -rp $CONFIG_PATH/macos/warp/keybindings.yaml $HOME/.warp
   defaults import dev.warp.Warp-Stable $CONFIG_PATH/macos/warp/warp.config
+
+  # Zsh
+  cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
+  cp $CONFIG_PATH/macos/zsh/.zshrc $HOME/.zshrc
 
   source $HOME/.zshrc
 }

@@ -13,14 +13,14 @@ function save_settings(){
   # Neovim
   cp -rp $HOME/.config/nvim/* $CONFIG_PATH/common/nvim
 
+  # Warp terminal
+  cp $HOME/.config/warp-terminal/keybindings.yaml $CONFIG_PATH/linux/warp
+  cp $HOME/.config/warp-terminal/user_preferences.json $CONFIG_PATH/linux/warp
+  cp -rp $HOME/.local/share/warp-terminal/themes/* $CONFIG_PATH/linux/warp/themes
+
   # Zsh
   cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
   cp $HOME/.zshrc $CONFIG_PATH/linux/zsh
-
-  # Warp terminal
-  cp -rp $HOME/.config/warp-terminal/keybindings.yaml $CONFIG_PATH/linux/warp
-  cp -rp $HOME/.config/warp-terminal/user_preferences.json $CONFIG_PATH/linux/warp
-  cp -rp $HOME/.local/share/warp-terminal/themes/* $CONFIG_PATH/linux/warp/themes
 
   # Auto commit & push
   currentPath=$(pwd)
@@ -38,6 +38,7 @@ function sync_settings() {
   cp -rp $CONFIG_PATH/common/nvim/* $HOME/.config/nvim
 
   # Warp terminal
+  mkdir -p $HOME/.local/share/warp-terminal/themes
   cp -rp $CONFIG_PATH/linux/warp/keybindings.yaml $HOME/.config/warp-terminal
   cp -rp $CONFIG_PATH/linux/warp/user_preferences.json $HOME/.config/warp-terminal
   cp -rp $CONFIG_PATH/linux/warp/themes/* $HOME/.local/share/warp-terminal/themes
