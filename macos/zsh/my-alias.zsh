@@ -37,3 +37,17 @@ function sync_settings() {
 
   source $HOME/.zshrc
 }
+
+function find_bid() {
+  local app_name="$1"
+  osascript -e "id of app \"$app_name\""
+}
+
+function default_app() {
+  local app_name="$1"
+  local ext="$2"
+
+  local app_id=$(find_bid "$app_name")
+
+  duti -s "$app_id" "$ext" all
+}
