@@ -1,0 +1,20 @@
+{
+	"name": "command-palette",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite build -w --mode development",
+		"build": "tsc && vite build"
+	},
+	"dependencies": {
+		"@preact/signals": "^1.2.2",
+		"preact": "^10.19.6"
+	},
+	"devDependencies": {
+		"@preact/preset-vite": "^2.8.1",
+		"@types/chrome": "^0.0.263",
+		"typescript": "^5.2.2",
+		"vite": "^5.1.6"
+	}
+}

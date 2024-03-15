@@ -1,0 +1,7 @@
+{
+	"cSpell.words": ["preact"],
+	"search.exclude": {
+		"**/build": true
+	},
+	"typeAcquisition": { "include": ["chrome"] }
+}
