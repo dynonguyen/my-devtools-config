@@ -1,5 +1,5 @@
 {
-	"cSpell.words": ["preact"],
+	"cSpell.words": ["newtab", "preact"],
 	"search.exclude": {
 		"**/build": true
 	},

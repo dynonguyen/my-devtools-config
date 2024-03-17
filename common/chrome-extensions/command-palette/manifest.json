@@ -1,0 +1,88 @@
+{
+	"manifest_version": 3,
+	"name": "Command Palette",
+	"version": "1.0.0",
+	"description": "A command palette to navigate in Google Chrome faster ⚡",
+	"icons": {
+		"16": "logo.png",
+		"32": "logo.png",
+		"64": "logo.png",
+		"128": "logo.png"
+	},
+	"permissions": [
+		"activeTab",
+		"alarms",
+		"background",
+		"bookmarks",
+		"browsingData",
+		"clipboardRead",
+		"clipboardWrite",
+		"contentSettings",
+		"contextMenus",
+		"cookies",
+		"debugger",
+		"declarativeContent",
+		"declarativeNetRequest",
+		"declarativeNetRequestWithHostAccess",
+		"declarativeNetRequestFeedback",
+		"desktopCapture",
+		"downloads",
+		"downloads.open",
+		"downloads.ui",
+		"favicon",
+		"fontSettings",
+		"gcm",
+		"geolocation",
+		"history",
+		"identity",
+		"identity.email",
+		"idle",
+		"management",
+		"nativeMessaging",
+		"notifications",
+		"offscreen",
+		"pageCapture",
+		"power",
+		"printerProvider",
+		"privacy",
+		"proxy",
+		"readingList",
+		"scripting",
+		"search",
+		"sessions",
+		"sidePanel",
+		"storage",
+		"system.cpu",
+		"system.display",
+		"system.memory",
+		"system.storage",
+		"tabCapture",
+		"tabGroups",
+		"tabs",
+		"topSites",
+		"tts",
+		"ttsEngine",
+		"unlimitedStorage",
+		"webAuthenticationProxy",
+		"webNavigation",
+		"webRequest"
+	],
+
+	"action": {
+		"default_popup": "src/pages/popup/index.html",
+		"default_icon": "logo.png"
+	},
+
+	"content_scripts": [
+		{ "matches": ["<all_urls>"], "js": ["content/index.js"] }
+	],
+	"background": { "service_worker": "background/index.js", "type": "module" },
+	"options_ui": { "page": "src/pages/options/index.html" },
+
+	"commands": {
+		"_execute_action": {
+			"suggested_key": { "default": "Ctrl+Shift+P", "mac": "Command+Shift+P" },
+			"description": "Open command palette"
+		}
+	}
+}
