@@ -1,0 +1,24 @@
+// Reset css
+#_dcp_root_ {
+	* {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font-family: 'Poppins';
+		box-sizing: border-box;
+	}
+
+	ol,
+	ul {
+		list-style: none;
+	}
+
+	div,
+	p,
+	span,
+	li,
+	input {
+		color: var(--base-content);
+	}
+}

@@ -1,13 +1,13 @@
 {
 	"manifest_version": 3,
-	"name": "Command Palette",
+	"name": "Dyno Command Palette",
 	"version": "1.0.0",
 	"description": "A command palette to navigate in Google Chrome faster ⚡",
 	"icons": {
-		"16": "logo.png",
-		"32": "logo.png",
-		"64": "logo.png",
-		"128": "logo.png"
+		"16": "assets/logo.png",
+		"32": "assets/logo.png",
+		"64": "assets/logo.png",
+		"128": "assets/logo.png"
 	},
 	"permissions": [
 		"activeTab",
@@ -68,16 +68,19 @@
 		"webRequest"
 	],
 
-	"action": {
-		"default_popup": "src/pages/popup/index.html",
-		"default_icon": "logo.png"
-	},
+	"action": { "default_icon": "assets/logo.png" },
 
+	"web_accessible_resources": [
+		{ "resources": ["assets/*"], "matches": ["<all_urls>"] }
+	],
 	"content_scripts": [
-		{ "matches": ["<all_urls>"], "js": ["content/index.js"] }
+		{
+			"matches": ["https://1.1.1.1/*"],
+			"js": ["content/index.js"],
+			"css": ["content/index.css"]
+		}
 	],
 	"background": { "service_worker": "background/index.js", "type": "module" },
-	"options_ui": { "page": "src/pages/options/index.html" },
 
 	"commands": {
 		"_execute_action": {

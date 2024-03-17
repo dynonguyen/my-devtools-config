@@ -1,26 +1,17 @@
 {
-  "name": "command-palette",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "concurrently \"vite build --mode development --watch\" \"nodemon\"",
-    "build": "vite build"
-  },
-  "dependencies": {
-    "@preact/signals": "^1.2.2",
-    "lodash-es": "^4.17.21",
-    "preact": "^10.19.6"
-  },
-  "devDependencies": {
-    "@preact/preset-vite": "^2.8.1",
-    "@types/chrome": "^0.0.263",
-    "@types/lodash-es": "^4.17.12",
-    "@types/node": "^20.11.28",
-    "concurrently": "^8.2.2",
-    "nodemon": "^3.1.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.1.6",
-    "vite-plugin-static-copy": "^1.0.1"
-  }
+	"name": "command-palette",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "A command palette to navigate in Google Chrome faster ⚡",
+	"private": true,
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"dev": "sh ./build-dev.sh",
+		"build": "sh ./build.sh"
+	},
+	"devDependencies": {
+		"concurrently": "^8.2.2"
+	}
 }

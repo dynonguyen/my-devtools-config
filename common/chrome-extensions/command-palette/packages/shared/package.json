@@ -1,0 +1,10 @@
+{
+	"name": "@command-palette/shared",
+	"version": "1.0.0",
+	"type": "module",
+	"private": true,
+	"main": "index.ts",
+	"scripts": {},
+	"dependencies": {},
+	"devDependencies": {}
+}

@@ -1,7 +1,6 @@
 {
-	"cSpell.words": ["newtab", "preact"],
+	"cSpell.words": ["clsx", "Dyno", "Iconify", "newtab", "preact", "stylex"],
 	"search.exclude": {
 		"**/build": true
-	},
-	"typeAcquisition": { "include": ["chrome"] }
+	}
 }

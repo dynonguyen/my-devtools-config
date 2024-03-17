@@ -1,0 +1,33 @@
+#_dcp_root_ {
+	--primary: #6133e9;
+	--secondary: #f4538a;
+	--accent: #59d5e0;
+	--success: #39e58c;
+	--error: #ff5962;
+	--warning: #ff8e3b;
+	--info: #0091ff;
+	--base: #fefefe;
+	--base-100: #f0f0f0;
+	--base-200: #e5e6e6;
+	--base-content: #1c1c1c;
+	--neutral: #2b3440;
+	--divider: #a8b3cf;
+	--grey-500: #666666;
+
+	&[data-theme='dark'] {
+		--primary: #7147ed;
+		--secondary: #fa6b9a;
+		--accent: #68dae5;
+		--success: #30d3b0;
+		--error: #f36e75;
+		--warning: #f79a57;
+		--info: #00b5ff;
+		--base: #1d232a;
+		--base-100: #191e24;
+		--base-200: #15191f;
+		--base-content: #f9fafb;
+		--neutral: #29323c;
+		--divider: #2d333b;
+		--grey-500: #666666;
+	}
+}

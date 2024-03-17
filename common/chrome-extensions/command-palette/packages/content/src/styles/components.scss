@@ -1,0 +1,32 @@
+#_dcp_root_ .dcp {
+	&-icon {
+		transition: all 0.2s;
+
+		&--clickable {
+			cursor: pointer;
+			&:hover {
+				-webkit-filter: brightness(0.8);
+				filter: brightness(0.8);
+			}
+		}
+	}
+
+	&-action-button {
+		display: flex;
+	}
+
+	&-kbd {
+		min-width: 20px;
+		min-height: 20px;
+		border-radius: 4px;
+		background-color: var(--neutral);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		& svg {
+			width: 16px;
+			height: 16px;
+		}
+	}
+}
