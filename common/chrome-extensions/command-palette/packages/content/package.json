@@ -1,5 +1,5 @@
 {
-	"name": "@command-palette/content",
+	"name": "@dcp/content",
 	"version": "1.0.0",
 	"type": "module",
 	"private": true,
@@ -9,7 +9,7 @@
 		"build": "vite build"
 	},
 	"dependencies": {
-		"@command-palette/shared": "*",
+		"@dcp/shared": "*",
 		"@preact/signals": "^1.2.2",
 		"clsx": "^2.1.0",
 		"lodash-es": "^4.17.21",

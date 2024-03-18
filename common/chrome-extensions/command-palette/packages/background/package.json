@@ -1,5 +1,5 @@
 {
-	"name": "@command-palette/background",
+	"name": "@dcp/background",
 	"version": "1.0.0",
 	"private": true,
 	"type": "module",
@@ -8,7 +8,7 @@
 		"build": "vite build"
 	},
 	"dependencies": {
-		"@command-palette/shared": "*",
+		"@dcp/shared": "*",
 		"lodash-es": "^4.17.21"
 	},
 	"devDependencies": {
