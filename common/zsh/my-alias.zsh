@@ -6,41 +6,50 @@ alias b='cd ..'
 alias cls='clear'
 alias ls='ls --color=tty'
 alias z='zshz 2>&1'
-alias vi='nvim '
-alias svi='sudo nvim '
-alias del='rm -rf $@'
-alias sdel='sudo rm -rf '
+alias vi='nvim'
+alias svi='sudo nvim'
+alias del='rm -rf'
+alias sdel='sudo rm -rf'
 
 # yarn
 alias ys='yarn start'
 alias yd='yarn dev'
 alias yb='yarn build'
-alias ya='yarn add '
+alias ya='yarn add'
 alias yad='yarn add --dev'
-alias yr='yarn remove '
+alias yr='yarn remove'
 alias ycm='yarn commit'
 
 # bun
 alias bi='bun install'
-alias ba='bun add $@'
-alias bad='bun add -d $@'
-alias br='bun remove $@'
+alias ba='bun add'
+alias bad='bun add -D'
+alias br='bun remove'
 alias bb='bun run build'
 alias bd='bun dev'
 alias bs='bun start'
+
+# pnpm
+alias ppi='pnpm install'
+alias ppa='pnpm add'
+alias ppad='pnpm add -D'
+alias ppr='pnpm remove'
+alias ppb='pnpm build'
+alias ppd='pnpm dev'
+alias pps='pnpm start'
 
 # git
 alias gs='git status'
 alias gcl='git clone $1'
 alias gl='git log'
 alias glo='git log --oneline -15'
-alias ga='git add $@'
+alias ga='git add'
 function gaex(){
   git add .
   git reset -- $@
 }
-alias gacm='git add . && git commit -m $@'
-alias gcm='git commit -m $@'
+alias gacm='git add . && git commit -m'
+alias gcm='git commit -m'
 alias gca='git commit --amend'
 alias gcane='git commit --amend --no-edit'
 alias gb='git branch'
