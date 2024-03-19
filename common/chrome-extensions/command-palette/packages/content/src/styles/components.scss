@@ -1,3 +1,12 @@
+@import './theme.scss';
+
+@mixin dark-mode() {
+	$child: &;
+	@at-root #_dcp_root_[data-theme='dark'] #{$child} {
+		@content;
+	}
+}
+
 #_dcp_root_ .dcp {
 	&-icon {
 		transition: all 0.2s;
@@ -13,20 +22,49 @@
 
 	&-action-button {
 		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 4px 6px;
+		border-radius: 6px;
+		background-color: transparent;
+		cursor: pointer;
+		transition: background-color 0.1s;
+
+		&--text {
+			font-size: 12px;
+			font-weight: 400;
+			color: var(--grey-light);
+
+			@include dark-mode() {
+				color: red;
+			}
+		}
+
+		&:hover {
+			background-color: var(--base);
+		}
 	}
 
 	&-kbd {
 		min-width: 20px;
 		min-height: 20px;
 		border-radius: 4px;
-		background-color: var(--neutral);
+		background-color: var(--grey-dark);
 		display: flex;
 		justify-content: center;
 		align-items: center;
 
-		& svg {
+		& .dcp-icon {
 			width: 16px;
 			height: 16px;
+			color: var(--grey-light) !important;
+
+			&.text {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 13px;
+			}
 		}
 	}
 }

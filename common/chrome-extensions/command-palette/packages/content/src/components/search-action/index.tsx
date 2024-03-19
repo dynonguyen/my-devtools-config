@@ -1,4 +1,5 @@
 import { getAssets } from '~/utils/helper';
+import DetailAction from './DetailAction';
 import EnterAction from './EnterAction';
 
 export const SearchAction = () => {
@@ -10,8 +11,14 @@ export const SearchAction = () => {
 				style={{ width: 24, height: 24 }}
 			/>
 
-			<div className='flex'>
+			<div className='flex items-center' style={{ gap: 8 }}>
 				<EnterAction />
+
+				<div
+					style={{ width: 1.5, height: 12, backgroundColor: 'var(--divider)' }}
+				/>
+
+				<DetailAction />
 			</div>
 		</div>
 	);

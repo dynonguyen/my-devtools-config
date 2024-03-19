@@ -19,7 +19,10 @@ export type IconProps = IconifyProps & {
 		| 'success'
 		| 'warning'
 		| 'error'
-		| 'grey-500';
+		| 'neutral'
+		| 'grey-light'
+		| 'grey'
+		| 'grey-dark';
 	clickable?: boolean;
 	active?: boolean;
 	activeIcon?: string;
