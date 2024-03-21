@@ -75,7 +75,7 @@
 	],
 	"content_scripts": [
 		{
-			"matches": ["https://1.1.1.1/*"],
+			"matches": ["http://localhost/*"],
 			"js": ["content/index.js"],
 			"css": ["content/index.css"]
 		}

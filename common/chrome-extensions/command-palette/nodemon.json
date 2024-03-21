@@ -1,4 +1,4 @@
 {
 	"watch": ["manifest.json"],
-	"exec": "cp manifest.json build/manifest.json"
+	"exec": "cp manifest.json ./build/manifest.json"
 }

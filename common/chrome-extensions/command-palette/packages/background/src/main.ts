@@ -1,5 +1,6 @@
-import { EXTENSION_ID } from '@dcp/shared';
-import { omit } from 'lodash-es';
+async function main() {
+	const res = await chrome.storage.local.remove('foo');
+	console.log(res);
+}
 
-console.log('background', EXTENSION_ID);
-console.log(omit({ name: 1, age: 9 }, 'name'));
+main();

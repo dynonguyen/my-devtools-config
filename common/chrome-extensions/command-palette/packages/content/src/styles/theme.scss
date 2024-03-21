@@ -1,45 +1,45 @@
 #_dcp_root_ {
-	--primary: #6133e9;
-	--secondary: #f4538a;
-	--accent: #59d5e0;
-	--success: #39e58c;
-	--error: #ff5962;
-	--warning: #ff8e3b;
-	--info: #0091ff;
+	--primary: 92, 48, 222; // #5d31df;
+	--secondary: 244, 83, 138; // #f4538a;
+	--accent: 89, 213, 224; // #59d5e0;
+	--success: 57, 229, 140; // #39e58c;
+	--error: 255, 89, 98; // #ff5962;
+	--warning: 255, 142, 59; // #ff8e3b;
+	--info: 0, 145, 255; // #0091ff;
 
-	--base: #fefefe;
-	--base-100: #f0f0f0;
-	--base-200: #e5e6e6;
-	--base-content: #1c1c1c;
+	--base: 254, 254, 254; // #fefefe;
+	--base-100: 240, 240, 240; // #f0f0f0;
+	--base-200: 229, 230, 230; // #e5e6e6;
+	--base-content: 28, 28, 28; // #1c1c1c;
 
-	--neutral: #e1e2e3;
-	--divider: #c4c6c7;
+	--neutral: 225, 226, 227; // #e1e2e3;
+	--divider: 196, 198, 199; // #c4c6c7;
 
-	--grey-100: #f5f5f5;
-	--grey-200: #eeeeee;
-	--grey-300: #e0e0e0;
-	--grey-400: #bdbdbd;
-	--grey-500: #9c9c9c;
-	--grey-600: #757575;
-	--grey-700: #616161;
-	--grey-800: #424242;
-	--grey-900: #212121;
+	--grey-100: 245, 245, 245; // #f5f5f5;
+	--grey-200: 238, 238, 238; // #eeeeee;
+	--grey-300: 224, 224, 224; // #e0e0e0;
+	--grey-400: 189, 189, 189; // #bdbdbd;
+	--grey-500: 156, 156, 156; // #9c9c9c;
+	--grey-600: 117, 117, 117; // #757575;
+	--grey-700: 97, 97, 97; // #616161;
+	--grey-800: 66, 66, 66; // #424242;
+	--grey-900: 33, 33, 33; // #212121;
 
-	&[data-theme='dark'] {
-		--primary: #7147ed;
-		--secondary: #fa6b9a;
-		--accent: #68dae5;
-		--success: #30d3b0;
-		--error: #f36e75;
-		--warning: #f79a57;
-		--info: #00b5ff;
+	&.dark {
+		--primary: 113, 71, 237; // #7147ed;
+		--secondary: 250, 107, 154; // #fa6b9a;
+		--accent: 104, 218, 229; // #68dae5;
+		--success: 48, 211, 176; // #30d3b0;
+		--error: 243, 110, 117; // #f36e75;
+		--warning: 247, 154, 87; // #f79a57;
+		--info: 0, 181, 255; // #00b5ff;
 
-		--base: #1d232a;
-		--base-100: #191e24;
-		--base-200: #15191f;
-		--base-content: #f9fafb;
+		--base: 29, 35, 42; // #1d232a;
+		--base-100: 25, 30, 36; // #191e24;
+		--base-200: 21, 25, 31; // #15191f;
+		--base-content: 249, 250, 251; // #f9fafb;
 
-		--neutral: #424344;
-		--divider: #2d333b;
+		--neutral: 66, 67, 68; // #424344;
+		--divider: 45, 51, 59; // #2d333b;
 	}
 }

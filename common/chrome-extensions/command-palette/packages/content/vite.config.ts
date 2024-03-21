@@ -1,5 +1,6 @@
 import preact from '@preact/preset-vite';
 import { resolve } from 'path';
+import unoCSS from 'unocss/vite';
 import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
@@ -10,6 +11,7 @@ const publicDir = resolve(__dirname, 'public/*');
 
 export default defineConfig({
 	plugins: [
+		unoCSS(),
 		preact(),
 		viteStaticCopy({ targets: [{ src: publicDir, dest: assetDir }] }),
 	],

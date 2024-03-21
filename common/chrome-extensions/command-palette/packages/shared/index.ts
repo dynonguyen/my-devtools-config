@@ -1,3 +1,3 @@
 export * from './constants/common';
-export * from './types/Search';
+export * from './types';
 export * from './utils/helper';
