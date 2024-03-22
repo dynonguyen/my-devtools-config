@@ -1,6 +1,8 @@
+import { searchBookmarks } from './bookmark';
+
 async function main() {
-	const res = await chrome.storage.local.remove('foo');
-	console.log(res);
+	const bookmarks = await searchBookmarks('a');
+	console.log(bookmarks);
 }
 
 main();
