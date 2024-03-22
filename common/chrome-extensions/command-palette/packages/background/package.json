@@ -8,13 +8,11 @@
 		"build": "vite build"
 	},
 	"dependencies": {
-		"@dcp/shared": "*",
-		"underscore": "^1.13.6"
+		"@dcp/shared": "*"
 	},
 	"devDependencies": {
 		"@types/chrome": "^0.0.263",
 		"@types/node": "^20.11.28",
-		"@types/underscore": "^1.11.15",
 		"typescript": "^5.4.2",
 		"vite": "^5.1.6"
 	}

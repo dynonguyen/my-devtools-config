@@ -1,5 +1,5 @@
 import { Bookmark } from '@dcp/shared';
-import { omit } from 'underscore';
+import { omit } from 'lodash-es';
 import { MyCache } from './cache';
 
 // -----------------------------
@@ -41,36 +41,53 @@ const buildBookmarkDictionary = async () => {
 		(a, b) => (a.parentIds?.length || 0) - (b.parentIds?.length || 0),
 	);
 
+	const getPath = (pid: string): string => {
+		const parent = dictionary[pid];
+
+		if (!parent || !parent.parentId) return '';
+
+		const parentPath = getPath(parent.parentId);
+		return (parentPath ? `${parentPath} > ` : '') + parent.title;
+	};
+
 	flatted.forEach(b => {
 		if (b.id !== '0') {
-			``;
 			dictionary[b.id] = {
-				...omit(b, [
-					'children',
-					'dateGroupModified',
-					'dateAdded',
-					'unmodifiable',
-				]),
+				...omit(b, ['children', 'dateAdded', 'dateGroupModified']),
 				isFolder: !b.url,
 				childIds: b.children?.map(c => c.id) || [],
-				path: b.parentId && b.parentId !== '0' ? '' : '',
+				path: b.parentId && b.parentId !== '0' ? getPath(b.parentId) : '',
 			};
 		}
 	});
 
-	console.log(dictionary);
-
 	cache.add('dictionary', dictionary);
+
+	return dictionary;
 };
 
 // -----------------------------
-export const searchBookmarks = async (
-	_keyword: string,
-): Promise<Bookmark[]> => {
-	return [];
+export const searchBookmarks = async (keyword: string): Promise<Bookmark[]> => {
+	const bookmarks = await chrome.bookmarks.search(keyword);
+
+	let dictionary = cache.get('dictionary')!;
+	if (!dictionary) {
+		dictionary = await buildBookmarkDictionary();
+	}
+
+	return bookmarks.map(item => dictionary[item.id]);
+};
+
+export const deleteBookmark = async (id: string) => {
+	return chrome.bookmarks.remove(id);
 };
 
 // -----------------------------
-(function init() {
-	buildBookmarkDictionary();
+(function listener() {
+	['onChanged', 'onImportEnded', 'onCreated', 'onMoved', 'onRemoved'].forEach(
+		eventKey => {
+			// @ts-ignore
+			chrome.bookmarks[eventKey]?.addListener(buildBookmarkDictionary);
+		},
+	);
 })();

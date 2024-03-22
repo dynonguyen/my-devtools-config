@@ -9,12 +9,17 @@
 		"64": "assets/logo.png",
 		"128": "assets/logo.png"
 	},
-	"permissions": ["bookmarks"],
+	"permissions": ["bookmarks", "favicon"],
 
 	"action": { "default_icon": "assets/logo.png" },
 
 	"web_accessible_resources": [
-		{ "resources": ["assets/*"], "matches": ["<all_urls>"] }
+		{ "resources": ["assets/*"], "matches": ["<all_urls>"] },
+		{
+			"resources": ["_favicon/*"],
+			"matches": ["<all_urls>"],
+			"extension_ids": ["*"]
+		}
 	],
 	"content_scripts": [
 		{
