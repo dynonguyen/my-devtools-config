@@ -1,0 +1,23 @@
+#_dcp_root_ {
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: rgb(var(--grey-500));
+		border-radius: 8px;
+
+		&:hover {
+			background: rgb(var(--grey-700));
+		}
+	}
+
+	&.dark {
+		::-webkit-scrollbar-thumb {
+			background: rgb(var(--grey-700));
+			&:hover {
+				background: rgb(var(--grey-800));
+			}
+		}
+	}
+}

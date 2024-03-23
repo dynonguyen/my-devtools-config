@@ -1,13 +1,37 @@
+import SearchHandler from './components/SearchHandler';
+import SearchBottom from './components/search-bottom';
+import SearchInput from './components/search-input';
+import SearchResult from './components/search-result';
+import { INPUT_Z_INDEX } from './constants/common';
+
 export const App = () => {
 	return (
-		<>
-			<button
-				type='button'
-				class='py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600'
+		<div
+			class='fixed top-0 flex justify-center w-screen h-screen'
+			style={{ zIndex: INPUT_Z_INDEX }}
+		>
+			{/* Overlay */}
+			<div
+				id='dcp-overlay'
+				class='before:content-[""] before:bg-grey-900/50 before:w-full before:h-full before:absolute before:top-0 before:left-0'
+				style={{ zIndex: INPUT_Z_INDEX - 1 }}
+			/>
+
+			{/* Wrapper */}
+			<div
+				id='dcp-wrapper'
+				class='mt-32 w-3xl h-max max-w-9/10 flex flex-col border border-solid border-divider overflow-hidden rounded-2xl bg-base-100'
+				style={{
+					zIndex: INPUT_Z_INDEX + 1,
+					boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)',
+				}}
 			>
-				Solid
-			</button>
-		</>
+				<SearchInput />
+				<SearchResult />
+				<SearchBottom />
+				<SearchHandler />
+			</div>
+		</div>
 	);
 };
 

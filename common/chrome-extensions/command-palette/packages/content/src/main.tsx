@@ -1,4 +1,5 @@
 import 'virtual:uno.css';
+import './styles/scrollbar.scss';
 import './styles/theme.scss';
 
 import { render } from 'preact';
@@ -11,6 +12,6 @@ if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 	appElem.classList.add('dark');
 }
 
-document.body.appendChild(appElem);
+document.documentElement.appendChild(appElem);
 
 render(<App />, appElem);

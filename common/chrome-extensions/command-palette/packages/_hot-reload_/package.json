@@ -1,0 +1,10 @@
+{
+	"name": "@dcp/hot-reload",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"dependencies": {
+		"chokidar": "^3.6.0",
+		"ws": "^8.16.0"
+	}
+}

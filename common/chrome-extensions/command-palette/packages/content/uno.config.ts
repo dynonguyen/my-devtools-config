@@ -12,7 +12,11 @@ import {
 } from 'unocss';
 
 export default defineConfig({
-	shortcuts: [],
+	shortcuts: [
+		{ divider: 'h-0.25 bg-divider w-full' },
+		{ 'flex-center': 'flex justify-center items-center' },
+		[/^size-(\d*)$/, ([_, s]) => `w-${s} h-${s}`],
+	],
 	theme: {
 		colors: [
 			'primary',
@@ -23,9 +27,9 @@ export default defineConfig({
 			'warning',
 			'info',
 
-			'base',
 			'base-100',
 			'base-200',
+			'base-300',
 			'base-content',
 
 			'neutral',
@@ -53,7 +57,7 @@ export default defineConfig({
 			dark: 'class',
 			preflight: false,
 		}),
-		presetAttributify(),
+		presetAttributify({ prefix: 'un', prefixedOnly: true }),
 		presetIcons({
 			prefix: 'i-',
 			extraProperties: { display: 'inline-block', 'vertical-align': 'middle' },
@@ -62,8 +66,14 @@ export default defineConfig({
 		presetRemToPx(),
 		presetWebFonts({
 			provider: 'google',
-			fonts: { sans: 'Poppins' },
+			fonts: { sans: ['Inter', 'Inter:400,500,600:700'] },
 		}),
+	],
+	preflights: [
+		{
+			getCSS: () =>
+				`#_dcp_root_ * { box-sizing: border-box; color: var(--base-content); font-family: 'Inter', sans-serif }`,
+		},
 	],
 	transformers: [transformerVariantGroup()],
 });

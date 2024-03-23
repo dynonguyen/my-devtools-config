@@ -14,3 +14,17 @@ export type Bookmark = Omit<
 	childIds?: string[];
 	parentIds?: string[];
 };
+
+// -----------------------------
+export enum SearchCategory {
+	Bookmark = 'bookmark',
+}
+
+export enum MessageEvent {
+	Search = 'search',
+}
+
+export type Message = {
+	event: MessageEvent;
+	data?: any;
+};
