@@ -2,5 +2,6 @@
 	"cSpell.words": ["clsx", "Dyno", "Iconify", "newtab", "preact", "stylex"],
 	"search.exclude": {
 		"**/build": true
-	}
+	},
+	"todo-tree.tree.scanMode": "workspace"
 }

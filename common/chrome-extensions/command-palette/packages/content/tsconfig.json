@@ -10,6 +10,7 @@
 			"react-dom": ["../../node_modules/preact/compat/"],
 			"~/*": ["./src/*"]
 		},
+		"allowSyntheticDefaultImports": true,
 		"moduleResolution": "Node",
 		"allowImportingTsExtensions": true,
 		"resolveJsonModule": true,

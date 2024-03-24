@@ -21,7 +21,6 @@ export default defineConfig({
 		colors: [
 			'primary',
 			'secondary',
-			'accent',
 			'success',
 			'error',
 			'warning',

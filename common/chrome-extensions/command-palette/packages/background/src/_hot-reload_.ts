@@ -17,7 +17,7 @@ export function hotReloadExtension() {
 	});
 }
 
-setTimeout(reloadTab, 50);
+setTimeout(reloadTab, 200);
 
 chrome.action.onClicked.addListener(() => {
 	reloadTab();

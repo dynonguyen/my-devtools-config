@@ -15,16 +15,39 @@ export type Bookmark = Omit<
 	parentIds?: string[];
 };
 
-// -----------------------------
-export enum SearchCategory {
-	Bookmark = 'bookmark',
-}
+export type ExternalLink = {
+	url: string;
+};
 
+// -----------------------------
 export enum MessageEvent {
 	Search = 'search',
+	Open = 'open',
+}
+
+export enum CommandEvent {
+	Open = 'open',
 }
 
 export type Message = {
 	event: MessageEvent;
 	data?: any;
 };
+
+// -----------------------------
+export enum SearchCategory {
+	Bookmark = 'bookmark',
+	Google = 'google',
+	Youtube = 'youtube',
+}
+
+export enum ShortcutId {}
+
+export enum ShortcutKey {
+	Cmd = 'Cmd',
+	Control = 'Ctrl',
+	Option = 'Option',
+	Shift = 'Shift',
+	Alt = 'Alt',
+	Window = 'Window',
+}

@@ -1,7 +1,7 @@
 import { ComponentChild } from 'preact';
 import { Color } from '~/types/common.type';
 
-type ChipProps = {
+export type ChipProps = {
 	color?: Color;
 	label?: ComponentChild;
 	icon?: ComponentChild;

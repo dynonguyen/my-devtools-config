@@ -1,8 +1,50 @@
-// Development mode
-import { Message, MessageEvent } from '@dcp/shared';
+// Development mode => Remove it on production mode
 import { hotReloadExtension } from './_hot-reload_';
 hotReloadExtension();
 
+import {
+	CommandEvent,
+	Message,
+	MessageEvent,
+	SearchCategory,
+} from '@dcp/shared';
+import { searchBookmarks } from './bookmark';
+
+// TODO: get from user options
+const LIMIT = 20;
+
+// -----------------------------
+async function search(keyword: string) {
+	let result: any[] = [];
+	const promises: Promise<any>[] = [];
+
+	// Bookmark
+	promises.push(
+		searchBookmarks(keyword).then(bookmarks => {
+			result = result.concat(
+				bookmarks
+					.slice(0, LIMIT)
+					.map(item => ({ ...item, category: SearchCategory.Bookmark })),
+			);
+		}),
+	);
+
+	await Promise.all(promises);
+
+	return result;
+}
+
+function openCommandPalette(tab: chrome.tabs.Tab) {
+	if (tab.url?.startsWith('chrome://')) return;
+
+	chrome.tabs.sendMessage<Message>(
+		tab.id as number,
+		{ event: MessageEvent.Open },
+		() => {},
+	);
+}
+
+// -----------------------------
 chrome.runtime.onMessage.addListener(
 	(message: Message, _sender, sendResponse) => {
 		const { event, data = {} } = message;
@@ -10,14 +52,31 @@ chrome.runtime.onMessage.addListener(
 		switch (event) {
 			case MessageEvent.Search: {
 				const { keyword } = data;
-				if (!keyword) return sendResponse([]);
 
-				// TODO: Handle search
-				return true;
+				if (!keyword) {
+					sendResponse([]);
+					break;
+				}
+
+				search(keyword).then(result => {
+					sendResponse(result);
+				});
+
+				break;
 			}
 
 			default:
 				sendResponse(null);
 		}
+
+		return true;
 	},
 );
+
+chrome.commands.onCommand.addListener((command, tab) => {
+	if (command === CommandEvent.Open) {
+		openCommandPalette(tab);
+	}
+});
+
+chrome.action.onClicked.addListener(openCommandPalette);

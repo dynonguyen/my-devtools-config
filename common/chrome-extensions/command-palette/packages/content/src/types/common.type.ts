@@ -1,7 +1,6 @@
 export type Color =
 	| 'primary'
 	| 'secondary'
-	| 'accent'
 	| 'success'
 	| 'error'
 	| 'warning'
@@ -12,6 +11,5 @@ export type Color =
 	| 'orange'
 	| 'blue'
 	| 'cyan'
-	| 'indigo'
 	| 'yellow'
 	| 'grey-500';

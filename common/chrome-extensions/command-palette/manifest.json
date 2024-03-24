@@ -9,7 +9,14 @@
 		"64": "assets/logo.png",
 		"128": "assets/logo.png"
 	},
-	"permissions": ["bookmarks", "favicon", "tabs", "activeTab", "scripting"],
+	"permissions": [
+		"bookmarks",
+		"favicon",
+		"tabs",
+		"activeTab",
+		"scripting",
+		"commands"
+	],
 
 	"action": { "default_icon": "assets/logo.png" },
 
@@ -23,7 +30,7 @@
 	],
 	"content_scripts": [
 		{
-			"matches": ["http://localhost:8888/*"],
+			"matches": ["http://localhost:8888/*", "https://one.one.one.one/*"],
 			"js": ["content/index.js"],
 			"css": ["content/index.css"]
 		}
@@ -31,7 +38,7 @@
 	"background": { "service_worker": "background/index.js", "type": "module" },
 
 	"commands": {
-		"_execute_action": {
+		"open": {
 			"suggested_key": { "default": "Ctrl+Shift+P", "mac": "Command+Shift+P" },
 			"description": "Open command palette"
 		}

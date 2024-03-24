@@ -1,5 +1,4 @@
-import { Bookmark } from '@dcp/shared';
-import { omit } from 'lodash-es';
+import { Bookmark, omit } from '@dcp/shared';
 import { MyCache } from './cache';
 
 // -----------------------------

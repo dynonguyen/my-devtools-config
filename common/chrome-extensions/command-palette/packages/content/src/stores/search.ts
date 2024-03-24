@@ -1,27 +1,62 @@
-import { isEqual } from 'lodash-es';
+import { Bookmark, ExternalLink, SearchCategory } from '@dcp/shared';
+import { ComponentChild } from 'preact';
+import isEqual from 'react-fast-compare';
 import { createWithEqualityFn } from 'zustand/traditional';
 
-export type SearchResult = {};
+export type RawSearchItem = (Bookmark | ExternalLink) & {
+	category: SearchCategory;
+};
+
+export type SearchItem = {
+	id: string;
+	label: string;
+	category: SearchCategory;
+	description?: string;
+	logo?: ComponentChild;
+	shortcutId?: string;
+	raw: RawSearchItem;
+};
 
 type SearchState = {
+	init: boolean;
+	open: boolean;
 	keyword: string;
 	searching: boolean;
-	result: SearchResult[];
+	result: SearchItem[];
+	error?: Error | null;
+	focusedIndex: number;
 };
 
 type SearchAction = {
 	setKeyword: (keyword: string) => void;
+	setOpen: (open?: boolean | 'toggle') => void;
 	set: (state: Partial<SearchState>) => void;
 };
 
 export type SearchStore = SearchState & SearchAction;
 
 export const useSearchStore = createWithEqualityFn<SearchStore>(
-	set => ({
-		keyword: '',
+	(set, get) => ({
+		// TEST: change to false
+		init: true,
+		open: true,
 		searching: false,
+		keyword: '',
 		result: [],
+		focusedIndex: -1,
 		setKeyword: keyword => set({ keyword }),
+		setOpen: open => {
+			let isOpen = open === 'toggle' ? !get().open : open;
+
+			const rootElem = document.getElementById('_dcp_root_');
+
+			if (rootElem) {
+				if (isOpen) rootElem.style.removeProperty('display');
+				else rootElem.style.display = 'none';
+			}
+
+			set({ open: isOpen, init: true });
+		},
 		set,
 	}),
 	isEqual,
