@@ -1,13 +1,4 @@
-// Development mode => Remove it on production mode
-import { hotReloadExtension } from './_hot-reload_';
-hotReloadExtension();
-
-import {
-	CommandEvent,
-	Message,
-	MessageEvent,
-	SearchCategory,
-} from '@dcp/shared';
+import { CommandEvent, Message, MessageEvent, SearchCategory } from '@dcp/shared';
 import { searchBookmarks } from './bookmark';
 
 // TODO: get from user options
@@ -15,68 +6,69 @@ const LIMIT = 20;
 
 // -----------------------------
 async function search(keyword: string) {
-	let result: any[] = [];
-	const promises: Promise<any>[] = [];
+  let result: any[] = [];
+  const promises: Promise<any>[] = [];
 
-	// Bookmark
-	promises.push(
-		searchBookmarks(keyword).then(bookmarks => {
-			result = result.concat(
-				bookmarks
-					.slice(0, LIMIT)
-					.map(item => ({ ...item, category: SearchCategory.Bookmark })),
-			);
-		}),
-	);
+  // Bookmark
+  promises.push(
+    searchBookmarks(keyword).then((bookmarks) => {
+      result = result.concat(bookmarks.slice(0, LIMIT).map((item) => ({ ...item, category: SearchCategory.Bookmark })));
+    })
+  );
 
-	await Promise.all(promises);
+  await Promise.all(promises);
 
-	return result;
+  return result;
 }
 
 function openCommandPalette(tab: chrome.tabs.Tab) {
-	if (tab.url?.startsWith('chrome://')) return;
+  if (tab.url?.startsWith('chrome://')) return;
 
-	chrome.tabs.sendMessage<Message>(
-		tab.id as number,
-		{ event: MessageEvent.Open },
-		() => {},
-	);
+  chrome.tabs.sendMessage<Message>(tab.id as number, { event: MessageEvent.Open }, () => {});
 }
 
 // -----------------------------
-chrome.runtime.onMessage.addListener(
-	(message: Message, _sender, sendResponse) => {
-		const { event, data = {} } = message;
+chrome.runtime.onMessage.addListener((message: Message, _sender, sendResponse) => {
+  const { event, data = {} } = message;
 
-		switch (event) {
-			case MessageEvent.Search: {
-				const { keyword } = data;
+  switch (event) {
+    case MessageEvent.Search: {
+      const { keyword } = data;
 
-				if (!keyword) {
-					sendResponse([]);
-					break;
-				}
+      if (!keyword) {
+        sendResponse([]);
+        break;
+      }
 
-				search(keyword).then(result => {
-					sendResponse(result);
-				});
+      search(keyword).then((result) => {
+        sendResponse(result);
+      });
 
-				break;
-			}
+      break;
+    }
 
-			default:
-				sendResponse(null);
-		}
+    default:
+      sendResponse(null);
+  }
 
-		return true;
-	},
-);
-
-chrome.commands.onCommand.addListener((command, tab) => {
-	if (command === CommandEvent.Open) {
-		openCommandPalette(tab);
-	}
+  return true;
 });
 
-chrome.action.onClicked.addListener(openCommandPalette);
+chrome.commands.onCommand.addListener((command, tab) => {
+  if (command === CommandEvent.Open) {
+    openCommandPalette(tab);
+  }
+});
+
+// chrome.action.onClicked.addListener(openCommandPalette);
+
+(function reload() {
+  chrome.tabs.query({ currentWindow: true, url: 'http://localhost:8888/*' }, function (tabs) {
+    if (tabs[0]) {
+      chrome.tabs.reload(tabs[0].id as number);
+    }
+  });
+  chrome.action.onClicked.addListener(function reloadExtension() {
+    chrome.runtime.reload();
+  });
+})();

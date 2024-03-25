@@ -4,60 +4,62 @@ import isEqual from 'react-fast-compare';
 import { createWithEqualityFn } from 'zustand/traditional';
 
 export type RawSearchItem = (Bookmark | ExternalLink) & {
-	category: SearchCategory;
+  category: SearchCategory;
 };
 
 export type SearchItem = {
-	id: string;
-	label: string;
-	category: SearchCategory;
-	description?: string;
-	logo?: ComponentChild;
-	shortcutId?: string;
-	raw: RawSearchItem;
+  id: string;
+  label: string;
+  category: SearchCategory;
+  description?: string;
+  logo?: ComponentChild;
+  shortcutId?: string;
+  _raw: RawSearchItem;
 };
 
 type SearchState = {
-	init: boolean;
-	open: boolean;
-	keyword: string;
-	searching: boolean;
-	result: SearchItem[];
-	error?: Error | null;
-	focusedIndex: number;
+  init: boolean;
+  open: boolean;
+  openAction: boolean;
+  keyword: string;
+  searching: boolean;
+  result: SearchItem[];
+  error?: Error | null;
+  focusedIndex: number;
 };
 
 type SearchAction = {
-	setKeyword: (keyword: string) => void;
-	setOpen: (open?: boolean | 'toggle') => void;
-	set: (state: Partial<SearchState>) => void;
+  setKeyword: (keyword: string) => void;
+  setOpen: (open?: boolean | 'toggle') => void;
+  set: (state: Partial<SearchState>) => void;
 };
 
 export type SearchStore = SearchState & SearchAction;
 
 export const useSearchStore = createWithEqualityFn<SearchStore>(
-	(set, get) => ({
-		// TEST: change to false
-		init: true,
-		open: true,
-		searching: false,
-		keyword: '',
-		result: [],
-		focusedIndex: -1,
-		setKeyword: keyword => set({ keyword }),
-		setOpen: open => {
-			let isOpen = open === 'toggle' ? !get().open : open;
+  (set, get) => ({
+    // TEST: change to false
+    init: true,
+    open: true,
+    openAction: false,
+    searching: false,
+    keyword: 'a',
+    result: [],
+    focusedIndex: -1,
+    setKeyword: (keyword) => set({ keyword }),
+    setOpen: (open) => {
+      let isOpen = open === 'toggle' ? !get().open : open;
 
-			const rootElem = document.getElementById('_dcp_root_');
+      const rootElem = document.getElementById('_dcp_root_');
 
-			if (rootElem) {
-				if (isOpen) rootElem.style.removeProperty('display');
-				else rootElem.style.display = 'none';
-			}
+      if (rootElem) {
+        if (isOpen) rootElem.style.removeProperty('display');
+        else rootElem.style.display = 'none';
+      }
 
-			set({ open: isOpen, init: true });
-		},
-		set,
-	}),
-	isEqual,
+      set({ open: isOpen, init: true });
+    },
+    set
+  }),
+  isEqual
 );

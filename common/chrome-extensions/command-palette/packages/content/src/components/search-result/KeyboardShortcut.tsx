@@ -4,29 +4,29 @@ import Kbd from '../Kbd';
 
 // TODO: get keyboard shortcut from config
 const shortcuts: Record<string, string[]> = {
-	'search-bookmark-only': [ShortcutKey.Cmd, 'B'],
+  'search-bookmark-only': [ShortcutKey.Cmd, 'B']
 };
 
 type KeyboardShortcutProps = {
-	shortcutId?: string;
+  shortcutId?: string;
 };
 
 export const KeyboardShortcut = (props: KeyboardShortcutProps) => {
-	const { shortcutId } = props;
+  const { shortcutId } = props;
 
-	if (!shortcutId) return null;
+  if (!shortcutId) return null;
 
-	const shortcutKeys = shortcuts[shortcutId];
+  const shortcutKeys = shortcuts[shortcutId];
 
-	if (!shortcutKeys) return null;
+  if (!shortcutKeys) return null;
 
-	return (
-		<div className='flex gap-1'>
-			{shortcutKeys.map(key => (
-				<Kbd key={key} {...kbdMapping(key)} />
-			))}
-		</div>
-	);
+  return (
+    <div class="flex gap-1">
+      {shortcutKeys.map((key) => (
+        <Kbd key={key} {...kbdMapping(key)} />
+      ))}
+    </div>
+  );
 };
 
 export default KeyboardShortcut;
