@@ -15,7 +15,10 @@ export const SearchInput = () => {
   );
 
   useEffect(() => {
-    if (open) ref.current?.focus();
+    if (open && ref.current) {
+      ref.current.value = '';
+      ref.current.focus();
+    }
   }, [open]);
 
   return (

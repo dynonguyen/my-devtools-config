@@ -1,0 +1,33 @@
+import { ComponentChild } from 'preact';
+import isEqual from 'react-fast-compare';
+import { createWithEqualityFn } from 'zustand/traditional';
+
+let timeoutId: NodeJS.Timeout;
+
+type NotificationState = {
+  message: string;
+  icon?: ComponentChild;
+};
+
+type NotificationAction = {
+  setNotification: (notification: NotificationState, timeout?: number) => void;
+};
+
+type NotificationStore = NotificationState & NotificationAction;
+
+export const useNotificationStore = createWithEqualityFn<NotificationStore>(
+  (set) => ({
+    message: '',
+    setNotification: (notification, timeout = 5000) => {
+      const { message, icon } = notification;
+
+      set({ message, icon });
+
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        set({ message: '', icon: undefined });
+      }, timeout);
+    }
+  }),
+  isEqual
+);

@@ -8,13 +8,14 @@ export type SearchResultItemProps = SearchItem & {
 };
 
 export const SearchResultItem = (props: SearchResultItemProps) => {
-  const { label, logo, description, category, shortcutId, onClick } = props;
+  const { label, logo, description, category, shortcutId, tooltip = '', onClick } = props;
 
   return (
     <div
-      class="dcp-search-item flex items-center gap-3 justify-between px-4 p-2 transition-colors cursor-pointer outline-none w-full overflow-hidden hover:(bg-primary/10 dark:bg-primary/5) data-[focused=true]:(!bg-primary/25 !dark:bg-primary/20)"
+      class="dcp-search-item flex items-center gap-3 justify-between px-4 p-2 transition-colors cursor-pointer outline-none w-full overflow-hidden hover:(bg-primary/5) data-[focused=true]:(bg-primary/20)"
       onClick={onClick}
       tabIndex={-1}
+      title={tooltip}
     >
       {/* Logo */}
       <div class="size-5 shrink-0 rounded flex-center text-base-content overflow-hidden">

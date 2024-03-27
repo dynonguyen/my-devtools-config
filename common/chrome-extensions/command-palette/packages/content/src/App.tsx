@@ -1,4 +1,4 @@
-import ClickOutsideHandler from './components/background-handler/ClickOutsideHandler';
+import ClosePopupHandler from './components/background-handler/ClosePopupHandler';
 import MessageHandler from './components/background-handler/MessageHandler';
 import SearchHandler from './components/background-handler/SearchHandler';
 import SearchResultFocusHandler from './components/background-handler/SearchResultFocusHandler';
@@ -36,7 +36,7 @@ export const App = () => {
             <SearchBottom />
 
             <SearchHandler />
-            <ClickOutsideHandler />
+            <ClosePopupHandler />
           </div>
         </div>
       )}

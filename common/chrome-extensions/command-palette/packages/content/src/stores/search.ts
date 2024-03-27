@@ -1,20 +1,21 @@
-import { Bookmark, ExternalLink, SearchCategory } from '@dcp/shared';
+import { SearchCategory } from '@dcp/shared';
 import { ComponentChild } from 'preact';
 import isEqual from 'react-fast-compare';
 import { createWithEqualityFn } from 'zustand/traditional';
 
-export type RawSearchItem = (Bookmark | ExternalLink) & {
+export type RawSearchItem<T = any> = {
   category: SearchCategory;
-};
+} & T;
 
-export type SearchItem = {
+export type SearchItem<T = any> = {
   id: string;
   label: string;
   category: SearchCategory;
   description?: string;
+  tooltip?: string;
   logo?: ComponentChild;
   shortcutId?: string;
-  _raw: RawSearchItem;
+  _raw: RawSearchItem<T>;
 };
 
 type SearchState = {
@@ -31,7 +32,7 @@ type SearchState = {
 type SearchAction = {
   setKeyword: (keyword: string) => void;
   setOpen: (open?: boolean | 'toggle') => void;
-  set: (state: Partial<SearchState>) => void;
+  set: (state: Partial<SearchState> | ((prev: SearchState) => Partial<SearchState>)) => void;
 };
 
 export type SearchStore = SearchState & SearchAction;
@@ -45,7 +46,7 @@ export const useSearchStore = createWithEqualityFn<SearchStore>(
     searching: false,
     keyword: 'a',
     result: [],
-    focusedIndex: -1,
+    focusedIndex: 0,
     setKeyword: (keyword) => set({ keyword }),
     setOpen: (open) => {
       let isOpen = open === 'toggle' ? !get().open : open;
@@ -57,7 +58,7 @@ export const useSearchStore = createWithEqualityFn<SearchStore>(
         else rootElem.style.display = 'none';
       }
 
-      set({ open: isOpen, init: true });
+      set({ open: isOpen, init: true, ...(isOpen === false && { keyword: '', result: [], focusedIndex: 0 }) });
     },
     set
   }),

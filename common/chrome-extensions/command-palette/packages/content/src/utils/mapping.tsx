@@ -13,6 +13,7 @@ export function searchResultMapping(item: RawSearchItem): SearchItem {
         label: title,
         logo: url ? getFavicon(url, 24) : <span class="i-quill:folder size-full" />,
         category: item.category,
+        tooltip: path,
         description: isFolder ? path : url,
         _raw: item
       };
@@ -28,14 +29,14 @@ export function searchCategoryMapping(category: SearchCategory): Pick<ChipProps,
       return {
         label: 'Bookmark',
         icon: <span class="i-ph:bookmark-simple-fill size-4" />,
-        color: 'yellow'
+        color: 'blue'
       };
 
     case SearchCategory.Google:
     case SearchCategory.Youtube:
       return {
         label: 'Internet',
-        icon: <span class="i-ph:globe size-4" />,
+        icon: <span class="i-ph:globe-simple-fill size-4" />,
         color: 'grey-500'
       };
 

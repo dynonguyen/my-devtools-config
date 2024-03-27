@@ -1,15 +1,15 @@
 import { useEffect } from 'preact/hooks';
 
-type UseFocusListOptions = {
+type FocusListListenerProps = {
   enabled?: boolean;
   selector: string;
   top: number;
   bottom: number;
-  onMove?: (data?: any) => void;
+  onMove?: (data?: any, elem?: HTMLElement) => void;
 };
 
-export const useFocusList = (opts: UseFocusListOptions) => {
-  const { enabled = false, selector, top, bottom, onMove } = opts;
+export const FocusListListener = (props: FocusListListenerProps) => {
+  const { enabled = false, selector, top, bottom, onMove } = props;
 
   useEffect(() => {
     if (!enabled) return;
@@ -20,7 +20,7 @@ export const useFocusList = (opts: UseFocusListOptions) => {
 
       if (!len) return;
 
-      let focusedIndex = -1;
+      let focusedIndex = 0;
       for (let i = 0; i < len; ++i) {
         if (items[i].hasAttribute('data-focused')) {
           focusedIndex = i;
@@ -45,7 +45,7 @@ export const useFocusList = (opts: UseFocusListOptions) => {
         focusedItem.scrollIntoView({ behavior: 'instant', block: 'end', inline: 'nearest' });
       }
 
-      onMove?.({ focusedIndex });
+      onMove?.({ focusedIndex }, focusedItem);
     };
 
     const handleKeyDown = (ev: KeyboardEvent) => {
@@ -67,9 +67,9 @@ export const useFocusList = (opts: UseFocusListOptions) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [enabled]);
+  }, [enabled, selector, top, bottom]);
 
   return null;
 };
 
-export default useFocusList;
+export default FocusListListener;

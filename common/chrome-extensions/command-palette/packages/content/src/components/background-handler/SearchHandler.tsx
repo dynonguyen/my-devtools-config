@@ -50,7 +50,7 @@ export const SearchHandler = () => {
           }
         );
 
-        set({ searching: false, result, error: null });
+        set({ searching: false, result, error: null, focusedIndex: 0 });
       } catch (error) {
         set({ searching: false, result: [], error: error as Error });
       }
