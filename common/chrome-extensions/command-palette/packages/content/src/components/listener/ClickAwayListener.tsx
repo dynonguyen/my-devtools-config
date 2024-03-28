@@ -12,7 +12,7 @@ export const ClickAwayListener = (props: ClickAwayListenerProps) => {
   useEffect(() => {
     if (!enabled) return;
 
-    const root = document.getElementById('_dcp_root_');
+    const root = document.documentElement;
     const element = document.querySelector(selector);
 
     if (!root || !element) return;

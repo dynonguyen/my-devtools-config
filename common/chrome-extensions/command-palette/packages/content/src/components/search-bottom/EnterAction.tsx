@@ -18,7 +18,7 @@ export const EnterAction = () => {
         onClick={actionFn}
       >
         <span class="text-base-content text-xs font-500">{label}</span>
-        <Kbd {...(disabled ? { text: '☕' } : { icon: 'i-uil:enter' })} />
+        <Kbd icon={disabled ? 'i-ph:coffee' : 'i-uil:enter'} />
       </div>
 
       <KeypressListener

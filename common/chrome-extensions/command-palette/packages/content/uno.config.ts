@@ -14,9 +14,9 @@ export default defineConfig({
   shortcuts: [
     {
       divider: 'h-0.25 bg-divider w-full',
-      btn: 'py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-white disabled:opacity-50 disabled:pointer-events-none outline-none cursor-pointer transition-colors'
+      btn: 'py-1.5 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-white disabled:opacity-50 disabled:pointer-events-none outline-none cursor-pointer transition-colors)'
     },
-    [/^btn-(.*)$/, ([_, c]) => `bg-${c} hover:bg-${c}/85`],
+    [/^btn-(.*)$/, ([_, c]) => `bg-${c} hover:bg-${c}/85 focus:outline focus:outline-solid focus:outline-${c}/90`],
     { 'flex-center': 'flex justify-center items-center' },
     [/^size-(.*)$/, ([_, s]) => `w-${s} h-${s}`]
   ],

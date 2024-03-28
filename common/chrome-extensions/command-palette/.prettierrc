@@ -1,11 +1,11 @@
 {
-	"bracketSpacing": true,
-	"singleQuote": true,
-	"printWidth": 120,
-	"trailingComma": "none",
-	"tabWidth": 2,
-	"useTabs": false,
-	"arrowParens": "always",
-	"jsxBracketSameLine": false,
-	"react/jsx-max-props-per-line": [1, { "when": "always" }]
+  "bracketSpacing": true,
+  "singleQuote": true,
+  "printWidth": 120,
+  "trailingComma": "none",
+  "tabWidth": 2,
+  "useTabs": false,
+  "arrowParens": "always",
+  "jsxBracketSameLine": false,
+  "react/jsx-max-props-per-line": [1, { "when": "always" }]
 }

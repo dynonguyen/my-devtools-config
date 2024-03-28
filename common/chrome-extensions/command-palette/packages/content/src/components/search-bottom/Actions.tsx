@@ -1,11 +1,16 @@
 import { detectDevicePlatform, pick } from '@dcp/shared';
 import { useEffect, useMemo, useRef } from 'preact/hooks';
+import { createWithEqualityFn } from 'zustand/traditional';
 import { useSearchStore } from '~/stores/search';
 import { actionMenuMapping } from '~/utils/mapping';
 import Kbd from '../Kbd';
 import ClickAwayListener from '../listener/ClickAwayListener';
 import FocusListListener from '../listener/FocusListListener';
 import KeypressListener from '../listener/KeypressListener';
+
+type ActionDialogStore = { openModal: boolean };
+
+export const useActionDialog = createWithEqualityFn<ActionDialogStore>((_) => ({ openModal: false }));
 
 export const Actions = () => {
   const category = useSearchStore(
@@ -14,6 +19,7 @@ export const Actions = () => {
   const { set, openAction } = useSearchStore((state) => pick(state, ['openAction', 'set']));
   const wrapperRef = useRef<HTMLDivElement>(null);
   const selectedElem = useRef<HTMLElement>(null);
+  const openModal = useActionDialog((state) => state.openModal);
 
   const platform = useMemo(() => detectDevicePlatform(), []);
   const ActionMenu = useMemo(() => (category ? actionMenuMapping(category) : null), [category]);
@@ -36,6 +42,7 @@ export const Actions = () => {
         // @ts-ignore
         selectedElem.current = null;
         wrapperRef.current.querySelector('.dcp-action-item[data-focused="true"]')?.removeAttribute('data-focused');
+        document.getElementById('dcp-search-input')?.focus();
       }
     }
   }, [openAction]);
@@ -66,14 +73,14 @@ export const Actions = () => {
 
       <ClickAwayListener
         selector="#dcp-action-wrapper"
-        enabled={!noActionMenu}
+        enabled={!noActionMenu && !openModal}
         onOutsideClick={() => {
           set({ openAction: false });
         }}
       />
       <KeypressListener
         key="Escape"
-        enabled={openAction}
+        enabled={openAction && !openModal}
         keyName="Escape"
         onKeyPress={() => {
           set({ openAction: false });
@@ -81,7 +88,7 @@ export const Actions = () => {
       />
       <KeypressListener
         key="ctrl-k"
-        enabled={!noActionMenu}
+        enabled={!noActionMenu && !openModal}
         compose={platform === 'mac' ? ['metaKey'] : ['ctrlKey']}
         keyName="k"
         onKeyPress={() => {
@@ -90,14 +97,14 @@ export const Actions = () => {
       />
       <KeypressListener
         keyName="Enter"
-        enabled={openAction}
+        enabled={openAction && !openModal}
         onKeyPress={() => {
           selectedElem.current?.click();
         }}
       />
       <FocusListListener
         selector="#_dcp_root_ .dcp-action-item"
-        enabled={openAction}
+        enabled={openAction && !openModal}
         top={320}
         bottom={520}
         onMove={(_, item) => {

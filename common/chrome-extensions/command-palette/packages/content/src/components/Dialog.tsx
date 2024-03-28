@@ -14,7 +14,7 @@ export const Dialog = (props: DialogProps) => {
 
   return (
     <Modal open={open} onClose={onClose} width={width}>
-      <div class={clsx('bg-white dark:bg-base-100 p-4 rounded-lg flex flex-col gap-2 w-full', slotProps?.root?.class)}>
+      <div class={clsx('bg-white dark:bg-base-100 p-4 rounded-lg flex flex-col gap-4 w-full', slotProps?.root?.class)}>
         {title && <div class="font-600 text-base text-base-content ">{title}</div>}
         {body && <div class="text-sm text-base-content/60">{body}</div>}
         {actions}
