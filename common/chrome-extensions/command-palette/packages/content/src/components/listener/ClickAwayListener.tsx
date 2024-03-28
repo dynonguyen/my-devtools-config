@@ -3,7 +3,7 @@ import { useEffect } from 'preact/hooks';
 type ClickAwayListenerProps = {
   selector: string;
   enabled?: boolean;
-  onOutsideClick: () => void;
+  onOutsideClick?: () => void;
 };
 
 export const ClickAwayListener = (props: ClickAwayListenerProps) => {
@@ -19,7 +19,7 @@ export const ClickAwayListener = (props: ClickAwayListenerProps) => {
 
     const handleClick = (ev: MouseEvent) => {
       if (!element?.contains(ev.target as Element)) {
-        onOutsideClick();
+        onOutsideClick?.();
       }
     };
 

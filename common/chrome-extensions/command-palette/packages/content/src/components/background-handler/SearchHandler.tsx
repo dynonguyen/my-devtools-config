@@ -1,6 +1,7 @@
-import { Message, MessageEvent, SearchCategory, getAssets } from '@dcp/shared';
+import { MessageEvent, SearchCategory, getAssets } from '@dcp/shared';
 import { useEffect } from 'preact/hooks';
 import { RawSearchItem, useSearchStore } from '~/stores/search';
+import { sendMessage } from '~/utils/helper';
 import { searchResultMapping } from '~/utils/mapping';
 
 export const SearchHandler = () => {
@@ -16,11 +17,7 @@ export const SearchHandler = () => {
       set({ searching: true });
 
       try {
-        const rawResult: RawSearchItem[] =
-          (await chrome.runtime.sendMessage<Message>({
-            event: MessageEvent.Search,
-            data: { keyword }
-          })) || [];
+        const rawResult = await sendMessage<RawSearchItem[]>(MessageEvent.Search, { keyword });
 
         const result = rawResult.map((item) => searchResultMapping(item));
 

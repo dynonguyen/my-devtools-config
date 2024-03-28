@@ -1,53 +1,51 @@
 // -----------------------------
 type TypeMap<T> = {
-	[K in keyof T]: T[K];
+  [K in keyof T]: T[K];
 };
 export type ValueMap<T> = TypeMap<T>[keyof TypeMap<T>];
 
 // -----------------------------
-export type Bookmark = Omit<
-	chrome.bookmarks.BookmarkTreeNode,
-	'children' | 'dateAdded' | 'dateGroupModified'
-> & {
-	isFolder?: boolean;
-	path?: string;
-	childIds?: string[];
-	parentIds?: string[];
+export type Bookmark = Omit<chrome.bookmarks.BookmarkTreeNode, 'children' | 'dateAdded' | 'dateGroupModified'> & {
+  isFolder?: boolean;
+  path?: string;
+  childIds?: string[];
+  parentIds?: string[];
 };
 
 export type ExternalLink = {
-	url: string;
+  url: string;
 };
 
 // -----------------------------
 export enum MessageEvent {
-	Search = 'search',
-	Open = 'open',
+  Search = 'search',
+  Open = 'open',
+  DeleteBookmark = 'delete-bookmark'
 }
 
 export enum CommandEvent {
-	Open = 'open',
+  Open = 'open'
 }
 
 export type Message = {
-	event: MessageEvent;
-	data?: any;
+  event: MessageEvent;
+  data?: any;
 };
 
 // -----------------------------
 export enum SearchCategory {
-	Bookmark = 'bookmark',
-	Google = 'google',
-	Youtube = 'youtube',
+  Bookmark = 'bookmark',
+  Google = 'google',
+  Youtube = 'youtube'
 }
 
 export enum ShortcutId {}
 
 export enum ShortcutKey {
-	Cmd = 'Cmd',
-	Control = 'Ctrl',
-	Option = 'Option',
-	Shift = 'Shift',
-	Alt = 'Alt',
-	Window = 'Window',
+  Cmd = 'Cmd',
+  Control = 'Ctrl',
+  Option = 'Option',
+  Shift = 'Shift',
+  Alt = 'Alt',
+  Window = 'Window'
 }

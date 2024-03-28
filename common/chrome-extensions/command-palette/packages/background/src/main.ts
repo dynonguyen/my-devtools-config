@@ -1,5 +1,5 @@
 import { CommandEvent, Message, MessageEvent, SearchCategory } from '@dcp/shared';
-import { searchBookmarks } from './bookmark';
+import { deleteBookmark, searchBookmarks } from './bookmark';
 
 // TODO: get from user options
 const LIMIT = 20;
@@ -43,6 +43,19 @@ chrome.runtime.onMessage.addListener((message: Message, _sender, sendResponse) =
       search(keyword).then((result) => {
         sendResponse(result);
       });
+
+      break;
+    }
+
+    case MessageEvent.DeleteBookmark: {
+      deleteBookmark(data)
+        .then(() => {
+          sendResponse(true);
+        })
+        .catch((error) => {
+          console.log(error);
+          sendResponse(false);
+        });
 
       break;
     }

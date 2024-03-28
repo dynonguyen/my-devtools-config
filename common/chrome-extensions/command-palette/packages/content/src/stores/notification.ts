@@ -6,6 +6,7 @@ let timeoutId: NodeJS.Timeout;
 
 type NotificationState = {
   message: string;
+  variant?: 'success' | 'warning' | 'error';
   icon?: ComponentChild;
 };
 
@@ -19,13 +20,11 @@ export const useNotificationStore = createWithEqualityFn<NotificationStore>(
   (set) => ({
     message: '',
     setNotification: (notification, timeout = 5000) => {
-      const { message, icon } = notification;
-
-      set({ message, icon });
+      set(notification);
 
       if (timeoutId) clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-        set({ message: '', icon: undefined });
+        set({ message: '', icon: undefined, variant: undefined });
       }, timeout);
     }
   }),

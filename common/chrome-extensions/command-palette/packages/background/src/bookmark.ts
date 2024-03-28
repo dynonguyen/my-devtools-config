@@ -3,90 +3,85 @@ import { MyCache } from './cache';
 
 // -----------------------------
 type BookmarkCache = {
-	dictionary: Record<string, Bookmark>;
+  dictionary: Record<string, Bookmark>;
 };
 
 const cache = new MyCache<BookmarkCache>();
 
 // -----------------------------
 const flattenBookmarkDictionary = (
-	node: chrome.bookmarks.BookmarkTreeNode,
-	bookmarks: Array<chrome.bookmarks.BookmarkTreeNode & { parentIds: string[] }>,
-	parentIds: string[] = [],
+  node: chrome.bookmarks.BookmarkTreeNode,
+  bookmarks: Array<chrome.bookmarks.BookmarkTreeNode & { parentIds: string[] }>,
+  parentIds: string[] = []
 ) => {
-	const currentParentId =
-		node.parentId && node.parentId !== '0'
-			? [...parentIds, node.parentId]
-			: parentIds;
+  const currentParentId = node.parentId && node.parentId !== '0' ? [...parentIds, node.parentId] : parentIds;
 
-	bookmarks.push({ ...node, parentIds: currentParentId });
+  bookmarks.push({ ...node, parentIds: currentParentId });
 
-	if (!node.children || !node.children.length) {
-		return bookmarks;
-	}
+  if (!node.children || !node.children.length) {
+    return bookmarks;
+  }
 
-	node.children.forEach(child => {
-		flattenBookmarkDictionary(child, bookmarks, currentParentId);
-	});
+  node.children.forEach((child) => {
+    flattenBookmarkDictionary(child, bookmarks, currentParentId);
+  });
 
-	return bookmarks;
+  return bookmarks;
 };
 
 const buildBookmarkDictionary = async () => {
-	const dictionary: Record<string, Bookmark> = {};
+  const dictionary: Record<string, Bookmark> = {};
 
-	const rootNode = (await chrome.bookmarks.getTree())[0];
-	const flatted = flattenBookmarkDictionary(rootNode, [], []).sort(
-		(a, b) => (a.parentIds?.length || 0) - (b.parentIds?.length || 0),
-	);
+  const rootNode = (await chrome.bookmarks.getTree())[0];
+  const flatted = flattenBookmarkDictionary(rootNode, [], []).sort(
+    (a, b) => (a.parentIds?.length || 0) - (b.parentIds?.length || 0)
+  );
 
-	const getPath = (pid: string): string => {
-		const parent = dictionary[pid];
+  const getPath = (pid: string): string => {
+    const parent = dictionary[pid];
 
-		if (!parent || !parent.parentId) return '';
+    if (!parent || !parent.parentId) return '';
 
-		const parentPath = getPath(parent.parentId);
-		return (parentPath ? `${parentPath} > ` : '') + parent.title;
-	};
+    const parentPath = getPath(parent.parentId);
+    return (parentPath ? `${parentPath} > ` : '') + parent.title;
+  };
 
-	flatted.forEach(b => {
-		if (b.id !== '0') {
-			dictionary[b.id] = {
-				...omit(b, ['children', 'dateAdded', 'dateGroupModified']),
-				isFolder: !b.url,
-				childIds: b.children?.map(c => c.id) || [],
-				path: b.parentId && b.parentId !== '0' ? getPath(b.parentId) : '',
-			};
-		}
-	});
+  flatted.forEach((b) => {
+    if (b.id !== '0') {
+      dictionary[b.id] = {
+        ...omit(b, ['children', 'dateAdded', 'dateGroupModified']),
+        isFolder: !b.url,
+        childIds: b.children?.map((c) => c.id) || [],
+        path: b.parentId && b.parentId !== '0' ? getPath(b.parentId) : ''
+      };
+    }
+  });
 
-	cache.add('dictionary', dictionary);
+  cache.add('dictionary', dictionary);
 
-	return dictionary;
+  return dictionary;
 };
 
 // -----------------------------
 export const searchBookmarks = async (keyword: string): Promise<Bookmark[]> => {
-	const bookmarks = await chrome.bookmarks.search(keyword);
+  const bookmarks = await chrome.bookmarks.search(keyword);
 
-	let dictionary = cache.get('dictionary')!;
-	if (!dictionary) {
-		dictionary = await buildBookmarkDictionary();
-	}
+  let dictionary = cache.get('dictionary')!;
+  if (!dictionary) {
+    dictionary = await buildBookmarkDictionary();
+  }
 
-	return bookmarks.map(item => dictionary[item.id]);
+  return bookmarks.map((item) => dictionary[item.id]);
 };
 
-export const deleteBookmark = async (id: string) => {
-	return chrome.bookmarks.remove(id);
+export const deleteBookmark = ({ id, isFolder }: { id: string; isFolder?: boolean }) => {
+  return isFolder ? chrome.bookmarks.removeTree(id) : chrome.bookmarks.remove(id);
 };
 
 // -----------------------------
 (function listener() {
-	['onChanged', 'onImportEnded', 'onCreated', 'onMoved', 'onRemoved'].forEach(
-		eventKey => {
-			// @ts-ignore
-			chrome.bookmarks[eventKey]?.addListener(buildBookmarkDictionary);
-		},
-	);
+  ['onChanged', 'onImportEnded', 'onCreated', 'onMoved', 'onRemoved'].forEach((eventKey) => {
+    // @ts-ignore
+    chrome.bookmarks[eventKey]?.addListener(buildBookmarkDictionary);
+  });
 })();

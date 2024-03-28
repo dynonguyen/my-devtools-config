@@ -10,10 +10,11 @@ export const SearchResult = () => {
 
   useEffect(() => {
     if (wrapperRef.current && useSearchStore.getState().focusedIndex === 0) {
+      wrapperRef.current.querySelector('.dcp-search-item[data-focused="true"]')?.removeAttribute('data-focused');
       const firstChild = wrapperRef.current.children[0];
       firstChild?.setAttribute('data-focused', 'true');
     }
-  }, [result.length]);
+  }, [result.length, result.map((_) => _.id).join('')]);
 
   if (!keyword) return null;
 

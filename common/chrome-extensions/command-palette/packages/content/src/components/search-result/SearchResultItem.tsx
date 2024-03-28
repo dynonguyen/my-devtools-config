@@ -12,7 +12,7 @@ export const SearchResultItem = (props: SearchResultItemProps) => {
 
   return (
     <div
-      class="dcp-search-item flex items-center gap-3 justify-between px-4 p-2 transition-colors cursor-pointer outline-none w-full overflow-hidden hover:(bg-primary/5) data-[focused=true]:(bg-primary/20)"
+      class="dcp-search-item flex items-center gap-3 justify-between px-4 p-2 transition-colors cursor-pointer outline-none w-full overflow-hidden hover:(bg-primary/5) data-[focused=true]:(!bg-primary/20)"
       onClick={onClick}
       tabIndex={-1}
       title={tooltip}
