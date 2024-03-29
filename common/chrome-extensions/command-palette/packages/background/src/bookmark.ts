@@ -78,6 +78,10 @@ export const deleteBookmark = ({ id, isFolder }: { id: string; isFolder?: boolea
   return isFolder ? chrome.bookmarks.removeTree(id) : chrome.bookmarks.remove(id);
 };
 
+export const updateBookmark = ({ id, title, url }: { id: string; title: string; url: string }) => {
+  return chrome.bookmarks.update(id, { title, url });
+};
+
 // -----------------------------
 (function listener() {
   ['onChanged', 'onImportEnded', 'onCreated', 'onMoved', 'onRemoved'].forEach((eventKey) => {

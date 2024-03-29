@@ -1,8 +1,7 @@
 import { CommandEvent, Message, MessageEvent, SearchCategory } from '@dcp/shared';
-import { deleteBookmark, searchBookmarks } from './bookmark';
-
-// TODO: get from user options
-const LIMIT = 20;
+import { deleteBookmark, searchBookmarks, updateBookmark } from './bookmark';
+import { searchNavigation } from './navigation';
+import { userOptions } from './user-options';
 
 // -----------------------------
 async function search(keyword: string) {
@@ -12,23 +11,29 @@ async function search(keyword: string) {
   // Bookmark
   promises.push(
     searchBookmarks(keyword).then((bookmarks) => {
-      result = result.concat(bookmarks.slice(0, LIMIT).map((item) => ({ ...item, category: SearchCategory.Bookmark })));
+      result = result.concat(bookmarks.map((item) => ({ ...item, category: SearchCategory.Bookmark })));
     })
   );
 
   await Promise.all(promises);
 
-  return result;
+  result = result.concat(
+    searchNavigation(keyword.toLowerCase()).map((item) => ({ ...item, category: SearchCategory.Navigation }))
+  );
+
+  return result
+    .sort((a, b) => (a.title?.toLowerCase() < b.title?.toLowerCase() ? -1 : 1))
+    .slice(0, userOptions.limitItems);
 }
 
 function openCommandPalette(tab: chrome.tabs.Tab) {
   if (tab.url?.startsWith('chrome://')) return;
 
-  chrome.tabs.sendMessage<Message>(tab.id as number, { event: MessageEvent.Open }, () => {});
+  chrome.tabs.sendMessage<Message>(tab.id as number, { event: MessageEvent.OpenPalette }, () => {});
 }
 
 // -----------------------------
-chrome.runtime.onMessage.addListener((message: Message, _sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) => {
   const { event, data = {} } = message;
 
   switch (event) {
@@ -49,13 +54,22 @@ chrome.runtime.onMessage.addListener((message: Message, _sender, sendResponse) =
 
     case MessageEvent.DeleteBookmark: {
       deleteBookmark(data)
-        .then(() => {
-          sendResponse(true);
-        })
-        .catch(() => {
-          sendResponse(false);
-        });
+        .then(() => sendResponse(true))
+        .catch(() => sendResponse(false));
 
+      break;
+    }
+
+    case MessageEvent.UpdateBookmark: {
+      updateBookmark(data)
+        .then(() => sendResponse(true))
+        .catch(() => sendResponse(false));
+      break;
+    }
+
+    case MessageEvent.OpenLocalResource: {
+      chrome.tabs.create({ url: data.url, index: (sender.tab?.index || 0) + 1 });
+      sendResponse(true);
       break;
     }
 

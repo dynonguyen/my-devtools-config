@@ -1,11 +1,6 @@
-import { ShortcutKey } from '@dcp/shared';
+import { useUserOptionStore } from '~/stores/user-options';
 import { kbdMapping } from '~/utils/mapping';
 import Kbd from '../Kbd';
-
-// TODO: get keyboard shortcut from config
-const shortcuts: Record<string, string[]> = {
-  'search-bookmark-only': [ShortcutKey.Cmd, 'B']
-};
 
 type KeyboardShortcutProps = {
   shortcutId?: string;
@@ -13,6 +8,7 @@ type KeyboardShortcutProps = {
 
 export const KeyboardShortcut = (props: KeyboardShortcutProps) => {
   const { shortcutId } = props;
+  const shortcuts = useUserOptionStore((state) => state.shortcuts);
 
   if (!shortcutId) return null;
 

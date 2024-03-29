@@ -1,3 +1,5 @@
+import { getUserOptions, userOptionsChangeListener } from '@dcp/shared';
+import { useEffect } from 'preact/hooks';
 import ClosePopupHandler from './components/background-handler/ClosePopupHandler';
 import MessageHandler from './components/background-handler/MessageHandler';
 import SearchHandler from './components/background-handler/SearchHandler';
@@ -7,9 +9,30 @@ import SearchInput from './components/search-input';
 import SearchResult from './components/search-result';
 import { INPUT_Z_INDEX } from './constants/common';
 import { useSearchStore } from './stores/search';
+import { useUserOptionStore } from './stores/user-options';
 
 export const App = () => {
   const init = useSearchStore((state) => state.init);
+
+  useEffect(() => {
+    const handleGetUserOptions = () => {
+      getUserOptions().then((userOptions) => {
+        const mode = userOptions.theme;
+        const root = document.getElementById('_dcp_root_')!;
+
+        const newThemMode =
+          mode === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : mode;
+        root.classList.remove(newThemMode === 'dark' ? 'light' : 'dark');
+        root.classList.add(newThemMode);
+
+        useUserOptionStore.getState().setOptions(userOptions);
+      });
+    };
+
+    handleGetUserOptions();
+
+    return userOptionsChangeListener(handleGetUserOptions);
+  }, []);
 
   return (
     <>

@@ -7,7 +7,7 @@ export const MessageHandler = () => {
 
   useEffect(() => {
     const handleMessage = (message: Message, _: any, sendResponse: (response?: any) => void) => {
-      if (message.event === MessageEvent.Open) {
+      if (message.event === MessageEvent.OpenPalette) {
         setOpen('toggle');
       }
       sendResponse(true);

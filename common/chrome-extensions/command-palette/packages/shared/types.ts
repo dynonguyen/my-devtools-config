@@ -16,11 +16,19 @@ export type ExternalLink = {
   url: string;
 };
 
+export type Navigation = {
+  logoUri: string;
+  title: string;
+  url: string;
+};
+
 // -----------------------------
 export enum MessageEvent {
   Search = 'search',
-  Open = 'open',
-  DeleteBookmark = 'delete-bookmark'
+  OpenPalette = 'open-palette',
+  DeleteBookmark = 'delete-bookmark',
+  UpdateBookmark = 'update-bookmark',
+  OpenLocalResource = 'open-local-resource'
 }
 
 export enum CommandEvent {
@@ -36,7 +44,8 @@ export type Message = {
 export enum SearchCategory {
   Bookmark = 'bookmark',
   Google = 'google',
-  Youtube = 'youtube'
+  Youtube = 'youtube',
+  Navigation = 'navigation'
 }
 
 export enum ShortcutId {}
@@ -49,3 +58,10 @@ export enum ShortcutKey {
   Alt = 'Alt',
   Window = 'Window'
 }
+
+// -----------------------------
+export type UserOptions = {
+  theme: 'system' | 'dark' | 'light';
+  limitItems: number;
+  shortcuts: Record<string, string[]>;
+};

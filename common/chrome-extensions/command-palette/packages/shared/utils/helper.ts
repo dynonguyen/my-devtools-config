@@ -1,67 +1,83 @@
-import { EXTENSION_ID } from '../constants/common';
+import { EXTENSION_ID, STORAGE_KEY } from '../constants/common';
+import { DEFAULT_USER_OPTIONS } from '../constants/default';
+import { UserOptions } from '../types';
 
 // -----------------------------
-export function omit<T extends object, K extends keyof T>(
-	obj: T,
-	keys: K[] = [],
-): Omit<T, K> {
-	const omitted: any = {};
+export function omit<T extends object, K extends keyof T>(obj: T, keys: K[] = []): Omit<T, K> {
+  const omitted: any = {};
 
-	Object.entries(obj).forEach(([key, value]) => {
-		if (!keys.includes(key as K)) omitted[key] = value;
-	});
+  Object.entries(obj).forEach(([key, value]) => {
+    if (!keys.includes(key as K)) omitted[key] = value;
+  });
 
-	return omitted as Omit<T, K>;
+  return omitted as Omit<T, K>;
 }
 
-export function pick<T extends object, K extends keyof T>(
-	obj: T,
-	keys: K[] = [],
-): Pick<T, K> {
-	const picked: any = {};
+export function pick<T extends object, K extends keyof T>(obj: T, keys: K[] = []): Pick<T, K> {
+  const picked: any = {};
 
-	Object.entries(obj).forEach(([key, value]) => {
-		if (keys.includes(key as K)) picked[key] = value;
-	});
+  Object.entries(obj).forEach(([key, value]) => {
+    if (keys.includes(key as K)) picked[key] = value;
+  });
 
-	return picked as Pick<T, K>;
+  return picked as Pick<T, K>;
 }
 
 type TimerId = ReturnType<typeof setTimeout>;
-export function debounce<T extends (...args: any[]) => void>(
-	func: T,
-	delay: number,
-): (...args: Parameters<T>) => void {
-	let timerId: TimerId;
+export function debounce<T extends (...args: any[]) => void>(func: T, delay: number): (...args: Parameters<T>) => void {
+  let timerId: TimerId;
 
-	return function (...args: Parameters<T>): void {
-		clearTimeout(timerId);
-		timerId = setTimeout(() => {
-			// @ts-ignore
-			func.apply(this, args);
-		}, delay);
-	};
+  return function (...args: Parameters<T>): void {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      // @ts-ignore
+      func.apply(this, args);
+    }, delay);
+  };
 }
 
 // -----------------------------
 export function detectDevicePlatform(): 'mac' | 'win' | 'linux' | 'other' {
-	const userAgent = navigator.userAgent.toLowerCase();
+  const userAgent = navigator.userAgent.toLowerCase();
 
-	if (userAgent.includes('win')) {
-		return 'win';
-	} else if (userAgent.includes('mac')) {
-		return 'mac';
-	} else if (userAgent.includes('linux')) {
-		return 'linux';
-	} else {
-		return 'other';
-	}
+  if (userAgent.includes('win')) {
+    return 'win';
+  } else if (userAgent.includes('mac')) {
+    return 'mac';
+  } else if (userAgent.includes('linux')) {
+    return 'linux';
+  } else {
+    return 'other';
+  }
 }
 
 export function getAssets(uri: string) {
-	return `chrome-extension://${EXTENSION_ID}/assets/${uri}`;
+  return `chrome-extension://${EXTENSION_ID}/assets/${uri}`;
 }
 
 export function getFavicon(uri: string, size = 32) {
-	return `chrome-extension://${EXTENSION_ID}/_favicon/?pageUrl=${uri}&size=${size}`;
+  return `chrome-extension://${EXTENSION_ID}/_favicon/?pageUrl=${uri}&size=${size}`;
+}
+
+export async function getUserOptions(): Promise<UserOptions> {
+  const userOptions = await chrome.storage.sync.get(STORAGE_KEY.USER_OPTION);
+  return userOptions?.[STORAGE_KEY.USER_OPTION] || DEFAULT_USER_OPTIONS;
+}
+
+export async function setUserOptions(options: Partial<UserOptions>) {
+  const userOpts = await getUserOptions();
+  return await chrome.storage.sync.set({ [STORAGE_KEY.USER_OPTION]: { ...userOpts, ...options } });
+}
+
+export function userOptionsChangeListener(onChange?: () => void) {
+  const handleChange = (changed: { [key: string]: chrome.storage.StorageChange }) => {
+    if (changed[STORAGE_KEY.USER_OPTION]) {
+      onChange?.();
+    }
+  };
+  chrome.storage.onChanged.addListener(handleChange);
+
+  return () => {
+    chrome.storage.onChanged.removeListener(handleChange);
+  };
 }

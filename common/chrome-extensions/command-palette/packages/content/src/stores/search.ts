@@ -39,12 +39,11 @@ export type SearchStore = SearchState & SearchAction;
 
 export const useSearchStore = createWithEqualityFn<SearchStore>(
   (set, get) => ({
-    // TEST: change to false
-    init: true,
-    open: true,
+    init: false,
+    open: false,
     openAction: false,
     searching: false,
-    keyword: 'a',
+    keyword: '',
     result: [],
     focusedIndex: 0,
     setKeyword: (keyword) => set({ keyword }),

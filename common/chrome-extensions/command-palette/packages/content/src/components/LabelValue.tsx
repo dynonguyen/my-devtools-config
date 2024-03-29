@@ -1,6 +1,6 @@
 import { ComponentChild } from 'preact';
 
-type LabelValueProps = {
+export type LabelValueProps = {
   label: ComponentChild;
   value?: ComponentChild;
   labelWidth?: number;

@@ -1,46 +1,39 @@
 {
-	"manifest_version": 3,
-	"name": "Dyno Command Palette",
-	"version": "1.0.0",
-	"description": "A command palette to navigate in Google Chrome faster ⚡",
-	"icons": {
-		"16": "assets/logo.png",
-		"32": "assets/logo.png",
-		"64": "assets/logo.png",
-		"128": "assets/logo.png"
-	},
-	"permissions": [
-		"bookmarks",
-		"favicon",
-		"tabs",
-		"activeTab",
-		"scripting",
-		"commands"
-	],
+  "manifest_version": 3,
+  "name": "Dyno Command Palette",
+  "version": "1.0.0",
+  "description": "A command palette to navigate in Google Chrome faster ⚡",
+  "icons": {
+    "16": "assets/logo.png",
+    "32": "assets/logo.png",
+    "64": "assets/logo.png",
+    "128": "assets/logo.png"
+  },
+  "permissions": ["bookmarks", "favicon", "tabs", "activeTab", "scripting", "commands", "storage"],
 
-	"action": { "default_icon": "assets/logo.png" },
+  "action": { "default_icon": "assets/logo.png" },
 
-	"web_accessible_resources": [
-		{ "resources": ["assets/*"], "matches": ["<all_urls>"] },
-		{
-			"resources": ["_favicon/*"],
-			"matches": ["<all_urls>"],
-			"extension_ids": ["*"]
-		}
-	],
-	"content_scripts": [
-		{
-			"matches": ["http://localhost:8888/*", "https://one.one.one.one/*"],
-			"js": ["content/index.js"],
-			"css": ["content/index.css"]
-		}
-	],
-	"background": { "service_worker": "background/index.js", "type": "module" },
+  "web_accessible_resources": [
+    { "resources": ["assets/*"], "matches": ["<all_urls>"] },
+    {
+      "resources": ["_favicon/*"],
+      "matches": ["<all_urls>"],
+      "extension_ids": ["*"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/index.js"],
+      "css": ["content/index.css"]
+    }
+  ],
+  "background": { "service_worker": "background/index.js", "type": "module" },
 
-	"commands": {
-		"open": {
-			"suggested_key": { "default": "Ctrl+Shift+P", "mac": "Command+Shift+P" },
-			"description": "Open command palette"
-		}
-	}
+  "commands": {
+    "open": {
+      "suggested_key": { "default": "Ctrl+Shift+P", "mac": "Command+Shift+P" },
+      "description": "Open command palette"
+    }
+  }
 }
