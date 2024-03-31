@@ -26,7 +26,27 @@ const commands: Command[] = [
   { title: 'Merge All Windows', logoUri: getAssets('merge-window.svg'), commandEvent: MessageEvent.MergeAllWindows },
 
   // Chrome
-  { title: 'Quit Chrome', logoUri: getAssets('exit.svg'), commandEvent: MessageEvent.QuitChrome }
+  { title: 'Quit Chrome', logoUri: getAssets('exit.svg'), commandEvent: MessageEvent.QuitChrome },
+  {
+    title: 'Clear History - All time',
+    logoUri: getAssets('clear-history.svg'),
+    commandEvent: MessageEvent.ClearHistory
+  },
+  {
+    title: 'Clear History - Last hour',
+    logoUri: getAssets('clear-history.svg'),
+    commandEvent: MessageEvent.ClearHistory
+  },
+  {
+    title: 'Clear History - Last 24 hours',
+    logoUri: getAssets('clear-history.svg'),
+    commandEvent: MessageEvent.ClearHistory
+  },
+  {
+    title: 'Clear History - Last 7 days',
+    logoUri: getAssets('clear-history.svg'),
+    commandEvent: MessageEvent.ClearHistory
+  }
 ];
 
 export const searchCommands = (keyword: string) => {

@@ -36,6 +36,8 @@ export type Theme = {
   description?: string;
 };
 
+export type History = chrome.history.HistoryItem;
+
 // -----------------------------
 export enum MessageEvent {
   // Other
@@ -65,7 +67,14 @@ export enum MessageEvent {
   NewIncognitoWindow = 'new-incognito-window',
 
   // Chrome
-  QuitChrome = 'quit-chrome'
+  QuitChrome = 'quit-chrome',
+
+  // History
+  ClearHistory = 'clear-history',
+  ClearHistoryLastHour = 'clear-history-last-hour',
+  ClearHistoryLast24Hours = 'clear-history-last-24-hours',
+  ClearHistoryLast7Days = 'clear-history-last-7-days',
+  DeleteHistory = 'delete-history'
 }
 
 export enum CommandEvent {
@@ -83,7 +92,8 @@ export enum SearchCategory {
   InternetQuery = 'internet',
   Navigation = 'navigation',
   Command = 'command',
-  Theme = 'theme'
+  Theme = 'theme',
+  History = 'history'
 }
 
 export enum ShortcutId {}

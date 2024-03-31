@@ -1,6 +1,7 @@
 import { CommandEvent, Message, MessageEvent, SearchCategory, setUserOptions } from '@dcp/shared';
-import { deleteBookmark, searchBookmarks, updateBookmark } from './bookmark';
+import { searchBookmarks } from './bookmark';
 import { searchCommands } from './command';
+import { searchHistory } from './history';
 import { searchNavigation } from './navigation';
 import { searchThemeOptions, userOptions } from './user-options';
 
@@ -15,6 +16,13 @@ async function search(keyword: string) {
   promises.push(
     searchBookmarks(keyword).then((bookmarks) => {
       result = result.concat(bookmarks.map((item) => ({ ...item, category: SearchCategory.Bookmark })));
+    })
+  );
+
+  // History
+  promises.push(
+    searchHistory(keyword).then((histories) => {
+      result = result.concat(histories.map((item) => ({ ...item, category: SearchCategory.History })));
     })
   );
 
@@ -84,13 +92,14 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
 
     // Bookmark
     case MessageEvent.DeleteBookmark: {
-      sendBooleanResponse(deleteBookmark(data));
-
+      const { id, isFolder } = data;
+      sendBooleanResponse(isFolder ? chrome.bookmarks.removeTree(id) : chrome.bookmarks.remove(id));
       break;
     }
 
     case MessageEvent.UpdateBookmark: {
-      sendBooleanResponse(updateBookmark(data));
+      const { id, title, url } = data;
+      sendBooleanResponse(chrome.bookmarks.update(id, { title, url }));
       break;
     }
 
@@ -183,6 +192,33 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
           });
         })
       );
+      break;
+    }
+
+    // History
+    case MessageEvent.ClearHistory: {
+      sendBooleanResponse(chrome.history.deleteAll());
+      break;
+    }
+
+    case MessageEvent.ClearHistoryLastHour:
+    case MessageEvent.ClearHistoryLast24Hours:
+    case MessageEvent.ClearHistoryLast7Days: {
+      const now = Date.now();
+      const startTime =
+        now -
+        (data.event === MessageEvent.ClearHistoryLastHour
+          ? 60 * 60 * 1000
+          : data.event === MessageEvent.ClearHistoryLast24Hours
+          ? 24 * 60 * 60 * 1000
+          : 7 * 24 * 60 * 60 * 1000);
+
+      sendBooleanResponse(chrome.history.deleteRange({ startTime, endTime: now }));
+      break;
+    }
+
+    case MessageEvent.DeleteHistory: {
+      sendBooleanResponse(chrome.history.deleteUrl({ url: data.url }));
       break;
     }
 

@@ -24,6 +24,7 @@ export const BookmarkActions = () => {
   const handleCopyURL = () => {
     copyToClipboard(url!);
     useNotificationStore.getState().setNotification({ message: 'Copied to clipboard', variant: 'success' });
+    useSearchStore.setState({ openAction: false });
   };
 
   const handleDelete = async () => {
@@ -83,7 +84,7 @@ export const BookmarkActions = () => {
     }
   };
 
-  const items: ActionMenuItem[] = [
+  const actionItems: ActionMenuItem[] = [
     {
       icon: <span class="i-majesticons:checkbox-list-detail" />,
       label: 'View details',
@@ -120,7 +121,7 @@ export const BookmarkActions = () => {
 
   return (
     <>
-      <ActionMenu items={items} />
+      <ActionMenu items={actionItems} />
 
       {/* Edit */}
       <Dialog

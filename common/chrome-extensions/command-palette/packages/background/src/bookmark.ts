@@ -74,14 +74,6 @@ export const searchBookmarks = async (keyword: string): Promise<Bookmark[]> => {
   return bookmarks.map((item) => dictionary[item.id]);
 };
 
-export const deleteBookmark = ({ id, isFolder }: { id: string; isFolder?: boolean }) => {
-  return isFolder ? chrome.bookmarks.removeTree(id) : chrome.bookmarks.remove(id);
-};
-
-export const updateBookmark = ({ id, title, url }: { id: string; title: string; url: string }) => {
-  return chrome.bookmarks.update(id, { title, url });
-};
-
 // -----------------------------
 (function listener() {
   ['onChanged', 'onImportEnded', 'onCreated', 'onMoved', 'onRemoved'].forEach((eventKey) => {

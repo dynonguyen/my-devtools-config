@@ -19,7 +19,7 @@ type NotificationStore = NotificationState & NotificationAction;
 export const useNotificationStore = createWithEqualityFn<NotificationStore>(
   (set) => ({
     message: '',
-    setNotification: (notification, timeout = 5000) => {
+    setNotification: (notification, timeout = 3000) => {
       set(notification);
 
       if (timeoutId) clearTimeout(timeoutId);

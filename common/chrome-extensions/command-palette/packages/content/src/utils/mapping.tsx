@@ -1,6 +1,7 @@
 import {
   Bookmark,
   Command,
+  History,
   MessageEvent,
   Navigation,
   SearchCategory,
@@ -11,8 +12,8 @@ import {
 import { ChipProps } from '~/components/Chip';
 import { KbdProps } from '~/components/Kbd';
 import BookmarkActions from '~/components/search-bottom/BookmarkActions';
+import HistoryActions from '~/components/search-bottom/HistoryActions';
 import { RawSearchItem, SearchItem, useSearchStore } from '~/stores/search';
-import { useUserOptionStore } from '~/stores/user-options';
 import { sendMessage } from './helper';
 
 export function searchResultMapping(item: RawSearchItem): SearchItem {
@@ -58,14 +59,25 @@ export function searchResultMapping(item: RawSearchItem): SearchItem {
 
     case SearchCategory.Theme: {
       const { id, logoUri, title, description } = item as Theme;
-      const mode = useUserOptionStore.getState().theme;
 
       return {
-        id: `theme-${id}-${mode}`,
+        id: `theme-${id}`,
         category: item.category,
-        label: id === 'toggle-theme' ? `Theme: Switch To ${mode === 'light' ? 'Dark' : 'Light'} Mode` : title,
-        description: id === 'toggle-theme' ? `Current mode: ${mode}` : description,
+        label: title,
+        description,
         logo: logoUri,
+        _raw: item
+      };
+    }
+
+    case SearchCategory.History: {
+      const { id, title, url } = item as History;
+      return {
+        id: `history-${id}`,
+        category: item.category,
+        description: url,
+        label: title || '',
+        logo: getFavicon(url!, 24),
         _raw: item
       };
     }
@@ -108,6 +120,9 @@ export function searchCategoryMapping(category: SearchCategory): Pick<ChipProps,
     case SearchCategory.Theme:
       return { label: 'Theme', icon: <span class="i-icon-park-solid:dark-mode" />, color: 'purple' };
 
+    case SearchCategory.History:
+      return { label: 'History', icon: <span class="i-ic:round-history" />, color: 'success' };
+
     default:
       return null;
   }
@@ -121,7 +136,8 @@ export function enterActionMapping(item: SearchItem | null): {
   if (!item) return { noAction: true };
 
   switch (item.category) {
-    case SearchCategory.Bookmark: {
+    case SearchCategory.Bookmark:
+    case SearchCategory.History: {
       const url = item._raw.url;
       return url
         ? {
@@ -181,6 +197,8 @@ export function actionMenuMapping(category: SearchCategory) {
   switch (category) {
     case SearchCategory.Bookmark:
       return BookmarkActions;
+    case SearchCategory.History:
+      return HistoryActions;
     default:
       return null;
   }

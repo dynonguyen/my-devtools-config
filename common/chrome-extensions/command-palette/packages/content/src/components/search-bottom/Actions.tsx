@@ -64,8 +64,8 @@ export const Actions = () => {
         <div
           ref={wrapperRef}
           id="dcp-action-menu"
-          className="absolute right-0 bottom-[calc(100%+16px)] w-80 max-h-50 bg-base-300 border border-solid border-divider rounded-2 overflow-auto py-2 opacity-0 invisible transition-all"
-          {...(openAction && !noActionMenu && { style: { opacity: 1, visibility: 'visible' } })}
+          className="absolute right-0 bottom-[calc(100%+16px)] w-80 max-h-50 bg-base-300 border border-solid border-divider rounded-2 overflow-auto py-2 hidden"
+          {...(openAction && !noActionMenu && { style: { display: 'block' } })}
         >
           {openAction && !noActionMenu && <ActionMenu />}
         </div>
