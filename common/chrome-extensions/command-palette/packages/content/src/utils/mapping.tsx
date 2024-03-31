@@ -1,8 +1,18 @@
-import { Bookmark, MessageEvent, Navigation, SearchCategory, ShortcutKey, getFavicon } from '@dcp/shared';
+import {
+  Bookmark,
+  Command,
+  MessageEvent,
+  Navigation,
+  SearchCategory,
+  ShortcutKey,
+  Theme,
+  getFavicon
+} from '@dcp/shared';
 import { ChipProps } from '~/components/Chip';
 import { KbdProps } from '~/components/Kbd';
 import BookmarkActions from '~/components/search-bottom/BookmarkActions';
 import { RawSearchItem, SearchItem, useSearchStore } from '~/stores/search';
+import { useUserOptionStore } from '~/stores/user-options';
 import { sendMessage } from './helper';
 
 export function searchResultMapping(item: RawSearchItem): SearchItem {
@@ -34,6 +44,32 @@ export function searchResultMapping(item: RawSearchItem): SearchItem {
       };
     }
 
+    case SearchCategory.Command: {
+      const { logoUri, title, description } = item as Command;
+      return {
+        id: `command-${title}`,
+        category: item.category,
+        label: title,
+        description,
+        logo: logoUri,
+        _raw: item
+      };
+    }
+
+    case SearchCategory.Theme: {
+      const { id, logoUri, title, description } = item as Theme;
+      const mode = useUserOptionStore.getState().theme;
+
+      return {
+        id: `theme-${id}-${mode}`,
+        category: item.category,
+        label: id === 'toggle-theme' ? `Theme: Switch To ${mode === 'light' ? 'Dark' : 'Light'} Mode` : title,
+        description: id === 'toggle-theme' ? `Current mode: ${mode}` : description,
+        logo: logoUri,
+        _raw: item
+      };
+    }
+
     default:
       return {} as SearchItem;
   }
@@ -48,11 +84,10 @@ export function searchCategoryMapping(category: SearchCategory): Pick<ChipProps,
         color: 'blue'
       };
 
-    case SearchCategory.Google:
-    case SearchCategory.Youtube:
+    case SearchCategory.InternetQuery:
       return {
-        label: 'Internet',
-        icon: <span class="i-ph:globe-simple-fill" />,
+        label: 'Query',
+        icon: <span class="i-mdi:internet-search" />,
         color: 'grey-500'
       };
 
@@ -62,6 +97,16 @@ export function searchCategoryMapping(category: SearchCategory): Pick<ChipProps,
         icon: <span class="i-majesticons:open" />,
         color: 'info'
       };
+
+    case SearchCategory.Command:
+      return {
+        label: 'Command',
+        icon: <span class="i-octicon:command-palette-16" />,
+        color: 'yellow'
+      };
+
+    case SearchCategory.Theme:
+      return { label: 'Theme', icon: <span class="i-icon-park-solid:dark-mode" />, color: 'purple' };
 
     default:
       return null;
@@ -76,9 +121,7 @@ export function enterActionMapping(item: SearchItem | null): {
   if (!item) return { noAction: true };
 
   switch (item.category) {
-    case SearchCategory.Bookmark:
-    case SearchCategory.Google:
-    case SearchCategory.Youtube: {
+    case SearchCategory.Bookmark: {
       const url = item._raw.url;
       return url
         ? {
@@ -91,11 +134,42 @@ export function enterActionMapping(item: SearchItem | null): {
         : { noAction: true };
     }
 
+    case SearchCategory.InternetQuery: {
+      const url = item._raw.url;
+      return {
+        label: 'Query',
+        actionFn: () => {
+          window.open(url);
+          useSearchStore.getState().setOpen(false);
+        }
+      };
+    }
+
     case SearchCategory.Navigation: {
       return {
         label: 'Open',
         actionFn: () => {
           sendMessage(MessageEvent.OpenLocalResource, { url: item._raw.url });
+          useSearchStore.getState().setOpen(false);
+        }
+      };
+    }
+
+    case SearchCategory.Command: {
+      return {
+        label: 'Execute',
+        actionFn: () => {
+          sendMessage(item._raw.commandEvent);
+          useSearchStore.getState().setOpen(false);
+        }
+      };
+    }
+
+    case SearchCategory.Theme: {
+      return {
+        label: 'Execute',
+        actionFn: () => {
+          sendMessage(MessageEvent.ChangeColorTheme);
           useSearchStore.getState().setOpen(false);
         }
       };

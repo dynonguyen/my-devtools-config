@@ -9,7 +9,7 @@ export const SearchInput = () => {
 
   const handleSearchChange = useCallback(
     debounce((ev) => {
-      setSearchStore({ keyword: ev.target?.value?.trim() || '', searching: true });
+      setSearchStore({ keyword: ev.target?.value?.trim() || '' });
     }, 250),
     []
   );
@@ -32,6 +32,7 @@ export const SearchInput = () => {
           class="w-full h-full border-none outline-none bg-transparent text-base-content text-base"
           placeholder="Search for bookmarks, history,..."
           onInput={handleSearchChange}
+          autoComplete="off"
           autoFocus
         />
       </div>

@@ -36,6 +36,12 @@ export function debounce<T extends (...args: any[]) => void>(func: T, delay: num
   };
 }
 
+export function hasSearchKeyword(content: string, keyword: string) {
+  if (content.toLowerCase().includes(keyword)) {
+    return true;
+  }
+}
+
 // -----------------------------
 export function detectDevicePlatform(): 'mac' | 'win' | 'linux' | 'other' {
   const userAgent = navigator.userAgent.toLowerCase();

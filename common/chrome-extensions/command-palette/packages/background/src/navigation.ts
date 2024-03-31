@@ -1,4 +1,4 @@
-import { Navigation, getAssets } from '@dcp/shared';
+import { Navigation, getAssets, hasSearchKeyword } from '@dcp/shared';
 
 const navigationList: Navigation[] = [
   { title: 'Extensions', url: 'chrome://extensions', logoUri: getAssets('extensions.svg') },
@@ -12,5 +12,5 @@ const navigationList: Navigation[] = [
 ];
 
 export function searchNavigation(keyword: string) {
-  return navigationList.filter((item) => item.title.toLowerCase().includes(keyword) || item.url.includes(keyword));
+  return navigationList.filter((item) => hasSearchKeyword(item.title, keyword) || hasSearchKeyword(item.url, keyword));
 }

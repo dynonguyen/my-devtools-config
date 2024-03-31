@@ -22,13 +22,50 @@ export type Navigation = {
   url: string;
 };
 
+export type Command = {
+  logoUri: string;
+  title: string;
+  description?: string;
+  commandEvent?: MessageEvent;
+};
+
+export type Theme = {
+  id: 'toggle-theme';
+  logoUri: string;
+  title: string;
+  description?: string;
+};
+
 // -----------------------------
 export enum MessageEvent {
+  // Other
   Search = 'search',
   OpenPalette = 'open-palette',
+  OpenLocalResource = 'open-local-resource',
+  ChangeColorTheme = 'change-color-theme',
+
+  // Bookmark
   DeleteBookmark = 'delete-bookmark',
   UpdateBookmark = 'update-bookmark',
-  OpenLocalResource = 'open-local-resource'
+
+  // Tab
+  CloseTab = 'close-tab',
+  CloseOtherTabs = 'close-other-tabs',
+  NewTab = 'new-tab',
+  DetachTab = 'detach-tab',
+  Reload = 'reload',
+  HardReload = 'hard-reload',
+  EmptyCacheAndHardReload = 'empty-cache-hard-reload',
+
+  // Window
+  CloseWindow = 'close-window',
+  CloseOtherWindows = 'close-other-windows',
+  MergeAllWindows = 'merge-all-windows',
+  NewWindow = 'new-window',
+  NewIncognitoWindow = 'new-incognito-window',
+
+  // Chrome
+  QuitChrome = 'quit-chrome'
 }
 
 export enum CommandEvent {
@@ -43,9 +80,10 @@ export type Message = {
 // -----------------------------
 export enum SearchCategory {
   Bookmark = 'bookmark',
-  Google = 'google',
-  Youtube = 'youtube',
-  Navigation = 'navigation'
+  InternetQuery = 'internet',
+  Navigation = 'navigation',
+  Command = 'command',
+  Theme = 'theme'
 }
 
 export enum ShortcutId {}
@@ -64,4 +102,5 @@ export type UserOptions = {
   theme: 'system' | 'dark' | 'light';
   limitItems: number;
   shortcuts: Record<string, string[]>;
+  translate: { sl: 'auto' | string; tl: 'en' | string };
 };

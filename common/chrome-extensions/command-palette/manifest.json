@@ -9,7 +9,7 @@
     "64": "assets/logo.png",
     "128": "assets/logo.png"
   },
-  "permissions": ["bookmarks", "favicon", "tabs", "activeTab", "scripting", "commands", "storage"],
+  "permissions": ["bookmarks", "favicon", "tabs", "activeTab", "scripting", "commands", "storage", "browsingData"],
 
   "action": { "default_icon": "assets/logo.png" },
 

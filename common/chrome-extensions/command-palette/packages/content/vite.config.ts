@@ -10,27 +10,23 @@ const srcDir = resolve(__dirname, 'src');
 const publicDir = resolve(__dirname, 'public/*');
 
 export default defineConfig({
-	plugins: [
-		unoCSS(),
-		preact(),
-		viteStaticCopy({ targets: [{ src: publicDir, dest: assetDir }] }),
-	],
-	resolve: { alias: { '~': srcDir } },
+  plugins: [unoCSS(), preact(), viteStaticCopy({ targets: [{ src: publicDir, dest: assetDir }] })],
+  resolve: { alias: { '~': srcDir } },
 
-	build: {
-		outDir,
-		assetsDir: '',
-		copyPublicDir: false,
-		emptyOutDir: false,
-		sourcemap: false,
-		rollupOptions: {
-			input: resolve(srcDir, 'main.tsx'),
-			output: {
-				entryFileNames: 'index.js',
-				assetFileNames: 'index.[ext]',
-				format: 'cjs',
-			},
-		},
-	},
-	server: { open: true, port: 8888 },
+  build: {
+    outDir,
+    assetsDir: '',
+    copyPublicDir: false,
+    emptyOutDir: false,
+    sourcemap: false,
+    rollupOptions: {
+      input: resolve(srcDir, 'main.tsx'),
+      output: {
+        entryFileNames: 'index.js',
+        assetFileNames: 'index.[ext]',
+        format: 'cjs'
+      }
+    }
+  },
+  server: { open: true, port: 8888 }
 });

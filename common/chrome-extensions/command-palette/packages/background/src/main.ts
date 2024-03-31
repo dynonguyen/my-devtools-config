@@ -1,12 +1,15 @@
-import { CommandEvent, Message, MessageEvent, SearchCategory } from '@dcp/shared';
+import { CommandEvent, Message, MessageEvent, SearchCategory, setUserOptions } from '@dcp/shared';
 import { deleteBookmark, searchBookmarks, updateBookmark } from './bookmark';
+import { searchCommands } from './command';
 import { searchNavigation } from './navigation';
-import { userOptions } from './user-options';
+import { searchThemeOptions, userOptions } from './user-options';
 
 // -----------------------------
 async function search(keyword: string) {
   let result: any[] = [];
   const promises: Promise<any>[] = [];
+
+  const lowerKeyword = keyword.toLowerCase();
 
   // Bookmark
   promises.push(
@@ -18,12 +21,14 @@ async function search(keyword: string) {
   await Promise.all(promises);
 
   result = result.concat(
-    searchNavigation(keyword.toLowerCase()).map((item) => ({ ...item, category: SearchCategory.Navigation }))
+    searchNavigation(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Navigation }))
   );
 
-  return result
-    .sort((a, b) => (a.title?.toLowerCase() < b.title?.toLowerCase() ? -1 : 1))
-    .slice(0, userOptions.limitItems);
+  result = result.concat(searchCommands(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Command })));
+
+  result = result.concat(searchThemeOptions(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Theme })));
+
+  return result.sort((a, b) => a.title?.length - b.title?.length).slice(0, userOptions.limitItems);
 }
 
 function openCommandPalette(tab: chrome.tabs.Tab) {
@@ -36,7 +41,22 @@ function openCommandPalette(tab: chrome.tabs.Tab) {
 chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) => {
   const { event, data = {} } = message;
 
+  const activeWindowId = sender.tab?.windowId || 0;
+  const activeTabId = sender.tab?.id || 0;
+  const activeTabIndex = sender.tab?.index || 0;
+  const originUri = sender.origin || '';
+
+  const sendBooleanResponse = (promise: Promise<any>) => {
+    promise
+      .then(() => sendResponse(true))
+      .catch((error) => {
+        console.log('onMessage error: ', error);
+        sendResponse(false);
+      });
+  };
+
   switch (event) {
+    // Other
     case MessageEvent.Search: {
       const { keyword } = data;
 
@@ -52,24 +72,117 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
       break;
     }
 
+    case MessageEvent.OpenLocalResource: {
+      sendBooleanResponse(chrome.tabs.create({ url: data.url, index: activeTabIndex + 1 }));
+      break;
+    }
+
+    case MessageEvent.ChangeColorTheme: {
+      sendBooleanResponse(setUserOptions({ theme: userOptions.theme === 'light' ? 'dark' : 'light' }));
+      break;
+    }
+
+    // Bookmark
     case MessageEvent.DeleteBookmark: {
-      deleteBookmark(data)
-        .then(() => sendResponse(true))
-        .catch(() => sendResponse(false));
+      sendBooleanResponse(deleteBookmark(data));
 
       break;
     }
 
     case MessageEvent.UpdateBookmark: {
-      updateBookmark(data)
-        .then(() => sendResponse(true))
-        .catch(() => sendResponse(false));
+      sendBooleanResponse(updateBookmark(data));
       break;
     }
 
-    case MessageEvent.OpenLocalResource: {
-      chrome.tabs.create({ url: data.url, index: (sender.tab?.index || 0) + 1 });
-      sendResponse(true);
+    // Tab
+    case MessageEvent.CloseTab: {
+      sendBooleanResponse(chrome.tabs.remove(activeTabId));
+      break;
+    }
+
+    case MessageEvent.CloseOtherTabs: {
+      chrome.tabs
+        .query({ currentWindow: true })
+        .then((tabs) => {
+          tabs.forEach((tab) => tab.id !== activeTabId && chrome.tabs.remove(tab.id!));
+          sendResponse(true);
+        })
+        .catch(() => sendResponse(false));
+
+      break;
+    }
+
+    case MessageEvent.NewTab: {
+      sendBooleanResponse(chrome.tabs.create({ index: activeTabIndex + 1 }));
+      break;
+    }
+
+    case MessageEvent.DetachTab: {
+      sendBooleanResponse(chrome.windows.create({ focused: true, tabId: activeTabId }));
+      break;
+    }
+
+    case MessageEvent.Reload: {
+      sendBooleanResponse(chrome.tabs.reload(activeTabId));
+      break;
+    }
+
+    case MessageEvent.HardReload: {
+      sendBooleanResponse(chrome.tabs.reload(activeTabId, { bypassCache: true }));
+      break;
+    }
+
+    case MessageEvent.EmptyCacheAndHardReload: {
+      chrome.browsingData.removeCache({ origins: [originUri] });
+      sendBooleanResponse(chrome.tabs.reload(activeTabId, { bypassCache: true }));
+      break;
+    }
+
+    // Window
+    case MessageEvent.CloseWindow: {
+      sendBooleanResponse(chrome.windows.remove(activeWindowId));
+      break;
+    }
+
+    case MessageEvent.CloseOtherWindows: {
+      sendBooleanResponse(
+        chrome.tabs.query({ currentWindow: false }).then((tabs) => {
+          tabs.forEach((tab) => chrome.windows.remove(tab.windowId!));
+        })
+      );
+      break;
+    }
+
+    case MessageEvent.MergeAllWindows: {
+      sendBooleanResponse(
+        chrome.tabs.query({ currentWindow: false }).then((tabs) => {
+          tabs.forEach((tab) => {
+            chrome.tabs.move(tab.id!, { index: -1, windowId: activeWindowId });
+          });
+        })
+      );
+      break;
+    }
+
+    case MessageEvent.NewWindow: {
+      sendBooleanResponse(chrome.windows.create({}));
+      break;
+    }
+
+    case MessageEvent.NewIncognitoWindow: {
+      sendBooleanResponse(chrome.windows.create({ incognito: true }));
+      break;
+    }
+
+    // Chrome
+    case MessageEvent.QuitChrome: {
+      sendBooleanResponse(
+        chrome.windows.getAll().then((windows) => {
+          windows.forEach((wd) => {
+            chrome.windows.remove(wd.id!);
+          });
+        })
+      );
       break;
     }
 
