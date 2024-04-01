@@ -1,18 +1,22 @@
 import {
   Bookmark,
   Command,
+  Extension,
   History,
   MessageEvent,
   Navigation,
   SearchCategory,
   ShortcutKey,
+  Tab,
   Theme,
   getFavicon
 } from '@dcp/shared';
+import clsx from 'clsx';
 import { ChipProps } from '~/components/Chip';
 import { KbdProps } from '~/components/Kbd';
 import BookmarkActions from '~/components/search-bottom/BookmarkActions';
 import HistoryActions from '~/components/search-bottom/HistoryActions';
+import TabActions from '~/components/search-bottom/TabActions';
 import { RawSearchItem, SearchItem, useSearchStore } from '~/stores/search';
 import { sendMessage } from './helper';
 
@@ -76,8 +80,37 @@ export function searchResultMapping(item: RawSearchItem): SearchItem {
         id: `history-${id}`,
         category: item.category,
         description: url,
-        label: title || '',
+        label: title || '_',
         logo: getFavicon(url!, 24),
+        _raw: item
+      };
+    }
+
+    case SearchCategory.Tab: {
+      const { id, title, url } = item as Tab;
+      return {
+        id: `tab-${id}`,
+        category: item.category,
+        description: url,
+        label: title || '_',
+        logo: getFavicon(url!, 24),
+        _raw: item
+      };
+    }
+
+    case SearchCategory.Extension: {
+      const { id, name, shortName, description, enabled } = item as Extension;
+
+      return {
+        id: `extension-${id}`,
+        category: item.category,
+        description,
+        label: name || shortName || '_',
+        logo: (
+          <span
+            class={clsx('size-full', enabled ? 'i-material-symbols:extension' : 'i-material-symbols:extension-off')}
+          />
+        ),
         _raw: item
       };
     }
@@ -99,8 +132,8 @@ export function searchCategoryMapping(category: SearchCategory): Pick<ChipProps,
     case SearchCategory.InternetQuery:
       return {
         label: 'Query',
-        icon: <span class="i-mdi:internet-search" />,
-        color: 'grey-500'
+        icon: <span class="i-ph:globe-simple-fill" />,
+        color: 'yellow'
       };
 
     case SearchCategory.Navigation:
@@ -113,8 +146,8 @@ export function searchCategoryMapping(category: SearchCategory): Pick<ChipProps,
     case SearchCategory.Command:
       return {
         label: 'Command',
-        icon: <span class="i-octicon:command-palette-16" />,
-        color: 'yellow'
+        icon: <span class="i-heroicons:command-line-16-solid" />,
+        color: 'cyan'
       };
 
     case SearchCategory.Theme:
@@ -123,8 +156,14 @@ export function searchCategoryMapping(category: SearchCategory): Pick<ChipProps,
     case SearchCategory.History:
       return { label: 'History', icon: <span class="i-ic:round-history" />, color: 'success' };
 
+    case SearchCategory.Tab:
+      return { label: 'Tab', icon: <span class="i-material-symbols:tab" />, color: 'orange' };
+
+    case SearchCategory.Extension:
+      return { label: 'Extension', icon: <span class="i-material-symbols:extension" />, color: 'pink' };
+
     default:
-      return null;
+      return { label: '--', color: 'grey-500' };
   }
 }
 
@@ -190,6 +229,20 @@ export function enterActionMapping(item: SearchItem | null): {
         }
       };
     }
+
+    case SearchCategory.Tab: {
+      return {
+        label: 'Go to this tab',
+        actionFn: () => {
+          sendMessage(MessageEvent.FocusTab, { id: item._raw.id });
+          useSearchStore.getState().setOpen(false);
+        }
+      };
+    }
+
+    case SearchCategory.Extension: {
+      return { noAction: true };
+    }
   }
 }
 
@@ -199,6 +252,8 @@ export function actionMenuMapping(category: SearchCategory) {
       return BookmarkActions;
     case SearchCategory.History:
       return HistoryActions;
+    case SearchCategory.Tab:
+      return TabActions;
     default:
       return null;
   }

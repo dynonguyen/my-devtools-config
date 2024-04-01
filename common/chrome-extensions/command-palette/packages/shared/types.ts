@@ -38,6 +38,10 @@ export type Theme = {
 
 export type History = chrome.history.HistoryItem;
 
+export type Tab = chrome.tabs.Tab;
+
+export type Extension = chrome.management.ExtensionInfo;
+
 // -----------------------------
 export enum MessageEvent {
   // Other
@@ -58,6 +62,8 @@ export enum MessageEvent {
   Reload = 'reload',
   HardReload = 'hard-reload',
   EmptyCacheAndHardReload = 'empty-cache-hard-reload',
+  FocusTab = 'focus-tab',
+  TogglePinTab = 'toggle-pin-tab',
 
   // Window
   CloseWindow = 'close-window',
@@ -93,7 +99,9 @@ export enum SearchCategory {
   Navigation = 'navigation',
   Command = 'command',
   Theme = 'theme',
-  History = 'history'
+  History = 'history',
+  Tab = 'tab',
+  Extension = 'extension'
 }
 
 export enum ShortcutId {}
@@ -113,4 +121,5 @@ export type UserOptions = {
   limitItems: number;
   shortcuts: Record<string, string[]>;
   translate: { sl: 'auto' | string; tl: 'en' | string };
+  newTabRedirectUri: string;
 };

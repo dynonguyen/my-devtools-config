@@ -18,8 +18,8 @@ export const Chip = (props: ChipProps) => {
         backgroundColor: `rgba(var(--${color}), 0.2)`
       }}
     >
-      {icon}
       {label}
+      {icon}
     </div>
   );
 };

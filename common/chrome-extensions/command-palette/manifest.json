@@ -18,7 +18,8 @@
     "commands",
     "storage",
     "browsingData",
-    "history"
+    "history",
+    "management"
   ],
 
   "action": { "default_icon": "assets/logo.png" },

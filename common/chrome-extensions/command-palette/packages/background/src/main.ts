@@ -1,8 +1,10 @@
 import { CommandEvent, Message, MessageEvent, SearchCategory, setUserOptions } from '@dcp/shared';
 import { searchBookmarks } from './bookmark';
 import { searchCommands } from './command';
+import { searchExtension } from './extension';
 import { searchHistory } from './history';
 import { searchNavigation } from './navigation';
+import { searchTab } from './tab';
 import { searchThemeOptions, userOptions } from './user-options';
 
 // -----------------------------
@@ -23,6 +25,20 @@ async function search(keyword: string) {
   promises.push(
     searchHistory(keyword).then((histories) => {
       result = result.concat(histories.map((item) => ({ ...item, category: SearchCategory.History })));
+    })
+  );
+
+  // Tab
+  promises.push(
+    searchTab(lowerKeyword).then((tabs) => {
+      result = result.concat(tabs.map((item) => ({ ...item, category: SearchCategory.Tab })));
+    })
+  );
+
+  // Extension
+  promises.push(
+    searchExtension(lowerKeyword).then((extensions) => {
+      result = result.concat(extensions.map((item) => ({ ...item, category: SearchCategory.Extension })));
     })
   );
 
@@ -105,15 +121,17 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
 
     // Tab
     case MessageEvent.CloseTab: {
-      sendBooleanResponse(chrome.tabs.remove(activeTabId));
+      sendBooleanResponse(chrome.tabs.remove(data.id ?? activeTabId));
       break;
     }
 
     case MessageEvent.CloseOtherTabs: {
+      const tabId = data.id ?? activeTabId;
+
       chrome.tabs
         .query({ currentWindow: true })
         .then((tabs) => {
-          tabs.forEach((tab) => tab.id !== activeTabId && chrome.tabs.remove(tab.id!));
+          tabs.forEach((tab) => tab.id !== tabId && chrome.tabs.remove(tab.id!));
           sendResponse(true);
         })
         .catch(() => sendResponse(false));
@@ -144,6 +162,18 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
     case MessageEvent.EmptyCacheAndHardReload: {
       chrome.browsingData.removeCache({ origins: [originUri] });
       sendBooleanResponse(chrome.tabs.reload(activeTabId, { bypassCache: true }));
+      break;
+    }
+
+    case MessageEvent.FocusTab: {
+      sendBooleanResponse(chrome.tabs.update(data.id, { active: true }));
+      break;
+    }
+
+    case MessageEvent.TogglePinTab: {
+      const tabId = data.id ?? activeTabId;
+      sendBooleanResponse(chrome.tabs.get(tabId).then((tab) => chrome.tabs.update(tabId, { pinned: !tab.pinned })));
+
       break;
     }
 

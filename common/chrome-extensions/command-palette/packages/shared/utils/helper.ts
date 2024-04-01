@@ -37,6 +37,7 @@ export function debounce<T extends (...args: any[]) => void>(func: T, delay: num
 }
 
 export function hasSearchKeyword(content: string, keyword: string) {
+  if (!content) return false;
   if (content.toLowerCase().includes(keyword)) {
     return true;
   }

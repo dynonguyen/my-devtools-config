@@ -8,6 +8,7 @@ const commands: Command[] = [
   { title: 'Reload', logoUri: getAssets('reload.svg'), commandEvent: MessageEvent.Reload },
   { title: 'Hard Reload', logoUri: getAssets('hard-reload.svg'), commandEvent: MessageEvent.HardReload },
   { title: 'Detach Tab Into New Window', logoUri: getAssets('detach-tab.svg'), commandEvent: MessageEvent.DetachTab },
+  { title: 'Pin/Unpin Tab', logoUri: getAssets('pin.svg'), commandEvent: MessageEvent.TogglePinTab },
 
   // Window
   {
