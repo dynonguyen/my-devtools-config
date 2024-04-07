@@ -4,10 +4,11 @@ export const DEFAULT_USER_OPTIONS: UserOptions = {
   theme: 'system',
   limitItems: 50,
   shortcuts: {},
-  translate: { sl: 'auto', tl: 'en' },
+  translate: { enabled: true, sl: 'auto', tl: 'en' },
   newTabRedirectUri: 'google.com',
   googleSearch: true,
   youtubeSearch: true,
   oxfordSearch: true,
-  cambridgeSearch: true
+  cambridgeSearch: true,
+  unblockMedium: false
 };

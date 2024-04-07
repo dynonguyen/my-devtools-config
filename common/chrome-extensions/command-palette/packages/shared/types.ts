@@ -122,10 +122,11 @@ export type UserOptions = {
   theme: 'system' | 'dark' | 'light';
   limitItems: number;
   shortcuts: Record<string, string[]>;
-  translate: { sl: 'auto' | string; tl: 'en' | string };
+  translate: { enabled: boolean; sl: 'auto' | string; tl: 'en' | string };
   newTabRedirectUri: string;
   googleSearch: boolean;
   youtubeSearch: boolean;
   oxfordSearch: boolean;
   cambridgeSearch: boolean;
+  unblockMedium: boolean;
 };

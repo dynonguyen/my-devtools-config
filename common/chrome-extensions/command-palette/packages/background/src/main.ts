@@ -280,6 +280,26 @@ chrome.tabs.onCreated.addListener((tab) => {
   }
 });
 
+// Unblock Medium
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (userOptions.unblockMedium && changeInfo.status === 'loading') {
+    const url = new URL(tab.url || '');
+    const host = url.host;
+    if (host.includes('medium.com')) {
+      const redirectUrl =
+        url.protocol +
+        '//' +
+        `${host.split('.').join('-')}` +
+        '.translate.goog' +
+        url.pathname +
+        (url.search ? '?' : '&') +
+        `_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true`;
+
+      chrome.tabs.update(tabId, { url: redirectUrl });
+    }
+  }
+});
+
 /* (function reload() {
   chrome.tabs.query({ currentWindow: true, url: 'http://localhost:8888/*' }, function (tabs) {
     if (tabs[0]) {

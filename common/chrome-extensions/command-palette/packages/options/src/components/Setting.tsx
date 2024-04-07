@@ -12,7 +12,7 @@ export const Setting = (props: SettingProps) => {
   const { label, logo, value } = props;
 
   return (
-    <Flex spacing={4}>
+    <Flex spacing={4} minHeight={32}>
       {/* Label */}
       <Flex spacing={2} flexShrink={0} width={240}>
         <Flex

@@ -68,19 +68,21 @@ const internetQuerySearching = (keyword: string): SearchItem[] => {
     });
   }
 
-  result.push({
-    category: SearchCategory.InternetQuery,
-    id: 'internet-translate',
-    label: 'Google Translate',
-    description: `${
-      sl === 'auto' ? 'detect' : sl
-    } > ${tl}: https://translate.google.com/?sl=${sl}&tl=${tl}&text=${query}&op=translate`,
-    logo: getAssets('gg-translate.ico'),
-    _raw: {
+  if (translate.enabled) {
+    result.push({
       category: SearchCategory.InternetQuery,
-      url: `https://translate.google.com/?sl=${sl}&tl=${tl}&text=${query}&op=translate`
-    }
-  });
+      id: 'internet-translate',
+      label: 'Google Translate',
+      description: `${
+        sl === 'auto' ? 'detect' : sl
+      } > ${tl}: https://translate.google.com/?sl=${sl}&tl=${tl}&text=${query}&op=translate`,
+      logo: getAssets('gg-translate.ico'),
+      _raw: {
+        category: SearchCategory.InternetQuery,
+        url: `https://translate.google.com/?sl=${sl}&tl=${tl}&text=${query}&op=translate`
+      }
+    });
+  }
 
   return result;
 };
