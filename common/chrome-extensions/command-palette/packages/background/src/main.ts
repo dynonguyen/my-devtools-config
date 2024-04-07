@@ -56,9 +56,15 @@ async function search(keyword: string) {
 }
 
 function openCommandPalette(tab: chrome.tabs.Tab) {
-  if (tab.url?.startsWith('chrome://')) return;
-
-  chrome.tabs.sendMessage<Message>(tab.id as number, { event: MessageEvent.OpenPalette }, () => {});
+  if (tab.url?.includes('chrome://') && userOptions.newTabRedirectUri) {
+    chrome.tabs.update(tab.id!, { url: userOptions.newTabRedirectUri }).then(() => {
+      setTimeout(() => {
+        chrome.tabs.sendMessage<Message>(tab.id as number, { event: MessageEvent.OpenPalette }, () => {});
+      }, 750);
+    });
+  } else {
+    chrome.tabs.sendMessage<Message>(tab.id as number, { event: MessageEvent.OpenPalette }, () => {});
+  }
 }
 
 // -----------------------------
@@ -265,15 +271,22 @@ chrome.commands.onCommand.addListener((command, tab) => {
   }
 });
 
-// chrome.action.onClicked.addListener(openCommandPalette);
+chrome.action.onClicked.addListener(openCommandPalette);
 
-(function reload() {
+// Auto redirect when new tab
+chrome.tabs.onCreated.addListener((tab) => {
+  if (userOptions.newTabRedirectUri && tab.pendingUrl?.includes('chrome://newtab')) {
+    chrome.tabs.update(tab.id!, { url: userOptions.newTabRedirectUri });
+  }
+});
+
+/* (function reload() {
   chrome.tabs.query({ currentWindow: true, url: 'http://localhost:8888/*' }, function (tabs) {
     if (tabs[0]) {
       chrome.tabs.reload(tabs[0].id as number);
     }
   });
-  chrome.action.onClicked.addListener(function reloadExtension() {
+  chrome.action.onClicked.addListener(function reloadExtension(tab) {
     chrome.runtime.reload();
   });
-})();
+})(); */

@@ -1,13 +1,36 @@
-import { NextUIProvider } from '@nextui-org/react';
-import Logo from './components/Logo';
-import SettingTable from './components/SettingTable';
+import { getAssets } from '@dcp/shared';
+import { Divider, Stack } from '@mui/material';
+import AppLogo from './components/AppLogo';
+import InitWrapper from './components/InitWrapper';
+import MaxSearchItemSetting from './components/MaxItemSearchSetting';
+import ThemeProvider from './components/ThemeProvider';
+import ThemeSetting from './components/ThemeSetting';
+import ToggleSetting from './components/ToggleSetting';
 
 function App() {
   return (
-    <NextUIProvider className="max-w-5xl px-4 mx-auto">
-      <Logo />
-      <SettingTable />
-    </NextUIProvider>
+    <ThemeProvider>
+      <InitWrapper>
+        <Stack spacing={4} mx="auto" maxWidth={1200} p={4}>
+          <AppLogo />
+
+          <Divider />
+
+          <Stack spacing={6}>
+            <ThemeSetting />
+            <MaxSearchItemSetting />
+            <ToggleSetting label="Google Search" logo={{ img: getAssets('google.ico') }} settingKey="googleSearch" />
+            <ToggleSetting label="Youtube Search" logo={{ img: getAssets('youtube.png') }} settingKey="youtubeSearch" />
+            <ToggleSetting label="Oxford Search" logo={{ img: getAssets('oxford.ico') }} settingKey="oxfordSearch" />
+            <ToggleSetting
+              label="Cambridge Search"
+              logo={{ img: getAssets('cambridge.png') }}
+              settingKey="cambridgeSearch"
+            />
+          </Stack>
+        </Stack>
+      </InitWrapper>
+    </ThemeProvider>
   );
 }
 

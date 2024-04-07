@@ -7,10 +7,13 @@ import { searchResultMapping } from '~/utils/mapping';
 
 const internetQuerySearching = (keyword: string): SearchItem[] => {
   const query = keyword.split(' ').join('+');
-  const { sl, tl } = useUserOptionStore.getState().translate;
+  const { googleSearch, youtubeSearch, oxfordSearch, cambridgeSearch, translate } = useUserOptionStore.getState();
+  const { sl, tl } = translate;
 
-  return [
-    {
+  const result: SearchItem[] = [];
+
+  if (googleSearch) {
+    result.push({
       category: SearchCategory.InternetQuery,
       id: 'internet-google',
       label: 'Search Google',
@@ -20,8 +23,11 @@ const internetQuerySearching = (keyword: string): SearchItem[] => {
         category: SearchCategory.InternetQuery,
         url: `https://www.google.com/search?q=${query}`
       }
-    },
-    {
+    });
+  }
+
+  if (youtubeSearch) {
+    result.push({
       category: SearchCategory.InternetQuery,
       id: 'internet-youtube',
       label: 'Search Youtube',
@@ -31,21 +37,11 @@ const internetQuerySearching = (keyword: string): SearchItem[] => {
         category: SearchCategory.InternetQuery,
         url: `https://www.youtube.com/results?search_query=${query}`
       }
-    },
-    {
-      category: SearchCategory.InternetQuery,
-      id: 'internet-translate',
-      label: 'Google Translate',
-      description: `${
-        sl === 'auto' ? 'detect' : sl
-      } > ${tl}: https://translate.google.com/?sl=${sl}&tl=${tl}&text=${query}&op=translate`,
-      logo: getAssets('gg-translate.ico'),
-      _raw: {
-        category: SearchCategory.InternetQuery,
-        url: `https://translate.google.com/?sl=${sl}&tl=${tl}&text=${query}&op=translate`
-      }
-    },
-    {
+    });
+  }
+
+  if (oxfordSearch) {
+    result.push({
       category: SearchCategory.InternetQuery,
       id: 'internet-oxford',
       label: 'Oxford',
@@ -55,8 +51,11 @@ const internetQuerySearching = (keyword: string): SearchItem[] => {
         category: SearchCategory.InternetQuery,
         url: `https://www.oxfordlearnersdictionaries.com/definition/english/${query}`
       }
-    },
-    {
+    });
+  }
+
+  if (cambridgeSearch) {
+    result.push({
       category: SearchCategory.InternetQuery,
       id: 'internet-cambridge',
       label: 'Cambridge Dictionary',
@@ -66,8 +65,24 @@ const internetQuerySearching = (keyword: string): SearchItem[] => {
         category: SearchCategory.InternetQuery,
         url: `https://dictionary.cambridge.org/dictionary/english/${query}`
       }
+    });
+  }
+
+  result.push({
+    category: SearchCategory.InternetQuery,
+    id: 'internet-translate',
+    label: 'Google Translate',
+    description: `${
+      sl === 'auto' ? 'detect' : sl
+    } > ${tl}: https://translate.google.com/?sl=${sl}&tl=${tl}&text=${query}&op=translate`,
+    logo: getAssets('gg-translate.ico'),
+    _raw: {
+      category: SearchCategory.InternetQuery,
+      url: `https://translate.google.com/?sl=${sl}&tl=${tl}&text=${query}&op=translate`
     }
-  ];
+  });
+
+  return result;
 };
 
 export const SearchHandler = () => {

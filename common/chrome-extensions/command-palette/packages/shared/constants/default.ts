@@ -5,5 +5,9 @@ export const DEFAULT_USER_OPTIONS: UserOptions = {
   limitItems: 50,
   shortcuts: {},
   translate: { sl: 'auto', tl: 'en' },
-  newTabRedirectUri: 'google.com'
+  newTabRedirectUri: 'google.com',
+  googleSearch: true,
+  youtubeSearch: true,
+  oxfordSearch: true,
+  cambridgeSearch: true
 };

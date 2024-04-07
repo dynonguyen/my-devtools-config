@@ -4,6 +4,8 @@ type TypeMap<T> = {
 };
 export type ValueMap<T> = TypeMap<T>[keyof TypeMap<T>];
 
+export type AutocompleteOption = { label: React.ReactNode; value: any } & { [key: string]: any };
+
 // -----------------------------
 export type Bookmark = Omit<chrome.bookmarks.BookmarkTreeNode, 'children' | 'dateAdded' | 'dateGroupModified'> & {
   isFolder?: boolean;
@@ -122,4 +124,8 @@ export type UserOptions = {
   shortcuts: Record<string, string[]>;
   translate: { sl: 'auto' | string; tl: 'en' | string };
   newTabRedirectUri: string;
+  googleSearch: boolean;
+  youtubeSearch: boolean;
+  oxfordSearch: boolean;
+  cambridgeSearch: boolean;
 };
