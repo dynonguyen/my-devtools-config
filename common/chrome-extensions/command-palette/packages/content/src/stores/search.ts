@@ -14,7 +14,6 @@ export type SearchItem<T = any> = {
   description?: string;
   tooltip?: string;
   logo?: ComponentChild;
-  shortcutId?: string;
   _raw: RawSearchItem<T>;
 };
 

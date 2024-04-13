@@ -106,8 +106,6 @@ export enum SearchCategory {
   Extension = 'extension'
 }
 
-export enum ShortcutId {}
-
 export enum ShortcutKey {
   Cmd = 'Cmd',
   Control = 'Ctrl',
@@ -121,7 +119,6 @@ export enum ShortcutKey {
 export type UserOptions = {
   theme: 'system' | 'dark' | 'light';
   limitItems: number;
-  shortcuts: Record<string, string[]>;
   translate: { enabled: boolean; sl: 'auto' | string; tl: 'en' | string };
   newTabRedirectUri: string;
   googleSearch: boolean;
@@ -129,4 +126,5 @@ export type UserOptions = {
   oxfordSearch: boolean;
   cambridgeSearch: boolean;
   unblockMedium: boolean;
+  aliases: { [key: string]: SearchCategory };
 };

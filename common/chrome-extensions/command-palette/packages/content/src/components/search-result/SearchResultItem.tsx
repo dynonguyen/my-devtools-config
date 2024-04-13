@@ -1,14 +1,13 @@
 import { JSXInternal } from 'preact/src/jsx';
 import { SearchItem } from '~/stores/search';
 import Category from './Category';
-import KeyboardShortcut from './KeyboardShortcut';
 
 export type SearchResultItemProps = SearchItem & {
   onClick?: JSXInternal.MouseEventHandler<HTMLDivElement>;
 };
 
 export const SearchResultItem = (props: SearchResultItemProps) => {
-  const { label, logo, description, category, shortcutId, tooltip = '', onClick } = props;
+  const { label, logo, description, category, tooltip = '', onClick } = props;
 
   return (
     <div
@@ -29,7 +28,6 @@ export const SearchResultItem = (props: SearchResultItemProps) => {
       </div>
 
       <div class="flex items-center gap-2 shrink-0">
-        <KeyboardShortcut shortcutId={shortcutId} />
         <Category category={category} />
       </div>
     </div>

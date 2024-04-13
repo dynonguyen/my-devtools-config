@@ -1,4 +1,4 @@
-import { MessageEvent, SearchCategory, getAssets } from '@dcp/shared';
+import { MessageEvent, SearchCategory, getAliasFromKeyword, getAssets } from '@dcp/shared';
 import { useEffect } from 'preact/hooks';
 import { RawSearchItem, SearchItem, useSearchStore } from '~/stores/search';
 import { useUserOptionStore } from '~/stores/user-options';
@@ -6,9 +6,15 @@ import { sendMessage } from '~/utils/helper';
 import { searchResultMapping } from '~/utils/mapping';
 
 const internetQuerySearching = (keyword: string): SearchItem[] => {
-  const query = keyword.split(' ').join('+');
-  const { googleSearch, youtubeSearch, oxfordSearch, cambridgeSearch, translate } = useUserOptionStore.getState();
+  const { googleSearch, youtubeSearch, oxfordSearch, cambridgeSearch, translate, aliases } =
+    useUserOptionStore.getState();
   const { sl, tl } = translate;
+
+  const alias = getAliasFromKeyword(keyword);
+  const aliasCategory = Object.entries(aliases).find(([key]) => key === alias)?.[1];
+
+  if (aliasCategory && aliasCategory !== SearchCategory.InternetQuery) return [];
+  const query = (aliasCategory ? keyword.replace(alias, '').trim() : keyword).split(' ').join('+');
 
   const result: SearchItem[] = [];
 

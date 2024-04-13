@@ -1,6 +1,6 @@
 import { EXTENSION_ID, STORAGE_KEY } from '../constants/common';
 import { DEFAULT_USER_OPTIONS } from '../constants/default';
-import { UserOptions } from '../types';
+import { SearchCategory, UserOptions } from '../types';
 
 // -----------------------------
 export function omit<T extends object, K extends keyof T>(obj: T, keys: K[] = []): Omit<T, K> {
@@ -64,6 +64,18 @@ export function getAssets(uri: string) {
 
 export function getFavicon(uri: string, size = 32) {
   return `chrome-extension://${EXTENSION_ID}/_favicon/?pageUrl=${uri}&size=${size}`;
+}
+
+export function getAliasFromCategory(aliases: UserOptions['aliases'], category: SearchCategory) {
+  return Object.entries(aliases).find(([_, value]) => value === category)?.[0];
+}
+
+export function getAliasFromKeyword(keyword = '') {
+  const splits = keyword.split(' ');
+
+  if (splits.length < 2) return '';
+
+  return splits[0];
 }
 
 export async function getUserOptions(): Promise<UserOptions> {

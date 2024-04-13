@@ -1,4 +1,4 @@
-import { CommandEvent, Message, MessageEvent, SearchCategory, setUserOptions } from '@dcp/shared';
+import { CommandEvent, Message, MessageEvent, SearchCategory, getAliasFromKeyword, setUserOptions } from '@dcp/shared';
 import { searchBookmarks } from './bookmark';
 import { searchCommands } from './command';
 import { searchExtension } from './extension';
@@ -8,49 +8,66 @@ import { searchTab } from './tab';
 import { searchThemeOptions, userOptions } from './user-options';
 
 // -----------------------------
-async function search(keyword: string) {
+const allowSearch = (aliasCategory = '', category = '') => {
+  return !aliasCategory || aliasCategory === category;
+};
+async function search(query = '') {
   let result: any[] = [];
   const promises: Promise<any>[] = [];
 
+  const aliases = userOptions.aliases;
+  const alias = getAliasFromKeyword(query);
+  const aliasCategory = Object.entries(aliases).find(([key]) => key === alias)?.[1];
+
+  const keyword = aliasCategory ? query.replace(alias, '').trim() : query;
   const lowerKeyword = keyword.toLowerCase();
 
   // Bookmark
-  promises.push(
-    searchBookmarks(keyword).then((bookmarks) => {
-      result = result.concat(bookmarks.map((item) => ({ ...item, category: SearchCategory.Bookmark })));
-    })
-  );
+  if (allowSearch(aliasCategory, SearchCategory.Bookmark))
+    promises.push(
+      searchBookmarks(keyword).then((bookmarks) => {
+        result = result.concat(bookmarks.map((item) => ({ ...item, category: SearchCategory.Bookmark })));
+      })
+    );
 
   // History
-  promises.push(
-    searchHistory(keyword).then((histories) => {
-      result = result.concat(histories.map((item) => ({ ...item, category: SearchCategory.History })));
-    })
-  );
+  if (allowSearch(aliasCategory, SearchCategory.History))
+    promises.push(
+      searchHistory(keyword).then((histories) => {
+        result = result.concat(histories.map((item) => ({ ...item, category: SearchCategory.History })));
+      })
+    );
 
   // Tab
-  promises.push(
-    searchTab(lowerKeyword).then((tabs) => {
-      result = result.concat(tabs.map((item) => ({ ...item, category: SearchCategory.Tab })));
-    })
-  );
+  if (allowSearch(aliasCategory, SearchCategory.Tab))
+    promises.push(
+      searchTab(lowerKeyword).then((tabs) => {
+        result = result.concat(tabs.map((item) => ({ ...item, category: SearchCategory.Tab })));
+      })
+    );
 
   // Extension
-  promises.push(
-    searchExtension(lowerKeyword).then((extensions) => {
-      result = result.concat(extensions.map((item) => ({ ...item, category: SearchCategory.Extension })));
-    })
-  );
+  if (allowSearch(aliasCategory, SearchCategory.Extension))
+    promises.push(
+      searchExtension(lowerKeyword).then((extensions) => {
+        result = result.concat(extensions.map((item) => ({ ...item, category: SearchCategory.Extension })));
+      })
+    );
 
   await Promise.all(promises);
 
-  result = result.concat(
-    searchNavigation(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Navigation }))
-  );
+  if (allowSearch(aliasCategory, SearchCategory.Navigation))
+    result = result.concat(
+      searchNavigation(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Navigation }))
+    );
 
-  result = result.concat(searchCommands(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Command })));
+  if (allowSearch(aliasCategory, SearchCategory.Command))
+    result = result.concat(searchCommands(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Command })));
 
-  result = result.concat(searchThemeOptions(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Theme })));
+  if (allowSearch(aliasCategory, SearchCategory.Theme))
+    result = result.concat(
+      searchThemeOptions(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Theme }))
+    );
 
   return result.sort((a, b) => a.title?.length - b.title?.length).slice(0, userOptions.limitItems);
 }
@@ -274,14 +291,16 @@ chrome.commands.onCommand.addListener((command, tab) => {
 chrome.action.onClicked.addListener(openCommandPalette);
 
 // Auto redirect when new tab
+/*
 chrome.tabs.onCreated.addListener((tab) => {
   if (userOptions.newTabRedirectUri && tab.pendingUrl?.includes('chrome://newtab')) {
     chrome.tabs.update(tab.id!, { url: userOptions.newTabRedirectUri });
   }
 });
+*/
 
 // Unblock Medium
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+/* chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (userOptions.unblockMedium && changeInfo.status === 'loading') {
     const url = new URL(tab.url || '');
     const host = url.host;
@@ -298,7 +317,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       chrome.tabs.update(tabId, { url: redirectUrl });
     }
   }
-});
+}); */
 
 /* (function reload() {
   chrome.tabs.query({ currentWindow: true, url: 'http://localhost:8888/*' }, function (tabs) {
