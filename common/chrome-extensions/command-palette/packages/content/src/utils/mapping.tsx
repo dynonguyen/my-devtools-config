@@ -15,6 +15,7 @@ import clsx from 'clsx';
 import { ChipProps } from '~/components/Chip';
 import { KbdProps } from '~/components/Kbd';
 import BookmarkActions from '~/components/search-bottom/BookmarkActions';
+import ExtensionActions from '~/components/search-bottom/ExtensionActions';
 import HistoryActions from '~/components/search-bottom/HistoryActions';
 import TabActions from '~/components/search-bottom/TabActions';
 import { RawSearchItem, SearchItem, useSearchStore } from '~/stores/search';
@@ -254,6 +255,8 @@ export function actionMenuMapping(category: SearchCategory) {
       return HistoryActions;
     case SearchCategory.Tab:
       return TabActions;
+    case SearchCategory.Extension:
+      return ExtensionActions;
     default:
       return null;
   }

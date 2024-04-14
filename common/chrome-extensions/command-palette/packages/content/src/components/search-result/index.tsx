@@ -30,7 +30,7 @@ export const SearchResult = () => {
   return (
     <>
       <div id="dcp-search-result-wrapper" class="grow overflow-auto h-84">
-        {result.length > 0 && (
+        {result.length > 0 ? (
           <div class="mb-2">
             <div class="text-grey-500 text-sm font-500 px-4 my-2">Result: </div>
             <div ref={wrapperRef} class="flex flex-col gap-1">
@@ -38,6 +38,11 @@ export const SearchResult = () => {
                 <SearchResultItem {...item} key={item.id} onClick={() => handleItemClick(item)} />
               ))}
             </div>
+          </div>
+        ) : (
+          <div class="flex-center flex-col h-full w-full text-center text-grey-500 gap-2">
+            <span class="i-tabler:search-off size-10" />
+            <div class="text-xl font-400">Search not found</div>
           </div>
         )}
       </div>

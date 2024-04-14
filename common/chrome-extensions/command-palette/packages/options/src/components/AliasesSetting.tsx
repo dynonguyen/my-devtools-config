@@ -76,7 +76,6 @@ export const AliasesSetting = () => {
       <Box
         sx={(theme) => ({
           borderRadius: 4,
-          boxShadow: theme.boxShadows.s,
           bgcolor: theme.palette.background.paper,
           border: `solid 1px ${theme.palette.divider}`
         })}

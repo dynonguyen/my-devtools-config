@@ -82,7 +82,10 @@ export enum MessageEvent {
   ClearHistoryLastHour = 'clear-history-last-hour',
   ClearHistoryLast24Hours = 'clear-history-last-24-hours',
   ClearHistoryLast7Days = 'clear-history-last-7-days',
-  DeleteHistory = 'delete-history'
+  DeleteHistory = 'delete-history',
+
+  // Extension
+  ToggleExtension = 'toggle-extension'
 }
 
 export enum CommandEvent {

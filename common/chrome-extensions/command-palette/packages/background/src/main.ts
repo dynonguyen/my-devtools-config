@@ -275,6 +275,12 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
       break;
     }
 
+    // Extension
+    case MessageEvent.ToggleExtension: {
+      sendBooleanResponse(chrome.management.setEnabled(data.id, data.enabled));
+      break;
+    }
+
     default:
       sendResponse(null);
   }
@@ -319,6 +325,7 @@ chrome.tabs.onCreated.addListener((tab) => {
   }
 }); */
 
+// Dev mode
 /* (function reload() {
   chrome.tabs.query({ currentWindow: true, url: 'http://localhost:8888/*' }, function (tabs) {
     if (tabs[0]) {
