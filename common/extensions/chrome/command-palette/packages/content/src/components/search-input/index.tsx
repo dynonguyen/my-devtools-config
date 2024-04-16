@@ -10,7 +10,7 @@ const AliasCategory = () => {
   const aliases = useUserOptionStore((state) => state.aliases);
 
   const alias = getAliasFromKeyword(keyword);
-  const aliasCategory = Object.entries(aliases).find(([key]) => key === alias)?.[1];
+  const aliasCategory = alias ? Object.entries(aliases).find(([key]) => key === alias)?.[1] : undefined;
 
   if (!aliasCategory) return null;
 

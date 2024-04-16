@@ -17,7 +17,7 @@ async function search(query = '') {
 
   const aliases = userOptions.aliases;
   const alias = getAliasFromKeyword(query);
-  const aliasCategory = Object.entries(aliases).find(([key]) => key === alias)?.[1];
+  const aliasCategory = alias ? Object.entries(aliases).find(([key]) => key === alias)?.[1] : undefined;
 
   const keyword = aliasCategory ? query.replace(alias, '').trim() : query;
   const lowerKeyword = keyword.toLowerCase();

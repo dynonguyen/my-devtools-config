@@ -14,7 +14,7 @@ export const AliasesSetting = () => {
   const aliases: Array<AliasItem> = [
     {
       category: SearchCategory.Bookmark,
-      name: 'Category',
+      name: 'Bookmark',
       icon: 'ph:bookmark-simple-fill',
       color: color('#3b82f6', '#4c8bf0')
     },

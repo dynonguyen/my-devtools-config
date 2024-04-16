@@ -11,7 +11,7 @@ const internetQuerySearching = (keyword: string): SearchItem[] => {
   const { sl, tl } = translate;
 
   const alias = getAliasFromKeyword(keyword);
-  const aliasCategory = Object.entries(aliases).find(([key]) => key === alias)?.[1];
+  const aliasCategory = alias ? Object.entries(aliases).find(([key]) => key === alias)?.[1] : undefined;
 
   if (aliasCategory && aliasCategory !== SearchCategory.InternetQuery) return [];
   const query = (aliasCategory ? keyword.replace(alias, '').trim() : keyword).split(' ').join('+');
