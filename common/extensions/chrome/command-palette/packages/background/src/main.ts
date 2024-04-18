@@ -73,13 +73,7 @@ async function search(query = '') {
 }
 
 function openCommandPalette(tab: chrome.tabs.Tab) {
-  if (tab.url?.includes('chrome://') && userOptions.newTabRedirectUri) {
-    chrome.tabs.update(tab.id!, { url: userOptions.newTabRedirectUri }).then(() => {
-      setTimeout(() => {
-        chrome.tabs.sendMessage<Message>(tab.id as number, { event: MessageEvent.OpenPalette }, () => {});
-      }, 750);
-    });
-  } else {
+  if (!tab.url?.startsWith('chrome://')) {
     chrome.tabs.sendMessage<Message>(tab.id as number, { event: MessageEvent.OpenPalette }, () => {});
   }
 }
