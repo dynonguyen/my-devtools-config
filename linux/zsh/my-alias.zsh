@@ -22,7 +22,7 @@ function save_settings(){
   cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
   cp $HOME/.zshrc $CONFIG_PATH/linux/zsh
   cp $HOME/.zprofile $CONFIG_PATH/linux/zsh
-  cp $HOME/.zenv $CONFIG_PATH/linux/zsh
+  cp $HOME/.zshenv $CONFIG_PATH/linux/zsh
   cp $HOME/.zlogin $CONFIG_PATH/linux/zsh
 
   cp $HOME/.profile $CONFIG_PATH/linux/zsh
@@ -54,7 +54,7 @@ function sync_settings() {
   cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
   cp $CONFIG_PATH/linux/zsh/.zshrc $HOME/.zshrc
   cp $CONFIG_PATH/linux/zsh/.zprofile $HOME
-  cp $CONFIG_PATH/linux/zsh/.zenv $HOME
+  cp $CONFIG_PATH/linux/zsh/.zshenv $HOME
   cp $CONFIG_PATH/linux/zsh/.zlogin $HOME
 
   cp $CONFIG_PATH/linux/zsh/.profile $HOME
