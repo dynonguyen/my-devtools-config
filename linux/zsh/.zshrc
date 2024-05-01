@@ -7,9 +7,10 @@ fi
 
 # ===== Env
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$HOME/.cargo/bin:$BUN_INSTALL/bin:$PATH"
 
 export CONFIG_PATH=$HOME/Developer/personal/my-devtools-config
+
+export PATH="$PATH:$HOME/.cargo/bin:$BUN_INSTALL/bin"
 
 # ===== Oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"

@@ -12,7 +12,6 @@ export CONFIG_PATH=$HOME/Developer/personal/my-devtools-config
 
 export PATH="$PATH:$HOME/.rvm/bin:$BUN_INSTALL/bin:/opt/homebrew/bin"
 
-
 # ===== Oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 
