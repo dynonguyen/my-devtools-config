@@ -18,9 +18,16 @@ function save_settings(){
   cp $HOME/.config/warp-terminal/user_preferences.json $CONFIG_PATH/linux/warp
   cp -rp $HOME/.local/share/warp-terminal/themes/* $CONFIG_PATH/linux/warp/themes
 
-  # Zsh
+  # Zsh & Profile
   cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
   cp $HOME/.zshrc $CONFIG_PATH/linux/zsh
+  cp $HOME/.zprofile $CONFIG_PATH/linux/zsh
+  cp $HOME/.zenv $CONFIG_PATH/linux/zsh
+  cp $HOME/.zlogin $CONFIG_PATH/linux/zsh
+
+  cp $HOME/.profile $CONFIG_PATH/linux/zsh
+  cp $HOME/.bashrc $CONFIG_PATH/linux/zsh
+  cp $HOME/.bash_profile $CONFIG_PATH/linux/zsh
 
   # Auto commit & push
   currentPath=$(pwd)
@@ -43,9 +50,16 @@ function sync_settings() {
   cp -rp $CONFIG_PATH/linux/warp/user_preferences.json $HOME/.config/warp-terminal
   cp -rp $CONFIG_PATH/linux/warp/themes/* $HOME/.local/share/warp-terminal/themes
 
-  # Zsh
+  # Zsh & Profile
   cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
   cp $CONFIG_PATH/linux/zsh/.zshrc $HOME/.zshrc
+  cp $CONFIG_PATH/linux/zsh/.zprofile $HOME
+  cp $CONFIG_PATH/linux/zsh/.zenv $HOME
+  cp $CONFIG_PATH/linux/zsh/.zlogin $HOME
+
+  cp $CONFIG_PATH/linux/zsh/.profile $HOME
+  cp $CONFIG_PATH/linux/zsh/.bashrc $HOME
+  cp $CONFIG_PATH/linux/zsh/.bash_profile $HOME
 
   source $HOME/.zshrc
 }
