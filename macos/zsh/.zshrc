@@ -6,14 +6,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # ===== Env
-export PATH="$PATH:$HOME/.rvm/bin"
-
-export PATH=/opt/homebrew/bin:$PATH
-
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 export CONFIG_PATH=$HOME/Developer/personal/my-devtools-config
+
+export PATH="$PATH:$HOME/.rvm/bin:$BUN_INSTALL/bin:/opt/homebrew/bin"
 
 
 # ===== Oh-my-zsh
