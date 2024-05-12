@@ -1,0 +1,30 @@
+{
+	/* ============== Utils =============== */
+	// break-cmt
+	"Create a break comment": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "break-cmt",
+		"body": "// -----------------------------"
+	},
+	/* ============== ${1:console} =============== */
+	"Console.log()": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "clg",
+		"body": "console.log($1)"
+	},
+	"Console.warn()": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "cwa",
+		"body": "console.warn($1)"
+	},
+	"Console.info()": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "cin",
+		"body": "console.info($1)"
+	},
+	"Console.error()": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "cer",
+		"body": "console.error($1)"
+	}
+}

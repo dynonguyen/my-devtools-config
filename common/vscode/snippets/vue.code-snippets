@@ -1,0 +1,15 @@
+{
+	"Vue component template": {
+		"prefix": "rfce",
+		"body": [
+			"<script lang=\"ts\">",
+			"  ",
+			"</script>",
+			"",
+			"<template>",
+			"  $1",
+			"</template>"
+		],
+		"description": "Vue component template"
+	}
+}

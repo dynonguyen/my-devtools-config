@@ -1,0 +1,71 @@
+{
+	// @Note: ----------  ReactJS ----------
+	// rfce
+	"Create a functional component with file name": {
+		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"prefix": "rfce",
+		"body": [
+			"import React from 'react';",
+			"",
+			"export const ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}} = () => {",
+			"  return <${2:div}>$3</div>;",
+			"}",
+			"",
+			"export default ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}"
+		],
+		"description": "Create a functional component"
+	},
+	// drfce
+	"Create a functional component with folder name": {
+		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"prefix": "drfce",
+		"body": [
+			"import React from 'react';",
+			"",
+			"export default function ${1:${TM_DIRECTORY/^.+\\/(.*)$/$1/}}() {",
+			"  return <${2:div}>$3</div>;",
+			"}"
+		],
+		"description": "Create a functional component with folder name"
+	},
+	// ilazy
+	"Create a lazy import": {
+		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"prefix": "ilazy",
+		"body": [
+			"const $2 = React.lazy(() => import('$1'))",
+		],
+		"description": "Create a lazy import"
+	},
+	// @Note: ----------  Hook ----------
+	// useRef
+	"Create useRef()": {
+		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"prefix": "useRef",
+		"body": [
+			"const ${1:ref} = React.useRef(${2:null});"
+		],
+		"description": "Create useRef()"
+	},
+	// useState
+	"Create useState()": {
+		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"prefix": "useState",
+		"body": [
+			"const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = React.useState(${3:value})"
+		],
+		"description": "Create useState()"
+	},
+	// useEffect
+	"Create useEffect()": {
+		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"prefix": "useEffect",
+		"body": [
+			"React.useEffect(() => {",
+			"  $3",
+			"  return () => { ${2:cleanup} };",
+			"}, [${1:dependencies}]);"
+		],
+		"description": "Create useEffect()"
+	},
+}
