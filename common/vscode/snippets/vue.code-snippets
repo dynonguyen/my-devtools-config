@@ -1,5 +1,7 @@
 {
+	// rfce
 	"Vue component template": {
+		"scope": "vue",
 		"prefix": "rfce",
 		"body": [
 			"<script lang=\"ts\">",

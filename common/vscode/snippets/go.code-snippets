@@ -1,10 +1,9 @@
 {
-  "fmt.Println": {
-    "scope": "go",
-    "prefix": "clg",
-    "body": [
-      "fmt.Println($1)"
-    ],
-    "description": "fmt.Println"
-  }
+	// clg
+	"fmt.Println": {
+		"scope": "go",
+		"prefix": "clg",
+		"body": ["fmt.Println($1)"],
+		"description": "fmt.Println"
+	}
 }

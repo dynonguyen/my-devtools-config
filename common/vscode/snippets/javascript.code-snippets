@@ -7,22 +7,13 @@
 		"body": "// -----------------------------"
 	},
 	/* ============== ${1:console} =============== */
-	"Console.log()": {
+	// clg
+	"console.log()": {
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"prefix": "clg",
 		"body": "console.log($1)"
 	},
-	"Console.warn()": {
-		"scope": "javascript,typescript,javascriptreact,typescriptreact",
-		"prefix": "cwa",
-		"body": "console.warn($1)"
-	},
-	"Console.info()": {
-		"scope": "javascript,typescript,javascriptreact,typescriptreact",
-		"prefix": "cin",
-		"body": "console.info($1)"
-	},
-	"Console.error()": {
+	"console.error()": {
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"prefix": "cer",
 		"body": "console.error($1)"

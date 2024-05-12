@@ -1,8 +1,7 @@
 {
-	// @Note: ----------  ReactJS ----------
 	// rfce
 	"Create a functional component with file name": {
-		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"scope": "javascriptreact,typescriptreact",
 		"prefix": "rfce",
 		"body": [
 			"import React from 'react';",
@@ -17,7 +16,7 @@
 	},
 	// drfce
 	"Create a functional component with folder name": {
-		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"scope": "javascriptreact,typescriptreact",
 		"prefix": "drfce",
 		"body": [
 			"import React from 'react';",
@@ -30,26 +29,21 @@
 	},
 	// ilazy
 	"Create a lazy import": {
-		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"scope": "javascriptreact,typescriptreact",
 		"prefix": "ilazy",
-		"body": [
-			"const $2 = React.lazy(() => import('$1'))",
-		],
+		"body": ["const $2 = React.lazy(() => import('$1'))"],
 		"description": "Create a lazy import"
 	},
-	// @Note: ----------  Hook ----------
 	// useRef
 	"Create useRef()": {
-		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"scope": "javascriptreact,typescriptreact",
 		"prefix": "useRef",
-		"body": [
-			"const ${1:ref} = React.useRef(${2:null});"
-		],
+		"body": ["const ${1:ref} = React.useRef(${2:null});"],
 		"description": "Create useRef()"
 	},
 	// useState
 	"Create useState()": {
-		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"scope": "javascriptreact,typescriptreact",
 		"prefix": "useState",
 		"body": [
 			"const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = React.useState(${3:value})"
@@ -58,7 +52,7 @@
 	},
 	// useEffect
 	"Create useEffect()": {
-		"scope": "typescript,javascript,javascriptreact,typescriptreact",
+		"scope": "javascriptreact,typescriptreact",
 		"prefix": "useEffect",
 		"body": [
 			"React.useEffect(() => {",
@@ -67,5 +61,5 @@
 			"}, [${1:dependencies}]);"
 		],
 		"description": "Create useEffect()"
-	},
+	}
 }
