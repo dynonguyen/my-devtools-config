@@ -19,7 +19,7 @@ function save_settings(){
   cp $HOME/.bash_profile $CONFIG_PATH/macos/zsh
 
   # VSCode snippets
-  cp -rp /Users/dyno/Library/Application Support/Code/User/snippets $CONFIG_PATH/common/vscode/snippets/*
+  cp -rp /Users/dyno/Library/Application Support/Code/User/snippets/* $CONFIG_PATH/common/vscode/snippets
 
   # Auto commit & push
   currentPath=$(pwd)
