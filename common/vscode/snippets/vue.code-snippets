@@ -4,7 +4,7 @@
 		"scope": "vue",
 		"prefix": "rfce",
 		"body": [
-			"<script lang=\"ts\">",
+			"<script setup lang=\"ts\">",
 			"  ",
 			"</script>",
 			"",
