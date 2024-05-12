@@ -7,10 +7,10 @@ fi
 
 # ===== Env
 export BUN_INSTALL="$HOME/.bun"
-
 export CONFIG_PATH=$HOME/Developer/personal/my-devtools-config
+export GOPATH="$HOME/go"
 
-export PATH="$PATH:$HOME/.rvm/bin:$BUN_INSTALL/bin:/opt/homebrew/bin"
+export PATH="$PATH:$HOME/.rvm/bin:$BUN_INSTALL/bin:/opt/homebrew/bin:$GOPATH/bin"
 
 # ===== Oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
