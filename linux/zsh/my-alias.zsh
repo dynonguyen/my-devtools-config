@@ -18,7 +18,7 @@ function save_settings(){
   cp $HOME/.config/warp-terminal/user_preferences.json $CONFIG_PATH/linux/warp
   cp -rp $HOME/.local/share/warp-terminal/themes/* $CONFIG_PATH/linux/warp/themes
 
-  # Zsh & Profile
+  # Zsh
   cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
   cp $HOME/.zshrc $CONFIG_PATH/linux/zsh
   cp $HOME/.zprofile $CONFIG_PATH/linux/zsh
@@ -28,6 +28,9 @@ function save_settings(){
   cp $HOME/.profile $CONFIG_PATH/linux/zsh
   cp $HOME/.bashrc $CONFIG_PATH/linux/zsh
   cp $HOME/.bash_profile $CONFIG_PATH/linux/zsh
+
+  # VSCode snippets
+  cp -rp $HOME/.config/Code/User/snippets/* $CONFIG_PATH/common/vscode/snippets
 
   # Auto commit & push
   currentPath=$(pwd)
@@ -60,6 +63,9 @@ function sync_settings() {
   cp $CONFIG_PATH/linux/zsh/.profile $HOME
   cp $CONFIG_PATH/linux/zsh/.bashrc $HOME
   cp $CONFIG_PATH/linux/zsh/.bash_profile $HOME
+
+  # VSCode snippets
+  cp -rp $CONFIG_PATH/common/vscode/snippets/* $HOME/.config/Code/User/snippets
 
   source $HOME/.zshrc
 }
