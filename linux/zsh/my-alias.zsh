@@ -44,6 +44,10 @@ function save_settings(){
 }
 
 function sync_settings() {
+  # Pull setting from github
+  cd $CONFIG_PATH
+  git pull
+
   # Neovim
   cp -rp $CONFIG_PATH/common/nvim/* $HOME/.config/nvim
 
