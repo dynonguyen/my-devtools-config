@@ -38,6 +38,8 @@ alias pnr='pnpm remove'
 alias pnb='pnpm build'
 alias pnd='pnpm dev'
 alias pns='pnpm start'
+alias pnx='pnpm dlx'
+alias pnex='pnpm exec'
 
 # git
 alias gs='git status'
