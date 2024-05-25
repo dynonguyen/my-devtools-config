@@ -30,3 +30,14 @@ source "$CONFIG_PATH/common/zsh/my-alias.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# bun completions
+[ -s "/Users/dyno/.bun/_bun" ] && source "/Users/dyno/.bun/_bun"
+
+# pnpm
+export PNPM_HOME="/Users/dyno/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
