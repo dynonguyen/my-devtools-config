@@ -1,4 +1,4 @@
-function save_settings(){
+function push_settings(){
   # Neovim
   cp -rp $HOME/.config/nvim/* $CONFIG_PATH/common/nvim
 
@@ -32,7 +32,7 @@ function save_settings(){
   cd $currentPath
 }
 
-function sync_settings() {
+function pull_settings() {
   # Pull setting from github
   currentPath=$(pwd)
   cd $CONFIG_PATH

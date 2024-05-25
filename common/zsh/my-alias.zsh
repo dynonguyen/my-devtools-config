@@ -30,13 +30,14 @@ alias bd='bun dev'
 alias bs='bun start'
 
 # pnpm
-alias ppi='pnpm install'
-alias ppa='pnpm add'
-alias ppad='pnpm add -D'
-alias ppr='pnpm remove'
-alias ppb='pnpm build'
-alias ppd='pnpm dev'
-alias pps='pnpm start'
+alias pn='pnpm init'
+alias pni='pnpm install'
+alias pna='pnpm add'
+alias pnad='pnpm add -D'
+alias pnr='pnpm remove'
+alias pnb='pnpm build'
+alias pnd='pnpm dev'
+alias pns='pnpm start'
 
 # git
 alias gs='git status'

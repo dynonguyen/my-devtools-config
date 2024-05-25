@@ -6,3 +6,5 @@ set incsearch
 
 syntax on
 set relativenumber
+
+colorscheme vim
