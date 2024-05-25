@@ -30,7 +30,7 @@ alias bd='bun dev'
 alias bs='bun start'
 
 # pnpm
-alias pn='pnpm init'
+alias pn='pnpm'
 alias pni='pnpm install'
 alias pna='pnpm add'
 alias pnad='pnpm add -D'
