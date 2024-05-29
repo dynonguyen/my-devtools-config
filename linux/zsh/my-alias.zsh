@@ -7,7 +7,7 @@ alias svc_restart='sudo systemctl restart $@'
 alias svc_status='systemctl status $@'
 
 alias kde_keymapping='svi /usr/share/X11/xkb/symbols/pc'
-alias ii='nohup dolphin $@ &'
+alias ii='dolphin . &'
 
 function push_settings(){
   # Neovim
