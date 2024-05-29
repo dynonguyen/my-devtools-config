@@ -71,12 +71,12 @@ function gopen(){
 }
 
 function git_cads_config(){
-	git config --global user.name "Nguyen Le Anh Tuan"
-	git config --global user.email "tuannla5@fpt.com"
+	git config user.name "TuanNLA5"
+	git config user.email "tuannla5@fpt.com"
 }
 function git_home_config(){
-	git config --global user.name "Tuan Nguyen"
-	git config --global user.email "tuannguyentn2504@gmail.com"
+	git config user.name "Dyno Nguyen"
+	git config user.email "tuannguyentn2504@gmail.com"
 }
 
 # Docker
