@@ -10,9 +10,9 @@ function push_settings(){
   # Zsh
   cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
   cp $HOME/.zshrc $CONFIG_PATH/macos/zsh
-  cp $HOME/.zprofile $CONFIG_PATH/macos/zsh
-  cp $HOME/.zshenv $CONFIG_PATH/macos/zsh
-  cp $HOME/.zlogin $CONFIG_PATH/macos/zsh
+  # cp $HOME/.zprofile $CONFIG_PATH/macos/zsh
+  # cp $HOME/.zshenv $CONFIG_PATH/macos/zsh
+  # cp $HOME/.zlogin $CONFIG_PATH/macos/zsh
 
   cp $HOME/.profile $CONFIG_PATH/macos/zsh
   cp $HOME/.bashrc $CONFIG_PATH/macos/zsh
@@ -50,9 +50,9 @@ function pull_settings() {
   # Zsh
   cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
   cp $CONFIG_PATH/macos/zsh/.zshrc $HOME/.zshrc
-  cp $CONFIG_PATH/macos/zsh/.zprofile $HOME
-  cp $CONFIG_PATH/macos/zsh/.zshenv $HOME
-  cp $CONFIG_PATH/macos/zsh/.zlogin $HOME
+  # cp $CONFIG_PATH/macos/zsh/.zprofile $HOME
+  # cp $CONFIG_PATH/macos/zsh/.zshenv $HOME
+  # cp $CONFIG_PATH/macos/zsh/.zlogin $HOME
 
   cp $CONFIG_PATH/macos/zsh/.profile $HOME
   cp $CONFIG_PATH/macos/zsh/.bashrc $HOME
