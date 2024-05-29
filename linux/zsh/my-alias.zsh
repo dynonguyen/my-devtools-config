@@ -21,9 +21,7 @@ function push_settings(){
   # Zsh
   cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
   cp $HOME/.zshrc $CONFIG_PATH/linux/zsh
-  # cp $HOME/.zprofile $CONFIG_PATH/linux/zsh
-  # cp $HOME/.zshenv $CONFIG_PATH/linux/zsh
-  # cp $HOME/.zlogin $CONFIG_PATH/linux/zsh
+  cp $HOME/.zprofile $CONFIG_PATH/linux/zsh
 
   cp $HOME/.profile $CONFIG_PATH/linux/zsh
   cp $HOME/.bashrc $CONFIG_PATH/linux/zsh
@@ -62,9 +60,7 @@ function pull_settings() {
   # Zsh & Profile
   cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
   cp $CONFIG_PATH/linux/zsh/.zshrc $HOME/.zshrc
-  # cp $CONFIG_PATH/linux/zsh/.zprofile $HOME
-  # cp $CONFIG_PATH/linux/zsh/.zshenv $HOME
-  # cp $CONFIG_PATH/linux/zsh/.zlogin $HOME
+  cp $CONFIG_PATH/linux/zsh/.zprofile $HOME
 
   cp $CONFIG_PATH/linux/zsh/.profile $HOME
   cp $CONFIG_PATH/linux/zsh/.bashrc $HOME
