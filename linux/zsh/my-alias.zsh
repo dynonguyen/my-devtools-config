@@ -8,6 +8,8 @@ alias svc_status='systemctl status $@'
 
 alias kde_keymapping='svi /usr/share/X11/xkb/symbols/pc'
 alias ii='dolphin . &'
+alias dnf='sudo dnf'
+alias dnf5='sudo dnf5'
 
 function push_settings(){
   # Neovim
