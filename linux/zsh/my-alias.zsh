@@ -21,13 +21,8 @@ function push_settings(){
   cp -rp $HOME/.local/share/warp-terminal/themes/* $CONFIG_PATH/linux/warp/themes
 
   # Zsh
-  cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
   cp $HOME/.zshrc $CONFIG_PATH/linux/zsh
-  cp $HOME/.zprofile $CONFIG_PATH/linux/zsh
-
-  cp $HOME/.profile $CONFIG_PATH/linux/zsh
-  cp $HOME/.bashrc $CONFIG_PATH/linux/zsh
-  cp $HOME/.bash_profile $CONFIG_PATH/linux/zsh
+  cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
 
   # VSCode snippets
   cp -rp $HOME/.config/Code/User/snippets/* $CONFIG_PATH/common/vscode/snippets
@@ -62,11 +57,6 @@ function pull_settings() {
   # Zsh & Profile
   cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
   cp $CONFIG_PATH/linux/zsh/.zshrc $HOME/.zshrc
-  cp $CONFIG_PATH/linux/zsh/.zprofile $HOME
-
-  cp $CONFIG_PATH/linux/zsh/.profile $HOME
-  cp $CONFIG_PATH/linux/zsh/.bashrc $HOME
-  cp $CONFIG_PATH/linux/zsh/.bash_profile $HOME
 
   # VSCode snippets
   cp -rp $CONFIG_PATH/common/vscode/snippets/* $HOME/.config/Code/User/snippets

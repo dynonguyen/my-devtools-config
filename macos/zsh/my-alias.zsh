@@ -8,13 +8,8 @@ function push_settings(){
   defaults export dev.warp.Warp-Stable $CONFIG_PATH/macos/warp/warp.config
 
   # Zsh
-  cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
   cp $HOME/.zshrc $CONFIG_PATH/macos/zsh
-  cp $HOME/.zprofile $CONFIG_PATH/macos/zsh
-
-  cp $HOME/.profile $CONFIG_PATH/macos/zsh
-  cp $HOME/.bashrc $CONFIG_PATH/macos/zsh
-  cp $HOME/.bash_profile $CONFIG_PATH/macos/zsh
+  cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
 
   # VSCode snippets
   cp -rp /Users/dyno/Library/Application\ Support/Code/User/snippets/* $CONFIG_PATH/common/vscode/snippets
@@ -46,13 +41,8 @@ function pull_settings() {
   defaults import dev.warp.Warp-Stable $CONFIG_PATH/macos/warp/warp.config
 
   # Zsh
-  cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
   cp $CONFIG_PATH/macos/zsh/.zshrc $HOME/.zshrc
-  cp $CONFIG_PATH/macos/zsh/.zprofile $HOME
-
-  cp $CONFIG_PATH/macos/zsh/.profile $HOME
-  cp $CONFIG_PATH/macos/zsh/.bashrc $HOME
-  cp $CONFIG_PATH/macos/zsh/.bash_profile $HOME
+  cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
 
   # VSCode snippets
   cp -rp $CONFIG_PATH/common/vscode/snippets/* /Users/dyno/Library/Application\ Support/Code/User/profiles/ce00a09/snippets
