@@ -1,4 +1,4 @@
-sudo dnf install dnf5 vim neovim zsh
+sudo dnf install dnf5 vim neovim zsh eza tldr
 
 # Vscode
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -13,7 +13,7 @@ sudo rpm --import /tmp/teams-for-linux.asc
 sudo rm -f /tmp/teams-for-linux.asc
 sudo curl -1sLf -o /etc/yum.repos.d/teams-for-linux.repo https://repo.teamsforlinux.de/rpm/teams-for-linux.repo
 
-sudo dnf5 install teams-for-linux
+sudo dnf install teams-for-linux
 
 # Oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

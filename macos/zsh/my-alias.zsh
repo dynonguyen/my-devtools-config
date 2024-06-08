@@ -1,4 +1,6 @@
-function push_settings(){
+alias trash='mv -fv $@ ~/.Trash'
+
+function push_settings() {
   # Neovim
   cp -rp $HOME/.config/nvim/* $CONFIG_PATH/common/nvim
 

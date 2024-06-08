@@ -9,7 +9,7 @@ alias z='zshz 2>&1'
 alias vi='nvim'
 alias svi='sudo nvim'
 alias del='rm -rf'
-alias sdel='sudo rm -rf'
+alias sdel='sudo rm -rfi'
 
 # yarn
 alias ys='yarn start'
@@ -47,10 +47,6 @@ alias gcl='git clone $1'
 alias gl='git log'
 alias glo='git log --oneline -15'
 alias ga='git add'
-function gaex(){
-  git add .
-  git reset -- $@
-}
 alias gacm='git add . && git commit -m'
 alias gcm='git commit -m'
 alias gca='git commit --amend'
@@ -60,23 +56,26 @@ alias gch='git checkout '
 alias gchb='git checkout -b '
 alias gp='git push'
 alias gpl='git pull'
-function gopen(){
+function gaex() {
+  git add .
+  git reset -- $@
+}
+function gopen() {
   kernel=$(uname -s)
 
   if [ "$kernel" = "Linux" ]; then
-   xdg-open $(git config remote.origin.url) &> /dev/null &
+    xdg-open $(git config remote.origin.url) &>/dev/null &
   else
-   open $(git config remote.origin.url)
+    open $(git config remote.origin.url)
   fi
 }
-
-function git_cads_config(){
-	git config user.name "TuanNLA5"
-	git config user.email "tuannla5@fpt.com"
+function git_cads_config() {
+  git config user.name "TuanNLA5"
+  git config user.email "tuannla5@fpt.com"
 }
-function git_home_config(){
-	git config user.name "Dyno Nguyen"
-	git config user.email "tuannguyentn2504@gmail.com"
+function git_home_config() {
+  git config user.name "Dyno Nguyen"
+  git config user.email "tuannguyentn2504@gmail.com"
 }
 
 # Docker
@@ -87,6 +86,11 @@ alias dm='docker-machine '
 alias dls='docker ps -a'
 alias drm='docker rm -f '
 alias de='docker exec -it '
-function deb(){
+function deb() {
   docker exec -it $1 bash
 }
+
+# External packages (depend on installation.sh)
+alias ls='eza --icons=always'
+alias cat='bat'
+alias man='tldr'
