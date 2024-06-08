@@ -8,9 +8,10 @@ fi
 # ===== Env
 export BUN_INSTALL="$HOME/.bun"
 export CONFIG_PATH=$HOME/Developer/personal/my-devtools-config
-export GOPATH="$HOME/go"
+export GO_PATH="$HOME/go"
+export N_PREFIX="$HOME/.n"
 
-export PATH="$PATH:$HOME/.rvm/bin:$BUN_INSTALL/bin:/opt/homebrew/bin:$GOPATH/bin"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$N_PREFIX/bin:$BUN_INSTALL/bin:$GO_PATH/bin:$HOME/.rvm/bin:$PATH"
 
 # ===== Oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
@@ -32,7 +33,7 @@ source "$CONFIG_PATH/macos/zsh/my-alias.zsh"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # bun completions
-[ -s "/Users/dyno/.bun/_bun" ] && source "/Users/dyno/.bun/_bun"
+# [ -s "/Users/dyno/.bun/_bun" ] && source "/Users/dyno/.bun/_bun"
 
 # pnpm
 export PNPM_HOME="/Users/dyno/Library/pnpm"
