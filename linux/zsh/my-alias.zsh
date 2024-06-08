@@ -59,6 +59,7 @@ function pull_settings() {
   cp -rp $CONFIG_PATH/linux/warp/themes/* $HOME/.local/share/warp-terminal/themes
 
   # Zsh & Profile
+  cp $CONFIG_PATH/common/zsh/.gitignore-global $HOME/.gitignore
   cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
   cp $CONFIG_PATH/linux/zsh/.zshrc $HOME/.zshrc
 
