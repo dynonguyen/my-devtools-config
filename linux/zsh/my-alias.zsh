@@ -11,9 +11,11 @@ alias ii='dolphin . &'
 alias dnf='sudo dnf'
 alias dnf5='sudo dnf5'
 
-alias trash="mv -fv ~/.local/share/Trash"
+function trash() {
+  mv -fv $@ ~/.local/share/Trash
+}
 
-function push_settings(){
+function push_settings() {
   # Neovim
   cp -rp $HOME/.config/nvim/* $CONFIG_PATH/common/nvim
 

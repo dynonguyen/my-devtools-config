@@ -25,8 +25,8 @@ plugins=(git zsh-z zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # ===== Aliases
-source "$CONFIG_PATH/macos/zsh/my-alias.zsh"
 source "$CONFIG_PATH/common/zsh/my-alias.zsh"
+source "$CONFIG_PATH/macos/zsh/my-alias.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

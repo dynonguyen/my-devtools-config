@@ -1,4 +1,6 @@
-alias trash='mv -fv $@ ~/.Trash'
+function trash() {
+  mv -fv $@ ~/.Trash
+}
 
 function push_settings() {
   # Neovim
