@@ -11,7 +11,7 @@ export CONFIG_PATH="$HOME/Developer/personal/my-devtools-config"
 export GO_PATH="$HOME/go"
 export N_PREFIX="$HOME/.n"
 
-export PATH="$HOME/.cargo/bin:$N_PREFIX/bin:$BUN_INSTALL/bin:$GO_PATH/bin:$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$N_PREFIX/bin:$BUN_INSTALL/bin:$GO_PATH/bin:/usr/local/go/bin:$BUN_INSTALL/bin:$PATH"
 
 # ===== Oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
