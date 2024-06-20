@@ -31,3 +31,6 @@ source "$CONFIG_PATH/linux/zsh/my-alias.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# bun completions
+[ -s "/home/dyno/.bun/_bun" ] && source "/home/dyno/.bun/_bun"

@@ -7,7 +7,7 @@ alias svc_restart='sudo systemctl restart $@'
 alias svc_status='systemctl status $@'
 
 alias kde_keymapping='svi /usr/share/X11/xkb/symbols/pc'
-alias ii='dolphin . &'
+alias open_here='nohup dolphin . 2>&1 > /dev/null &'
 alias dnf='sudo dnf'
 alias dnf5='sudo dnf5'
 
