@@ -9,7 +9,7 @@ alias z='zshz 2>&1'
 alias vi='nvim'
 alias svi='sudo nvim'
 alias del='rm -rf'
-alias sdel='sudo rm -rfi'
+alias sdel='sudo rm -rf'
 
 # yarn
 alias ys='yarn start'

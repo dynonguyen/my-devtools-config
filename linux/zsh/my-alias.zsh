@@ -17,10 +17,6 @@ alias kde_keymapping='svi /usr/share/X11/xkb/symbols/pc'
 alias open_here='nohup dolphin . 2>&1 > /dev/null &'
 alias hide='echo $1 >> ~/.hidden'
 
-function trash() {
-  mv -fv $@ ~/.local/share/Trash
-}
-
 function push_settings() {
   # Neovim
   cp -rp $HOME/.config/nvim/* $CONFIG_PATH/common/nvim
