@@ -1,15 +1,21 @@
 alias clean_cache='su -c "echo Before; free -h | head -n 2; sync; echo 3 > /proc/sys/vm/drop_caches; echo After; free -h | head -n 2"'
-alias swap_key='setxkbmap -option caps:swapescape'
 
-alias svc_start='sudo systemctl start $@'
-alias svc_stop='sudo systemctl stop $@'
-alias svc_restart='sudo systemctl restart $@'
-alias svc_status='systemctl status $@'
+# Systemctl
+alias svc_start='sudo systemctl start'
+alias svc_stop='sudo systemctl stop'
+alias svc_restart='sudo systemctl restart'
+alias svc_status='systemctl status'
 
-alias kde_keymapping='svi /usr/share/X11/xkb/symbols/pc'
-alias open_here='nohup dolphin . 2>&1 > /dev/null &'
+# Fedora
 alias dnf='sudo dnf'
 alias dnf5='sudo dnf5'
+
+# KDE
+alias kde_keymapping='svi /usr/share/X11/xkb/symbols/pc'
+
+# Dolphin
+alias open_here='nohup dolphin . 2>&1 > /dev/null &'
+alias hide='echo $1 >> ~/.hidden'
 
 function trash() {
   mv -fv $@ ~/.local/share/Trash
