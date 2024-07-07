@@ -1,5 +1,5 @@
 {
-	"name": "Dyno",
+	"name": "Dyno Dark Theme",
 	// "$schema": "vscode://schemas/color-theme",
 	"type": "dark",
 	"semanticHighlighting": true,
@@ -127,7 +127,7 @@
 		"peekViewTitleLabel.foreground": "#f8f8f2",
 		"pickerGroup.border": "#bd93f9",
 		"pickerGroup.foreground": "#8be9fd",
-		"progressBar.background": "#ec6cb5",
+		"progressBar.background": "#ff79c6",
 		"selection.background": "#ffffff18",
 		"settings.checkboxBackground": "#21222c",
 		"settings.checkboxBorder": "#191a21",

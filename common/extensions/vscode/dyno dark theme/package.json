@@ -1,0 +1,31 @@
+{
+	"name": "dyno-dark-mode",
+	"displayName": "Dyno Dark Theme",
+	"description": "Dyno Dracula Dark Mode Theme",
+	"version": "1.0.7",
+	"icon": "icon.png",
+	"engines": {
+		"vscode": "^1.62.0"
+	},
+	"author": {
+		"name": "Dyno Nguyen",
+		"email": "tuannguyentn2504@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TuanNguyen2504/my-devtools-config/tree/master/Vscode/my-extensions/dyno%20dark%20theme"
+	},
+	"publisher": "dyno-nguyen",
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Dyno Nguyen",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Dyno Nguyen-color-theme.json"
+			}
+		]
+	}
+}
