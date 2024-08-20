@@ -34,11 +34,3 @@ source "$CONFIG_PATH/macos/zsh/my-alias.zsh"
 
 # bun completions
 # [ -s "/Users/dyno/.bun/_bun" ] && source "/Users/dyno/.bun/_bun"
-
-# pnpm
-export PNPM_HOME="/Users/dyno/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
