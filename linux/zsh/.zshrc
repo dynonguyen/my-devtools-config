@@ -10,6 +10,7 @@ export BUN_INSTALL="$HOME/.bun"
 export CONFIG_PATH="$HOME/Developer/personal/my-devtools-config"
 export GO_PATH="$HOME/go"
 export N_PREFIX="$HOME/.n"
+export NODE_OPTIONS="--max-old-space-size=4096"
 
 export PATH="$HOME/.cargo/bin:$N_PREFIX/bin:$BUN_INSTALL/bin:$GO_PATH/bin:/usr/local/go/bin:$BUN_INSTALL/bin:$PATH"
 
