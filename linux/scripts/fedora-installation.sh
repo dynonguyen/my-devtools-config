@@ -16,7 +16,8 @@ sudo curl -1sLf -o /etc/yum.repos.d/teams-for-linux.repo https://repo.teamsforli
 sudo dnf install teams-for-linux
 
 # Ultilities
-sudo dnf install dnf5 vim neovim zsh eza tldr bat
+sudo dnf install dnf5 vim neovim zsh eza tldr bat ulauncher
+sudo dnf install --assumeyes python3-pip
 
 # Docker
 sudo dnf remove docker \
