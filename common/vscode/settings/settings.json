@@ -41,6 +41,7 @@
 	"editor.unicodeHighlight.invisibleCharacters": false,
 	"editor.unicodeHighlight.nonBasicASCII": false,
 	"editor.wordWrap": "on",
+	"editor.cursorSurroundingLines": 10,
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": "explicit"
 		// "source.addMissingImports": "explicit",
@@ -171,7 +172,6 @@
 	// Vim
 	"vim.autoindent": true,
 	"vim.autoSwitchInputMethod.defaultIM": "normal",
-	"vim.cursorStylePerMode.replace": "underline-thin",
 	"vim.easymotion": true,
 	"vim.easymotionMarkerForegroundColorOneChar": "#ff6bcb",
 	"vim.foldfix": true,
