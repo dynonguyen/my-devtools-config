@@ -198,13 +198,17 @@
 		"<C-w>": false,
 		"<C-x>": false,
 		"<C-n>": false,
-		"<C-o>": false
+		"<C-o>": false,
+		"<D-c>": false,
+		"<D-v>": false
 	},
+
 	"vim.normalModeKeyBindingsNonRecursive": [
 		// ================ Vim command mapping
 		// Chi xoa, khong cat. Su dung leader de xoa + cat
 		{ "before": ["d"], "after": ["\"", "_", "d"] },
 		{ "before": ["<leader>", "d"], "after": ["d"] },
+		{ "before": ["x"], "after": ["\"", "_", "x"] },
 
 		// Chi xoa, khong cat. Su dung leader de xoa + cat -> insert mode
 		{ "before": ["c"], "after": ["\"", "_", "c"] },

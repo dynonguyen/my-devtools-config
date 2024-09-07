@@ -13,6 +13,10 @@ function push_settings() {
 
   # VSCode snippets
   cp -rp /Users/dyno/Library/Application\ Support/Code/User/snippets/* $CONFIG_PATH/common/vscode/snippets
+  cp -rp $HOME/Library/Application\ Support/Code/User/settings.json $CONFIG_PATH/common/vscode/settings
+  cp -rp $HOME/Library/Application\ Support/Code/User/keybindings.json $CONFIG_PATH/common/vscode/settings
+  cp -rp $HOME/Library/Application\ Support/Code/User/profiles/ce00a09/settings.json $CONFIG_PATH/common/vscode/settings/profiles/ce00a09
+  cp -rp $HOME/Library/Application\ Support/Code/User/profiles/ce00a09/keybindings.json $CONFIG_PATH/common/vscode/settings/profiles/ce00a09
 
   # Auto commit & push
   currentPath=$(pwd)
@@ -48,10 +52,6 @@ function pull_settings() {
   # VSCode snippets, settings
   cp -rp $CONFIG_PATH/common/vscode/snippets/* /Users/dyno/Library/Application\ Support/Code/User/profiles/ce00a09/snippets
   cp -rp $CONFIG_PATH/common/vscode/snippets/* /Users/dyno/Library/Application\ Support/Code/User/snippets
-  cp -rp $HOME/Library/Application\ Support/Code/User/settings.json $CONFIG_PATH/common/vscode/settings
-  cp -rp $HOME/Library/Application\ Support/Code/User/keybindings.json $CONFIG_PATH/common/vscode/settings
-  cp -rp $HOME/Library/Application\ Support/Code/User/profiles/ce00a09/settings.json $CONFIG_PATH/common/vscode/settings/profiles/ce00a09
-  cp -rp $HOME/Library/Application\ Support/Code/User/profiles/ce00a09/keybindings.json $CONFIG_PATH/common/vscode/settings/profiles/ce00a09
 
   source $HOME/.zshrc
 }
