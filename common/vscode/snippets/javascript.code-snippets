@@ -13,9 +13,16 @@
 		"prefix": "clg",
 		"body": "console.log($1)"
 	},
+	// cer
 	"console.error()": {
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"prefix": "cer",
 		"body": "console.error($1)"
-	}
+	},
+	// clf
+	"console.log() with format": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "clf",
+		"body": "console.log(`🥺 $TM_FILENAME:$TM_LINE_NUMBER ☕`, $1)"
+	},
 }
