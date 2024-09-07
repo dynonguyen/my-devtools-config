@@ -35,3 +35,6 @@ source "$CONFIG_PATH/macos/zsh/my-alias.zsh"
 
 # bun completions
 # [ -s "/Users/dyno/.bun/_bun" ] && source "/Users/dyno/.bun/_bun"
+
+# Created by `pipx` on 2024-09-07 14:44:48
+export PATH="$PATH:/Users/dyno/.local/bin"
