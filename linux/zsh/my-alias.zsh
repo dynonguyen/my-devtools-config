@@ -32,6 +32,8 @@ function push_settings() {
 
   # VSCode snippets
   cp -rp $HOME/.config/Code/User/snippets/* $CONFIG_PATH/common/vscode/snippets
+  cp -rp $HOME/.config/Code/User/settings.json $CONFIG_PATH/common/vscode/settings
+  cp -rp $HOME/.config/Code/User/keybindings.json $CONFIG_PATH/common/vscode/settings
 
   # Auto commit & push
   currentPath=$(pwd)
