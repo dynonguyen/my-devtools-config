@@ -1,0 +1,11 @@
+{
+	// clg
+	"print()": {
+		"scope": "python",
+		"prefix": "clg",
+		"body": [
+			"print($1)"
+		],
+		"description": "print()"
+	}
+}
