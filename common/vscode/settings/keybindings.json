@@ -25,8 +25,8 @@
 	{ "key": "alt+l", "command": "workbench.action.nextEditor" },
 
 	// Split pane and navigate between panes
-	{ "key": "ctrl+left", "command": "workbench.action.splitEditorLeft" },
-	{ "key": "ctrl+right", "command": "workbench.action.splitEditorRight" },
+	{ "key": "alt+left", "command": "workbench.action.splitEditorLeft" },
+	{ "key": "alt+right", "command": "workbench.action.splitEditorRight" },
 
 	// Resize pane/terminal
 	{ "key": "shift+alt+left", "command": "workbench.action.terminal.resizePaneLeft" },
