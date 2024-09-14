@@ -1,0 +1,15 @@
+{
+	"Create a makrdown collapse": {
+		"scope": "markdown",
+		"prefix": "mdcollapse",
+		"body": [
+			"<details>",
+			"<summary>${1:View more}</summary>",
+			"",
+			"$2",
+			"",
+			"</details>"
+		],
+		"description": "Create a makrdown collapse"
+	}
+}

@@ -246,6 +246,11 @@
 	{
 		"key": "cmd+e",
 		"command": "-actions.findWithSelection"
+	},
+	{
+		"key": "ctrl+shift+cmd+left",
+		"command": "-editor.action.smartSelect.shrink",
+		"when": "editorTextFocus"
 	}
 	// Recent added keybindings
 ]

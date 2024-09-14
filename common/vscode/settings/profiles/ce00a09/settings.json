@@ -42,6 +42,8 @@
 	"editor.unicodeHighlight.nonBasicASCII": false,
 	"editor.wordWrap": "on",
 	"editor.cursorSurroundingLines": 10,
+	"editor.snippetSuggestions": "inline",
+	"editor.linkedEditing": false,
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": "explicit"
 		// "source.addMissingImports": "explicit",
@@ -97,7 +99,8 @@
 		"editor.defaultFormatter": "foxundermoon.shell-format"
 	},
 	"[python]": {
-		"editor.defaultFormatter": "ms-python.black-formatter"
+		"editor.defaultFormatter": "ms-python.black-formatter",
+		"editor.tabSize": 4
 	},
 
 	// Typescript
@@ -184,7 +187,7 @@
 	"vim.incsearch": false,
 	"vim.joinspaces": false,
 	"vim.leader": "<space>",
-	"vim.mouseSelectionGoesIntoVisualMode": false,
+	"vim.mouseSelectionGoesIntoVisualMode": true,
 	"vim.surround": false,
 	"vim.useCtrlKeys": true,
 	"vim.useSystemClipboard": true,
@@ -267,14 +270,18 @@
 		{ "before": ["g", "h"], "commands": ["editor.action.showDefinitionPreviewHover"] },
 
 		// Find all references
-		{ "before": ["g", "r"], "commands": ["references-view.findReferences"] }
+		{ "before": ["g", "r"], "commands": ["references-view.findReferences"] },
+
+		// Tab
+		{ "before": ["<Tab>"], "commands": ["editor.action.indentLines"] },
+		{ "before": ["<S-Tab>"], "commands": ["editor.action.outdentLines"] }
 	],
 
 	"vim.visualModeKeyBindingsNonRecursive": [
 		{ "after": ["\"", "_", "d"], "before": ["d"] },
 		{ "after": ["x"], "before": ["<leader>", "d"] },
-		{ "before": ["<Tab>"], "commands": ["tab"] },
-		{ "before": ["<S-Tab>"], "commands": ["outdent"] }
+		{ "before": ["<Tab>"], "commands": ["editor.action.indentLines"] },
+		{ "before": ["<S-Tab>"], "commands": ["editor.action.outdentLines"] }
 	],
 
 	// Prettier
@@ -432,7 +439,7 @@
 
 	// Spell checker
 	"cSpell.ignorePaths": ["**/vi.ts", "**/settings.json"],
-	"cSpell.userWords": ["dynonguyen"],
+	"cSpell.userWords": ["dynonguyen", "dyno"],
 
 	// Material Icon Theme
 	"material-icon-theme.hidesExplorerArrows": true,
@@ -470,5 +477,8 @@
 	"unocss.colorPreview": false,
 
 	// Metals
-	"metals.enableIndentOnPaste": true
+	"metals.enableIndentOnPaste": true,
+
+	// Python
+	"isort.args": ["--profile", "black"]
 }

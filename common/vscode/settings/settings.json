@@ -43,7 +43,7 @@
 	"editor.wordWrap": "on",
 	"editor.cursorSurroundingLines": 10,
 	"editor.snippetSuggestions": "inline",
-	"editor.linkedEditing": true,
+	"editor.linkedEditing": false,
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": "explicit"
 		// "source.addMissingImports": "explicit",
@@ -187,7 +187,7 @@
 	"vim.incsearch": false,
 	"vim.joinspaces": false,
 	"vim.leader": "<space>",
-	"vim.mouseSelectionGoesIntoVisualMode": false,
+	"vim.mouseSelectionGoesIntoVisualMode": true,
 	"vim.surround": false,
 	"vim.useCtrlKeys": true,
 	"vim.useSystemClipboard": true,
@@ -205,6 +205,7 @@
 		"<C-x>": false,
 		"<C-n>": false,
 		"<C-o>": false,
+		"<C-p>": false,
 		"<D-c>": false,
 		"<D-v>": false
 	},
