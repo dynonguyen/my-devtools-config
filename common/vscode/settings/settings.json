@@ -188,7 +188,7 @@
 	"vim.joinspaces": false,
 	"vim.leader": "<space>",
 	"vim.mouseSelectionGoesIntoVisualMode": true,
-	"vim.surround": false,
+	"vim.surround": true,
 	"vim.useCtrlKeys": true,
 	"vim.useSystemClipboard": true,
 
@@ -262,10 +262,7 @@
 		{ "before": ["z", "O"], "commands": ["editor.unfoldAll"] },
 
 		// Xoa surround brackets
-		{ "before": ["d", "s"], "commands": ["editor.action.removeBrackets"] },
-
-		// Xoa surround tag
-		{ "before": ["d", "u", "t"], "commands": ["editor.emmet.action.removeTag"] },
+		{ "before": ["d", "s", "s"], "commands": ["editor.action.removeBrackets"] },
 
 		// Show definition preview
 		{ "before": ["g", "h"], "commands": ["editor.action.showDefinitionPreviewHover"] },

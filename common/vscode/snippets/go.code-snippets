@@ -3,7 +3,15 @@
 	"fmt.Println": {
 		"scope": "go",
 		"prefix": "clg",
-		"body": ["fmt.Println($1)"],
+		"body": [
+			"fmt.Println($1)"
+		],
 		"description": "fmt.Println"
-	}
+	},
+	// clf
+	"fmt.Println with format": {
+		"scope": "go",
+		"prefix": "clf",
+		"body": "fmt.Println(`☕ DYNO LOG ~ $TM_FILENAME:$TM_LINE_NUMBER 🥺`, $1)"
+	},
 }
