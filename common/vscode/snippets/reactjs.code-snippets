@@ -31,14 +31,18 @@
 	"Create a lazy import": {
 		"scope": "javascriptreact,typescriptreact",
 		"prefix": "ilazy",
-		"body": ["const $2 = React.lazy(() => import('$1'))"],
+		"body": [
+			"const $2 = React.lazy(() => import('$1'))"
+		],
 		"description": "Create a lazy import"
 	},
 	// useRef
 	"Create useRef()": {
 		"scope": "javascriptreact,typescriptreact",
 		"prefix": "useRef",
-		"body": ["const ${1:ref} = React.useRef(${2:null});"],
+		"body": [
+			"const ${1:ref} = React.useRef(${2:null});"
+		],
 		"description": "Create useRef()"
 	},
 	// useState
@@ -61,5 +65,13 @@
 			"}, [${1:dependencies}]);"
 		],
 		"description": "Create useEffect()"
+	},
+	"Create useTranslation() i18next": {
+		"scope": "javascriptreact,typescriptreact",
+		"prefix": "useTranslation",
+		"body": [
+			"const { t } = useTranslation$1();",
+		],
+		"description": "Create useTranslation() i18next"
 	}
 }
