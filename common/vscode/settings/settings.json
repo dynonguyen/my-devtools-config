@@ -313,7 +313,8 @@
 		"database",
 		"db",
 		"vendor",
-		"deprecated"
+		"deprecated",
+		"volumes"
 	],
 
 	// Auto rename tag
