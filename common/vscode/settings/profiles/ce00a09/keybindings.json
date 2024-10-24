@@ -251,6 +251,10 @@
 		"key": "ctrl+shift+cmd+left",
 		"command": "-editor.action.smartSelect.shrink",
 		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "references-view.findImplementations"
 	}
 	// Recent added keybindings
 ]
