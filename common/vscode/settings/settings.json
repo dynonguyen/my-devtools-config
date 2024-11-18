@@ -265,7 +265,10 @@
 		{ "before": ["d", "s", "s"], "commands": ["editor.action.removeBrackets"] },
 
 		// Show definition preview
-		{ "before": ["g", "h"], "commands": ["editor.action.showDefinitionPreviewHover"] },
+		{
+			"before": ["g", "h"],
+			"commands": ["editor.action.showDefinitionPreviewHover"]
+		},
 
 		// Find all references
 		{ "before": ["g", "r"], "commands": ["references-view.findReferences"] },
@@ -460,6 +463,7 @@
 
 	// Github copilot
 	"github.copilot.enable": { "markdown": true },
+	"github.copilot.chat.edits.enabled": true,
 
 	// TailwindCSS
 	"tailwindCSS.emmetCompletions": true,
@@ -478,5 +482,7 @@
 	"metals.enableIndentOnPaste": true,
 
 	// Python
-	"isort.args": ["--profile", "black"]
+	"isort.args": ["--profile", "black"],
+
+	"gopls": { "ui.semanticTokens": true }
 }
