@@ -441,6 +441,8 @@
 	// cSpell checker
 	"cSpell.ignorePaths": ["**/vi.ts", "**/settings.json"],
 	"cSpell.userWords": ["dynonguyen", "dyno"],
+	"cSpell.textDecorationThickness": "1px",
+	"cSpell.textDecorationStyle": "wavy",
 
 	// Material Icon Theme
 	"material-icon-theme.hidesExplorerArrows": true,
@@ -463,7 +465,6 @@
 
 	// Github copilot
 	"github.copilot.enable": { "markdown": true },
-	"github.copilot.chat.edits.enabled": true,
 
 	// TailwindCSS
 	"tailwindCSS.emmetCompletions": true,
