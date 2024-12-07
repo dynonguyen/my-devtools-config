@@ -255,6 +255,11 @@
 	{
 		"key": "ctrl+i",
 		"command": "references-view.findImplementations"
+	},
+	{
+		"key": "f2",
+		"command": "renameFile",
+		"when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
 	}
 	// Recent added keybindings
 ]
