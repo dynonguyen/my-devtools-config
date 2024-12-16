@@ -25,14 +25,14 @@
 	{ "key": "alt+l", "command": "workbench.action.nextEditor" },
 
 	// Split pane and navigate between panes
-	{ "key": "ctrl+left", "command": "workbench.action.splitEditorLeft" },
-	{ "key": "ctrl+right", "command": "workbench.action.splitEditorRight" },
+	{ "key": "alt+left", "command": "workbench.action.splitEditorLeft" },
+	{ "key": "alt+right", "command": "workbench.action.splitEditorRight" },
 
 	// Resize pane/terminal
 	{ "key": "shift+alt+left", "command": "workbench.action.terminal.resizePaneLeft" },
 	{ "key": "shift+alt+right", "command": "workbench.action.terminal.resizePaneRight" },
-	{ "key": "ctrl+alt+left", "command": "workbench.action.increaseViewSize" },
-	{ "key": "ctrl+alt+right", "command": "workbench.action.decreaseViewSize" },
+	{ "key": "meta+alt+left", "command": "workbench.action.increaseViewSize" },
+	{ "key": "meta+alt+right", "command": "workbench.action.decreaseViewSize" },
 
 	// HTML wrap tag
 	{ "key": "alt+w", "command": "editor.emmet.action.wrapWithAbbreviation" },
@@ -46,7 +46,11 @@
 	},
 
 	// Workbench/editors
-	{ "key": "alt+b", "command": "workbench.view.explorer", "when": "viewContainer.workbench.view.explorer.enabled" },
+	{
+		"key": "ctrl+shift+e",
+		"command": "workbench.view.explorer",
+		"when": "viewContainer.workbench.view.explorer.enabled"
+	},
 	{ "key": "ctrl+shift+w", "command": "workbench.action.closeOtherEditors" },
 
 	// Quick open
@@ -60,7 +64,7 @@
 	{ "key": "shift+ctrl+`", "command": "workbench.action.terminal.openNativeConsole" },
 
 	// Extensions
-	{ "key": "ctrl+alt+delete", "command": "dynoFileUtils.deleteFile" },
+	{ "key": "alt+delete", "command": "dynoFileUtils.deleteFile" },
 
 	// Others
 	{
@@ -246,6 +250,14 @@
 	{
 		"key": "ctrl+e",
 		"command": "-actions.findWithSelection"
+	},
+	{
+		"key": "alt+b",
+		"command": "workbench.files.action.showActiveFileInExplorer"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "references-view.findImplementations"
 	}
 	// Recent added keybindings
 ]
