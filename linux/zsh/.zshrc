@@ -12,6 +12,10 @@ export GO_PATH="$HOME/go"
 export N_PREFIX="$HOME/.n"
 export NODE_OPTIONS="--max-old-space-size=4096"
 
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 export PATH="$HOME/.cargo/bin:$N_PREFIX/bin:$BUN_INSTALL/bin:$GO_PATH/bin:/usr/local/go/bin:$BUN_INSTALL/bin:$PATH"
 
 # ===== Oh-my-zsh

@@ -124,7 +124,7 @@
 	},
 	"files.exclude": {
 		"**/.env": false,
-		"**/node_modules": true
+		"**/node_modules": false
 	},
 	"files.watcherExclude": {
 		"**/.ammonite": true,
