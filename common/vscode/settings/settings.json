@@ -123,8 +123,7 @@
 		"*.svelte": "html"
 	},
 	"files.exclude": {
-		"**/.env": false,
-		"**/node_modules": false
+		"**/node_modules": true
 	},
 	"files.watcherExclude": {
 		"**/.ammonite": true,
