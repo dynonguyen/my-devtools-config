@@ -328,7 +328,8 @@
 		"typescript",
 		"typescriptreact",
 		"xml",
-		"mdx"
+		"mdx",
+		"vue"
 	],
 
 	// Indent rainbow

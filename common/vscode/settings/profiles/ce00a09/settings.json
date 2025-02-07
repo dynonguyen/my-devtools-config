@@ -12,7 +12,7 @@
 	"editor.columnSelection": false,
 	"editor.cursorBlinking": "expand",
 	"editor.cursorWidth": 2,
-	"editor.defaultColorDecorators": false,
+	"editor.defaultColorDecorators": "never",
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.fastScrollSensitivity": 10,
 	"editor.foldingImportsByDefault": false,
