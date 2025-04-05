@@ -21,10 +21,8 @@
 	"editor.fontSize": 16,
 	"editor.fontWeight": 500,
 	"editor.formatOnSave": true,
-	"editor.inlineSuggest.enabled": true,
 	"editor.largeFileOptimizations": true,
 	"editor.lineNumbers": "relative",
-	"editor.minimap.enabled": false,
 	"editor.mouseWheelZoom": true,
 	"editor.occurrencesHighlight": "off",
 	"editor.renderControlCharacters": false,
@@ -44,11 +42,14 @@
 	"editor.cursorSurroundingLines": 10,
 	"editor.snippetSuggestions": "inline",
 	"editor.linkedEditing": false,
+	"editor.minimap.enabled": false,
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": "explicit"
 		// "source.addMissingImports": "explicit",
 		// "source.removeUnused": "explicit"
 	},
+	"editor.inlineSuggest.enabled": true,
+	"editor.inlineSuggest.syntaxHighlightingEnabled": false,
 
 	// Explorer
 	"explorer.confirmPasteNative": false,
@@ -487,5 +488,7 @@
 
 	"gopls": {
 		"ui.semanticTokens": true
-	}
+	},
+	"go.toolsManagement.autoUpdate": true,
+	"diffEditor.hideUnchangedRegions.enabled": true
 }

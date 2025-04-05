@@ -260,6 +260,10 @@
 		"key": "f2",
 		"command": "renameFile",
 		"when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "alt+r",
+		"command": "typescript.findAllFileReferences"
 	}
 	// Recent added keybindings
 ]
