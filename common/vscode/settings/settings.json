@@ -16,9 +16,7 @@
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.fastScrollSensitivity": 10,
 	"editor.foldingImportsByDefault": false,
-	"editor.fontFamily": "Fira Code",
 	"editor.fontLigatures": true,
-	"editor.fontSize": 16,
 	"editor.fontWeight": 500,
 	"editor.formatOnSave": true,
 	"editor.largeFileOptimizations": true,
@@ -50,6 +48,7 @@
 	},
 	"editor.inlineSuggest.enabled": true,
 	"editor.inlineSuggest.syntaxHighlightingEnabled": false,
+	"diffEditor.hideUnchangedRegions.enabled": true,
 
 	// Explorer
 	"explorer.confirmPasteNative": false,
@@ -159,8 +158,6 @@
 	"git.decorations.enabled": true,
 	"git.autofetch": true,
 	"git.openRepositoryInParentFolders": "always",
-	"scm.showOutgoingChanges": "never",
-	"scm.showHistoryGraph": false,
 
 	// Others
 	"keyboard.dispatch": "keyCode",
@@ -491,6 +488,241 @@
 		"ui.semanticTokens": true
 	},
 	"go.toolsManagement.autoUpdate": true,
-	"diffEditor.hideUnchangedRegions.enabled": true,
-	"window.newWindowProfile": "MacOS"
+
+	// Apply to all profiles
+	"workbench.settings.applyToAllProfiles": [
+		// ------------------------------------------------------------
+		// ------------------------ BUILT-IN ------------------------
+		// ------------------------------------------------------------
+		// Editor
+		"editor.acceptSuggestionOnCommitCharacter",
+		"editor.accessibilitySupport",
+		"editor.autoIndent",
+		"editor.bracketPairColorization.enabled",
+		"editor.codeLens",
+		"editor.colorDecorators",
+		"editor.columnSelection",
+		"editor.cursorBlinking",
+		"editor.cursorWidth",
+		"editor.defaultColorDecorators",
+		"editor.defaultFormatter",
+		"editor.fastScrollSensitivity",
+		"editor.foldingImportsByDefault",
+		"editor.fontLigatures",
+		"editor.fontWeight",
+		"editor.formatOnSave",
+		"editor.largeFileOptimizations",
+		"editor.lineNumbers",
+		"editor.mouseWheelZoom",
+		"editor.occurrencesHighlight",
+		"editor.renderControlCharacters",
+		"editor.renderLineHighlight",
+		"editor.renderWhitespace",
+		"editor.smoothScrolling",
+		"editor.suggest.insertMode",
+		"editor.suggest.preview",
+		"editor.suggestSelection",
+		"editor.tabSize",
+		"editor.unicodeHighlight.ambiguousCharacters",
+		"editor.unicodeHighlight.includeComments",
+		"editor.unicodeHighlight.invisibleCharacters",
+		"editor.unicodeHighlight.nonBasicASCII",
+		"editor.wordWrap",
+		"editor.cursorSurroundingLines",
+		"editor.snippetSuggestions",
+		"editor.linkedEditing",
+		"editor.minimap.enabled",
+		"editor.inlineSuggest.enabled",
+		"editor.inlineSuggest.syntaxHighlightingEnabled",
+		"editor.quickSuggestions",
+		"editor.codeActionsOnSave",
+		"diffEditor.hideUnchangedRegions.enabled",
+
+		// Explorer
+		"explorer.confirmPasteNative",
+		"explorer.compactFolders",
+		"explorer.confirmDelete",
+		"explorer.confirmDragAndDrop",
+
+		// Window
+		"window.commandCenter",
+		"window.title",
+		"window.titleBarStyle",
+
+		// Workbench
+		"workbench.editor.enablePreview",
+		"workbench.list.smoothScrolling",
+		"workbench.editor.pinnedTabSizing",
+		"workbench.startupEditor",
+		"workbench.colorTheme",
+		"workbench.iconTheme",
+
+		// Languages
+		"[css]",
+		"[html]",
+		"[svelte]",
+		"[java]",
+		"[nginx]",
+		"[php]",
+		"[proto3]",
+		"[scala]",
+		"[go]",
+		"[snippets]",
+		"[shellscript]",
+		"[ignore]",
+		"[dotenv]",
+		"[properties]",
+		"[python]",
+
+		// Typescript
+		"typescript.tsserver.log",
+		"typescript.preferences.importModuleSpecifier",
+
+		// Emmet
+		"emmet.triggerExpansionOnTab",
+		"emmet.showSuggestionsAsSnippets",
+		"emmet.includeLanguages",
+
+		// File browser
+		"files.associations",
+		"files.exclude",
+		"files.watcherExclude",
+		"search.exclude",
+
+		// Extensions
+		"extensions.experimental.affinity",
+
+		// Terminal
+		"terminal.external.linuxExec",
+		"terminal.external.osxExec",
+		"terminal.integrated.cursorStyle",
+		"terminal.integrated.defaultProfile.linux",
+		"terminal.integrated.fontFamily",
+		"terminal.integrated.fontSize",
+		"terminal.integrated.shellIntegration.enabled",
+		"terminal.integrated.tabs.enabled",
+
+		// Git, Source Control
+		"git.enableSmartCommit",
+		"git.decorations.enabled",
+		"git.autofetch",
+		"git.openRepositoryInParentFolders",
+
+		// Others
+		"keyboard.dispatch",
+		"breadcrumbs.icons",
+		"css.lint.unknownAtRules",
+		"comments.visible",
+		"security.promptForLocalFileProtocolHandling",
+
+		// ------------------------------------------------------------
+		// ------------------------ Extensions ------------------------
+		// ------------------------------------------------------------
+		// Vim
+		"vim.autoindent",
+		"vim.autoSwitchInputMethod.defaultIM",
+		"vim.easymotion",
+		"vim.easymotionMarkerForegroundColorOneChar",
+		"vim.foldfix",
+		"vim.highlightedyank.enable",
+		"vim.history",
+		"vim.ignorecase",
+		"vim.incsearch",
+		"vim.joinspaces",
+		"vim.leader",
+		"vim.mouseSelectionGoesIntoVisualMode",
+		"vim.surround",
+		"vim.useCtrlKeys",
+		"vim.useSystemClipboard",
+		"vim.handleKeys",
+		"vim.normalModeKeyBindingsNonRecursive",
+		"vim.visualModeKeyBindingsNonRecursive",
+
+		// Auto rename tag
+		"auto-rename-tag.activationOnLanguage",
+
+		// Indent rainbow
+		"indentRainbow.colors",
+
+		// Highlight matching
+		"highlight-matching-tag.styles",
+
+		// Prettier
+		"prettier.arrowParens",
+		"prettier.jsxSingleQuote",
+		"prettier.printWidth",
+		"prettier.singleQuote",
+		"prettier.tabWidth",
+		"prettier.trailingComma",
+		"prettier.useTabs",
+
+		// Git lens
+		"gitlens.currentLine.enabled",
+		"gitlens.statusBar.enabled",
+		"gitlens.codeLens.enabled",
+
+		// Dyno File Utils
+		"dynoFileUtils.confirmDelete",
+		"dynoFileUtils.expandSeparator",
+		"dynoFileUtils.openFile",
+		"dynoFileUtils.separator",
+		"dynoFileUtils.folderExclude",
+
+		// Color highlight
+		"color-highlight.markerType",
+		"color-highlight.markRuler",
+		"color-highlight.matchWords",
+
+		// Todo tree
+		"todo-tree.filtering.excludeGlobs",
+		"todo-tree.general.tags",
+		"todo-tree.highlights.customHighlight",
+		"todo-tree.general.statusBar",
+		"todo-tree.tree.buttons.scanMode",
+		"todo-tree.tree.flat",
+		"todo-tree.tree.groupedByTag",
+		"todo-tree.tree.scanMode",
+
+		// Error lens
+		"errorLens.enabledDiagnosticLevels",
+		"errorLens.delay",
+		"errorLens.followCursor",
+		"errorLens.gutterIconsEnabled",
+		"errorLens.margin",
+		"errorLens.messageMaxChars",
+
+		// Spell checker
+		"cSpell.ignorePaths",
+		"cSpell.userWords",
+
+		// Material Icon Theme
+		"material-icon-theme.hidesExplorerArrows",
+		"material-icon-theme.activeIconPack",
+
+		// Iconify
+		"iconify.delimiters",
+		"iconify.languageIds",
+		"iconify.annotations",
+
+		// Github copilot
+		"github.copilot.enable",
+
+		// TailwindCSS
+		"tailwindCSS.emmetCompletions",
+		"tailwindCSS.colorDecorators",
+		"headwind.removeDuplicates",
+		"headwind.runOnSave",
+
+		// UnoCSS
+		"unocss.autocomplete.maxItems",
+		"unocss.underline",
+		"unocss.colorPreview",
+
+		// Python
+		"isort.args",
+
+		// Golang
+		"gopls",
+		"go.toolsManagement.autoUpdate"
+	]
 }
