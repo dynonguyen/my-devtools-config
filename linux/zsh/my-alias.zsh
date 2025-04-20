@@ -30,7 +30,7 @@ function push_settings() {
   cp $HOME/.zshrc $CONFIG_PATH/linux/zsh
   cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
 
-  # VSCode snippets
+  # VSCode
   cp -rp $HOME/.config/Code/User/snippets/* $CONFIG_PATH/common/vscode/snippets
   cp -rp $HOME/.config/Code/User/settings.json $CONFIG_PATH/common/vscode/settings
   cp -rp $HOME/.config/Code/User/keybindings.json $CONFIG_PATH/common/vscode/settings
@@ -66,9 +66,6 @@ function pull_settings() {
   cp $CONFIG_PATH/common/zsh/.gitignore-global $HOME/.gitignore
   cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
   cp $CONFIG_PATH/linux/zsh/.zshrc $HOME/.zshrc
-
-  # VSCode snippets
-  cp -rp $CONFIG_PATH/common/vscode/snippets/* $HOME/.config/Code/User/snippets
 
   source $HOME/.zshrc
 }

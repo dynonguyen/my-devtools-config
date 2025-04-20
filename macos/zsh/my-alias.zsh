@@ -49,10 +49,6 @@ function pull_settings() {
   cp $CONFIG_PATH/macos/zsh/.zshrc $HOME/.zshrc
   cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
 
-  # VSCode snippets, settings
-  cp -rp $CONFIG_PATH/common/vscode/snippets/* /Users/dyno/Library/Application\ Support/Code/User/profiles/ce00a09/snippets
-  cp -rp $CONFIG_PATH/common/vscode/snippets/* /Users/dyno/Library/Application\ Support/Code/User/snippets
-
   source $HOME/.zshrc
 }
 

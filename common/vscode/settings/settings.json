@@ -486,9 +486,11 @@
 	// Python
 	"isort.args": ["--profile", "black"],
 
+	// Golang
 	"gopls": {
 		"ui.semanticTokens": true
 	},
 	"go.toolsManagement.autoUpdate": true,
-	"diffEditor.hideUnchangedRegions.enabled": true
+	"diffEditor.hideUnchangedRegions.enabled": true,
+	"window.newWindowProfile": "MacOS"
 }
