@@ -48,6 +48,8 @@
 	},
 	"editor.inlineSuggest.enabled": true,
 	"editor.inlineSuggest.syntaxHighlightingEnabled": false,
+	"editor.fontFamily": "Fira Code",
+	"editor.fontSize": 16,
 	"diffEditor.hideUnchangedRegions.enabled": true,
 
 	// Explorer
@@ -60,7 +62,6 @@
 	"window.commandCenter": true,
 	"window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}",
 	"window.titleBarStyle": "custom",
-	"window.menuBarVisibility": "hidden",
 
 	// Workbench
 	"workbench.editor.enablePreview": false,
@@ -82,7 +83,7 @@
 		"editor.insertSpaces": true,
 		"editor.tabSize": 4
 	},
-	"[proto3]": { "editor.defaultFormatter": "zxh404.vscode-proto3" },
+	// "[proto3]": { "editor.defaultFormatter": "zxh404.vscode-proto3" },
 	"[scala]": { "editor.defaultFormatter": "scalameta.metals" },
 	"[go]": { "editor.defaultFormatter": "golang.go" },
 	"[snippets]": { "editor.defaultFormatter": "vscode.json-language-features" },
@@ -105,7 +106,7 @@
 
 	// Typescript
 	"typescript.tsserver.log": "off",
-	"typescript.preferences.importModuleSpecifier": "project-relative",
+	// "typescript.preferences.importModuleSpecifier": "project-relative",
 
 	// Emmet
 	"emmet.includeLanguages": {
@@ -149,9 +150,10 @@
 	"terminal.integrated.cursorStyle": "line",
 	"terminal.integrated.defaultProfile.linux": "zsh",
 	"terminal.integrated.fontFamily": "MesloLGS NF",
-	"terminal.integrated.fontSize": 13,
+	// "terminal.integrated.fontSize": 14,
 	"terminal.integrated.shellIntegration.enabled": true,
 	"terminal.integrated.tabs.enabled": false,
+	// "terminal.integrated.suggest.enabled": true,
 
 	// Git
 	"git.enableSmartCommit": true,
@@ -451,18 +453,14 @@
 	"iconify.annotations": true,
 	"iconify.languageIds": ["javascriptreact", "typescriptreact"],
 
-	// Codeium
-	"codeium.enableCodeLens": false,
-	"codeium.enableSearch": true,
-	"codeium.enableConfig": {
-		"*": true,
-		"properties": true,
-		"markdown": true,
-		"graphql": true
-	},
-
 	// Github copilot
 	"github.copilot.enable": { "markdown": true },
+	"github.copilot.chat.commitMessageGeneration.instructions": [
+		{ "file": ".cz-config.js" },
+		{ "file": ".cz-config.cjs" },
+		{ "file": "commitlint.config.js" },
+		{ "file": "commitlint.config.cjs" }
+	],
 
 	// TailwindCSS
 	"tailwindCSS.emmetCompletions": true,
@@ -598,9 +596,9 @@
 		"terminal.integrated.cursorStyle",
 		"terminal.integrated.defaultProfile.linux",
 		"terminal.integrated.fontFamily",
-		"terminal.integrated.fontSize",
 		"terminal.integrated.shellIntegration.enabled",
 		"terminal.integrated.tabs.enabled",
+		"terminal.integrated.suggest.enabled",
 
 		// Git, Source Control
 		"git.enableSmartCommit",
@@ -706,6 +704,7 @@
 
 		// Github copilot
 		"github.copilot.enable",
+		"github.copilot.chat.commitMessageGeneration.instructions",
 
 		// TailwindCSS
 		"tailwindCSS.emmetCompletions",
@@ -724,5 +723,7 @@
 		// Golang
 		"gopls",
 		"go.toolsManagement.autoUpdate"
-	]
+	],
+	"window.newWindowProfile": "MacOS",
+	"security.workspace.trust.untrustedFiles": "open"
 }

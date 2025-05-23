@@ -10,6 +10,3 @@ git config --global user.email tuannguyentn2504@gmail.com
 git config --global user.name "Dyno Nguyen"
 git config --global core.excludesFile '~/.gitignore'
 git config --global init.defaultBranch main
-
-sudo usermod -aG docker ${USER}
-sudo chmod 777 /var/run/docker.sock

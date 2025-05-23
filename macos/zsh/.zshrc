@@ -38,4 +38,10 @@ source "$CONFIG_PATH/macos/zsh/my-alias.zsh"
 # [ -s "/Users/dyno/.bun/_bun" ] && source "/Users/dyno/.bun/_bun"
 
 # Created by `pipx` on 2024-09-07 14:44:48
-export PATH="$PATH:/Users/dyno/.local/bin"
+export PATH="$PATH:/Users/tuan.nguyen2/.local/bin"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tuan.nguyen2/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tuan.nguyen2/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tuan.nguyen2/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tuan.nguyen2/google-cloud-sdk/completion.zsh.inc'; fi

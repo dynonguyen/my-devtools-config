@@ -70,9 +70,9 @@ function gopen() {
     open $(git config remote.origin.url)
   fi
 }
-function git_cads_config() {
-  git config user.name "TuanNLA5"
-  git config user.email "tuannla5@fpt.com"
+function git_work_config() {
+  git config user.name "Tuan Nguyen"
+  git config user.email "tuan.nguyen2@be.com.vn"
 }
 function git_home_config() {
   git config user.name "Dyno Nguyen"
@@ -90,6 +90,7 @@ alias de='docker exec -it '
 function deb() {
   docker exec -it $1 bash
 }
+alias k='kubectl'
 
 # External packages (depend on installation.sh)
 alias ls='eza --icons=always'

@@ -3,27 +3,14 @@
 	// ------------------------ BUILT-IN ------------------------
 	// ------------------------------------------------------------
 	// Editor
-	"editor.fontFamily": "FiraCode-Retina, Fira Code",
-	"editor.fontSize": 18,
+	"editor.fontFamily": "Fira Code",
+	"editor.fontSize": 16,
+
+	// Terminal
+	"terminal.integrated.fontSize": 14,
+	"redhat.telemetry.enabled": false
 
 	// ------------------------------------------------------------
 	// ------------------------ Extensions ------------------------
 	// ------------------------------------------------------------
-	// Vim
-	"vim.handleKeys": {
-		"<C-a>": false,
-		"<C-b>": false,
-		"<C-c>": false,
-		"<C-d>": false,
-		"<C-f>": false,
-		"<C-h>": false,
-		"<C-l>": false,
-		"<C-v>": false,
-		"<C-w>": false,
-		"<C-x>": false,
-		"<C-n>": false,
-		"<C-o>": false,
-		"<D-c>": false,
-		"<D-v>": false
-	}
 }
