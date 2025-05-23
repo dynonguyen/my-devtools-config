@@ -39,4 +39,4 @@ source "$CONFIG_PATH/linux/zsh/my-alias.zsh"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # bun completions
-[ -s "/home/dyno/.bun/_bun" ] && source "/home/dyno/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"

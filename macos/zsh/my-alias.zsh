@@ -12,7 +12,7 @@ function push_settings() {
   cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
 
   # VSCode snippets
-  cp -rp /Users/dyno/Library/Application\ Support/Code/User/snippets/* $CONFIG_PATH/common/vscode/snippets
+  cp -rp $HOME/Library/Application\ Support/Code/User/snippets/* $CONFIG_PATH/common/vscode/snippets
   cp -rp $HOME/Library/Application\ Support/Code/User/settings.json $CONFIG_PATH/common/vscode/settings
   cp -rp $HOME/Library/Application\ Support/Code/User/keybindings.json $CONFIG_PATH/common/vscode/settings
   cp -rp $HOME/Library/Application\ Support/Code/User/profiles/ce00a09/settings.json $CONFIG_PATH/common/vscode/settings/profiles/ce00a09
