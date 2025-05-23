@@ -23,6 +23,6 @@
 	"console.log() with format": {
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"prefix": "clf",
-		"body": "console.log(`☕ DYNO LOG ~ $TM_FILENAME:$TM_LINE_NUMBER 🥺`, $1)"
+		"body": "console.log(`☕ DYNO DEBUG ~ $TM_FILENAME:$TM_LINE_NUMBER 🦫`, $1)"
 	},
 }

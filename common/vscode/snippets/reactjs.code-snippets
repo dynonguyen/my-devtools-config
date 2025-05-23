@@ -73,5 +73,49 @@
 			"const { t } = useTranslation$1();",
 		],
 		"description": "Create useTranslation() i18next"
+	},
+	// ----- NextJS -----
+	// sfc
+	"Create a server function component": {
+		"scope": "javascriptreact,typescriptreact",
+		"prefix": "sfc",
+		"body": [
+			"import React from 'react';",
+			"",
+			"export default function ${1:Page}() {",
+			"  return <${2:div}>$3</div>;",
+			"}",
+			"",
+		],
+		"description": "Create a server function component",
+	},
+	"Create a server async function component": {
+		"scope": "javascriptreact,typescriptreact",
+		"prefix": "sfca",
+		"body": [
+			"import React from 'react';",
+			"",
+			"export default async function ${1:Page}() {",
+			"  return <${2:div}>$3</div>;",
+			"}",
+			"",
+		],
+		"description": "Create a server async function component",
+	},
+	// cfc
+	"Create a client function component": {
+		"scope": "javascriptreact,typescriptreact",
+		"prefix": "cfc",
+		"body": [
+			"'use client';",
+			"",
+			"import React from 'react';",
+			"",
+			"export default function ${1:Component}() {",
+			"  return <${2:div}>$3</div>;",
+			"}",
+			"",
+		],
+		"description": "Create a client function component",
 	}
 }

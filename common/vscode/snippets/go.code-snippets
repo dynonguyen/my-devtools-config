@@ -12,6 +12,24 @@
 	"fmt.Println with format": {
 		"scope": "go",
 		"prefix": "clf",
-		"body": "fmt.Println(`☕ DYNO LOG ~ $TM_FILENAME:$TM_LINE_NUMBER 🥺`, $1)"
+		"body": "fmt.Println(\"☕ DYNO LOG ~ $TM_FILENAME:$TM_LINE_NUMBER 🥺\", $1)"
+	},
+	// Send value to channel
+	"Send value to channel": {
+		"scope": "go",
+		"prefix": "sc",
+		"body": [
+			"${1:c} <- ${2:val}"
+		],
+		"description": "Send value to channel"
+	},
+	// Receive value from channel
+	"Receive value from channel": {
+		"prefix": "rc",
+		"scope": "go",
+		"body": [
+			"${1:var} := <- ${2:c}"
+		],
+		"description": "Receive value from channel"
 	},
 }
