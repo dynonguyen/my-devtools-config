@@ -10,3 +10,6 @@ git config --global user.email tuannguyentn2504@gmail.com
 git config --global user.name "Dyno Nguyen"
 git config --global core.excludesFile '~/.gitignore'
 git config --global init.defaultBranch main
+
+# git config --global user.signingkey ${KEY}
+# git config --global commit.gpgsign true
