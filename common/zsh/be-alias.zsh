@@ -1,4 +1,4 @@
-function help() {
+function swe_help() {
   echo """
     develop
     stage
@@ -45,8 +45,8 @@ function swe() {
     gcloud config set project bef-cake-prod
     gcloud container clusters get-credentials cake-prod-1 --zone=asia-southeast1
     ;;
-  help | *)
-    help
+  swe_help | *)
+    swe_help
     ;;
   esac
 }
