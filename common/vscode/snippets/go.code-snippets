@@ -8,6 +8,15 @@
 		],
 		"description": "fmt.Println"
 	},
+	// clgf
+	"fmt.Printf": {
+		"scope": "go",
+		"prefix": "clff",
+		"body": [
+			"fmt.Printf(\"$1\\n\", $2)"
+		],
+		"description": "fmt.Printf with newline"
+	},
 	// clf
 	"fmt.Println with format": {
 		"scope": "go",

@@ -259,6 +259,7 @@
 
 		// Unfold all
 		{ "before": ["z", "O"], "commands": ["editor.unfoldAll"] },
+		{ "before": ["z", "r"], "commands": ["editor.unfoldRecursively"] },
 
 		// Xoa surround brackets
 		{ "before": ["d", "s", "s"], "commands": ["editor.action.removeBrackets"] },
