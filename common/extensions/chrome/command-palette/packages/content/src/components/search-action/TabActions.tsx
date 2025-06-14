@@ -1,6 +1,6 @@
 import { MessageEvent, Tab } from '@dcp/shared';
-import { useNotificationStore } from '~/stores/notification';
-import { useSearchStore } from '~/stores/search';
+import { pushNotification } from '~/stores/notification';
+import { deleteSearchItem, updateSearchItem, useSearchStore } from '~/stores/search';
 import { copyToClipboard, sendMessage } from '~/utils/helper';
 import ActionMenu, { ActionMenuItem } from './ActionMenu';
 
@@ -11,34 +11,25 @@ export const TabActions = () => {
   const handleCloseTab = async () => {
     const isSuccess = await sendMessage<boolean>(MessageEvent.CloseTab, { id });
     if (isSuccess) {
-      useSearchStore.setState((prev) => ({
-        result: prev.result.filter((item) => selectedItem.id !== item.id),
-        focusedIndex: 0,
-        openAction: false
-      }));
-      useNotificationStore.getState().setNotification({ message: 'Deleted', variant: 'success' });
+      deleteSearchItem(selectedItem.id, true);
     } else {
-      useNotificationStore.getState().setNotification({ message: 'Failed', variant: 'error' });
+      pushNotification({ message: 'Failed', variant: 'error' });
     }
   };
 
   const handleCopyURL = () => {
     copyToClipboard(url!);
     useSearchStore.setState({ openAction: false });
-    useNotificationStore.getState().setNotification({ message: 'Copied to clipboard', variant: 'success' });
+    pushNotification({ message: 'Copied to clipboard', variant: 'success' });
   };
 
   const handleTogglePin = async () => {
     await sendMessage<boolean>(MessageEvent.TogglePinTab, { id });
-    useSearchStore.setState((prev) => ({
-      result: prev.result.map((item) =>
-        selectedItem.id !== item.id ? item : { ...item, _raw: { ...item._raw, pinned: !pinned } }
-      ),
-      focusedIndex: 0,
-      openAction: false
-    }));
-    useSearchStore.setState({ openAction: false });
-    useNotificationStore.getState().setNotification({ message: pinned ? 'Unpinned' : 'Pinned', variant: 'success' });
+
+    updateSearchItem(selectedItem.id, (item) => ({ ...item, _raw: { ...item._raw, pinned: !pinned } }), true, {
+      focusedIndex: 0
+    });
+    pushNotification({ message: pinned ? 'Unpinned' : 'Pinned', variant: 'success' });
   };
 
   const actionItems: ActionMenuItem[] = [

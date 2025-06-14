@@ -2,6 +2,7 @@ import { SearchCategory } from '@dcp/shared';
 import { ComponentChild } from 'preact';
 import isEqual from 'react-fast-compare';
 import { createWithEqualityFn } from 'zustand/traditional';
+import { pushNotification } from './notification';
 
 export type RawSearchItem<T = any> = {
   category: SearchCategory;
@@ -11,7 +12,7 @@ export type SearchItem<T = any> = {
   id: string;
   label: string;
   category: SearchCategory;
-  description?: string;
+  description?: string | ComponentChild;
   tooltip?: string;
   logo?: ComponentChild;
   _raw: RawSearchItem<T>;
@@ -38,8 +39,8 @@ export type SearchStore = SearchState & SearchAction;
 
 export const useSearchStore = createWithEqualityFn<SearchStore>(
   (set, get) => ({
-    init: false,
-    open: false,
+    init: true, // MOCK: dev mode
+    open: true, // MOCK: dev mode
     openAction: false,
     searching: false,
     keyword: '',
@@ -62,3 +63,26 @@ export const useSearchStore = createWithEqualityFn<SearchStore>(
   }),
   isEqual
 );
+
+export const deleteSearchItem = (id: SearchItem['id'], shouldNotify?: boolean) => {
+  useSearchStore.setState((prev) => ({
+    result: prev.result.filter((item) => id !== item.id),
+    focusedIndex: 0,
+    openAction: false
+  }));
+
+  shouldNotify && pushNotification({ message: 'Deleted', variant: 'success' });
+};
+
+export const updateSearchItem = <T = any>(
+  id: SearchItem['id'],
+  updateFn: (item: SearchItem<T>) => SearchItem<T>,
+  closeAction = true,
+  options?: Partial<SearchState>
+) => {
+  useSearchStore.setState((prev) => ({
+    result: prev.result.map((item) => (id !== item.id ? item : updateFn(item))),
+    ...(closeAction && { openAction: false }),
+    ...options
+  }));
+};

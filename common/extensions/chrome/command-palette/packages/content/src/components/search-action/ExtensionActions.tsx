@@ -1,6 +1,6 @@
 import { Extension, MessageEvent } from '@dcp/shared';
-import { useNotificationStore } from '~/stores/notification';
-import { useSearchStore } from '~/stores/search';
+import { pushNotification } from '~/stores/notification';
+import { updateSearchItem, useSearchStore } from '~/stores/search';
 import { sendMessage } from '~/utils/helper';
 import ActionMenu, { ActionMenuItem } from './ActionMenu';
 
@@ -10,19 +10,12 @@ export const ExtensionActions = () => {
 
   const handleToggleExtension = async () => {
     const isSuccess = await sendMessage<boolean>(MessageEvent.ToggleExtension, { id, enabled: !enabled });
-    if (isSuccess) {
-      useSearchStore.setState((prev) => ({
-        result: prev.result.map((item) =>
-          selectedItem.id !== item.id ? item : { ...item, _raw: { ...item._raw, enabled: !enabled } }
-        ),
-        openAction: false
-      }));
 
-      useNotificationStore
-        .getState()
-        .setNotification({ message: enabled ? 'Disabled' : 'Enabled', variant: 'success' });
+    if (isSuccess) {
+      updateSearchItem(selectedItem.id, (item) => ({ ...item, _raw: { ...item._raw, enabled: !enabled } }));
+      pushNotification({ message: enabled ? 'Disabled' : 'Enabled', variant: 'success' });
     } else {
-      useNotificationStore.getState().setNotification({ message: 'Failed', variant: 'error' });
+      pushNotification({ message: 'Failed', variant: 'error' });
     }
   };
 

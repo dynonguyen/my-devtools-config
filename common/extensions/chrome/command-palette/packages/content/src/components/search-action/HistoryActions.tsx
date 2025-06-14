@@ -1,6 +1,6 @@
 import { History, MessageEvent } from '@dcp/shared';
-import { useNotificationStore } from '~/stores/notification';
-import { useSearchStore } from '~/stores/search';
+import { pushNotification } from '~/stores/notification';
+import { deleteSearchItem, useSearchStore } from '~/stores/search';
 import { copyToClipboard, sendMessage } from '~/utils/helper';
 import ActionMenu, { ActionMenuItem } from './ActionMenu';
 
@@ -11,21 +11,16 @@ export const HistoryActions = () => {
   const handleDelete = async () => {
     const isSuccess = await sendMessage<boolean>(MessageEvent.DeleteHistory, { url });
     if (isSuccess) {
-      useSearchStore.setState((prev) => ({
-        result: prev.result.filter((item) => selectedItem.id !== item.id),
-        focusedIndex: 0,
-        openAction: false
-      }));
-      useNotificationStore.getState().setNotification({ message: 'Deleted', variant: 'success' });
+      deleteSearchItem(selectedItem.id, true);
     } else {
-      useNotificationStore.getState().setNotification({ message: 'Failed', variant: 'error' });
+      pushNotification({ message: 'Failed', variant: 'error' });
     }
   };
 
   const handleCopyURL = () => {
     copyToClipboard(url!);
     useSearchStore.setState({ openAction: false });
-    useNotificationStore.getState().setNotification({ message: 'Copied to clipboard', variant: 'success' });
+    pushNotification({ message: 'Copied to clipboard', variant: 'success' });
   };
 
   const actionItems: ActionMenuItem[] = [

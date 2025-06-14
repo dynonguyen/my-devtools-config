@@ -1,7 +1,7 @@
 import { Bookmark, MessageEvent, getFavicon } from '@dcp/shared';
 import { useRef, useState } from 'preact/hooks';
-import { useNotificationStore } from '~/stores/notification';
-import { useSearchStore } from '~/stores/search';
+import { pushNotification } from '~/stores/notification';
+import { deleteSearchItem, updateSearchItem, useSearchStore } from '~/stores/search';
 import { copyToClipboard, sendMessage } from '~/utils/helper';
 import AutoFocus from '../AutoFocus';
 import Dialog from '../Dialog';
@@ -9,36 +9,32 @@ import LabelValue, { LabelValueProps } from '../LabelValue';
 import ActionMenu, { ActionMenuItem } from './ActionMenu';
 import { useActionDialog } from './Actions';
 
+type EditFormKey = 'title' | 'url';
+type EditForm = Partial<Record<EditFormKey, HTMLInputElement | null>>;
+
 export const BookmarkActions = () => {
   const selectedItem = useSearchStore((state) => state.result[state.focusedIndex]);
-  const { isFolder, url, id, title, path, childIds } = selectedItem._raw as Bookmark;
+  const bookmark = selectedItem._raw as Bookmark;
+  const { isFolder, url, id, title, path, childIds } = bookmark;
 
   const [openConfirm, setOpenConfirm] = useState(false);
   const [openDetail, setOpenDetail] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
-  const editFormRefs = useRef<{ title: HTMLInputElement | null; url: HTMLInputElement | null }>({
-    title: null,
-    url: null
-  });
+  const editFormRefs = useRef<EditForm>({});
 
   const handleCopyURL = () => {
     copyToClipboard(url!);
-    useNotificationStore.getState().setNotification({ message: 'Copied to clipboard', variant: 'success' });
+    pushNotification({ message: 'Copied to clipboard', variant: 'success' });
     useSearchStore.setState({ openAction: false });
   };
 
   const handleDelete = async () => {
     const isSuccess = await sendMessage<boolean>(MessageEvent.DeleteBookmark, { id, isFolder });
     if (isSuccess) {
-      useSearchStore.setState((prev) => ({
-        result: prev.result.filter((item) => selectedItem.id !== item.id),
-        focusedIndex: 0,
-        openAction: false
-      }));
-      useNotificationStore.getState().setNotification({ message: 'Deleted', variant: 'success' });
+      deleteSearchItem(selectedItem.id, true);
       handleOpenConfirmDialog(false);
     } else {
-      useNotificationStore.getState().setNotification({ message: 'Failed', variant: 'error' });
+      pushNotification({ message: 'Failed', variant: 'error' });
     }
   };
 
@@ -47,12 +43,12 @@ export const BookmarkActions = () => {
     setOpenConfirm(open);
   };
 
-  const handleOpenDetailDialog = (open: boolean) => {
+  const handleToggleDetailDialog = (open: boolean) => {
     useActionDialog.setState({ openModal: open });
     setOpenDetail(open);
   };
 
-  const handleOpenEditDialog = (open: boolean) => {
+  const handleToggleEditDialog = (open: boolean) => {
     useActionDialog.setState({ openModal: open });
     setOpenEdit(open);
   };
@@ -64,23 +60,24 @@ export const BookmarkActions = () => {
     const isSuccess = await sendMessage<boolean>(MessageEvent.UpdateBookmark, { id, ...updatedData });
 
     if (isSuccess) {
-      useSearchStore.setState((prev) => ({
-        result: prev.result.map((item) =>
-          selectedItem.id === item.id
-            ? {
-                ...item,
-                label: updatedData.title,
-                description: isFolder ? item.description : updatedData.url,
-                _raw: { ...item._raw, ...updatedData }
-              }
-            : item
-        ),
-        openAction: false
+      updateSearchItem(selectedItem.id, (item) => ({
+        ...item,
+        label: updatedData.title,
+        description: isFolder ? item.description : updatedData.url,
+        _raw: { ...item._raw, ...updatedData }
       }));
-      useNotificationStore.getState().setNotification({ message: 'Updated', variant: 'success' });
-      handleOpenEditDialog(false);
+
+      pushNotification({ message: 'Updated', variant: 'success' });
+      handleToggleEditDialog(false);
     } else {
-      useNotificationStore.getState().setNotification({ message: 'Failed', variant: 'error' });
+      pushNotification({ message: 'Failed', variant: 'error' });
+    }
+  };
+
+  const handleInputRef = (field: EditFormKey) => (ref: HTMLInputElement | null) => {
+    if (ref) {
+      editFormRefs.current[field] = ref;
+      ref.value = bookmark[field] || '';
     }
   };
 
@@ -88,9 +85,9 @@ export const BookmarkActions = () => {
     {
       icon: <span class="i-majesticons:checkbox-list-detail" />,
       label: 'View details',
-      actionFn: () => handleOpenDetailDialog(true)
+      actionFn: () => handleToggleDetailDialog(true)
     },
-    { icon: <span class="i-ph:pencil-simple" />, label: 'Edit', actionFn: () => handleOpenEditDialog(true) },
+    { icon: <span class="i-ph:pencil-simple" />, label: 'Edit', actionFn: () => handleToggleEditDialog(true) },
     ...(!isFolder ? [{ icon: <span class="i-ph:clipboard" />, label: 'Copy URL', actionFn: handleCopyURL }] : []),
     {
       icon: <span class="i-ph:trash-simple" />,
@@ -126,7 +123,7 @@ export const BookmarkActions = () => {
       {/* Edit */}
       <Dialog
         open={openEdit}
-        onClose={() => handleOpenEditDialog(false)}
+        onClose={() => handleToggleEditDialog(false)}
         title="Edit bookmark"
         body={
           <form
@@ -141,41 +138,19 @@ export const BookmarkActions = () => {
                 <input
                   id="dcp-bookmark-edit-title-input"
                   autoComplete="off"
-                  ref={(ref) => {
-                    if (ref) {
-                      editFormRefs.current.title = ref;
-                      ref.value = title;
-                    }
-                  }}
+                  ref={handleInputRef('title')}
                   class="input"
                   placeholder="Title"
                   required
                 />
               </AutoFocus>
-              {!isFolder && (
-                <input
-                  ref={(ref) => {
-                    if (ref) {
-                      editFormRefs.current.url = ref;
-                      ref.value = url || '';
-                    }
-                  }}
-                  class="input"
-                  placeholder="URL"
-                  required
-                />
-              )}
+              {!isFolder && <input ref={handleInputRef('url')} class="input" placeholder="URL" required />}
             </div>
           </form>
         }
         actions={
           <div class="flex items-center justify-end gap-2">
-            <button
-              className="btn btn-grey-500"
-              onClick={() => {
-                handleOpenEditDialog(false);
-              }}
-            >
+            <button className="btn btn-grey-500" onClick={() => handleToggleEditDialog(false)}>
               Close
             </button>
             <button type="submit" form="dcp-bookmark-edit-form" className="btn btn-primary">
@@ -219,7 +194,7 @@ export const BookmarkActions = () => {
       {/* Detail */}
       <Dialog
         open={openDetail}
-        onClose={() => handleOpenDetailDialog(false)}
+        onClose={() => handleToggleDetailDialog(false)}
         title={
           <div class="flex items-center gap-2">
             {url ? <img class="size-5" src={getFavicon(url, 24)} /> : <span class="i-quill:folder size-5" />}
@@ -240,7 +215,7 @@ export const BookmarkActions = () => {
                 id="dcp-bookmark-close-detail-btn"
                 className="btn btn-grey-500"
                 onClick={() => {
-                  handleOpenDetailDialog(false);
+                  handleToggleDetailDialog(false);
                 }}
               >
                 Close

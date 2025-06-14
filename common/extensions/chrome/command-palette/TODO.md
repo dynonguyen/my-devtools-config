@@ -1,0 +1,4 @@
+- Add calculate command with `=` operator
+- Add `localStorage` command
+- Search emojis
+- Alias `system` command keywords "clear cache" = "empty cache"

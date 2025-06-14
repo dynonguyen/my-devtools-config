@@ -26,7 +26,7 @@ export const SearchInput = () => {
 
   const handleSearchChange = useCallback(
     debounce((ev) => {
-      setSearchStore({ keyword: ev.target?.value?.trim() || '' });
+      setSearchStore({ keyword: ev.target?.value?.trimLeft() || '' });
     }, 250),
     []
   );

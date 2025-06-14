@@ -9,10 +9,15 @@ export const LogoAndNotification = () => {
 
   return (
     <div class="flex items-center gap-2">
-      <img src={getAssets('logo.svg')} class={clsx('w-6 shrink-0', searching && 'animate-spin')} />
+      <img
+        src={getAssets('logo.svg')}
+        class={clsx('w-6 shrink-0', searching && 'animate-spin', notification.message && 'animate-bounce')}
+        style={{ animationDuration: '0.6s' }}
+      />
+
       {notification.message ? (
         <div class="flex items-center gap-2">
-          <span class="text-grey-700 dark:text-grey-500 text-3.25">{notification.message}</span>
+          <span class="text-grey-700 dark:text-grey-500 text-3.25 line-clamp-1 break-all">{notification.message}</span>
 
           {(notification.icon || notification.variant) && (
             <div class="size-4 shrink-0 [&>span]:size-full flex-center">

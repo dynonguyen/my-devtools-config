@@ -30,3 +30,7 @@ export const useNotificationStore = createWithEqualityFn<NotificationStore>(
   }),
   isEqual
 );
+
+export const pushNotification: NotificationAction['setNotification'] = (...args) => {
+  return useNotificationStore.getState().setNotification(...args);
+};

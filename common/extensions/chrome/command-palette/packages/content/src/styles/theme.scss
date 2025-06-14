@@ -55,5 +55,28 @@
 
     --neutral: 66, 67, 68; // #424344;
     --divider: 51, 57, 66; // #333942;
+
+    .input {
+      color-scheme: dark;
+    }
+  }
+
+  input[type='radio'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    border-radius: 100px;
+    width: 20px;
+    height: 20px;
+
+    border: 2px solid rgba(var(--grey-500), 1);
+    transition: 0.08s all linear;
+    margin: 0px;
+  }
+
+  input[type='radio']:checked {
+    border: 6px solid rgba(var(--primary), 1);
+    outline: unset !important;
   }
 }

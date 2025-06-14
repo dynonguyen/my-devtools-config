@@ -4,7 +4,7 @@ import ClosePopupHandler from './components/background-handler/ClosePopupHandler
 import MessageHandler from './components/background-handler/MessageHandler';
 import SearchHandler from './components/background-handler/SearchHandler';
 import SearchResultFocusHandler from './components/background-handler/SearchResultFocusHandler';
-import SearchBottom from './components/search-bottom';
+import SearchBottom from './components/search-action';
 import SearchInput from './components/search-input';
 import SearchResult from './components/search-result';
 import { INPUT_Z_INDEX } from './constants/common';

@@ -47,6 +47,10 @@ export const Actions = () => {
     }
   }, [openAction]);
 
+  useEffect(() => {
+    if (!openModal && openAction) set({ openAction: false });
+  }, [openModal]);
+
   return (
     <>
       <div

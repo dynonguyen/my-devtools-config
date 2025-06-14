@@ -1,31 +1,31 @@
 {
-	"name": "@dcp/content",
-	"version": "1.0.0",
-	"type": "module",
-	"private": true,
-	"scripts": {
-		"preview": "vite",
-		"dev": "vite build --mode development --watch",
-		"build": "vite build"
-	},
-	"dependencies": {
-		"@dcp/shared": "*",
-		"clsx": "^2.1.0",
-		"preact": "^10.19.6",
-		"react-fast-compare": "^3.2.2",
-		"zustand": "^4.5.2"
-	},
-	"devDependencies": {
-		"@iconify/json": "^2.2.194",
-		"@iconify/react": "^4.1.1",
-		"@preact/preset-vite": "^2.8.1",
-		"@types/chrome": "^0.0.263",
-		"@types/node": "^20.11.28",
-		"@unocss/preset-rem-to-px": "^0.58.6",
-		"sass": "^1.72.0",
-		"typescript": "^5.4.2",
-		"unocss": "^0.58.6",
-		"vite": "^5.1.6",
-		"vite-plugin-static-copy": "^1.0.1"
-	}
+  "name": "@dcp/content",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "preview": "vite",
+    "dev": "vite build --mode development --watch",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@dcp/shared": "*",
+    "clsx": "^2.1.0",
+    "preact": "^10.19.6",
+    "react-fast-compare": "^3.2.2",
+    "zustand": "^5.0.5"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.194",
+    "@iconify/react": "^4.1.1",
+    "@preact/preset-vite": "^2.8.1",
+    "@types/chrome": "^0.0.263",
+    "@types/node": "^20.11.28",
+    "@unocss/preset-rem-to-px": "^0.58.6",
+    "sass": "^1.72.0",
+    "typescript": "^5.4.2",
+    "unocss": "^0.58.6",
+    "vite": "npm:rolldown-vite@latest",
+    "vite-plugin-static-copy": "^1.0.1"
+  }
 }

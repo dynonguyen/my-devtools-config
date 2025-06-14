@@ -1,6 +1,16 @@
-import { CommandEvent, Message, MessageEvent, SearchCategory, getAliasFromKeyword, setUserOptions } from '@dcp/shared';
+import {
+  CommandEvent,
+  Cookie,
+  Message,
+  MessageEvent,
+  SearchCategory,
+  getAliasFromKeyword,
+  omit,
+  setUserOptions
+} from '@dcp/shared';
 import { searchBookmarks } from './bookmark';
 import { searchCommands } from './command';
+import { searchCookie } from './cookie';
 import { searchExtension } from './extension';
 import { searchHistory } from './history';
 import { searchNavigation } from './navigation';
@@ -11,6 +21,7 @@ import { searchThemeOptions, userOptions } from './user-options';
 const allowSearch = (aliasCategory = '', category = '') => {
   return !aliasCategory || aliasCategory === category;
 };
+
 async function search(query = '') {
   let result: any[] = [];
   const promises: Promise<any>[] = [];
@@ -22,52 +33,50 @@ async function search(query = '') {
   const keyword = aliasCategory ? query.replace(alias, '').trim() : query;
   const lowerKeyword = keyword.toLowerCase();
 
+  const pushToResult = (items: any[], category: SearchCategory) => {
+    result.push(...items.map((item) => ({ ...item, category })));
+  };
+
   // Bookmark
-  if (allowSearch(aliasCategory, SearchCategory.Bookmark))
-    promises.push(
-      searchBookmarks(keyword).then((bookmarks) => {
-        result = result.concat(bookmarks.map((item) => ({ ...item, category: SearchCategory.Bookmark })));
-      })
-    );
+  if (allowSearch(aliasCategory, SearchCategory.Bookmark)) {
+    promises.push(searchBookmarks(keyword).then((bookmarks) => pushToResult(bookmarks, SearchCategory.Bookmark)));
+  }
 
   // History
-  if (allowSearch(aliasCategory, SearchCategory.History))
-    promises.push(
-      searchHistory(keyword).then((histories) => {
-        result = result.concat(histories.map((item) => ({ ...item, category: SearchCategory.History })));
-      })
-    );
+  if (allowSearch(aliasCategory, SearchCategory.History)) {
+    promises.push(searchHistory(keyword).then((histories) => pushToResult(histories, SearchCategory.History)));
+  }
 
   // Tab
-  if (allowSearch(aliasCategory, SearchCategory.Tab))
-    promises.push(
-      searchTab(lowerKeyword).then((tabs) => {
-        result = result.concat(tabs.map((item) => ({ ...item, category: SearchCategory.Tab })));
-      })
-    );
+  if (allowSearch(aliasCategory, SearchCategory.Tab)) {
+    promises.push(searchTab(lowerKeyword).then((tabs) => pushToResult(tabs, SearchCategory.Tab)));
+  }
 
   // Extension
-  if (allowSearch(aliasCategory, SearchCategory.Extension))
+  if (allowSearch(aliasCategory, SearchCategory.Extension)) {
     promises.push(
-      searchExtension(lowerKeyword).then((extensions) => {
-        result = result.concat(extensions.map((item) => ({ ...item, category: SearchCategory.Extension })));
-      })
+      searchExtension(lowerKeyword).then((extensions) => pushToResult(extensions, SearchCategory.Extension))
     );
+  }
+
+  // Cookie
+  if (allowSearch(aliasCategory, SearchCategory.Cookie)) {
+    promises.push(searchCookie(lowerKeyword).then((cookies) => pushToResult(cookies, SearchCategory.Cookie)));
+  }
 
   await Promise.all(promises);
 
-  if (allowSearch(aliasCategory, SearchCategory.Navigation))
-    result = result.concat(
-      searchNavigation(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Navigation }))
-    );
+  if (allowSearch(aliasCategory, SearchCategory.Navigation)) {
+    pushToResult(searchNavigation(lowerKeyword), SearchCategory.Navigation);
+  }
 
-  if (allowSearch(aliasCategory, SearchCategory.Command))
-    result = result.concat(searchCommands(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Command })));
+  if (allowSearch(aliasCategory, SearchCategory.Command)) {
+    pushToResult(searchCommands(lowerKeyword), SearchCategory.Command);
+  }
 
-  if (allowSearch(aliasCategory, SearchCategory.Theme))
-    result = result.concat(
-      searchThemeOptions(lowerKeyword).map((item) => ({ ...item, category: SearchCategory.Theme }))
-    );
+  if (allowSearch(aliasCategory, SearchCategory.Theme)) {
+    pushToResult(searchThemeOptions(lowerKeyword), SearchCategory.Theme);
+  }
 
   return result.sort((a, b) => a.title?.length - b.title?.length).slice(0, userOptions.limitItems);
 }
@@ -275,6 +284,32 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
       break;
     }
 
+    // Cookie
+    case MessageEvent.DeleteCookie: {
+      const { domain, path, storeId, name, secure } = data as Cookie;
+      const protocol = secure ? 'https' : 'http';
+      const url = `${protocol}://${domain}${path}`;
+
+      sendBooleanResponse(chrome.cookies.remove({ name, url, storeId }));
+      break;
+    }
+
+    case MessageEvent.SetCookie: {
+      const { domain, path, secure, session, expirationDate } = data as Cookie;
+      const protocol = secure ? 'https' : 'http';
+      const url = `${protocol}://${domain}${path}`;
+
+      sendBooleanResponse(
+        chrome.cookies.set({
+          url,
+          ...omit(data as Cookie, ['session', 'sameSite']),
+          sameSite: data.sameSite === 'no_restriction' ? undefined : data.sameSite,
+          expirationDate: session ? undefined : expirationDate
+        })
+      );
+      break;
+    } // }
+
     default:
       sendResponse(null);
   }
@@ -320,13 +355,14 @@ chrome.tabs.onCreated.addListener((tab) => {
 }); */
 
 // Dev mode
-/* (function reload() {
+// MOCK: Comment it in production
+(function reload() {
   chrome.tabs.query({ currentWindow: true, url: 'http://localhost:8888/*' }, function (tabs) {
     if (tabs[0]) {
       chrome.tabs.reload(tabs[0].id as number);
     }
   });
-  chrome.action.onClicked.addListener(function reloadExtension(tab) {
+  chrome.action.onClicked.addListener(function reloadExtension() {
     chrome.runtime.reload();
   });
-})(); */
+})();

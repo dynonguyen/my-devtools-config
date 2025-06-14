@@ -44,6 +44,8 @@ export type Tab = chrome.tabs.Tab;
 
 export type Extension = chrome.management.ExtensionInfo;
 
+export type Cookie = chrome.cookies.Cookie;
+
 // -----------------------------
 export enum MessageEvent {
   // Other
@@ -85,7 +87,11 @@ export enum MessageEvent {
   DeleteHistory = 'delete-history',
 
   // Extension
-  ToggleExtension = 'toggle-extension'
+  ToggleExtension = 'toggle-extension',
+
+  // Cookie
+  DeleteCookie = 'delete-cookie',
+  SetCookie = 'set-cookie'
 }
 
 export enum CommandEvent {
@@ -106,7 +112,8 @@ export enum SearchCategory {
   Theme = 'theme',
   History = 'history',
   Tab = 'tab',
-  Extension = 'extension'
+  Extension = 'extension',
+  Cookie = 'cookie'
 }
 
 export enum ShortcutKey {

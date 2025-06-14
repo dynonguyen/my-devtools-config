@@ -43,6 +43,19 @@ export function hasSearchKeyword(content: string, keyword: string) {
   }
 }
 
+export const dateFormatter = (input: Date | string | number) => {
+  const date = input instanceof Date ? input : new Date(input);
+
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  const h = String(date.getHours()).padStart(2, '0');
+  const min = String(date.getMinutes()).padStart(2, '0');
+  const s = String(date.getSeconds()).padStart(2, '0');
+
+  return `${y}-${m}-${d} ${h}:${min}:${s}`;
+};
+
 // -----------------------------
 export function detectDevicePlatform(): 'mac' | 'win' | 'linux' | 'other' {
   const userAgent = navigator.userAgent.toLowerCase();

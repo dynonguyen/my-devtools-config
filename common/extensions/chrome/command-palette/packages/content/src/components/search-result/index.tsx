@@ -19,7 +19,7 @@ export const SearchResult = () => {
   if (!keyword) return null;
 
   if (error) {
-    return <div class="my-6 text-center text-grey-500">🥹 🐞 🐞 Something went wrong 🐞 🐞 🥹</div>;
+    return <div class="my-6 text-center text-grey-500">🐞 Something Went Wrong 🐞</div>;
   }
 
   const handleItemClick = (item: SearchItem) => {
@@ -32,7 +32,7 @@ export const SearchResult = () => {
       <div id="dcp-search-result-wrapper" class="grow overflow-auto h-84">
         {result.length > 0 ? (
           <div class="mb-2">
-            <div class="text-grey-500 text-sm font-500 px-4 my-2">Result: </div>
+            <div class="text-grey-500 text-sm font-500 px-4 my-2">Results</div>
             <div ref={wrapperRef} class="flex flex-col gap-1">
               {result.map((item) => (
                 <SearchResultItem {...item} key={item.id} onClick={() => handleItemClick(item)} />

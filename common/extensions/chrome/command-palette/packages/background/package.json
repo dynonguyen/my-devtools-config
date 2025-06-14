@@ -1,19 +1,19 @@
 {
-	"name": "@dcp/background",
-	"version": "1.0.0",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev": "vite build --mode development --watch",
-		"build": "vite build"
-	},
-	"dependencies": {
-		"@dcp/shared": "*"
-	},
-	"devDependencies": {
-		"@types/chrome": "^0.0.263",
-		"@types/node": "^20.11.28",
-		"typescript": "^5.4.2",
-		"vite": "^5.1.6"
-	}
+  "name": "@dcp/background",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --mode development --watch",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@dcp/shared": "*"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.263",
+    "@types/node": "^20.11.28",
+    "typescript": "^5.4.2",
+    "vite": "npm:rolldown-vite@latest"
+  }
 }

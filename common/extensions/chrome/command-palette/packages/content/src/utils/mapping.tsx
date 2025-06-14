@@ -14,12 +14,15 @@ import {
 import clsx from 'clsx';
 import { ChipProps } from '~/components/Chip';
 import { KbdProps } from '~/components/Kbd';
-import BookmarkActions from '~/components/search-bottom/BookmarkActions';
-import ExtensionActions from '~/components/search-bottom/ExtensionActions';
-import HistoryActions from '~/components/search-bottom/HistoryActions';
-import TabActions from '~/components/search-bottom/TabActions';
+import BookmarkActions from '~/components/search-action/BookmarkActions';
+import CookieActions from '~/components/search-action/CookieActions';
+import ExtensionActions from '~/components/search-action/ExtensionActions';
+import HistoryActions from '~/components/search-action/HistoryActions';
+import TabActions from '~/components/search-action/TabActions';
+import { pushNotification } from '~/stores/notification';
 import { RawSearchItem, SearchItem, useSearchStore } from '~/stores/search';
-import { sendMessage } from './helper';
+import { getCookieSearchItem } from './convert';
+import { copyToClipboard, sendMessage } from './helper';
 
 export function searchResultMapping(item: RawSearchItem): SearchItem {
   switch (item.category) {
@@ -52,6 +55,7 @@ export function searchResultMapping(item: RawSearchItem): SearchItem {
 
     case SearchCategory.Command: {
       const { logoUri, title, description } = item as Command;
+
       return {
         id: `command-${title}`,
         category: item.category,
@@ -77,6 +81,7 @@ export function searchResultMapping(item: RawSearchItem): SearchItem {
 
     case SearchCategory.History: {
       const { id, title, url } = item as History;
+
       return {
         id: `history-${id}`,
         category: item.category,
@@ -89,6 +94,7 @@ export function searchResultMapping(item: RawSearchItem): SearchItem {
 
     case SearchCategory.Tab: {
       const { id, title, url } = item as Tab;
+
       return {
         id: `tab-${id}`,
         category: item.category,
@@ -114,6 +120,10 @@ export function searchResultMapping(item: RawSearchItem): SearchItem {
         ),
         _raw: item
       };
+    }
+
+    case SearchCategory.Cookie: {
+      return getCookieSearchItem(item);
     }
 
     default:
@@ -163,6 +173,9 @@ export function searchCategoryMapping(category: SearchCategory): Pick<ChipProps,
     case SearchCategory.Extension:
       return { label: 'Extension', icon: <span class="i-material-symbols:extension" />, color: 'pink' };
 
+    case SearchCategory.Cookie:
+      return { label: 'Cookie', icon: <span class="i-ph:cookie" />, color: 'grey-500' };
+
     default:
       return { label: '--', color: 'grey-500' };
   }
@@ -175,6 +188,8 @@ export function enterActionMapping(item: SearchItem | null): {
 } {
   if (!item) return { noAction: true };
 
+  const closePopup = () => useSearchStore.getState().setOpen(false);
+
   switch (item.category) {
     case SearchCategory.Bookmark:
     case SearchCategory.History: {
@@ -184,7 +199,7 @@ export function enterActionMapping(item: SearchItem | null): {
             label: 'Open',
             actionFn: () => {
               window.open(url);
-              useSearchStore.getState().setOpen(false);
+              closePopup();
             }
           }
         : { noAction: true };
@@ -196,7 +211,7 @@ export function enterActionMapping(item: SearchItem | null): {
         label: 'Query',
         actionFn: () => {
           window.open(url);
-          useSearchStore.getState().setOpen(false);
+          closePopup();
         }
       };
     }
@@ -206,7 +221,7 @@ export function enterActionMapping(item: SearchItem | null): {
         label: 'Open',
         actionFn: () => {
           sendMessage(MessageEvent.OpenLocalResource, { url: item._raw.url });
-          useSearchStore.getState().setOpen(false);
+          closePopup();
         }
       };
     }
@@ -216,7 +231,7 @@ export function enterActionMapping(item: SearchItem | null): {
         label: 'Execute',
         actionFn: () => {
           sendMessage(item._raw.commandEvent);
-          useSearchStore.getState().setOpen(false);
+          closePopup();
         }
       };
     }
@@ -226,7 +241,7 @@ export function enterActionMapping(item: SearchItem | null): {
         label: 'Execute',
         actionFn: () => {
           sendMessage(MessageEvent.ChangeColorTheme);
-          useSearchStore.getState().setOpen(false);
+          closePopup();
         }
       };
     }
@@ -236,7 +251,7 @@ export function enterActionMapping(item: SearchItem | null): {
         label: 'Go to this tab',
         actionFn: () => {
           sendMessage(MessageEvent.FocusTab, { id: item._raw.id });
-          useSearchStore.getState().setOpen(false);
+          closePopup();
         }
       };
     }
@@ -244,6 +259,19 @@ export function enterActionMapping(item: SearchItem | null): {
     case SearchCategory.Extension: {
       return { noAction: true };
     }
+
+    case SearchCategory.Cookie: {
+      return {
+        label: 'Copy Cookie Value',
+        actionFn: () => {
+          copyToClipboard(item._raw.value);
+          pushNotification({ message: 'Copied to clipboard', variant: 'success' });
+        }
+      };
+    }
+
+    default:
+      return { noAction: true };
   }
 }
 
@@ -257,6 +285,8 @@ export function actionMenuMapping(category: SearchCategory) {
       return TabActions;
     case SearchCategory.Extension:
       return ExtensionActions;
+    case SearchCategory.Cookie:
+      return CookieActions;
     default:
       return null;
   }

@@ -53,6 +53,12 @@ export const AliasesSetting = () => {
       name: 'Extension',
       icon: 'material-symbols:extension',
       color: color('#ec4899', '#ea55a0')
+    },
+    {
+      category: SearchCategory.Cookie,
+      name: 'Cookie',
+      icon: 'ph:cookie',
+      color: color('#6b7280', '#9ca3af')
     }
   ];
 
@@ -102,6 +108,7 @@ export const AliasesSetting = () => {
                 sx={{ width: 180, flexShrink: 0 }}
                 name={category}
                 onChange={handleAliasChange}
+                placeholder="Enter alias"
               />
             </Flex>
           );

@@ -1,5 +1,6 @@
 import { Bookmark, omit } from '@dcp/shared';
 import { MyCache } from './cache';
+import { userOptions } from './user-options';
 
 // -----------------------------
 type BookmarkCache = {
@@ -43,7 +44,7 @@ const buildBookmarkDictionary = async () => {
     if (!parent || !parent.parentId) return '';
 
     const parentPath = getPath(parent.parentId);
-    return (parentPath ? `${parentPath} > ` : '') + parent.title;
+    return (parentPath ? `${parentPath} ・ ` : '') + parent.title;
   };
 
   flatted.forEach((b) => {
@@ -69,6 +70,10 @@ export const searchBookmarks = async (keyword: string): Promise<Bookmark[]> => {
   let dictionary = cache.get('dictionary')!;
   if (!dictionary) {
     dictionary = await buildBookmarkDictionary();
+  }
+
+  if (!keyword) {
+    return Object.values(dictionary).slice(0, userOptions.limitItems);
   }
 
   return bookmarks.map((item) => dictionary[item.id]);

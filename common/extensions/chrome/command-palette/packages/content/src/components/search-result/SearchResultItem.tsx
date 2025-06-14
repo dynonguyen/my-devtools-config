@@ -6,6 +6,8 @@ export type SearchResultItemProps = SearchItem & {
   onClick?: JSXInternal.MouseEventHandler<HTMLDivElement>;
 };
 
+export const descriptionClass = 'text-xs text-grey-600 dark:text-grey-400 line-clamp-1';
+
 export const SearchResultItem = (props: SearchResultItemProps) => {
   const { label, logo, description, category, tooltip = '', onClick } = props;
 
@@ -24,7 +26,17 @@ export const SearchResultItem = (props: SearchResultItemProps) => {
       {/* Main content */}
       <div class="flex flex-col gap-1 grow-1 max-w-full overflow-hidden">
         <div class="text-sm text-base-content line-clamp-1">{label}</div>
-        {description && <div class="text-xs text-grey-600 dark:text-grey-400 line-clamp-1">{description}</div>}
+        {description && (
+          <>
+            {typeof description === 'string' ? (
+              <div title={description} class={descriptionClass}>
+                {description}
+              </div>
+            ) : (
+              description
+            )}
+          </>
+        )}
       </div>
 
       <div class="flex items-center gap-2 shrink-0">
