@@ -59,6 +59,12 @@ export const AliasesSetting = () => {
       name: 'Cookie',
       icon: 'ph:cookie',
       color: color('#6b7280', '#9ca3af')
+    },
+    {
+      category: SearchCategory.LocalStorage,
+      name: 'LocalStorage',
+      icon: 'material-symbols:storage-rounded',
+      color: color('#59d5e0', '#68dae5')
     }
   ];
 

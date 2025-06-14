@@ -5,9 +5,9 @@ import AutoFocus from '../AutoFocus';
 import Flex from '../Flex';
 import Switch from '../Switch';
 
-type EditFormKey = keyof Cookie;
+type FormKey = keyof Cookie;
 type RefElement = HTMLInputElement | HTMLTextAreaElement | null;
-type CookieFormValue = Partial<Record<EditFormKey, RefElement>>;
+type CookieFormValue = Partial<Record<FormKey, RefElement>>;
 export type CookieFormProps = {
   initValues?: Cookie;
   onSubmit?(value: Partial<Cookie>, ev: JSXInternal.TargetedSubmitEvent<HTMLElement>): void;
@@ -26,7 +26,7 @@ export const CookieForm = (props: CookieFormProps) => {
   const { initValues, onSubmit } = props;
   const formRefs = useRef<CookieFormValue>({});
   const [isSession, setIsSession] = useState(!initValues?.expirationDate);
-  const [sameSite, setSameSite] = useState<chrome.cookies.SameSiteStatus>(initValues?.sameSite ?? 'no_restriction');
+  const [sameSite, setSameSite] = useState<chrome.cookies.SameSiteStatus>(initValues?.sameSite ?? 'unspecified');
 
   const defaultCookie: Partial<Cookie> = {
     domain: location.hostname,
@@ -35,7 +35,7 @@ export const CookieForm = (props: CookieFormProps) => {
     httpOnly: false
   };
 
-  const handleInputRef = (field: EditFormKey) => (ref: RefElement) => {
+  const handleInputRef = (field: FormKey) => (ref: RefElement) => {
     if (ref) {
       formRefs.current[field] = ref;
 
@@ -46,7 +46,7 @@ export const CookieForm = (props: CookieFormProps) => {
         return;
       }
 
-      ref.value = (initValue as string) ?? '';
+      ref.value = (initValue as string) ?? defaultCookie[field] ?? '';
     }
   };
 
@@ -99,7 +99,7 @@ export const CookieForm = (props: CookieFormProps) => {
         />
       </AutoFocus>
 
-      <input type="text" class="input" placeholder="Value" rows={3} ref={handleInputRef('value')} autocomplete="off" />
+      <input type="text" class="input" placeholder="Value" ref={handleInputRef('value')} autocomplete="off" />
 
       <Flex itemsFluid class="gap-2">
         <input
@@ -161,4 +161,4 @@ export const CookieForm = (props: CookieFormProps) => {
   );
 };
 
-export default CookieFormValue;
+export default CookieForm;

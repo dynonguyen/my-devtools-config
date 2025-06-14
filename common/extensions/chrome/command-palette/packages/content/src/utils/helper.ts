@@ -35,3 +35,7 @@ export async function copyToClipboard(text: string): Promise<boolean> {
 export function sendMessage<Response = unknown, Data = any>(event: MessageEvent, data?: Data): Promise<Response> {
   return chrome.runtime.sendMessage<Message>({ event, data });
 }
+
+export function emitEvent(key: MessageEvent, data?: any) {
+  window.dispatchEvent(new CustomEvent(key, { detail: data }));
+}

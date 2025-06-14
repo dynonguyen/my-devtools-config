@@ -1,5 +1,6 @@
 import { getUserOptions, userOptionsChangeListener } from '@dcp/shared';
 import { useEffect } from 'preact/hooks';
+import ClientEventHandler from './components/background-handler/ClientEventHandler';
 import ClosePopupHandler from './components/background-handler/ClosePopupHandler';
 import MessageHandler from './components/background-handler/MessageHandler';
 import SearchHandler from './components/background-handler/SearchHandler';
@@ -58,6 +59,7 @@ export const App = () => {
             <SearchResult />
             <SearchBottom />
 
+            <ClientEventHandler />
             <SearchHandler />
             <ClosePopupHandler />
           </div>

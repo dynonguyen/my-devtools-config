@@ -1,4 +1,4 @@
-import { Cookie, dateFormatter, SearchCategory } from '@dcp/shared';
+import { Cookie, dateFormatter, LocalStorageItem, SearchCategory } from '@dcp/shared';
 import clsx from 'clsx';
 import { descriptionClass } from '~/components/search-result/SearchResultItem';
 import { SearchItem } from '~/stores/search';
@@ -38,5 +38,18 @@ export const getCookieSearchItem = (item: Cookie): SearchItem<Cookie> => {
       category: SearchCategory.Cookie,
       ...item
     }
+  };
+};
+
+export const getLocalStorageSearchItem = (item: LocalStorageItem): SearchItem<LocalStorageItem> => {
+  const { key, value } = item;
+
+  return {
+    category: SearchCategory.LocalStorage,
+    id: `${SearchCategory.LocalStorage}-${key}`,
+    label: key,
+    description: value,
+    logo: <span class="i-material-symbols:storage-rounded" />,
+    _raw: { category: SearchCategory.LocalStorage, key, value }
   };
 };

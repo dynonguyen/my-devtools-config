@@ -4,7 +4,7 @@ import { Color } from '~/types/common.type';
 export type ChipProps = {
   color?: Color;
   label?: ComponentChild;
-  icon?: ComponentChild;
+  icon?: string | ComponentChild;
 };
 
 export const Chip = (props: ChipProps) => {
@@ -12,14 +12,14 @@ export const Chip = (props: ChipProps) => {
 
   return (
     <div
-      class="inline-flex items-center gap-x-1 py-1.5 px-3 rounded-full text-xs font-medium [&>span]:(size-4)"
+      class="inline-flex items-center gap-x-1 py-1.5 px-3 rounded-full text-xs font-medium [&>span]:(size-4) flex-shrink-0"
       style={{
         color: `rgb(var(--${color}))`,
         backgroundColor: `rgba(var(--${color}), 0.2)`
       }}
     >
       {label}
-      {icon}
+      {typeof icon === 'string' ? <span class={icon} /> : icon}
     </div>
   );
 };

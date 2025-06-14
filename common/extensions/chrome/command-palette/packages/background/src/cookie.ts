@@ -25,10 +25,7 @@ export const searchCookie = async (keyword: string): Promise<Array<chrome.cookie
         }
 
         const filteredCookies = cookies.filter(
-          (cookie) =>
-            hasSearchKeyword(cookie.name, keyword) ||
-            hasSearchKeyword(cookie.domain, keyword) ||
-            hasSearchKeyword(cookie.value, keyword)
+          (cookie) => hasSearchKeyword(cookie.name, keyword) || hasSearchKeyword(cookie.domain, keyword)
         );
 
         return resolve(filteredCookies);

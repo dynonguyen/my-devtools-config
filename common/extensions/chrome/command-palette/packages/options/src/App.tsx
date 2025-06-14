@@ -31,7 +31,6 @@ function App() {
               settingKey="cambridgeSearch"
             />
             <GGTranslateSetting />
-            {/* <ToggleSetting label="Unblock Medium" logo={{ img: getAssets('medium.png') }} settingKey="unblockMedium" /> */}
             <AliasesSetting />
           </Stack>
         </Stack>

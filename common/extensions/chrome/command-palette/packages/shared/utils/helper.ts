@@ -56,6 +56,9 @@ export const dateFormatter = (input: Date | string | number) => {
   return `${y}-${m}-${d} ${h}:${min}:${s}`;
 };
 
+export const sortSearchResult = (items: any[], sortByLen: string = 'title') =>
+  items.sort((a, b) => a[sortByLen]?.length - b[sortByLen]?.length);
+
 // -----------------------------
 export function detectDevicePlatform(): 'mac' | 'win' | 'linux' | 'other' {
   const userAgent = navigator.userAgent.toLowerCase();

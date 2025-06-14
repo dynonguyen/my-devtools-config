@@ -1,4 +1,2 @@
-- Add calculate command with `=` operator
-- Add `localStorage` command
+- Add custom key shortcuts for commands
 - Search emojis
-- Alias `system` command keywords "clear cache" = "empty cache"

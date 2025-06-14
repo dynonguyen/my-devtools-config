@@ -18,11 +18,12 @@ import BookmarkActions from '~/components/search-action/BookmarkActions';
 import CookieActions from '~/components/search-action/CookieActions';
 import ExtensionActions from '~/components/search-action/ExtensionActions';
 import HistoryActions from '~/components/search-action/HistoryActions';
+import LocalStorageActions from '~/components/search-action/LocalStorageActions';
 import TabActions from '~/components/search-action/TabActions';
 import { pushNotification } from '~/stores/notification';
 import { RawSearchItem, SearchItem, useSearchStore } from '~/stores/search';
 import { getCookieSearchItem } from './convert';
-import { copyToClipboard, sendMessage } from './helper';
+import { copyToClipboard, emitEvent, sendMessage } from './helper';
 
 export function searchResultMapping(item: RawSearchItem): SearchItem {
   switch (item.category) {
@@ -136,45 +137,48 @@ export function searchCategoryMapping(category: SearchCategory): Pick<ChipProps,
     case SearchCategory.Bookmark:
       return {
         label: 'Bookmark',
-        icon: <span class="i-ph:bookmark-simple-fill" />,
+        icon: 'i-ph:bookmark-simple-fill',
         color: 'blue'
       };
 
     case SearchCategory.InternetQuery:
       return {
         label: 'Query',
-        icon: <span class="i-ph:globe-simple-fill" />,
+        icon: 'i-ph:globe-simple-fill',
         color: 'yellow'
       };
 
     case SearchCategory.Navigation:
       return {
         label: 'Navigation',
-        icon: <span class="i-majesticons:open" />,
+        icon: 'i-majesticons:open',
         color: 'info'
       };
 
     case SearchCategory.Command:
       return {
         label: 'Command',
-        icon: <span class="i-heroicons:command-line-16-solid" />,
+        icon: 'i-heroicons:command-line-16-solid',
         color: 'cyan'
       };
 
     case SearchCategory.Theme:
-      return { label: 'Theme', icon: <span class="i-icon-park-solid:dark-mode" />, color: 'purple' };
+      return { label: 'Theme', icon: 'i-icon-park-solid:dark-mode', color: 'purple' };
 
     case SearchCategory.History:
-      return { label: 'History', icon: <span class="i-ic:round-history" />, color: 'success' };
+      return { label: 'History', icon: 'i-ic:round-history', color: 'success' };
 
     case SearchCategory.Tab:
-      return { label: 'Tab', icon: <span class="i-material-symbols:tab" />, color: 'orange' };
+      return { label: 'Tab', icon: 'i-material-symbols:tab', color: 'orange' };
 
     case SearchCategory.Extension:
-      return { label: 'Extension', icon: <span class="i-material-symbols:extension" />, color: 'pink' };
+      return { label: 'Extension', icon: 'i-material-symbols:extension', color: 'pink' };
 
     case SearchCategory.Cookie:
-      return { label: 'Cookie', icon: <span class="i-ph:cookie" />, color: 'grey-500' };
+      return { label: 'Cookie', icon: 'i-ph:cookie', color: 'grey-500' };
+
+    case SearchCategory.LocalStorage:
+      return { label: 'Local Storage', icon: 'i-material-symbols:storage-rounded', color: 'secondary' };
 
     default:
       return { label: '--', color: 'grey-500' };
@@ -230,6 +234,10 @@ export function enterActionMapping(item: SearchItem | null): {
       return {
         label: 'Execute',
         actionFn: () => {
+          const command = item._raw as Command;
+
+          if (command.isClient) return emitEvent(command.commandEvent!);
+
           sendMessage(item._raw.commandEvent);
           closePopup();
         }
@@ -270,6 +278,16 @@ export function enterActionMapping(item: SearchItem | null): {
       };
     }
 
+    case SearchCategory.LocalStorage: {
+      return {
+        label: 'Copy Value',
+        actionFn: () => {
+          copyToClipboard(item._raw.value);
+          pushNotification({ message: 'Copied to clipboard', variant: 'success' });
+        }
+      };
+    }
+
     default:
       return { noAction: true };
   }
@@ -287,6 +305,8 @@ export function actionMenuMapping(category: SearchCategory) {
       return ExtensionActions;
     case SearchCategory.Cookie:
       return CookieActions;
+    case SearchCategory.LocalStorage:
+      return LocalStorageActions;
     default:
       return null;
   }

@@ -39,8 +39,8 @@ export type SearchStore = SearchState & SearchAction;
 
 export const useSearchStore = createWithEqualityFn<SearchStore>(
   (set, get) => ({
-    init: true, // MOCK: dev mode
-    open: true, // MOCK: dev mode
+    init: false,
+    open: false,
     openAction: false,
     searching: false,
     keyword: '',

@@ -1,6 +1,6 @@
 import { Command, MessageEvent, getAssets, hasSearchKeyword } from '@dcp/shared';
 
-const commands: Command[] = [
+const commands: Array<Command & { aliases?: string[] }> = [
   // Tab
   { title: 'Close Tab', logoUri: getAssets('close-tab.svg'), commandEvent: MessageEvent.CloseTab },
   { title: 'Close Other Tabs', logoUri: getAssets('close-other-tabs.svg'), commandEvent: MessageEvent.CloseOtherTabs },
@@ -13,12 +13,18 @@ const commands: Command[] = [
   // Window
   {
     title: 'Empty Cache & Hard Reload',
+    aliases: ['clear cache'],
     logoUri: getAssets('empty.svg'),
     commandEvent: MessageEvent.EmptyCacheAndHardReload
   },
   { title: 'Close Window', logoUri: getAssets('close-window.svg'), commandEvent: MessageEvent.CloseWindow },
   { title: 'New Window', logoUri: getAssets('new-window.svg'), commandEvent: MessageEvent.NewWindow },
-  { title: 'New Incognito Window', logoUri: getAssets('incognito.svg'), commandEvent: MessageEvent.NewIncognitoWindow },
+  {
+    title: 'New Incognito Window',
+    aliases: ['new private'],
+    logoUri: getAssets('incognito.svg'),
+    commandEvent: MessageEvent.NewIncognitoWindow
+  },
   {
     title: 'Close Other Windows',
     logoUri: getAssets('close-window.svg'),
@@ -27,7 +33,7 @@ const commands: Command[] = [
   { title: 'Merge All Windows', logoUri: getAssets('merge-window.svg'), commandEvent: MessageEvent.MergeAllWindows },
 
   // Chrome
-  { title: 'Quit Chrome', logoUri: getAssets('exit.svg'), commandEvent: MessageEvent.QuitChrome },
+  { title: 'Quit Chrome', aliases: ['exit'], logoUri: getAssets('exit.svg'), commandEvent: MessageEvent.QuitChrome },
   {
     title: 'Clear History - All time',
     logoUri: getAssets('clear-history.svg'),
@@ -47,9 +53,29 @@ const commands: Command[] = [
     title: 'Clear History - Last 7 days',
     logoUri: getAssets('clear-history.svg'),
     commandEvent: MessageEvent.ClearHistory
+  },
+
+  // Client commands
+  {
+    title: 'New Cookie',
+    aliases: ['create cookie'],
+    logoUri: getAssets('cookie.svg'),
+    commandEvent: MessageEvent.NewCookie,
+    isClient: true
+  },
+  {
+    title: 'New Local Storage Item',
+    aliases: ['create local storage'],
+    logoUri: getAssets('local-storage.svg'),
+    commandEvent: MessageEvent.NewLocalStorageItem,
+    isClient: true
   }
 ];
 
 export const searchCommands = (keyword: string) => {
-  return commands.filter((item) => hasSearchKeyword(item.title.toLowerCase(), keyword));
+  return commands.filter(
+    (item) =>
+      hasSearchKeyword(item.title.toLowerCase(), keyword) ||
+      item.aliases?.some((alias) => hasSearchKeyword(alias, keyword))
+  );
 };

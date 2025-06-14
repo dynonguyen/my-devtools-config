@@ -1,10 +1,11 @@
 import { EXTENSION_ID, Navigation, getAssets, hasSearchKeyword } from '@dcp/shared';
 
-const navigationList: Navigation[] = [
+const navigationList: Array<Navigation & { aliases?: string[] }> = [
   { title: 'Extensions', url: 'chrome://extensions', logoUri: getAssets('extensions.svg') },
-  { title: 'Settings', url: 'chrome://settings', logoUri: getAssets('settings.svg') },
+  { title: 'Settings', aliases: ['chrome settings'], url: 'chrome://settings', logoUri: getAssets('settings.svg') },
   {
     title: 'Dyno Command Palette Settings',
+    aliases: ['extension settings', 'extension options'],
     url: `chrome-extension://${EXTENSION_ID}/options/index.html`,
     logoUri: getAssets('logo.svg')
   },
@@ -17,5 +18,10 @@ const navigationList: Navigation[] = [
 ];
 
 export function searchNavigation(keyword: string) {
-  return navigationList.filter((item) => hasSearchKeyword(item.title, keyword) || hasSearchKeyword(item.url, keyword));
+  return navigationList.filter(
+    (item) =>
+      hasSearchKeyword(item.title, keyword) ||
+      hasSearchKeyword(item.url, keyword) ||
+      item.aliases?.some((alias) => hasSearchKeyword(alias, keyword))
+  );
 }

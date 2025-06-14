@@ -8,6 +8,8 @@
 
 The best way to create, copy, move, rename and delete files and folders (multiple files) & create templates. Inspired by: [File Utils](https://marketplace.visualstudio.com/items?itemName=sleistner.vscode-fileutils)
 
+[Source Code](./vscode/file-utils/README.md)
+
 [Install VSCode Extension](https://marketplace.visualstudio.com/items?itemName=dyno-nguyen.vscode-dynofileutils)
 
 <details>
@@ -24,6 +26,8 @@ The best way to create, copy, move, rename and delete files and folders (multipl
 <img src="./.imgs/ddt-icon.png" width="48px" />
 
 Dyno Dracula Dark Mode Theme. Inspired by [Dracula Official](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula)
+
+[Source Code](./vscode/dyno%20dark%20theme/README.md)
 
 [Install VSCode Extension](https://marketplace.visualstudio.com/items?itemName=dyno-nguyen.dyno-dark-mode)
 
@@ -43,6 +47,8 @@ Dyno Dracula Dark Mode Theme. Inspired by [Dracula Official](https://marketplace
 Explore Chrome effortlessly with a powerful command palette 🚀
 
 This extension empowers you to take complete control over your Chrome browsing experience by offering comprehensive management tools for bookmarks, extensions, history, tabs, and commands. Inspired by VSCode command palette and Raycast.
+
+[Source Code](./chrome/command-palette/README.md)
 
 [Install Chrome Extension](https://chromewebstore.google.com/detail/dyno-command-palette/pecgnckollojbdbpklfjiojddlpmdgim?hl=en)
 

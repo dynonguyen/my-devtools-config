@@ -6,7 +6,8 @@ import {
   SearchCategory,
   getAliasFromKeyword,
   omit,
-  setUserOptions
+  setUserOptions,
+  sortSearchResult
 } from '@dcp/shared';
 import { searchBookmarks } from './bookmark';
 import { searchCommands } from './command';
@@ -37,6 +38,18 @@ async function search(query = '') {
     result.push(...items.map((item) => ({ ...item, category })));
   };
 
+  if (allowSearch(aliasCategory, SearchCategory.Navigation)) {
+    pushToResult(searchNavigation(lowerKeyword), SearchCategory.Navigation);
+  }
+
+  if (allowSearch(aliasCategory, SearchCategory.Command)) {
+    pushToResult(searchCommands(lowerKeyword), SearchCategory.Command);
+  }
+
+  if (allowSearch(aliasCategory, SearchCategory.Theme)) {
+    pushToResult(searchThemeOptions(lowerKeyword), SearchCategory.Theme);
+  }
+
   // Bookmark
   if (allowSearch(aliasCategory, SearchCategory.Bookmark)) {
     promises.push(searchBookmarks(keyword).then((bookmarks) => pushToResult(bookmarks, SearchCategory.Bookmark)));
@@ -66,19 +79,7 @@ async function search(query = '') {
 
   await Promise.all(promises);
 
-  if (allowSearch(aliasCategory, SearchCategory.Navigation)) {
-    pushToResult(searchNavigation(lowerKeyword), SearchCategory.Navigation);
-  }
-
-  if (allowSearch(aliasCategory, SearchCategory.Command)) {
-    pushToResult(searchCommands(lowerKeyword), SearchCategory.Command);
-  }
-
-  if (allowSearch(aliasCategory, SearchCategory.Theme)) {
-    pushToResult(searchThemeOptions(lowerKeyword), SearchCategory.Theme);
-  }
-
-  return result.sort((a, b) => a.title?.length - b.title?.length).slice(0, userOptions.limitItems);
+  return sortSearchResult(result).slice(0, userOptions.limitItems);
 }
 
 function openCommandPalette(tab: chrome.tabs.Tab) {
@@ -308,7 +309,11 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
         })
       );
       break;
-    } // }
+    }
+
+    case MessageEvent.NewCookie: {
+      break;
+    }
 
     default:
       sendResponse(null);
@@ -325,38 +330,8 @@ chrome.commands.onCommand.addListener((command, tab) => {
 
 chrome.action.onClicked.addListener(openCommandPalette);
 
-// Auto redirect when new tab
-/*
-chrome.tabs.onCreated.addListener((tab) => {
-  if (userOptions.newTabRedirectUri && tab.pendingUrl?.includes('chrome://newtab')) {
-    chrome.tabs.update(tab.id!, { url: userOptions.newTabRedirectUri });
-  }
-});
-*/
-
-// Unblock Medium
-/* chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (userOptions.unblockMedium && changeInfo.status === 'loading') {
-    const url = new URL(tab.url || '');
-    const host = url.host;
-    if (host.includes('medium.com')) {
-      const redirectUrl =
-        url.protocol +
-        '//' +
-        `${host.split('.').join('-')}` +
-        '.translate.goog' +
-        url.pathname +
-        (url.search ? '?' : '&') +
-        `_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true`;
-
-      chrome.tabs.update(tabId, { url: redirectUrl });
-    }
-  }
-}); */
-
-// Dev mode
-// MOCK: Comment it in production
-(function reload() {
+// Dev mode: un
+/* (function reload() {
   chrome.tabs.query({ currentWindow: true, url: 'http://localhost:8888/*' }, function (tabs) {
     if (tabs[0]) {
       chrome.tabs.reload(tabs[0].id as number);
@@ -365,4 +340,4 @@ chrome.tabs.onCreated.addListener((tab) => {
   chrome.action.onClicked.addListener(function reloadExtension() {
     chrome.runtime.reload();
   });
-})();
+})(); */

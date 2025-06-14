@@ -29,6 +29,7 @@ export type Command = {
   title: string;
   description?: string;
   commandEvent?: MessageEvent;
+  isClient?: boolean;
 };
 
 export type Theme = {
@@ -45,6 +46,11 @@ export type Tab = chrome.tabs.Tab;
 export type Extension = chrome.management.ExtensionInfo;
 
 export type Cookie = chrome.cookies.Cookie;
+
+export type LocalStorageItem = {
+  key: string;
+  value: string;
+};
 
 // -----------------------------
 export enum MessageEvent {
@@ -91,7 +97,11 @@ export enum MessageEvent {
 
   // Cookie
   DeleteCookie = 'delete-cookie',
-  SetCookie = 'set-cookie'
+  SetCookie = 'set-cookie',
+  NewCookie = 'new-cookie',
+
+  // Local Storage
+  NewLocalStorageItem = 'new-local-storage-item'
 }
 
 export enum CommandEvent {
@@ -113,7 +123,8 @@ export enum SearchCategory {
   History = 'history',
   Tab = 'tab',
   Extension = 'extension',
-  Cookie = 'cookie'
+  Cookie = 'cookie',
+  LocalStorage = 'local-storage'
 }
 
 export enum ShortcutKey {
@@ -130,11 +141,9 @@ export type UserOptions = {
   theme: 'system' | 'dark' | 'light';
   limitItems: number;
   translate: { enabled: boolean; sl: 'auto' | string; tl: 'en' | string };
-  newTabRedirectUri: string;
   googleSearch: boolean;
   youtubeSearch: boolean;
   oxfordSearch: boolean;
   cambridgeSearch: boolean;
-  unblockMedium: boolean;
   aliases: { [key: string]: SearchCategory };
 };
