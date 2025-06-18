@@ -96,3 +96,5 @@ alias k='kubectl'
 alias ls='eza --icons=always'
 alias cat='bat'
 alias man='tldr'
+
+alias pml='pm2 list'
