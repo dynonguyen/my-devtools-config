@@ -50,3 +50,11 @@ function swe() {
     ;;
   esac
 }
+
+function swe_stage_if_needed() {
+  [ "$(kubectl config current-context)" != "gke_veep-staging_asia-southeast1-a_default" ] && swe stage
+}
+
+function swe_saas_if_needed() {
+  [ "$(kubectl config current-context)" != "gke_veep-production_asia-southeast1_saas-1" ] && swe saas
+}

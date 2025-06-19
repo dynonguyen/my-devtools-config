@@ -62,6 +62,7 @@
 	"window.commandCenter": true,
 	"window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}",
 	"window.titleBarStyle": "custom",
+	"window.newWindowProfile": "MacOS",
 
 	// Workbench
 	"workbench.editor.enablePreview": false,
@@ -725,6 +726,5 @@
 		"gopls",
 		"go.toolsManagement.autoUpdate"
 	],
-	"window.newWindowProfile": "MacOS",
 	"security.workspace.trust.untrustedFiles": "open"
 }

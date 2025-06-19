@@ -46,3 +46,5 @@ if [ -f '/Users/tuan.nguyen2/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tu
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/tuan.nguyen2/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tuan.nguyen2/google-cloud-sdk/completion.zsh.inc'; fi
+
+[[ -s "/Users/tuan.nguyen2/.gvm/scripts/gvm" ]] && source "/Users/tuan.nguyen2/.gvm/scripts/gvm"
