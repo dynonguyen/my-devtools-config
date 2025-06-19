@@ -51,6 +51,10 @@ function pull_settings() {
   source $HOME/.zshrc
 }
 
+function gopen() {
+  open $(git config remote.origin.url)
+}
+
 function find_bid() {
   local app_name="$1"
   osascript -e "id of app \"$app_name\""

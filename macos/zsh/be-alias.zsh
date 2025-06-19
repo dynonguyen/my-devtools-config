@@ -66,3 +66,8 @@ function swe_saas_if_needed() {
     echo "Already in saas env"
   fi
 }
+
+function git_work_config() {
+  git config user.name "Tuấn Nguyễn (Senior Software Engineer)"
+  git config user.email "tuan.nguyen2@be.com.vn"
+}

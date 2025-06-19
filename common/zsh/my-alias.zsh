@@ -61,19 +61,6 @@ function gaex() {
   git add .
   git reset -- $@
 }
-function gopen() {
-  kernel=$(uname -s)
-
-  if [ "$kernel" = "Linux" ]; then
-    xdg-open $(git config remote.origin.url) &>/dev/null &
-  else
-    open $(git config remote.origin.url)
-  fi
-}
-function git_work_config() {
-  git config user.name "Tuan Nguyen"
-  git config user.email "tuan.nguyen2@be.com.vn"
-}
 function git_home_config() {
   git config user.name "Dyno Nguyen"
   git config user.email "tuannguyentn2504@gmail.com"
@@ -96,5 +83,3 @@ alias k='kubectl'
 alias ls='eza --icons=always'
 alias cat='bat'
 alias man='tldr'
-
-alias pmls='pm2 list'

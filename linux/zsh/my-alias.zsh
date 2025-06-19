@@ -69,3 +69,7 @@ function pull_settings() {
 
   source $HOME/.zshrc
 }
+
+function gopen() {
+  xdg-open $(git config remote.origin.url) &>/dev/null &
+}
