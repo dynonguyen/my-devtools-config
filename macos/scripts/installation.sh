@@ -7,7 +7,7 @@ CONFIG_PATH=$HOME/Developer/personal/my-devtools-config
 # folderify - generate macOS folders icon
 # eza - A modern, maintained replacement for ls
 # bat - A cat(1) clone with wings
-brew install duti folderify eza bat tlrc gpg
+brew install duti folderify eza bat tlrc gpg kubectl git
 
 # Common packages
 sh $CONFIG_PATH/common/script/installation.sh

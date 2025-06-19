@@ -64,7 +64,7 @@ function pull_settings() {
 
   # Zsh & Profile
   cp $CONFIG_PATH/common/zsh/.gitignore-global $HOME/.gitignore
-  cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME
+  cp $CONFIG_PATH/common/zsh/.p10k.zsh $HOME/.p10k.zsh
   cp $CONFIG_PATH/linux/zsh/.zshrc $HOME/.zshrc
 
   source $HOME/.zshrc
