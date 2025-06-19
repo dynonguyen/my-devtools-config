@@ -31,7 +31,6 @@ plugins=(zsh-z zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # ===== Aliases
-source "$CONFIG_PATH/common/zsh/be-alias.zsh"
 source "$CONFIG_PATH/common/zsh/my-alias.zsh"
 source "$CONFIG_PATH/linux/zsh/my-alias.zsh"
 

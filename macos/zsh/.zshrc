@@ -29,7 +29,6 @@ source $ZSH/oh-my-zsh.sh
 
 # ===== Aliases
 source "$CONFIG_PATH/common/zsh/my-alias.zsh"
-source "$CONFIG_PATH/common/zsh/be-alias.zsh"
 source "$CONFIG_PATH/macos/zsh/my-alias.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -38,13 +37,9 @@ source "$CONFIG_PATH/macos/zsh/my-alias.zsh"
 # bun completions
 # [ -s "/Users/dyno/.bun/_bun" ] && source "/Users/dyno/.bun/_bun"
 
-# Created by `pipx` on 2024-09-07 14:44:48
-export PATH="$PATH:/Users/tuan.nguyen2/.local/bin"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/tuan.nguyen2/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tuan.nguyen2/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/tuan.nguyen2/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tuan.nguyen2/google-cloud-sdk/completion.zsh.inc'; fi
-
-[[ -s "/Users/tuan.nguyen2/.gvm/scripts/gvm" ]] && source "/Users/tuan.nguyen2/.gvm/scripts/gvm"
+# ===== BeGroup
+if [ "$USER" = "tuan.nguyen2" ]
+then
+  source "$CONFIG_PATH/macos/zsh/be-alias.zsh"
+  source "$CONFIG_PATH/macos/zsh/be-zshrc.zsh"
+fi
