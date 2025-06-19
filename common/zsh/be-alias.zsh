@@ -52,9 +52,17 @@ function swe() {
 }
 
 function swe_stage_if_needed() {
-  [ "$(kubectl config current-context)" != "gke_veep-staging_asia-southeast1-a_default" ] && swe stage
+  if [ "$(kubectl config current-context)" != "gke_veep-staging_asia-southeast1-a_default" ]; then
+    swe stage
+  else
+    echo "Already in stage transport env"
+  fi
 }
 
 function swe_saas_if_needed() {
-  [ "$(kubectl config current-context)" != "gke_veep-production_asia-southeast1_saas-1" ] && swe saas
+  if [ "$(kubectl config current-context)" != "gke_veep-production_asia-southeast1_saas-1" ]; then
+    swe stage
+  else
+    echo "Already in saas env"
+  fi
 }
