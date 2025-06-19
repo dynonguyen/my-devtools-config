@@ -5,9 +5,9 @@ function push_settings() {
   # Warp
   cp $HOME/.warp/keybindings.yaml $CONFIG_PATH/macos/warp
   cp -rp $HOME/.warp/themes/* $CONFIG_PATH/macos/warp/themes
-  defaults export dev.warp.Warp-Stable $CONFIG_PATH/macos/warp/warp.config
 
   # Zsh
+  cp $HOME/.gitignore $CONFIG_PATH/common/zsh/.gitignore-global
   cp $HOME/.zshrc $CONFIG_PATH/macos/zsh
   cp $HOME/.p10k.zsh $CONFIG_PATH/common/zsh
 
@@ -42,7 +42,6 @@ function pull_settings() {
   # Warp
   cp -rp $CONFIG_PATH/macos/warp/themes/* $HOME/.warp/themes
   cp -rp $CONFIG_PATH/macos/warp/keybindings.yaml $HOME/.warp
-  defaults import dev.warp.Warp-Stable $CONFIG_PATH/macos/warp/warp.config
 
   # Zsh
   cp $CONFIG_PATH/common/zsh/.gitignore-global $HOME/.gitignore
