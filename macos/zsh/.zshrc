@@ -22,7 +22,12 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Plugins
-plugins=(zsh-z)
+if [ "$TERM_PROGRAM" = "WarpTerminal" ]
+then
+  plugins=(zsh-z)
+else
+  plugins=(zsh-z zsh-autosuggestions zsh-syntax-highlighting)
+fi
 
 # Source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
