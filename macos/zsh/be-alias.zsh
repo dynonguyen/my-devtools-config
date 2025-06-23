@@ -61,7 +61,7 @@ function swe_stage_if_needed() {
 
 function swe_saas_if_needed() {
   if [ "$(kubectl config current-context)" != "gke_veep-production_asia-southeast1_saas-1" ]; then
-    swe stage
+    swe saas
   else
     echo "Already in saas env"
   fi
