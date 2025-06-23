@@ -57,6 +57,7 @@ alias gch='git checkout '
 alias gchb='git checkout -b '
 alias gp='git push'
 alias gpl='git pull'
+alias git_tag_ls='git tag --list --sort=creatordate --format="🏷  %(refname:short)  🕒  %(creatordate:iso8601)  👉  %(creator)"'
 function gaex() {
   git add .
   git reset -- $@
