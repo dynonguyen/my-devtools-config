@@ -1,4 +1,4 @@
-function swe_help() {
+function swe-help() {
   echo """
     develop
     stage
@@ -45,13 +45,13 @@ function swe() {
     gcloud config set project bef-cake-prod
     gcloud container clusters get-credentials cake-prod-1 --zone=asia-southeast1
     ;;
-  swe_help | *)
-    swe_help
+  swe-help | *)
+    swe-help
     ;;
   esac
 }
 
-function swe_stage_if_needed() {
+function swe-stage-if-needed() {
   if [ "$(kubectl config current-context)" != "gke_veep-staging_asia-southeast1-a_default" ]; then
     swe stage
   else
@@ -59,7 +59,7 @@ function swe_stage_if_needed() {
   fi
 }
 
-function swe_saas_if_needed() {
+function swe-saas-if-needed() {
   if [ "$(kubectl config current-context)" != "gke_veep-production_asia-southeast1_saas-1" ]; then
     swe saas
   else
@@ -67,7 +67,7 @@ function swe_saas_if_needed() {
   fi
 }
 
-function git_work_config() {
+function git-work-config() {
   git config user.name "Tuấn Nguyễn (Senior Software Engineer)"
   git config user.email "tuan.nguyen2@be.com.vn"
 }

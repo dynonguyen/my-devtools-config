@@ -57,21 +57,20 @@ alias gch='git checkout '
 alias gchb='git checkout -b '
 alias gp='git push'
 alias gpl='git pull'
-alias git_tag_ls='git tag --list --sort=-creatordate --format="🏷  %(refname:short)  🕒  %(creatordate:iso8601)  👉  %(objectname)  %(creator)"'
+alias git-tag-ls='git tag --list --sort=-creatordate --format="🏷  %(refname:short)  🕒  %(creatordate:iso8601)  👉  %(objectname)  %(creator)"'
 function gaex() {
   git add .
   git reset -- $@
 }
-function git_home_config() {
+function git-home-config() {
   git config user.name "Dyno Nguyen"
   git config user.email "tuannguyentn2504@gmail.com"
 }
 
-# Docker
+# Docker & kubectl
 alias drac='docker rm -f $(docker ps -a -q)'
 alias drav='docker volume rm $(docker volume ls -q)'
 alias drai='docker rmi -f $(docker images -q)'
-alias dm='docker-machine '
 alias dls='docker ps -a'
 alias drm='docker rm -f '
 alias de='docker exec -it '
@@ -84,3 +83,8 @@ alias k='kubectl'
 alias ls='eza --icons=always'
 alias cat='bat'
 alias man='tldr'
+
+# pm2
+function kill-all-kpf-pm2() {
+  pm2 delete -s $(pm2 ls --no-color | grep kpf- | awk '{print $4}')
+}
