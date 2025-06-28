@@ -1,4 +1,4 @@
-function push_settings() {
+function push-my-settings() {
   # Neovim
   cp -rp $HOME/.config/nvim/* $CONFIG_PATH/common/nvim
 
@@ -29,7 +29,7 @@ function push_settings() {
   cd $currentPath
 }
 
-function pull_settings() {
+function pull-my-settings() {
   # Pull setting from github
   currentPath=$(pwd)
   cd $CONFIG_PATH
@@ -55,16 +55,16 @@ function gopen() {
   open $(git config remote.origin.url)
 }
 
-function find_bid() {
+function find-bid() {
   local app_name="$1"
   osascript -e "id of app \"$app_name\""
 }
 
-function default_app() {
+function default-app() {
   local app_name="$1"
   local ext="$2"
 
-  local app_id=$(find_bid "$app_name")
+  local app_id=$(find-bid "$app_name")
 
   duti -s "$app_id" "$ext" all
 }
