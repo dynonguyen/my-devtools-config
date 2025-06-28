@@ -71,7 +71,6 @@ function git_home_config() {
 alias drac='docker rm -f $(docker ps -a -q)'
 alias drav='docker volume rm $(docker volume ls -q)'
 alias drai='docker rmi -f $(docker images -q)'
-alias dm='docker-machine '
 alias dls='docker ps -a'
 alias drm='docker rm -f '
 alias de='docker exec -it '

@@ -15,6 +15,7 @@ export default defineConfig({
     assetsDir: '',
     emptyOutDir: true,
     sourcemap: false,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: { output: { entryFileNames: 'index.js', assetFileNames: 'index.[ext]' } }
   }
 });

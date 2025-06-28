@@ -1,2 +1,2 @@
 - Add custom key shortcuts for commands
-- Search emojis
+- Launch Configurations (Open multiple tabs, pin, group,...)

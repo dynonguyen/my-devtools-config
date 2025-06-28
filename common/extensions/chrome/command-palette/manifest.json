@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Dyno Command Palette",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Explore Chrome effortlessly with a powerful command palette 🚀",
   "icons": {
     "16": "assets/logo.png",

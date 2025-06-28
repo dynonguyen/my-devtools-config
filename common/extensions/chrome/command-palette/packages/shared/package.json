@@ -1,10 +1,10 @@
 {
-	"name": "@dcp/shared",
-	"version": "1.0.0",
-	"type": "module",
-	"private": true,
-	"main": "index.ts",
-	"scripts": {},
-	"dependencies": {},
-	"devDependencies": {}
+  "name": "@dcp/shared",
+  "version": "1.1.0",
+  "type": "module",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
 }
