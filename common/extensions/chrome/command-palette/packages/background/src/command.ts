@@ -69,6 +69,13 @@ const commands: Array<Command & { aliases?: string[] }> = [
     logoUri: getAssets('local-storage.svg'),
     commandEvent: MessageEvent.NewLocalStorageItem,
     isClient: true
+  },
+  {
+    title: 'New Workspace',
+    aliases: ['workspace', 'group', 'create workspace'],
+    logoUri: getAssets('workspace.svg'),
+    commandEvent: MessageEvent.OpenNewWorkspace,
+    isClient: true
   }
 ];
 

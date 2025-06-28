@@ -1,6 +1,6 @@
 {
   "name": "@dcp/content",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "private": true,
   "scripts": {
@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@dcp/shared": "*",
+    "@hookform/resolvers": "^5.1.1",
     "clsx": "^2.1.0",
     "preact": "^10.19.6",
     "react-fast-compare": "^3.2.2",
+    "react-hook-form": "^7.59.0",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
@@ -23,7 +25,7 @@
     "@types/node": "^20.11.28",
     "@unocss/preset-rem-to-px": "^0.58.6",
     "sass": "^1.72.0",
-    "typescript": "^5.4.2",
+    "typescript": "^5.8.3",
     "unocss": "^0.58.6",
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-static-copy": "^1.0.1"

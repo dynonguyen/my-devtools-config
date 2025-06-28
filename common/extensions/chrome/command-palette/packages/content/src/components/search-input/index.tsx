@@ -47,7 +47,7 @@ export const SearchInput = () => {
           ref={ref}
           type="text"
           class="w-full h-full !border-none !outline-none !bg-transparent !text-base-content !text-base"
-          placeholder="Search for bookmarks, history,..."
+          placeholder="Search for bookmarks, histories, commands,..."
           onInput={handleSearchChange}
           autoComplete="off"
           autoFocus

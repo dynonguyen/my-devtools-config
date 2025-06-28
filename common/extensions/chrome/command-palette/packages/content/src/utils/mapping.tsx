@@ -9,6 +9,8 @@ import {
   ShortcutKey,
   Tab,
   Theme,
+  Workspace,
+  dateFormatter,
   getFavicon
 } from '@dcp/shared';
 import clsx from 'clsx';
@@ -20,6 +22,7 @@ import ExtensionActions from '~/components/search-action/ExtensionActions';
 import HistoryActions from '~/components/search-action/HistoryActions';
 import LocalStorageActions from '~/components/search-action/LocalStorageActions';
 import TabActions from '~/components/search-action/TabActions';
+import WorkspaceActions from '~/components/search-action/WorkspaceActions';
 import { pushNotification } from '~/stores/notification';
 import { RawSearchItem, SearchItem, useSearchStore } from '~/stores/search';
 import { getCookieSearchItem } from './convert';
@@ -127,6 +130,18 @@ export function searchResultMapping(item: RawSearchItem): SearchItem {
       return getCookieSearchItem(item);
     }
 
+    case SearchCategory.Workspace: {
+      const { id, name, timestamp } = item as Workspace;
+      return {
+        id: `workspace-${id}`,
+        category: item.category,
+        label: name,
+        description: `Created at: ${dateFormatter(timestamp)}`,
+        logo: <span class="i-carbon:workspace size-full" />,
+        _raw: item
+      };
+    }
+
     default:
       return {} as SearchItem;
   }
@@ -179,6 +194,9 @@ export function searchCategoryMapping(category: SearchCategory): Pick<ChipProps,
 
     case SearchCategory.LocalStorage:
       return { label: 'Local Storage', icon: 'i-material-symbols:storage-rounded', color: 'secondary' };
+
+    case SearchCategory.Workspace:
+      return { label: 'Workspace', icon: 'i-carbon:workspace', color: 'rose' };
 
     default:
       return { label: '--', color: 'grey-500' };
@@ -288,6 +306,17 @@ export function enterActionMapping(item: SearchItem | null): {
       };
     }
 
+    case SearchCategory.Workspace: {
+      const workspace = item._raw as Workspace;
+      return {
+        label: 'Open Workspace',
+        actionFn: () => {
+          sendMessage(MessageEvent.ExecuteWorkspace, workspace.id);
+          closePopup();
+        }
+      };
+    }
+
     default:
       return { noAction: true };
   }
@@ -307,6 +336,8 @@ export function actionMenuMapping(category: SearchCategory) {
       return CookieActions;
     case SearchCategory.LocalStorage:
       return LocalStorageActions;
+    case SearchCategory.Workspace:
+      return WorkspaceActions;
     default:
       return null;
   }

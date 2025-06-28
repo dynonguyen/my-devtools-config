@@ -39,6 +39,23 @@ export type Theme = {
   description?: string;
 };
 
+export type WorkspaceTab = {
+  id: string;
+  url: string;
+  pinned?: boolean;
+};
+export type WorkspaceWindow = {
+  id: string;
+  isCurrent?: boolean;
+  tabs: WorkspaceTab[];
+};
+export type Workspace = {
+  id: string;
+  name: string;
+  timestamp: number;
+  windows: WorkspaceWindow[];
+};
+
 export type History = chrome.history.HistoryItem;
 
 export type Tab = chrome.tabs.Tab;
@@ -101,7 +118,14 @@ export enum MessageEvent {
   NewCookie = 'new-cookie',
 
   // Local Storage
-  NewLocalStorageItem = 'new-local-storage-item'
+  NewLocalStorageItem = 'new-local-storage-item',
+
+  // Workspace
+  OpenNewWorkspace = 'new-workspace',
+  CreateWorkspace = 'create-workspace',
+  ExecuteWorkspace = 'execute-workspace',
+  UpdateWorkspace = 'update-workspace',
+  DeleteWorkspace = 'delete-workspace'
 }
 
 export enum CommandEvent {
@@ -124,7 +148,8 @@ export enum SearchCategory {
   Tab = 'tab',
   Extension = 'extension',
   Cookie = 'cookie',
-  LocalStorage = 'local-storage'
+  LocalStorage = 'local-storage',
+  Workspace = 'workspace'
 }
 
 export enum ShortcutKey {
@@ -146,4 +171,5 @@ export type UserOptions = {
   oxfordSearch: boolean;
   cambridgeSearch: boolean;
   aliases: { [key: string]: SearchCategory };
+  workspaces: Workspace[];
 };

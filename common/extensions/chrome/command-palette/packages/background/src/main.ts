@@ -4,6 +4,7 @@ import {
   Message,
   MessageEvent,
   SearchCategory,
+  Workspace,
   getAliasFromKeyword,
   omit,
   setUserOptions,
@@ -17,6 +18,7 @@ import { searchHistory } from './history';
 import { searchNavigation } from './navigation';
 import { searchTab } from './tab';
 import { searchThemeOptions, userOptions } from './user-options';
+import { createWorkspace, deleteWorkspace, executeWorkspace, searchWorkspace, updateWorkspace } from './workspace';
 
 // -----------------------------
 const allowSearch = (aliasCategory = '', category = '') => {
@@ -77,6 +79,11 @@ async function search(query = '') {
     promises.push(searchCookie(lowerKeyword).then((cookies) => pushToResult(cookies, SearchCategory.Cookie)));
   }
 
+  // Workspace
+  if (allowSearch(aliasCategory, SearchCategory.Workspace)) {
+    pushToResult(searchWorkspace(lowerKeyword), SearchCategory.Workspace);
+  }
+
   await Promise.all(promises);
 
   return sortSearchResult(result).slice(0, userOptions.limitItems);
@@ -97,7 +104,7 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
   const activeTabIndex = sender.tab?.index || 0;
   const originUri = sender.origin || '';
 
-  const sendBooleanResponse = (promise: Promise<any>) => {
+  const sendAsyncBooleanResponse = (promise: Promise<any>) => {
     promise
       .then(() => sendResponse(true))
       .catch((error) => {
@@ -124,31 +131,31 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
     }
 
     case MessageEvent.OpenLocalResource: {
-      sendBooleanResponse(chrome.tabs.create({ url: data.url, index: activeTabIndex + 1 }));
+      sendAsyncBooleanResponse(chrome.tabs.create({ url: data.url, index: activeTabIndex + 1 }));
       break;
     }
 
     case MessageEvent.ChangeColorTheme: {
-      sendBooleanResponse(setUserOptions({ theme: userOptions.theme === 'light' ? 'dark' : 'light' }));
+      sendAsyncBooleanResponse(setUserOptions({ theme: userOptions.theme === 'light' ? 'dark' : 'light' }));
       break;
     }
 
     // Bookmark
     case MessageEvent.DeleteBookmark: {
       const { id, isFolder } = data;
-      sendBooleanResponse(isFolder ? chrome.bookmarks.removeTree(id) : chrome.bookmarks.remove(id));
+      sendAsyncBooleanResponse(isFolder ? chrome.bookmarks.removeTree(id) : chrome.bookmarks.remove(id));
       break;
     }
 
     case MessageEvent.UpdateBookmark: {
       const { id, title, url } = data;
-      sendBooleanResponse(chrome.bookmarks.update(id, { title, url }));
+      sendAsyncBooleanResponse(chrome.bookmarks.update(id, { title, url }));
       break;
     }
 
     // Tab
     case MessageEvent.CloseTab: {
-      sendBooleanResponse(chrome.tabs.remove(data.id ?? activeTabId));
+      sendAsyncBooleanResponse(chrome.tabs.remove(data.id ?? activeTabId));
       break;
     }
 
@@ -167,51 +174,53 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
     }
 
     case MessageEvent.NewTab: {
-      sendBooleanResponse(chrome.tabs.create({ index: activeTabIndex + 1 }));
+      sendAsyncBooleanResponse(chrome.tabs.create({ index: activeTabIndex + 1 }));
       break;
     }
 
     case MessageEvent.DetachTab: {
-      sendBooleanResponse(chrome.windows.create({ focused: true, tabId: activeTabId }));
+      sendAsyncBooleanResponse(chrome.windows.create({ focused: true, tabId: activeTabId }));
       break;
     }
 
     case MessageEvent.Reload: {
-      sendBooleanResponse(chrome.tabs.reload(activeTabId));
+      sendAsyncBooleanResponse(chrome.tabs.reload(activeTabId));
       break;
     }
 
     case MessageEvent.HardReload: {
-      sendBooleanResponse(chrome.tabs.reload(activeTabId, { bypassCache: true }));
+      sendAsyncBooleanResponse(chrome.tabs.reload(activeTabId, { bypassCache: true }));
       break;
     }
 
     case MessageEvent.EmptyCacheAndHardReload: {
       chrome.browsingData.removeCache({ origins: [originUri] });
-      sendBooleanResponse(chrome.tabs.reload(activeTabId, { bypassCache: true }));
+      sendAsyncBooleanResponse(chrome.tabs.reload(activeTabId, { bypassCache: true }));
       break;
     }
 
     case MessageEvent.FocusTab: {
-      sendBooleanResponse(chrome.tabs.update(data.id, { active: true }));
+      sendAsyncBooleanResponse(chrome.tabs.update(data.id, { active: true }));
       break;
     }
 
     case MessageEvent.TogglePinTab: {
       const tabId = data.id ?? activeTabId;
-      sendBooleanResponse(chrome.tabs.get(tabId).then((tab) => chrome.tabs.update(tabId, { pinned: !tab.pinned })));
+      sendAsyncBooleanResponse(
+        chrome.tabs.get(tabId).then((tab) => chrome.tabs.update(tabId, { pinned: !tab.pinned }))
+      );
 
       break;
     }
 
     // Window
     case MessageEvent.CloseWindow: {
-      sendBooleanResponse(chrome.windows.remove(activeWindowId));
+      sendAsyncBooleanResponse(chrome.windows.remove(activeWindowId));
       break;
     }
 
     case MessageEvent.CloseOtherWindows: {
-      sendBooleanResponse(
+      sendAsyncBooleanResponse(
         chrome.tabs.query({ currentWindow: false }).then((tabs) => {
           tabs.forEach((tab) => chrome.windows.remove(tab.windowId!));
         })
@@ -220,7 +229,7 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
     }
 
     case MessageEvent.MergeAllWindows: {
-      sendBooleanResponse(
+      sendAsyncBooleanResponse(
         chrome.tabs.query({ currentWindow: false }).then((tabs) => {
           tabs.forEach((tab) => {
             chrome.tabs.move(tab.id!, { index: -1, windowId: activeWindowId });
@@ -231,18 +240,18 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
     }
 
     case MessageEvent.NewWindow: {
-      sendBooleanResponse(chrome.windows.create({}));
+      sendAsyncBooleanResponse(chrome.windows.create({}));
       break;
     }
 
     case MessageEvent.NewIncognitoWindow: {
-      sendBooleanResponse(chrome.windows.create({ incognito: true }));
+      sendAsyncBooleanResponse(chrome.windows.create({ incognito: true }));
       break;
     }
 
     // Chrome
     case MessageEvent.QuitChrome: {
-      sendBooleanResponse(
+      sendAsyncBooleanResponse(
         chrome.windows.getAll().then((windows) => {
           windows.forEach((wd) => {
             chrome.windows.remove(wd.id!);
@@ -254,7 +263,7 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
 
     // History
     case MessageEvent.ClearHistory: {
-      sendBooleanResponse(chrome.history.deleteAll());
+      sendAsyncBooleanResponse(chrome.history.deleteAll());
       break;
     }
 
@@ -270,18 +279,18 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
           ? 24 * 60 * 60 * 1000
           : 7 * 24 * 60 * 60 * 1000);
 
-      sendBooleanResponse(chrome.history.deleteRange({ startTime, endTime: now }));
+      sendAsyncBooleanResponse(chrome.history.deleteRange({ startTime, endTime: now }));
       break;
     }
 
     case MessageEvent.DeleteHistory: {
-      sendBooleanResponse(chrome.history.deleteUrl({ url: data.url }));
+      sendAsyncBooleanResponse(chrome.history.deleteUrl({ url: data.url }));
       break;
     }
 
     // Extension
     case MessageEvent.ToggleExtension: {
-      sendBooleanResponse(chrome.management.setEnabled(data.id, data.enabled));
+      sendAsyncBooleanResponse(chrome.management.setEnabled(data.id, data.enabled));
       break;
     }
 
@@ -291,7 +300,7 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
       const protocol = secure ? 'https' : 'http';
       const url = `${protocol}://${domain}${path}`;
 
-      sendBooleanResponse(chrome.cookies.remove({ name, url, storeId }));
+      sendAsyncBooleanResponse(chrome.cookies.remove({ name, url, storeId }));
       break;
     }
 
@@ -300,7 +309,7 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
       const protocol = secure ? 'https' : 'http';
       const url = `${protocol}://${domain}${path}`;
 
-      sendBooleanResponse(
+      sendAsyncBooleanResponse(
         chrome.cookies.set({
           url,
           ...omit(data as Cookie, ['session', 'sameSite']),
@@ -315,6 +324,28 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
       break;
     }
 
+    // Workspace
+    case MessageEvent.CreateWorkspace: {
+      sendAsyncBooleanResponse(createWorkspace(data as Workspace));
+      break;
+    }
+
+    case MessageEvent.ExecuteWorkspace: {
+      executeWorkspace(data as Workspace['id']);
+      sendResponse(false);
+      break;
+    }
+
+    case MessageEvent.UpdateWorkspace: {
+      sendAsyncBooleanResponse(updateWorkspace(data as Workspace));
+      break;
+    }
+
+    case MessageEvent.DeleteWorkspace: {
+      sendAsyncBooleanResponse(deleteWorkspace(data as Workspace['id']));
+      break;
+    }
+
     default:
       sendResponse(null);
   }
@@ -322,7 +353,7 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
   return true;
 });
 
-chrome.commands.onCommand.addListener((command, tab) => {
+chrome.commands.onCommand.addListener(async (command, tab) => {
   if (command === CommandEvent.Open) {
     openCommandPalette(tab);
   }
@@ -330,14 +361,14 @@ chrome.commands.onCommand.addListener((command, tab) => {
 
 chrome.action.onClicked.addListener(openCommandPalette);
 
-// Dev mode: un
-/* (function reload() {
-  chrome.tabs.query({ currentWindow: true, url: 'http://localhost:8888/*' }, function (tabs) {
-    if (tabs[0]) {
-      chrome.tabs.reload(tabs[0].id as number);
-    }
-  });
-  chrome.action.onClicked.addListener(function reloadExtension() {
-    chrome.runtime.reload();
-  });
-})(); */
+// Dev mode: uncomment bellow to reload extension on click
+// (function reload() {
+//   chrome.tabs.query({ currentWindow: true, url: 'http://localhost:8888/*' }, function (tabs) {
+//     if (tabs[0]) {
+//       chrome.tabs.reload(tabs[0].id as number);
+//     }
+//   });
+//   chrome.action.onClicked.addListener(function reloadExtension() {
+//     chrome.runtime.reload();
+//   });
+// })();

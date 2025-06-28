@@ -8,5 +8,6 @@ export const DEFAULT_USER_OPTIONS: UserOptions = {
   youtubeSearch: true,
   oxfordSearch: true,
   cambridgeSearch: true,
-  aliases: {}
+  aliases: {},
+  workspaces: []
 };

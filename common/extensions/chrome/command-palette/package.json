@@ -1,6 +1,6 @@
 {
   "name": "dcp",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "description": "A command palette to navigate in Google Chrome faster ⚡",
   "private": true,
