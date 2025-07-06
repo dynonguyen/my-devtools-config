@@ -8,7 +8,8 @@
 
 	// Terminal
 	"terminal.integrated.fontSize": 14,
-	"chat.mcp.enabled": true
+	"chat.mcp.enabled": true,
+	"workbench.editor.empty.hint": "hidden"
 
 	// ------------------------------------------------------------
 	// ------------------------ Extensions ------------------------

@@ -456,6 +456,7 @@
 	"iconify.languageIds": ["javascriptreact", "typescriptreact"],
 
 	// Github copilot
+	"github.copilot.nextEditSuggestions.enabled": false,
 	"github.copilot.enable": { "markdown": true },
 	"github.copilot.chat.commitMessageGeneration.instructions": [
 		{ "file": ".cz-config.js" },
@@ -707,6 +708,7 @@
 		// Github copilot
 		"github.copilot.enable",
 		"github.copilot.chat.commitMessageGeneration.instructions",
+		"github.copilot.nextEditSuggestions.enabled",
 
 		// TailwindCSS
 		"tailwindCSS.emmetCompletions",

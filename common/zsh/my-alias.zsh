@@ -78,6 +78,9 @@ function deb() {
   docker exec -it $1 bash
 }
 alias k='kubectl'
+function k-print-env() {
+  kubectl exec -it $1 -- env
+}
 
 # External packages (depend on installation.sh)
 alias ls='eza --icons=always'
