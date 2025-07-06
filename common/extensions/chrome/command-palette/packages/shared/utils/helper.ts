@@ -37,10 +37,7 @@ export function debounce<T extends (...args: any[]) => void>(func: T, delay: num
 }
 
 export function hasSearchKeyword(content: string, keyword: string) {
-  if (!content) return false;
-  if (content.toLowerCase().includes(keyword)) {
-    return true;
-  }
+  return Boolean(content) && content.toLowerCase().includes(keyword);
 }
 
 export const dateFormatter = (input: Date | string | number) => {
@@ -58,6 +55,11 @@ export const dateFormatter = (input: Date | string | number) => {
 
 export const sortSearchResult = (items: any[], sortByLen: string = 'title') =>
   items.sort((a, b) => a[sortByLen]?.length - b[sortByLen]?.length);
+
+export const generateId = () => {
+  const randomPart = Math.random().toString(36).substring(2, 9);
+  return `${randomPart}-${Date.now()}`;
+};
 
 // -----------------------------
 export function detectDevicePlatform(): 'mac' | 'win' | 'linux' | 'other' {
@@ -99,9 +101,12 @@ export async function getUserOptions(): Promise<UserOptions> {
   return userOptions?.[STORAGE_KEY.USER_OPTION] || DEFAULT_USER_OPTIONS;
 }
 
-export async function setUserOptions(options: Partial<UserOptions>) {
+export async function setUserOptions(options: Partial<UserOptions> | ((prev: UserOptions) => Partial<UserOptions>)) {
   const userOpts = await getUserOptions();
-  return await chrome.storage.sync.set({ [STORAGE_KEY.USER_OPTION]: { ...userOpts, ...options } });
+
+  return await chrome.storage.sync.set({
+    [STORAGE_KEY.USER_OPTION]: { ...userOpts, ...(typeof options === 'function' ? options(userOpts) : options) }
+  });
 }
 
 export function userOptionsChangeListener(onChange?: () => void) {

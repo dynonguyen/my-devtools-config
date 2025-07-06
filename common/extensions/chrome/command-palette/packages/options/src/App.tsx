@@ -21,7 +21,6 @@ function App() {
           <Stack spacing={6}>
             <ThemeSetting />
             <MaxSearchItemSetting />
-            {/* <AutoRedirectSetting /> */}
             <ToggleSetting label="Google search" logo={{ img: getAssets('google.ico') }} settingKey="googleSearch" />
             <ToggleSetting label="Youtube search" logo={{ img: getAssets('youtube.png') }} settingKey="youtubeSearch" />
             <ToggleSetting label="Oxford search" logo={{ img: getAssets('oxford.ico') }} settingKey="oxfordSearch" />

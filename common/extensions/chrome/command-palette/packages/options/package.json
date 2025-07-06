@@ -1,7 +1,7 @@
 {
   "name": "@dcp/options",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.2.0",
   "type": "module",
   "scripts": {
     "preview": "vite",
@@ -16,6 +16,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fast-compare": "^3.2.2",
+    "react-router-dom": "^7.6.3",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
@@ -28,7 +29,6 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "react-router-dom": "^6.22.3",
     "typescript": "^5.2.2",
     "vite": "npm:rolldown-vite@latest"
   }

@@ -55,8 +55,12 @@ This extension empowers you to take complete control over your Chrome browsing e
 <details>
   <summary>Demo</summary>
 
-![Photo](./.imgs/dcp-screenshot1.png)
-![Photo](./.imgs/dcp-screenshot2.png)
-![Photo](./.imgs/dcp-screenshot3.png)
+![Photo](./.imgs/dcp/1.png)
+![Photo](./.imgs/dcp/2.png)
+![Photo](./.imgs/dcp/3.png)
+![Photo](./.imgs/dcp/4.png)
+![Photo](./.imgs/dcp/5.png)
+![Photo](./.imgs/dcp/6.png)
+![Photo](./.imgs/dcp/7.png)
 
 </details>

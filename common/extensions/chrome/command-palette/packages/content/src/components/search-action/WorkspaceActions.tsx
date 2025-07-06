@@ -1,35 +1,27 @@
-import { Cookie, MessageEvent } from '@dcp/shared';
+import { MessageEvent, Workspace } from '@dcp/shared';
 import { useState } from 'preact/hooks';
 import { pushNotification } from '~/stores/notification';
 import { deleteSearchItem, updateSearchItem, useSearchStore } from '~/stores/search';
-import { getCookieSearchItem } from '~/utils/convert';
-import { copyToClipboard, sendMessage } from '~/utils/helper';
+import { sendMessage } from '~/utils/helper';
 import Dialog from '../Dialog';
 import ActionMenu, { ActionMenuItem } from './ActionMenu';
 import { useActionDialog } from './Actions';
-import { COOKIE_FORM_ID, CookieForm, CookieFormProps } from './CookieForm';
+import WorkspaceForm, { WORKSPACE_FORM_ID } from './WorkspaceForm';
 
-export const CookieActions = () => {
+export const WorkspaceActions = () => {
   const selectedItem = useSearchStore((state) => state.result[state.focusedIndex]);
+  const item = selectedItem._raw as Workspace;
+
   const [openEdit, setOpenEdit] = useState(false);
 
-  const cookie = selectedItem._raw as Cookie;
-  const { name, value } = cookie;
-
   const handleDelete = async () => {
-    const isSuccess = await sendMessage<boolean, Cookie>(MessageEvent.DeleteCookie, cookie);
+    const isSuccess = await sendMessage<boolean>(MessageEvent.DeleteWorkspace, item.id);
+
     if (isSuccess) {
       deleteSearchItem(selectedItem.id, true);
     } else {
       pushNotification({ message: 'Failed', variant: 'error' });
     }
-  };
-
-  const handleCopyCookie = () => {
-    const text = `${name}=${value}`;
-    void copyToClipboard(text);
-    pushNotification({ message: 'Copied to clipboard', variant: 'success' });
-    useSearchStore.setState({ openAction: false });
   };
 
   const handleToggleEditDialog = (open: boolean) => {
@@ -38,13 +30,13 @@ export const CookieActions = () => {
     if (!open) useSearchStore.setState({ openAction: false });
   };
 
-  const handleSubmit: CookieFormProps['onSubmit'] = async (form) => {
-    const isSuccess = await sendMessage<boolean>(MessageEvent.SetCookie, form);
-
+  const handleEditWorkspace = async (form: Workspace) => {
+    const isSuccess = await sendMessage<boolean>(MessageEvent.UpdateWorkspace, form);
     if (isSuccess) {
       updateSearchItem(selectedItem.id, (item) => ({
         ...item,
-        ...getCookieSearchItem(form as Cookie)
+        label: form.name,
+        _raw: { ...item._raw, ...form }
       }));
 
       pushNotification({ message: 'Updated', variant: 'success' });
@@ -55,11 +47,6 @@ export const CookieActions = () => {
   };
 
   const actionItems: ActionMenuItem[] = [
-    {
-      label: 'Copy cookie',
-      icon: <span class="i-ph:copy" />,
-      actionFn: handleCopyCookie
-    },
     {
       label: 'Edit',
       icon: <span class="i-ph:pencil-simple" />,
@@ -79,16 +66,16 @@ export const CookieActions = () => {
 
       <Dialog
         open={openEdit}
-        title="Edit Cookie"
+        title="Edit Workspace"
         width={520}
         onClose={() => handleToggleEditDialog(false)}
-        body={<CookieForm initValues={cookie} onSubmit={handleSubmit} />}
+        body={<WorkspaceForm initValues={item} onSubmit={handleEditWorkspace} />}
         actions={
           <div class="flex items-center justify-end gap-2">
             <button class="btn btn-grey-500" onClick={() => handleToggleEditDialog(false)}>
               Close
             </button>
-            <button type="submit" form={COOKIE_FORM_ID} class="btn btn-primary">
+            <button type="submit" form={WORKSPACE_FORM_ID} class="btn btn-primary">
               Save
             </button>
           </div>
@@ -98,4 +85,4 @@ export const CookieActions = () => {
   );
 };
 
-export default CookieActions;
+export default WorkspaceActions;

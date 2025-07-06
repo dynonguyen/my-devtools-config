@@ -64,7 +64,13 @@ export const AliasesSetting = () => {
       category: SearchCategory.LocalStorage,
       name: 'LocalStorage',
       icon: 'material-symbols:storage-rounded',
-      color: color('#59d5e0', '#68dae5')
+      color: color('#4FC6E0', '#68dae5')
+    },
+    {
+      category: SearchCategory.Workspace,
+      name: 'Workspace',
+      icon: 'carbon:workspace',
+      color: color('#f43f5e', '#f44f6b')
     }
   ];
 

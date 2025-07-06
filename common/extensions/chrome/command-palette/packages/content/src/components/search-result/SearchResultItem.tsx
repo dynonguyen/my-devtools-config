@@ -6,7 +6,7 @@ export type SearchResultItemProps = SearchItem & {
   onClick?: JSXInternal.MouseEventHandler<HTMLDivElement>;
 };
 
-export const descriptionClass = 'text-xs text-grey-600 dark:text-grey-400 line-clamp-1';
+export const descriptionClass = 'text-xs text-grey-600 dark:text-grey-400 line-clamp-1 break-all';
 
 export const SearchResultItem = (props: SearchResultItemProps) => {
   const { label, logo, description, category, tooltip = '', onClick } = props;
