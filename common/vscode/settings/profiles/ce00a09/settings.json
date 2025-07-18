@@ -7,9 +7,7 @@
 	"editor.fontSize": 16,
 
 	// Terminal
-	"terminal.integrated.fontSize": 14,
-	"chat.mcp.enabled": true,
-	"workbench.editor.empty.hint": "hidden"
+	"terminal.integrated.fontSize": 14
 
 	// ------------------------------------------------------------
 	// ------------------------ Extensions ------------------------

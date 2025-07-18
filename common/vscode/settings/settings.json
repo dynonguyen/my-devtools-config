@@ -71,6 +71,7 @@
 	"workbench.startupEditor": "none",
 	"workbench.colorTheme": "Dyno Cute",
 	"workbench.iconTheme": "material-icon-theme",
+	"workbench.editor.empty.hint": "hidden",
 
 	// Languages
 	"[css]": { "editor.matchBrackets": "always" },
@@ -154,7 +155,8 @@
 	// "terminal.integrated.fontSize": 14,
 	"terminal.integrated.shellIntegration.enabled": true,
 	"terminal.integrated.tabs.enabled": false,
-	// "terminal.integrated.suggest.enabled": true,
+	"terminal.integrated.suggest.enabled": true,
+	"terminal.integrated.suggest.selectionMode": "always",
 
 	// Git
 	"git.enableSmartCommit": true,
@@ -464,6 +466,7 @@
 		{ "file": "commitlint.config.js" },
 		{ "file": "commitlint.config.cjs" }
 	],
+	"chat.mcp.enabled": true,
 
 	// TailwindCSS
 	"tailwindCSS.emmetCompletions": true,
@@ -557,6 +560,7 @@
 		"workbench.startupEditor",
 		"workbench.colorTheme",
 		"workbench.iconTheme",
+		"workbench.editor.empty.hint",
 
 		// Languages
 		"[css]",
@@ -602,6 +606,7 @@
 		"terminal.integrated.shellIntegration.enabled",
 		"terminal.integrated.tabs.enabled",
 		"terminal.integrated.suggest.enabled",
+		"terminal.integrated.suggest.selectionMode",
 
 		// Git, Source Control
 		"git.enableSmartCommit",
@@ -709,6 +714,7 @@
 		"github.copilot.enable",
 		"github.copilot.chat.commitMessageGeneration.instructions",
 		"github.copilot.nextEditSuggestions.enabled",
+		"chat.mcp.enabled",
 
 		// TailwindCSS
 		"tailwindCSS.emmetCompletions",
@@ -727,6 +733,5 @@
 		// Golang
 		"gopls",
 		"go.toolsManagement.autoUpdate"
-	],
-	"security.workspace.trust.untrustedFiles": "open"
+	]
 }
